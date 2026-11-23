@@ -1,6 +1,6 @@
 name = "formal_qchem"
-version = "0.1.0"
-defaultTargets = ["FormalQChem"]
+version = "0.2.0"
+defaultTargets = ["FormalQChem", "LegacyImports"]
 
 [[require]]
 name = "mathlib"
@@ -9,4 +9,16 @@ rev = "v4.36.0-rc2"
 
 [[lean_lib]]
 name = "FormalQChem"
-globs = ["FormalQChem", "FormalQChem.+"]
+roots = []
+globs = [
+  "FormalQChem",
+  "FormalQChem.StatePrep.*",
+  "FormalQChem.Dynamics.*",
+  "FormalQChem.Properties.*",
+  "FormalQChem.Multiscale.*",
+]
+
+[[lean_lib]]
+name = "LegacyImports"
+srcDir = "compat"
+globs = ["FormalQChem.Theorems.+", "FormalQChem.Proofs.+"]

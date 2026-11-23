@@ -1,4 +1,4 @@
 module
 
-public import FormalQChem.StatePrep.AdiabaticPreparation.Proofs
-public import FormalQChem.StatePrep.AdiabaticPreparation.RydbergBlockade.Proofs
+public import FormalQChem.StatePrep.AdiabaticPreparation.AdiabaticTheorem
+public import FormalQChem.StatePrep.AdiabaticPreparation.RydbergBlockade

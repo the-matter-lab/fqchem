@@ -1,4 +1,4 @@
 module
 
-public import FormalQChem.Dynamics.DigitalAlgorithms.CommutingTerms.Proofs
-public import FormalQChem.Dynamics.DigitalAlgorithms.LieTrotter.Proofs
+public import FormalQChem.Dynamics.DigitalAlgorithms.CommutingTerms
+public import FormalQChem.Dynamics.DigitalAlgorithms.LieTrotter

@@ -17,4 +17,4 @@ jobs:
           mapfile -t modules < <(find FormalQChem -name '*.lean' -exec awk '$1 == "import" && $2 ~ /^Mathlib/ {print $2} $2 == "import" && $3 ~ /^Mathlib/ {print $3}' {} + | sort -u)
           lake exe cache get "${modules[@]}"
       - run: lake build
-      - run: lake env lean Audit.lean
+      - run: lake env lean test/Audit.lean

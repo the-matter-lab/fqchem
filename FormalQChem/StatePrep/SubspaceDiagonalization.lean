@@ -1,6 +1,6 @@
 module
 
-public import FormalQChem.StatePrep.SubspaceDiagonalization.Proofs
-public import FormalQChem.StatePrep.SubspaceDiagonalization.ConfigurationInteraction.Proofs
-public import FormalQChem.StatePrep.SubspaceDiagonalization.Interlacing.Proofs
-public import FormalQChem.StatePrep.SubspaceDiagonalization.Krylov.Proofs
+public import FormalQChem.StatePrep.SubspaceDiagonalization.ConfigurationInteraction
+public import FormalQChem.StatePrep.SubspaceDiagonalization.Interlacing
+public import FormalQChem.StatePrep.SubspaceDiagonalization.Krylov
+public import FormalQChem.StatePrep.SubspaceDiagonalization.RitzGalerkin

@@ -1,4 +1,5 @@
 module
 
-public import FormalQChem.StatePrep.PerturbationTheory.Proofs
-public import FormalQChem.StatePrep.PerturbationTheory.ElectronicStructure.Proofs
+public import FormalQChem.StatePrep.PerturbationTheory.CoupledCluster
+public import FormalQChem.StatePrep.PerturbationTheory.Multireference
+public import FormalQChem.StatePrep.PerturbationTheory.RayleighSchrodinger

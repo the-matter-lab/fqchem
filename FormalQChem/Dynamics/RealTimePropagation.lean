@@ -1,8 +1,12 @@
 module
 
-public import FormalQChem.Dynamics.RealTimePropagation.Proofs
-public import FormalQChem.Dynamics.RealTimePropagation.ClusterExpansions.Proofs
-public import FormalQChem.Dynamics.RealTimePropagation.MolecularDynamics.Proofs
-public import FormalQChem.Dynamics.RealTimePropagation.PathSampling.Proofs
-public import FormalQChem.Dynamics.RealTimePropagation.Propagators.Proofs
-public import FormalQChem.Dynamics.RealTimePropagation.VariationalEvolution.Proofs
+public import FormalQChem.Dynamics.RealTimePropagation.BornOppenheimer
+public import FormalQChem.Dynamics.RealTimePropagation.ClusterExpansions
+public import FormalQChem.Dynamics.RealTimePropagation.HeisenbergPicture
+public import FormalQChem.Dynamics.RealTimePropagation.KrylovPropagation
+public import FormalQChem.Dynamics.RealTimePropagation.PathSampling
+public import FormalQChem.Dynamics.RealTimePropagation.RingPolymer
+public import FormalQChem.Dynamics.RealTimePropagation.SchrodingerGroup
+public import FormalQChem.Dynamics.RealTimePropagation.SplitOperator
+public import FormalQChem.Dynamics.RealTimePropagation.TimeDependentCI
+public import FormalQChem.Dynamics.RealTimePropagation.VariationalEvolution

@@ -1,3 +1,4 @@
 module
 
-public import FormalQChem.StatePrep.ImaginaryTimeProjection.Proofs
+public import FormalQChem.StatePrep.ImaginaryTimeProjection.GroundStateProjection
+public import FormalQChem.StatePrep.ImaginaryTimeProjection.SpectralFiltering
