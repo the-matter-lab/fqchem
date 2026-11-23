@@ -1,6 +1,8 @@
 # Theorem dependencies
 
-Browse the diagrams directly on GitHub, or open [the interactive explorer](index.html) in a browser from a checkout. Search by theorem, method or family and select a result to trace its prerequisites and the results that use it. The explorer works offline with its accompanying data files.
+Open [the interactive explorer](https://fqchem.matterlab.ca/). Search by theorem, method or family and select a result to trace its prerequisites and the results that use it. The address bar links directly to the selected theorem. For example, explore the [VMC variational bound](https://fqchem.matterlab.ca/#FQChem.StatePrep.VariationalOptimization.VariationalMonteCarlo.variationalBound).
+
+For offline use, open [index.html](index.html) from a checkout alongside `library.js` and `kitaev.js`.
 
 - [fqchem theorem graphs by module](library.md)
 - [Kitaev integration theorem graphs by module](kitaev.md)
@@ -22,3 +24,5 @@ python3 scripts/theorem_graph/generate.py --project kitaev
 ```
 
 Pass `--check` to either command to compare the committed graphs with the compiled proofs. The extractor obtains names, source ranges, and constant references from Lean and checks that each written theorem and lemma has a node. Its counts differ from an environment-wide axiom audit, which also sees compiler-generated theorem declarations.
+
+To publish an update after committing the regenerated graphs, run `python3 scripts/theorem_graph/export_site.py > /tmp/fqchem-index.html` from the repository and deploy the resulting file as the site's `index.html`. It includes both graphs and links each local declaration to its line at the exported Git revision.
