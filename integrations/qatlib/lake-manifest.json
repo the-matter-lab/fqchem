@@ -135,7 +135,7 @@
       "configFile": "lakefile.toml"
     }
   ],
-  "name": "formal_qchem_kitaev",
+  "name": "fqchem_kitaev",
   "lakeDir": ".lake",
   "fixedToolchain": false
 }

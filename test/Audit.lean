@@ -1,4 +1,4 @@
-import FormalQChem
+import FQChem
 import Lean.Util.CollectAxioms
 import Lean.Elab.Command
 
@@ -8,7 +8,7 @@ open Lean Elab Command in
 run_cmd do
   let env ← getEnv
   let mut sourceModules : Nat := 0
-  for file in ← ("FormalQChem" : System.FilePath).walkDir do
+  for file in ← ("FQChem" : System.FilePath).walkDir do
     if file.extension == some "lean" then
       let modName := (file.withExtension "").components.foldl Name.str Name.anonymous
       unless env.header.moduleNames.contains modName do
@@ -17,7 +17,7 @@ run_cmd do
   let allowed := #[``propext, ``Classical.choice, ``Quot.sound]
   let mut count : Nat := 0
   for (name, info) in env.constants.toList do
-    if `FormalQChem |>.isPrefixOf name then
+    if `FQChem |>.isPrefixOf name then
       match info with
       | .axiomInfo _ => throwError "Unexpected axiom {name}"
       | .thmInfo _ =>

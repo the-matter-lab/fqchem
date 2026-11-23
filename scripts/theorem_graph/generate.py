@@ -3,6 +3,7 @@
 import argparse
 import json
 from collections import Counter, defaultdict
+import os
 from pathlib import Path
 import re
 import subprocess
@@ -12,10 +13,9 @@ import tempfile
 ROOT = Path(__file__).resolve().parents[2]
 DEST = ROOT / "docs" / "theorems"
 PROJECTS = {
-    "library": (ROOT, "FormalQChem"),
-    "kitaev": (ROOT / "integrations" / "qatlib", "FormalQChemKitaev"),
+    "library": (ROOT, "FQChem"),
+    "kitaev": (ROOT / "integrations" / "qatlib", "FQChemKitaev"),
 }
-REPOSITORY = "https://github.com/bestquark/formal_qchem/blob/main/"
 DECLARATION = re.compile(
     r"^\s*(?:@\[[^\]]+\]\s*)*(?:(?:private|public|protected|nonrec|noncomputable)\s+)*"
     r"(?:theorem|lemma)\s+([\w.']+)"
@@ -79,7 +79,7 @@ def select_theorems(rows, sources, project):
         for row in rows.values():
             module = row["module"]
             path = ROOT / module_file(module)
-            if module.startswith("FormalQChem.") and path.is_file():
+            if module.startswith("FQChem.") and path.is_file():
                 scanned[module] = path
     for module, path in scanned.items():
         for number, line in enumerate(path.read_text().splitlines(), start=1):
@@ -99,7 +99,7 @@ def select_theorems(rows, sources, project):
             if link is None:
                 continue
         elif where in locations and row["name"].endswith("." + locations[where]):
-            link = REPOSITORY + scanned[module].relative_to(ROOT).as_posix() + f"#L{number}"
+            link = Path(os.path.relpath(scanned[module], DEST)).as_posix() + f"#L{number}"
             found.add(where)
         else:
             continue
@@ -192,18 +192,17 @@ def main():
     if project != ROOT:
         # Load the private facets for shared modules as well. In particular this
         # preserves their source theorem identities on the older toolchain.
-        for module in sources:
-            deps = subprocess.check_output(
-                ["lake", "--json", "query", f"+{module}:transImports"], cwd=project, text=True,
-            )
-            imports.extend(m for m in json.loads(deps) if m.startswith("FormalQChem."))
+        deps = subprocess.check_output(
+            ["lake", "--json", "query", f"+{prefix}:transImports"], cwd=project, text=True,
+        )
+        imports.extend(m for m in json.loads(deps) if m.startswith("FQChem."))
     imports = sorted(set(imports))
     rows = extract(project, imports)
     nodes = graph(rows, select_theorems(rows, sources, project))
     data = json.dumps(nodes, ensure_ascii=False, sort_keys=True, separators=(",", ":"))
     outputs = {
         f"{args.project}.js": f"addTheoremGraph({data});\n",
-        f"{args.project}.md": markdown(nodes, prefix),
+        f"{args.project}.md": markdown(nodes, "fqchem" if args.project == "library" else "Kitaev integration"),
     }
     for name, content in outputs.items():
         path = DEST / name

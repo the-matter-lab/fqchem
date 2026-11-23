@@ -1,12 +1,22 @@
 module
 
-import all FormalQChemKitaev
-import all FormalQChemKitaev.ElectronicStructure
-import all FormalQChem.StatePrep.VariationalOptimization.RayleighRitz
-import all FormalQChem.StatePrep.VariationalOptimization.VQE
-import all FormalQChem.Complexity.ElectronicStructure
-import all FormalQChem.Complexity.ElectronicStructureOperators
-import all FormalQChem.Complexity.ElectronicStructurePauli
+import all FQChemKitaev
+import all FQChemKitaev.AmplificationBounds
+import all FQChemKitaev.AmplifierCost
+import all FQChemKitaev.Amplify
+import all FQChemKitaev.BoundedErrorReduction
+import all FQChemKitaev.Compiler
+import all FQChemKitaev.DyadicCoefficients
+import all FQChemKitaev.ElectronicStructure
+import all FQChemKitaev.HistoryHamiltonian
+import all FQChemKitaev.Majority
+import all FQChemKitaev.UniformCircuits
+import all FQChemKitaev.Wiring
+import all FQChem.StatePrep.VariationalOptimization.RayleighRitz
+import all FQChem.StatePrep.VariationalOptimization.VQE
+import all FQChem.Complexity.ElectronicStructure
+import all FQChem.Complexity.ElectronicStructureOperators
+import all FQChem.Complexity.ElectronicStructurePauli
 import Lean.Elab.Command
 import Lean.Util.CollectAxioms
 
@@ -15,9 +25,9 @@ import Lean.Util.CollectAxioms
 open Lean Elab Command in
 run_cmd do
   let env ← getEnv
-  let root := `FormalQChemKitaev
+  let root := `FQChemKitaev
   let mut expected := #[root]
-  let sourceDir : System.FilePath := "FormalQChemKitaev"
+  let sourceDir : System.FilePath := "FQChemKitaev"
   if ← sourceDir.isDir then
     for file in ← sourceDir.walkDir do
       if file.extension == some "lean" then
@@ -30,7 +40,7 @@ run_cmd do
   let mut theorems : Nat := 0
   let mut privateCount : Nat := 0
   for modName in env.header.moduleNames, data in env.header.moduleData do
-    if root.isPrefixOf modName || (`FormalQChem).isPrefixOf modName then
+    if root.isPrefixOf modName || (`FQChem).isPrefixOf modName then
       for name in data.constNames do
         let some info := env.find? name | throwError "Missing kernel declaration {name}"
         if info.isAxiom then throwError "Unexpected integration axiom {name}"

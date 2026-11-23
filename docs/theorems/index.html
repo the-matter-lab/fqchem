@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>Theorem dependencies · FormalQChem</title>
+  <title>Theorem dependencies · fqchem</title>
   <style>
     :root { color-scheme: light dark; --paper: #f8f8f4; --panel: white; --ink: #192a29; --muted: #4f6260; --line: #ced9d3; --accent: #00685c; --tint: #e5f2ed }
     @media (prefers-color-scheme: dark) {
@@ -52,7 +52,7 @@
 </head>
 <body>
 <main>
-  <a href="README.md">FormalQChem</a>
+  <a href="README.md">fqchem</a>
   <h1>Theorem dependencies</h1>
   <div class="filters">
     <label>Find a theorem or method<input id="search" type="search" placeholder="e.g. VMC, qubitization, Kitaev" autocomplete="off"></label>
@@ -95,7 +95,7 @@ function addTheoremGraph(nodes) {
 <script>
 const byId = id => document.getElementById(id);
 const short = n => n.name.split(".").at(-1);
-const chapter = n => n.external ? "Upstream" : n.module.startsWith("FormalQChemKitaev") ? "Complexity" : n.module.split(".")[1];
+const chapter = n => n.external ? "Upstream" : n.module.startsWith("FQChemKitaev") ? "Complexity" : n.module.split(".")[1];
 const labels = {StatePrep:"State preparation", Dynamics:"Dynamics", Properties:"Properties", Multiscale:"Multiscale", Complexity:"Complexity", Upstream:"Upstream"};
 for (const c of new Set(theorems.map(chapter).sort())) byId("chapter").add(new Option(labels[c] || c,c));
 theorems.forEach((node, i) => node.deps.forEach(([j,kind]) => theorems[j].users.push([i,kind])));

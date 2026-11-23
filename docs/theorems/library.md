@@ -1,4 +1,4 @@
-# FormalQChem theorem graph
+# fqchem theorem graph
 
 362 source theorems and lemmas · 0 shared library prerequisites · 2 upstream theorem nodes · 348 dependency edges.
 
@@ -6,7 +6,7 @@ Arrows point from prerequisite to result. Dashed arrows pass through local defin
 
 [Graph guide and interactive explorer](README.md)
 
-## FormalQChem.Complexity.AaronsonAmbainis
+## FQChem.Complexity.AaronsonAmbainis
 
 ```mermaid
 flowchart LR
@@ -50,21 +50,21 @@ flowchart LR
 
 - [Main.aaronson_ambainis](https://github.com/physical-superintelligence/aaronson-ambainis/blob/2a6ceaef872ae993708950f951989134084b851a/AaronsonAmbainis/Main.lean#L33)
 - [Main.aaronson_ambainis_explicit](https://github.com/physical-superintelligence/aaronson-ambainis/blob/2a6ceaef872ae993708950f951989134084b851a/AaronsonAmbainis/Main.lean#L38)
-- [acceptance_influential](https://github.com/bestquark/formal_qchem/blob/main/FormalQChem/Complexity/AaronsonAmbainis.lean#L36)
-- [antibondingInfluence](https://github.com/bestquark/formal_qchem/blob/main/FormalQChem/Complexity/AaronsonAmbainis.lean#L78)
-- [antibondingVariance](https://github.com/bestquark/formal_qchem/blob/main/FormalQChem/Complexity/AaronsonAmbainis.lean#L74)
-- [antibonding_influential](https://github.com/bestquark/formal_qchem/blob/main/FormalQChem/Complexity/AaronsonAmbainis.lean#L84)
-- [mean_oneBit](https://github.com/bestquark/formal_qchem/blob/main/FormalQChem/Complexity/AaronsonAmbainis.lean#L67) (private)
-- [orbitalPopulation_influential](https://github.com/bestquark/formal_qchem/blob/main/FormalQChem/Complexity/AaronsonAmbainis.lean#L51)
-- [AaronsonAmbainisOrbitals.antibondingPopulation](https://github.com/bestquark/formal_qchem/blob/main/FormalQChem/Complexity/AaronsonAmbainisOrbitals.lean#L106)
-- [AaronsonAmbainisOrbitals.bondingNormalized](https://github.com/bestquark/formal_qchem/blob/main/FormalQChem/Complexity/AaronsonAmbainisOrbitals.lean#L86)
-- [AaronsonAmbainisOrbitals.bondingReadout_unitary](https://github.com/bestquark/formal_qchem/blob/main/FormalQChem/Complexity/AaronsonAmbainisOrbitals.lean#L93)
-- [AaronsonAmbainisOrbitals.orbitalPopulation_eq](https://github.com/bestquark/formal_qchem/blob/main/FormalQChem/Complexity/AaronsonAmbainisOrbitals.lean#L74)
-- [AaronsonAmbainisQuery.acceptancePolynomial_degree](https://github.com/bestquark/formal_qchem/blob/main/FormalQChem/Complexity/AaronsonAmbainisQuery.lean#L173)
-- [AaronsonAmbainisQuery.acceptancePolynomial_eval](https://github.com/bestquark/formal_qchem/blob/main/FormalQChem/Complexity/AaronsonAmbainisQuery.lean#L164)
-- [AaronsonAmbainisQuery.acceptance_mem_unitInterval](https://github.com/bestquark/formal_qchem/blob/main/FormalQChem/Complexity/AaronsonAmbainisQuery.lean#L181)
+- [acceptance_influential](../../FQChem/Complexity/AaronsonAmbainis.lean#L36)
+- [antibondingInfluence](../../FQChem/Complexity/AaronsonAmbainis.lean#L78)
+- [antibondingVariance](../../FQChem/Complexity/AaronsonAmbainis.lean#L74)
+- [antibonding_influential](../../FQChem/Complexity/AaronsonAmbainis.lean#L84)
+- [mean_oneBit](../../FQChem/Complexity/AaronsonAmbainis.lean#L67) (private)
+- [orbitalPopulation_influential](../../FQChem/Complexity/AaronsonAmbainis.lean#L51)
+- [AaronsonAmbainisOrbitals.antibondingPopulation](../../FQChem/Complexity/AaronsonAmbainisOrbitals.lean#L106)
+- [AaronsonAmbainisOrbitals.bondingNormalized](../../FQChem/Complexity/AaronsonAmbainisOrbitals.lean#L86)
+- [AaronsonAmbainisOrbitals.bondingReadout_unitary](../../FQChem/Complexity/AaronsonAmbainisOrbitals.lean#L93)
+- [AaronsonAmbainisOrbitals.orbitalPopulation_eq](../../FQChem/Complexity/AaronsonAmbainisOrbitals.lean#L74)
+- [AaronsonAmbainisQuery.acceptancePolynomial_degree](../../FQChem/Complexity/AaronsonAmbainisQuery.lean#L173)
+- [AaronsonAmbainisQuery.acceptancePolynomial_eval](../../FQChem/Complexity/AaronsonAmbainisQuery.lean#L164)
+- [AaronsonAmbainisQuery.acceptance_mem_unitInterval](../../FQChem/Complexity/AaronsonAmbainisQuery.lean#L181)
 
-## FormalQChem.Complexity.AaronsonAmbainisOrbitals
+## FQChem.Complexity.AaronsonAmbainisOrbitals
 
 ```mermaid
 flowchart LR
@@ -86,16 +86,16 @@ flowchart LR
   n14 --> n15
 ```
 
-- [antibondingPopulation](https://github.com/bestquark/formal_qchem/blob/main/FormalQChem/Complexity/AaronsonAmbainisOrbitals.lean#L106)
-- [bondingNormalized](https://github.com/bestquark/formal_qchem/blob/main/FormalQChem/Complexity/AaronsonAmbainisOrbitals.lean#L86)
-- [bondingReadout_unitary](https://github.com/bestquark/formal_qchem/blob/main/FormalQChem/Complexity/AaronsonAmbainisOrbitals.lean#L93)
-- [halfAmplitude_sq](https://github.com/bestquark/formal_qchem/blob/main/FormalQChem/Complexity/AaronsonAmbainisOrbitals.lean#L80) (private)
-- [onsiteHamiltonian_isHermitian](https://github.com/bestquark/formal_qchem/blob/main/FormalQChem/Complexity/AaronsonAmbainisOrbitals.lean#L37)
-- [onsite_evolution](https://github.com/bestquark/formal_qchem/blob/main/FormalQChem/Complexity/AaronsonAmbainisOrbitals.lean#L42)
-- [orbitalEvolution_eq](https://github.com/bestquark/formal_qchem/blob/main/FormalQChem/Complexity/AaronsonAmbainisOrbitals.lean#L61)
-- [orbitalPopulation_eq](https://github.com/bestquark/formal_qchem/blob/main/FormalQChem/Complexity/AaronsonAmbainisOrbitals.lean#L74)
+- [antibondingPopulation](../../FQChem/Complexity/AaronsonAmbainisOrbitals.lean#L106)
+- [bondingNormalized](../../FQChem/Complexity/AaronsonAmbainisOrbitals.lean#L86)
+- [bondingReadout_unitary](../../FQChem/Complexity/AaronsonAmbainisOrbitals.lean#L93)
+- [halfAmplitude_sq](../../FQChem/Complexity/AaronsonAmbainisOrbitals.lean#L80) (private)
+- [onsiteHamiltonian_isHermitian](../../FQChem/Complexity/AaronsonAmbainisOrbitals.lean#L37)
+- [onsite_evolution](../../FQChem/Complexity/AaronsonAmbainisOrbitals.lean#L42)
+- [orbitalEvolution_eq](../../FQChem/Complexity/AaronsonAmbainisOrbitals.lean#L61)
+- [orbitalPopulation_eq](../../FQChem/Complexity/AaronsonAmbainisOrbitals.lean#L74)
 
-## FormalQChem.Complexity.AaronsonAmbainisQuery
+## FQChem.Complexity.AaronsonAmbainisQuery
 
 ```mermaid
 flowchart LR
@@ -126,22 +126,22 @@ flowchart LR
   n28 --> n29
 ```
 
-- [acceptancePolynomial_degree](https://github.com/bestquark/formal_qchem/blob/main/FormalQChem/Complexity/AaronsonAmbainisQuery.lean#L173)
-- [acceptancePolynomial_eval](https://github.com/bestquark/formal_qchem/blob/main/FormalQChem/Complexity/AaronsonAmbainisQuery.lean#L164)
-- [acceptance_mem_unitInterval](https://github.com/bestquark/formal_qchem/blob/main/FormalQChem/Complexity/AaronsonAmbainisQuery.lean#L181)
-- [amplitudes_degree](https://github.com/bestquark/formal_qchem/blob/main/FormalQChem/Complexity/AaronsonAmbainisQuery.lean#L149) (private)
-- [amplitudes_normalized](https://github.com/bestquark/formal_qchem/blob/main/FormalQChem/Complexity/AaronsonAmbainisQuery.lean#L78)
-- [amplitudes_value](https://github.com/bestquark/formal_qchem/blob/main/FormalQChem/Complexity/AaronsonAmbainisQuery.lean#L142) (private)
-- [mix_degree](https://github.com/bestquark/formal_qchem/blob/main/FormalQChem/Complexity/AaronsonAmbainisQuery.lean#L128) (private)
-- [mix_value](https://github.com/bestquark/formal_qchem/blob/main/FormalQChem/Complexity/AaronsonAmbainisQuery.lean#L121) (private)
-- [phaseScale_degree](https://github.com/bestquark/formal_qchem/blob/main/FormalQChem/Complexity/AaronsonAmbainisQuery.lean#L109) (private)
-- [phaseScale_value](https://github.com/bestquark/formal_qchem/blob/main/FormalQChem/Complexity/AaronsonAmbainisQuery.lean#L104) (private)
-- [phase_degree](https://github.com/bestquark/formal_qchem/blob/main/FormalQChem/Complexity/AaronsonAmbainisQuery.lean#L46) (private)
-- [phase_eval](https://github.com/bestquark/formal_qchem/blob/main/FormalQChem/Complexity/AaronsonAmbainisQuery.lean#L40) (private)
-- [sqnorm_eq](https://github.com/bestquark/formal_qchem/blob/main/FormalQChem/Complexity/AaronsonAmbainisQuery.lean#L68) (private)
-- [unitary_preserves](https://github.com/bestquark/formal_qchem/blob/main/FormalQChem/Complexity/AaronsonAmbainisQuery.lean#L72) (private)
+- [acceptancePolynomial_degree](../../FQChem/Complexity/AaronsonAmbainisQuery.lean#L173)
+- [acceptancePolynomial_eval](../../FQChem/Complexity/AaronsonAmbainisQuery.lean#L164)
+- [acceptance_mem_unitInterval](../../FQChem/Complexity/AaronsonAmbainisQuery.lean#L181)
+- [amplitudes_degree](../../FQChem/Complexity/AaronsonAmbainisQuery.lean#L149) (private)
+- [amplitudes_normalized](../../FQChem/Complexity/AaronsonAmbainisQuery.lean#L78)
+- [amplitudes_value](../../FQChem/Complexity/AaronsonAmbainisQuery.lean#L142) (private)
+- [mix_degree](../../FQChem/Complexity/AaronsonAmbainisQuery.lean#L128) (private)
+- [mix_value](../../FQChem/Complexity/AaronsonAmbainisQuery.lean#L121) (private)
+- [phaseScale_degree](../../FQChem/Complexity/AaronsonAmbainisQuery.lean#L109) (private)
+- [phaseScale_value](../../FQChem/Complexity/AaronsonAmbainisQuery.lean#L104) (private)
+- [phase_degree](../../FQChem/Complexity/AaronsonAmbainisQuery.lean#L46) (private)
+- [phase_eval](../../FQChem/Complexity/AaronsonAmbainisQuery.lean#L40) (private)
+- [sqnorm_eq](../../FQChem/Complexity/AaronsonAmbainisQuery.lean#L68) (private)
+- [unitary_preserves](../../FQChem/Complexity/AaronsonAmbainisQuery.lean#L72) (private)
 
-## FormalQChem.Complexity.ElectronicStructure
+## FQChem.Complexity.ElectronicStructure
 
 ```mermaid
 flowchart LR
@@ -221,33 +221,33 @@ flowchart LR
   n35 -.-> n54
 ```
 
-- [railMove_count](https://github.com/bestquark/formal_qchem/blob/main/FormalQChem/Complexity/ElectronicStructure.lean#L110)
-- [railMove_twice](https://github.com/bestquark/formal_qchem/blob/main/FormalQChem/Complexity/ElectronicStructure.lean#L104)
-- [defects_zero_iff](https://github.com/bestquark/formal_qchem/blob/main/FormalQChem/Complexity/ElectronicStructure.lean#L81)
-- [encodeState_energy](https://github.com/bestquark/formal_qchem/blob/main/FormalQChem/Complexity/ElectronicStructure.lean#L252)
-- [encodeState_mass](https://github.com/bestquark/formal_qchem/blob/main/FormalQChem/Complexity/ElectronicStructure.lean#L248)
-- [encode_legal](https://github.com/bestquark/formal_qchem/blob/main/FormalQChem/Complexity/ElectronicStructure.lean#L58)
-- [energyPromise_transfer](https://github.com/bestquark/formal_qchem/blob/main/FormalQChem/Complexity/ElectronicStructure.lean#L319)
-- [expectation_bound](https://github.com/bestquark/formal_qchem/blob/main/FormalQChem/Complexity/ElectronicStructure.lean#L167) (private)
-- [expectation_scale](https://github.com/bestquark/formal_qchem/blob/main/FormalQChem/Complexity/ElectronicStructure.lean#L282) (private)
-- [homogeneous_lower](https://github.com/bestquark/formal_qchem/blob/main/FormalQChem/Complexity/ElectronicStructure.lean#L300) (private)
-- [interactionError](https://github.com/bestquark/formal_qchem/blob/main/FormalQChem/Complexity/ElectronicStructure.lean#L214)
-- [leakagePart_encodeState](https://github.com/bestquark/formal_qchem/blob/main/FormalQChem/Complexity/ElectronicStructure.lean#L243)
-- [leakagePenalty](https://github.com/bestquark/formal_qchem/blob/main/FormalQChem/Complexity/ElectronicStructure.lean#L225)
-- [leakage_expectation](https://github.com/bestquark/formal_qchem/blob/main/FormalQChem/Complexity/ElectronicStructure.lean#L209) (private)
-- [lowerBound_transfer](https://github.com/bestquark/formal_qchem/blob/main/FormalQChem/Complexity/ElectronicStructure.lean#L268)
-- [mass_nonneg](https://github.com/bestquark/formal_qchem/blob/main/FormalQChem/Complexity/ElectronicStructure.lean#L263) (private)
-- [mass_scale](https://github.com/bestquark/formal_qchem/blob/main/FormalQChem/Complexity/ElectronicStructure.lean#L278) (private)
-- [mass_split](https://github.com/bestquark/formal_qchem/blob/main/FormalQChem/Complexity/ElectronicStructure.lean#L193)
-- [move_encode](https://github.com/bestquark/formal_qchem/blob/main/FormalQChem/Complexity/ElectronicStructure.lean#L127)
-- [phase_encode](https://github.com/bestquark/formal_qchem/blob/main/FormalQChem/Complexity/ElectronicStructure.lean#L149)
-- [physicalMove_legal](https://github.com/bestquark/formal_qchem/blob/main/FormalQChem/Complexity/ElectronicStructure.lean#L130)
-- [physicalPhase_norm](https://github.com/bestquark/formal_qchem/blob/main/FormalQChem/Complexity/ElectronicStructure.lean#L152) (private)
-- [spinEnergy_scale](https://github.com/bestquark/formal_qchem/blob/main/FormalQChem/Complexity/ElectronicStructure.lean#L293) (private)
-- [spinPart_encodeState](https://github.com/bestquark/formal_qchem/blob/main/FormalQChem/Complexity/ElectronicStructure.lean#L238)
-- [splitSum](https://github.com/bestquark/formal_qchem/blob/main/FormalQChem/Complexity/ElectronicStructure.lean#L188) (private)
+- [railMove_count](../../FQChem/Complexity/ElectronicStructure.lean#L110)
+- [railMove_twice](../../FQChem/Complexity/ElectronicStructure.lean#L104)
+- [defects_zero_iff](../../FQChem/Complexity/ElectronicStructure.lean#L81)
+- [encodeState_energy](../../FQChem/Complexity/ElectronicStructure.lean#L252)
+- [encodeState_mass](../../FQChem/Complexity/ElectronicStructure.lean#L248)
+- [encode_legal](../../FQChem/Complexity/ElectronicStructure.lean#L58)
+- [energyPromise_transfer](../../FQChem/Complexity/ElectronicStructure.lean#L319)
+- [expectation_bound](../../FQChem/Complexity/ElectronicStructure.lean#L167) (private)
+- [expectation_scale](../../FQChem/Complexity/ElectronicStructure.lean#L282) (private)
+- [homogeneous_lower](../../FQChem/Complexity/ElectronicStructure.lean#L300) (private)
+- [interactionError](../../FQChem/Complexity/ElectronicStructure.lean#L214)
+- [leakagePart_encodeState](../../FQChem/Complexity/ElectronicStructure.lean#L243)
+- [leakagePenalty](../../FQChem/Complexity/ElectronicStructure.lean#L225)
+- [leakage_expectation](../../FQChem/Complexity/ElectronicStructure.lean#L209) (private)
+- [lowerBound_transfer](../../FQChem/Complexity/ElectronicStructure.lean#L268)
+- [mass_nonneg](../../FQChem/Complexity/ElectronicStructure.lean#L263) (private)
+- [mass_scale](../../FQChem/Complexity/ElectronicStructure.lean#L278) (private)
+- [mass_split](../../FQChem/Complexity/ElectronicStructure.lean#L193)
+- [move_encode](../../FQChem/Complexity/ElectronicStructure.lean#L127)
+- [phase_encode](../../FQChem/Complexity/ElectronicStructure.lean#L149)
+- [physicalMove_legal](../../FQChem/Complexity/ElectronicStructure.lean#L130)
+- [physicalPhase_norm](../../FQChem/Complexity/ElectronicStructure.lean#L152) (private)
+- [spinEnergy_scale](../../FQChem/Complexity/ElectronicStructure.lean#L293) (private)
+- [spinPart_encodeState](../../FQChem/Complexity/ElectronicStructure.lean#L238)
+- [splitSum](../../FQChem/Complexity/ElectronicStructure.lean#L188) (private)
 
-## FormalQChem.Complexity.ElectronicStructureOperators
+## FQChem.Complexity.ElectronicStructureOperators
 
 ```mermaid
 flowchart LR
@@ -290,25 +290,25 @@ flowchart LR
   n349 --> n67
 ```
 
-- [ElectronicStructure.railMove_count](https://github.com/bestquark/formal_qchem/blob/main/FormalQChem/Complexity/ElectronicStructure.lean#L110)
-- [ElectronicStructure.railMove_twice](https://github.com/bestquark/formal_qchem/blob/main/FormalQChem/Complexity/ElectronicStructure.lean#L104)
-- [ElectronicStructure.energyPromise_transfer](https://github.com/bestquark/formal_qchem/blob/main/FormalQChem/Complexity/ElectronicStructure.lean#L319)
-- [encodingResources](https://github.com/bestquark/formal_qchem/blob/main/FormalQChem/Complexity/ElectronicStructureOperators.lean#L72)
-- [fermionExpectation](https://github.com/bestquark/formal_qchem/blob/main/FormalQChem/Complexity/ElectronicStructureOperators.lean#L167)
-- [fermionKernel_expectation](https://github.com/bestquark/formal_qchem/blob/main/FormalQChem/Complexity/ElectronicStructureOperators.lean#L150)
-- [fermionKernel_hermitian](https://github.com/bestquark/formal_qchem/blob/main/FormalQChem/Complexity/ElectronicStructureOperators.lean#L130)
-- [kernelSum_expectation](https://github.com/bestquark/formal_qchem/blob/main/FormalQChem/Complexity/ElectronicStructureOperators.lean#L90) (private)
-- [numberPenalty](https://github.com/bestquark/formal_qchem/blob/main/FormalQChem/Complexity/ElectronicStructureOperators.lean#L57)
-- [oneBody_apply](https://github.com/bestquark/formal_qchem/blob/main/FormalQChem/Complexity/ElectronicStructureOperators.lean#L31) (private)
-- [railMatrix_secondQuantized](https://github.com/bestquark/formal_qchem/blob/main/FormalQChem/Complexity/ElectronicStructureOperators.lean#L45)
-- [railPhase_reverse](https://github.com/bestquark/formal_qchem/blob/main/FormalQChem/Complexity/ElectronicStructureOperators.lean#L122) (private)
-- [spinKernel_expectation](https://github.com/bestquark/formal_qchem/blob/main/FormalQChem/Complexity/ElectronicStructureOperators.lean#L114)
-- [sum_rail](https://github.com/bestquark/formal_qchem/blob/main/FormalQChem/Complexity/ElectronicStructureOperators.lean#L37) (private)
-- [variationalThreshold](https://github.com/bestquark/formal_qchem/blob/main/FormalQChem/Complexity/ElectronicStructureOperators.lean#L190)
-- [variationalUpperBound](https://github.com/bestquark/formal_qchem/blob/main/FormalQChem/Complexity/ElectronicStructureOperators.lean#L180)
-- [VQE.vqe](https://github.com/bestquark/formal_qchem/blob/main/FormalQChem/StatePrep/VariationalOptimization/VQE.lean#L28)
+- [ElectronicStructure.railMove_count](../../FQChem/Complexity/ElectronicStructure.lean#L110)
+- [ElectronicStructure.railMove_twice](../../FQChem/Complexity/ElectronicStructure.lean#L104)
+- [ElectronicStructure.energyPromise_transfer](../../FQChem/Complexity/ElectronicStructure.lean#L319)
+- [encodingResources](../../FQChem/Complexity/ElectronicStructureOperators.lean#L72)
+- [fermionExpectation](../../FQChem/Complexity/ElectronicStructureOperators.lean#L167)
+- [fermionKernel_expectation](../../FQChem/Complexity/ElectronicStructureOperators.lean#L150)
+- [fermionKernel_hermitian](../../FQChem/Complexity/ElectronicStructureOperators.lean#L130)
+- [kernelSum_expectation](../../FQChem/Complexity/ElectronicStructureOperators.lean#L90) (private)
+- [numberPenalty](../../FQChem/Complexity/ElectronicStructureOperators.lean#L57)
+- [oneBody_apply](../../FQChem/Complexity/ElectronicStructureOperators.lean#L31) (private)
+- [railMatrix_secondQuantized](../../FQChem/Complexity/ElectronicStructureOperators.lean#L45)
+- [railPhase_reverse](../../FQChem/Complexity/ElectronicStructureOperators.lean#L122) (private)
+- [spinKernel_expectation](../../FQChem/Complexity/ElectronicStructureOperators.lean#L114)
+- [sum_rail](../../FQChem/Complexity/ElectronicStructureOperators.lean#L37) (private)
+- [variationalThreshold](../../FQChem/Complexity/ElectronicStructureOperators.lean#L190)
+- [variationalUpperBound](../../FQChem/Complexity/ElectronicStructureOperators.lean#L180)
+- [VQE.vqe](../../FQChem/StatePrep/VariationalOptimization/VQE.lean#L28)
 
-## FormalQChem.Complexity.ElectronicStructurePauli
+## FQChem.Complexity.ElectronicStructurePauli
 
 ```mermaid
 flowchart LR
@@ -358,31 +358,31 @@ flowchart LR
   n80 --> n85
 ```
 
-- [ElectronicStructure.railMove_count](https://github.com/bestquark/formal_qchem/blob/main/FormalQChem/Complexity/ElectronicStructure.lean#L110)
-- [ElectronicStructure.railMove_twice](https://github.com/bestquark/formal_qchem/blob/main/FormalQChem/Complexity/ElectronicStructure.lean#L104)
-- [ElectronicStructure.energyPromise_transfer](https://github.com/bestquark/formal_qchem/blob/main/FormalQChem/Complexity/ElectronicStructure.lean#L319)
-- [ElectronicStructureOperators.spinKernel_expectation](https://github.com/bestquark/formal_qchem/blob/main/FormalQChem/Complexity/ElectronicStructureOperators.lean#L114)
-- [dualEntry_conj](https://github.com/bestquark/formal_qchem/blob/main/FormalQChem/Complexity/ElectronicStructurePauli.lean#L80) (private)
-- [dualEntry_norm](https://github.com/bestquark/formal_qchem/blob/main/FormalQChem/Complexity/ElectronicStructurePauli.lean#L222) (private)
-- [entry_norm_le_one](https://github.com/bestquark/formal_qchem/blob/main/FormalQChem/Complexity/ElectronicStructurePauli.lean#L219) (private)
-- [extendWord_entry](https://github.com/bestquark/formal_qchem/blob/main/FormalQChem/Complexity/ElectronicStructurePauli.lean#L126)
-- [extendWord_support](https://github.com/bestquark/formal_qchem/blob/main/FormalQChem/Complexity/ElectronicStructurePauli.lean#L139)
-- [localExpansion_kernel](https://github.com/bestquark/formal_qchem/blob/main/FormalQChem/Complexity/ElectronicStructurePauli.lean#L184)
-- [localExpansion_size](https://github.com/bestquark/formal_qchem/blob/main/FormalQChem/Complexity/ElectronicStructurePauli.lean#L198)
-- [localExpansion_strength](https://github.com/bestquark/formal_qchem/blob/main/FormalQChem/Complexity/ElectronicStructurePauli.lean#L232)
-- [localHamiltonian_to_fixedParticle](https://github.com/bestquark/formal_qchem/blob/main/FormalQChem/Complexity/ElectronicStructurePauli.lean#L209)
-- [localHermitianExpansion](https://github.com/bestquark/formal_qchem/blob/main/FormalQChem/Complexity/ElectronicStructurePauli.lean#L97)
-- [localTerm_expansion](https://github.com/bestquark/formal_qchem/blob/main/FormalQChem/Complexity/ElectronicStructurePauli.lean#L175) (private)
-- [pauliCoefficient_real](https://github.com/bestquark/formal_qchem/blob/main/FormalQChem/Complexity/ElectronicStructurePauli.lean#L84)
-- [pauliEntry_conj](https://github.com/bestquark/formal_qchem/blob/main/FormalQChem/Complexity/ElectronicStructurePauli.lean#L29) (private)
-- [pauliExpansion](https://github.com/bestquark/formal_qchem/blob/main/FormalQChem/Complexity/ElectronicStructurePauli.lean#L67)
-- [pauliResolution](https://github.com/bestquark/formal_qchem/blob/main/FormalQChem/Complexity/ElectronicStructurePauli.lean#L54)
-- [spinResolution](https://github.com/bestquark/formal_qchem/blob/main/FormalQChem/Complexity/ElectronicStructurePauli.lean#L33) (private)
-- [untouched_eq](https://github.com/bestquark/formal_qchem/blob/main/FormalQChem/Complexity/ElectronicStructurePauli.lean#L114)
-- [wordEntry_conj](https://github.com/bestquark/formal_qchem/blob/main/FormalQChem/Complexity/ElectronicStructurePauli.lean#L48) (private)
-- [wordEntry_eq](https://github.com/bestquark/formal_qchem/blob/main/FormalQChem/Complexity/ElectronicStructurePauli.lean#L42)
+- [ElectronicStructure.railMove_count](../../FQChem/Complexity/ElectronicStructure.lean#L110)
+- [ElectronicStructure.railMove_twice](../../FQChem/Complexity/ElectronicStructure.lean#L104)
+- [ElectronicStructure.energyPromise_transfer](../../FQChem/Complexity/ElectronicStructure.lean#L319)
+- [ElectronicStructureOperators.spinKernel_expectation](../../FQChem/Complexity/ElectronicStructureOperators.lean#L114)
+- [dualEntry_conj](../../FQChem/Complexity/ElectronicStructurePauli.lean#L80) (private)
+- [dualEntry_norm](../../FQChem/Complexity/ElectronicStructurePauli.lean#L222) (private)
+- [entry_norm_le_one](../../FQChem/Complexity/ElectronicStructurePauli.lean#L219) (private)
+- [extendWord_entry](../../FQChem/Complexity/ElectronicStructurePauli.lean#L126)
+- [extendWord_support](../../FQChem/Complexity/ElectronicStructurePauli.lean#L139)
+- [localExpansion_kernel](../../FQChem/Complexity/ElectronicStructurePauli.lean#L184)
+- [localExpansion_size](../../FQChem/Complexity/ElectronicStructurePauli.lean#L198)
+- [localExpansion_strength](../../FQChem/Complexity/ElectronicStructurePauli.lean#L232)
+- [localHamiltonian_to_fixedParticle](../../FQChem/Complexity/ElectronicStructurePauli.lean#L209)
+- [localHermitianExpansion](../../FQChem/Complexity/ElectronicStructurePauli.lean#L97)
+- [localTerm_expansion](../../FQChem/Complexity/ElectronicStructurePauli.lean#L175) (private)
+- [pauliCoefficient_real](../../FQChem/Complexity/ElectronicStructurePauli.lean#L84)
+- [pauliEntry_conj](../../FQChem/Complexity/ElectronicStructurePauli.lean#L29) (private)
+- [pauliExpansion](../../FQChem/Complexity/ElectronicStructurePauli.lean#L67)
+- [pauliResolution](../../FQChem/Complexity/ElectronicStructurePauli.lean#L54)
+- [spinResolution](../../FQChem/Complexity/ElectronicStructurePauli.lean#L33) (private)
+- [untouched_eq](../../FQChem/Complexity/ElectronicStructurePauli.lean#L114)
+- [wordEntry_conj](../../FQChem/Complexity/ElectronicStructurePauli.lean#L48) (private)
+- [wordEntry_eq](../../FQChem/Complexity/ElectronicStructurePauli.lean#L42)
 
-## FormalQChem.Complexity.GroundStateSearch
+## FQChem.Complexity.GroundStateSearch
 
 ```mermaid
 flowchart LR
@@ -413,20 +413,20 @@ flowchart LR
   n98 --> n96
 ```
 
-- [energy_eq_failure](https://github.com/bestquark/formal_qchem/blob/main/FormalQChem/Complexity/GroundStateSearch.lean#L35)
-- [energy_query_lower_bound](https://github.com/bestquark/formal_qchem/blob/main/FormalQChem/Complexity/GroundStateSearch.lean#L141)
-- [groundSpace](https://github.com/bestquark/formal_qchem/blob/main/FormalQChem/Complexity/GroundStateSearch.lean#L30)
-- [hybrid_bound](https://github.com/bestquark/formal_qchem/blob/main/FormalQChem/Complexity/GroundStateSearch.lean#L103)
-- [hybrid_step](https://github.com/bestquark/formal_qchem/blob/main/FormalQChem/Complexity/GroundStateSearch.lean#L69) (private)
-- [mark_eq_neg_reflection](https://github.com/bestquark/formal_qchem/blob/main/FormalQChem/Complexity/GroundStateSearch.lean#L44) (private)
-- [orthonormal_addresses](https://github.com/bestquark/formal_qchem/blob/main/FormalQChem/Complexity/GroundStateSearch.lean#L86)
-- [orthonormal_energy_lower_bound](https://github.com/bestquark/formal_qchem/blob/main/FormalQChem/Complexity/GroundStateSearch.lean#L154)
-- [queried_norm](https://github.com/bestquark/formal_qchem/blob/main/FormalQChem/Complexity/GroundStateSearch.lean#L64)
-- [query_lower_bound](https://github.com/bestquark/formal_qchem/blob/main/FormalQChem/Complexity/GroundStateSearch.lean#L116)
-- [reference_norm](https://github.com/bestquark/formal_qchem/blob/main/FormalQChem/Complexity/GroundStateSearch.lean#L59)
-- [sum_amplitudes_le](https://github.com/bestquark/formal_qchem/blob/main/FormalQChem/Complexity/GroundStateSearch.lean#L92) (private)
+- [energy_eq_failure](../../FQChem/Complexity/GroundStateSearch.lean#L35)
+- [energy_query_lower_bound](../../FQChem/Complexity/GroundStateSearch.lean#L141)
+- [groundSpace](../../FQChem/Complexity/GroundStateSearch.lean#L30)
+- [hybrid_bound](../../FQChem/Complexity/GroundStateSearch.lean#L103)
+- [hybrid_step](../../FQChem/Complexity/GroundStateSearch.lean#L69) (private)
+- [mark_eq_neg_reflection](../../FQChem/Complexity/GroundStateSearch.lean#L44) (private)
+- [orthonormal_addresses](../../FQChem/Complexity/GroundStateSearch.lean#L86)
+- [orthonormal_energy_lower_bound](../../FQChem/Complexity/GroundStateSearch.lean#L154)
+- [queried_norm](../../FQChem/Complexity/GroundStateSearch.lean#L64)
+- [query_lower_bound](../../FQChem/Complexity/GroundStateSearch.lean#L116)
+- [reference_norm](../../FQChem/Complexity/GroundStateSearch.lean#L59)
+- [sum_amplitudes_le](../../FQChem/Complexity/GroundStateSearch.lean#L92) (private)
 
-## FormalQChem.Complexity.OrbitalSimulation
+## FQChem.Complexity.OrbitalSimulation
 
 ```mermaid
 flowchart LR
@@ -448,26 +448,26 @@ flowchart LR
   n104 --> n105
 ```
 
-- [AaronsonAmbainisQuery.acceptancePolynomial_degree](https://github.com/bestquark/formal_qchem/blob/main/FormalQChem/Complexity/AaronsonAmbainisQuery.lean#L173)
-- [AaronsonAmbainisQuery.acceptancePolynomial_eval](https://github.com/bestquark/formal_qchem/blob/main/FormalQChem/Complexity/AaronsonAmbainisQuery.lean#L164)
-- [evolution](https://github.com/bestquark/formal_qchem/blob/main/FormalQChem/Complexity/OrbitalSimulation.lean#L77)
-- [hermitian](https://github.com/bestquark/formal_qchem/blob/main/FormalQChem/Complexity/OrbitalSimulation.lean#L71)
-- [onsite_bounds](https://github.com/bestquark/formal_qchem/blob/main/FormalQChem/Complexity/OrbitalSimulation.lean#L57)
-- [parity_cases](https://github.com/bestquark/formal_qchem/blob/main/FormalQChem/Complexity/OrbitalSimulation.lean#L29) (private)
-- [parity_orthogonal](https://github.com/bestquark/formal_qchem/blob/main/FormalQChem/Complexity/OrbitalSimulation.lean#L35)
-- [population_parity](https://github.com/bestquark/formal_qchem/blob/main/FormalQChem/Complexity/OrbitalSimulation.lean#L101)
-- [simulation_query_lower_bound](https://github.com/bestquark/formal_qchem/blob/main/FormalQChem/Complexity/OrbitalSimulation.lean#L113)
+- [AaronsonAmbainisQuery.acceptancePolynomial_degree](../../FQChem/Complexity/AaronsonAmbainisQuery.lean#L173)
+- [AaronsonAmbainisQuery.acceptancePolynomial_eval](../../FQChem/Complexity/AaronsonAmbainisQuery.lean#L164)
+- [evolution](../../FQChem/Complexity/OrbitalSimulation.lean#L77)
+- [hermitian](../../FQChem/Complexity/OrbitalSimulation.lean#L71)
+- [onsite_bounds](../../FQChem/Complexity/OrbitalSimulation.lean#L57)
+- [parity_cases](../../FQChem/Complexity/OrbitalSimulation.lean#L29) (private)
+- [parity_orthogonal](../../FQChem/Complexity/OrbitalSimulation.lean#L35)
+- [population_parity](../../FQChem/Complexity/OrbitalSimulation.lean#L101)
+- [simulation_query_lower_bound](../../FQChem/Complexity/OrbitalSimulation.lean#L113)
 
-## FormalQChem.Dynamics.DigitalAlgorithms.CommutingTerms
+## FQChem.Dynamics.DigitalAlgorithms.CommutingTerms
 
 ```mermaid
 flowchart LR
   n106["commutingProductFormula"]
 ```
 
-- [commutingProductFormula](https://github.com/bestquark/formal_qchem/blob/main/FormalQChem/Dynamics/DigitalAlgorithms/CommutingTerms.lean#L18)
+- [commutingProductFormula](../../FQChem/Dynamics/DigitalAlgorithms/CommutingTerms.lean#L18)
 
-## FormalQChem.Dynamics.DigitalAlgorithms.LieTrotter
+## FQChem.Dynamics.DigitalAlgorithms.LieTrotter
 
 ```mermaid
 flowchart LR
@@ -480,12 +480,12 @@ flowchart LR
   n110 --> n109
 ```
 
-- [exp_norm_bound](https://github.com/bestquark/formal_qchem/blob/main/FormalQChem/Dynamics/DigitalAlgorithms/LieTrotter.lean#L62) (private)
-- [globalStepError](https://github.com/bestquark/formal_qchem/blob/main/FormalQChem/Dynamics/DigitalAlgorithms/LieTrotter.lean#L55)
-- [lieTrotter](https://github.com/bestquark/formal_qchem/blob/main/FormalQChem/Dynamics/DigitalAlgorithms/LieTrotter.lean#L73)
-- [power_defect](https://github.com/bestquark/formal_qchem/blob/main/FormalQChem/Dynamics/DigitalAlgorithms/LieTrotter.lean#L36) (private)
+- [exp_norm_bound](../../FQChem/Dynamics/DigitalAlgorithms/LieTrotter.lean#L62) (private)
+- [globalStepError](../../FQChem/Dynamics/DigitalAlgorithms/LieTrotter.lean#L55)
+- [lieTrotter](../../FQChem/Dynamics/DigitalAlgorithms/LieTrotter.lean#L73)
+- [power_defect](../../FQChem/Dynamics/DigitalAlgorithms/LieTrotter.lean#L36) (private)
 
-## FormalQChem.Dynamics.DigitalAlgorithms.LinearCombinationOfUnitaries
+## FQChem.Dynamics.DigitalAlgorithms.LinearCombinationOfUnitaries
 
 ```mermaid
 flowchart LR
@@ -501,14 +501,14 @@ flowchart LR
   n115 --> n114
 ```
 
-- [blockEncodes](https://github.com/bestquark/formal_qchem/blob/main/FormalQChem/Dynamics/DigitalAlgorithms/LinearCombinationOfUnitaries.lean#L69)
-- [circuit_unitary](https://github.com/bestquark/formal_qchem/blob/main/FormalQChem/Dynamics/DigitalAlgorithms/LinearCombinationOfUnitaries.lean#L40)
-- [postselectionWeight](https://github.com/bestquark/formal_qchem/blob/main/FormalQChem/Dynamics/DigitalAlgorithms/LinearCombinationOfUnitaries.lean#L81)
-- [referenceBlock](https://github.com/bestquark/formal_qchem/blob/main/FormalQChem/Dynamics/DigitalAlgorithms/LinearCombinationOfUnitaries.lean#L55)
-- [select_prepare](https://github.com/bestquark/formal_qchem/blob/main/FormalQChem/Dynamics/DigitalAlgorithms/LinearCombinationOfUnitaries.lean#L47) (private)
-- [select_unitary](https://github.com/bestquark/formal_qchem/blob/main/FormalQChem/Dynamics/DigitalAlgorithms/LinearCombinationOfUnitaries.lean#L30)
+- [blockEncodes](../../FQChem/Dynamics/DigitalAlgorithms/LinearCombinationOfUnitaries.lean#L69)
+- [circuit_unitary](../../FQChem/Dynamics/DigitalAlgorithms/LinearCombinationOfUnitaries.lean#L40)
+- [postselectionWeight](../../FQChem/Dynamics/DigitalAlgorithms/LinearCombinationOfUnitaries.lean#L81)
+- [referenceBlock](../../FQChem/Dynamics/DigitalAlgorithms/LinearCombinationOfUnitaries.lean#L55)
+- [select_prepare](../../FQChem/Dynamics/DigitalAlgorithms/LinearCombinationOfUnitaries.lean#L47) (private)
+- [select_unitary](../../FQChem/Dynamics/DigitalAlgorithms/LinearCombinationOfUnitaries.lean#L30)
 
-## FormalQChem.Dynamics.DigitalAlgorithms.Qubitization
+## FQChem.Dynamics.DigitalAlgorithms.Qubitization
 
 ```mermaid
 flowchart LR
@@ -538,19 +538,19 @@ flowchart LR
   n125 --> n127
 ```
 
-- [block_recurrence](https://github.com/bestquark/formal_qchem/blob/main/FormalQChem/Dynamics/DigitalAlgorithms/Qubitization.lean#L74) (private)
-- [chebyshev_block](https://github.com/bestquark/formal_qchem/blob/main/FormalQChem/Dynamics/DigitalAlgorithms/Qubitization.lean#L100)
-- [eigenphase_cosine](https://github.com/bestquark/formal_qchem/blob/main/FormalQChem/Dynamics/DigitalAlgorithms/Qubitization.lean#L150)
-- [eigenvalue_abs_le_one](https://github.com/bestquark/formal_qchem/blob/main/FormalQChem/Dynamics/DigitalAlgorithms/Qubitization.lean#L135)
-- [eigenvector_amplitude](https://github.com/bestquark/formal_qchem/blob/main/FormalQChem/Dynamics/DigitalAlgorithms/Qubitization.lean#L115)
-- [involution_inner](https://github.com/bestquark/formal_qchem/blob/main/FormalQChem/Dynamics/DigitalAlgorithms/Qubitization.lean#L62) (private)
-- [proj_reflection](https://github.com/bestquark/formal_qchem/blob/main/FormalQChem/Dynamics/DigitalAlgorithms/Qubitization.lean#L59) (private)
-- [quadratic_simulation_bound](https://github.com/bestquark/formal_qchem/blob/main/FormalQChem/Dynamics/DigitalAlgorithms/Qubitization.lean#L169)
-- [reflection_sq](https://github.com/bestquark/formal_qchem/blob/main/FormalQChem/Dynamics/DigitalAlgorithms/Qubitization.lean#L55) (private)
-- [simulation_error](https://github.com/bestquark/formal_qchem/blob/main/FormalQChem/Dynamics/DigitalAlgorithms/Qubitization.lean#L125)
-- [walk_preserves_inner](https://github.com/bestquark/formal_qchem/blob/main/FormalQChem/Dynamics/DigitalAlgorithms/Qubitization.lean#L67)
+- [block_recurrence](../../FQChem/Dynamics/DigitalAlgorithms/Qubitization.lean#L74) (private)
+- [chebyshev_block](../../FQChem/Dynamics/DigitalAlgorithms/Qubitization.lean#L100)
+- [eigenphase_cosine](../../FQChem/Dynamics/DigitalAlgorithms/Qubitization.lean#L150)
+- [eigenvalue_abs_le_one](../../FQChem/Dynamics/DigitalAlgorithms/Qubitization.lean#L135)
+- [eigenvector_amplitude](../../FQChem/Dynamics/DigitalAlgorithms/Qubitization.lean#L115)
+- [involution_inner](../../FQChem/Dynamics/DigitalAlgorithms/Qubitization.lean#L62) (private)
+- [proj_reflection](../../FQChem/Dynamics/DigitalAlgorithms/Qubitization.lean#L59) (private)
+- [quadratic_simulation_bound](../../FQChem/Dynamics/DigitalAlgorithms/Qubitization.lean#L169)
+- [reflection_sq](../../FQChem/Dynamics/DigitalAlgorithms/Qubitization.lean#L55) (private)
+- [simulation_error](../../FQChem/Dynamics/DigitalAlgorithms/Qubitization.lean#L125)
+- [walk_preserves_inner](../../FQChem/Dynamics/DigitalAlgorithms/Qubitization.lean#L67)
 
-## FormalQChem.Dynamics.DigitalAlgorithms.TruncatedTaylor
+## FQChem.Dynamics.DigitalAlgorithms.TruncatedTaylor
 
 ```mermaid
 flowchart LR
@@ -568,24 +568,24 @@ flowchart LR
   n131 --> n132
 ```
 
-- [generator_norm](https://github.com/bestquark/formal_qchem/blob/main/FormalQChem/Dynamics/DigitalAlgorithms/TruncatedTaylor.lean#L104) (private)
-- [power_error](https://github.com/bestquark/formal_qchem/blob/main/FormalQChem/Dynamics/DigitalAlgorithms/TruncatedTaylor.lean#L74) (private)
-- [realTime_segment](https://github.com/bestquark/formal_qchem/blob/main/FormalQChem/Dynamics/DigitalAlgorithms/TruncatedTaylor.lean#L109)
-- [realTime_segmented](https://github.com/bestquark/formal_qchem/blob/main/FormalQChem/Dynamics/DigitalAlgorithms/TruncatedTaylor.lean#L116)
-- [realTime_state_error](https://github.com/bestquark/formal_qchem/blob/main/FormalQChem/Dynamics/DigitalAlgorithms/TruncatedTaylor.lean#L140)
-- [segment_error](https://github.com/bestquark/formal_qchem/blob/main/FormalQChem/Dynamics/DigitalAlgorithms/TruncatedTaylor.lean#L41)
-- [segment_tendsto](https://github.com/bestquark/formal_qchem/blob/main/FormalQChem/Dynamics/DigitalAlgorithms/TruncatedTaylor.lean#L70)
+- [generator_norm](../../FQChem/Dynamics/DigitalAlgorithms/TruncatedTaylor.lean#L104) (private)
+- [power_error](../../FQChem/Dynamics/DigitalAlgorithms/TruncatedTaylor.lean#L74) (private)
+- [realTime_segment](../../FQChem/Dynamics/DigitalAlgorithms/TruncatedTaylor.lean#L109)
+- [realTime_segmented](../../FQChem/Dynamics/DigitalAlgorithms/TruncatedTaylor.lean#L116)
+- [realTime_state_error](../../FQChem/Dynamics/DigitalAlgorithms/TruncatedTaylor.lean#L140)
+- [segment_error](../../FQChem/Dynamics/DigitalAlgorithms/TruncatedTaylor.lean#L41)
+- [segment_tendsto](../../FQChem/Dynamics/DigitalAlgorithms/TruncatedTaylor.lean#L70)
 
-## FormalQChem.Dynamics.LearnedSurrogates
+## FQChem.Dynamics.LearnedSurrogates
 
 ```mermaid
 flowchart LR
   n135["invariantDirectionalForce"]
 ```
 
-- [invariantDirectionalForce](https://github.com/bestquark/formal_qchem/blob/main/FormalQChem/Dynamics/LearnedSurrogates.lean#L28)
+- [invariantDirectionalForce](../../FQChem/Dynamics/LearnedSurrogates.lean#L28)
 
-## FormalQChem.Dynamics.OpenSystems.Kraus
+## FQChem.Dynamics.OpenSystems.Kraus
 
 ```mermaid
 flowchart LR
@@ -599,13 +599,13 @@ flowchart LR
   n140 --> n138
 ```
 
-- [completePositivity](https://github.com/bestquark/formal_qchem/blob/main/FormalQChem/Dynamics/OpenSystems/Kraus.lean#L74)
-- [complexLinearity](https://github.com/bestquark/formal_qchem/blob/main/FormalQChem/Dynamics/OpenSystems/Kraus.lean#L69)
-- [jointDensityPreservation](https://github.com/bestquark/formal_qchem/blob/main/FormalQChem/Dynamics/OpenSystems/Kraus.lean#L86)
-- [lifted_operation](https://github.com/bestquark/formal_qchem/blob/main/FormalQChem/Dynamics/OpenSystems/Kraus.lean#L59) (private)
-- [tracePreservation](https://github.com/bestquark/formal_qchem/blob/main/FormalQChem/Dynamics/OpenSystems/Kraus.lean#L79)
+- [completePositivity](../../FQChem/Dynamics/OpenSystems/Kraus.lean#L74)
+- [complexLinearity](../../FQChem/Dynamics/OpenSystems/Kraus.lean#L69)
+- [jointDensityPreservation](../../FQChem/Dynamics/OpenSystems/Kraus.lean#L86)
+- [lifted_operation](../../FQChem/Dynamics/OpenSystems/Kraus.lean#L59) (private)
+- [tracePreservation](../../FQChem/Dynamics/OpenSystems/Kraus.lean#L79)
 
-## FormalQChem.Dynamics.OpenSystems.TracePreservation
+## FQChem.Dynamics.OpenSystems.TracePreservation
 
 ```mermaid
 flowchart LR
@@ -613,28 +613,28 @@ flowchart LR
   n142["lindbladTrace"]
 ```
 
-- [krausTrace](https://github.com/bestquark/formal_qchem/blob/main/FormalQChem/Dynamics/OpenSystems/TracePreservation.lean#L37)
-- [lindbladTrace](https://github.com/bestquark/formal_qchem/blob/main/FormalQChem/Dynamics/OpenSystems/TracePreservation.lean#L30)
+- [krausTrace](../../FQChem/Dynamics/OpenSystems/TracePreservation.lean#L37)
+- [lindbladTrace](../../FQChem/Dynamics/OpenSystems/TracePreservation.lean#L30)
 
-## FormalQChem.Dynamics.RealTimePropagation.BornOppenheimer
+## FQChem.Dynamics.RealTimePropagation.BornOppenheimer
 
 ```mermaid
 flowchart LR
   n143["bornOppenheimerEnergy"]
 ```
 
-- [bornOppenheimerEnergy](https://github.com/bestquark/formal_qchem/blob/main/FormalQChem/Dynamics/RealTimePropagation/BornOppenheimer.lean#L27)
+- [bornOppenheimerEnergy](../../FQChem/Dynamics/RealTimePropagation/BornOppenheimer.lean#L27)
 
-## FormalQChem.Dynamics.RealTimePropagation.ClusterExpansions
+## FQChem.Dynamics.RealTimePropagation.ClusterExpansions
 
 ```mermaid
 flowchart LR
   n144["linkedClusterInversion"]
 ```
 
-- [linkedClusterInversion](https://github.com/bestquark/formal_qchem/blob/main/FormalQChem/Dynamics/RealTimePropagation/ClusterExpansions.lean#L20)
+- [linkedClusterInversion](../../FQChem/Dynamics/RealTimePropagation/ClusterExpansions.lean#L20)
 
-## FormalQChem.Dynamics.RealTimePropagation.HeisenbergPicture
+## FQChem.Dynamics.RealTimePropagation.HeisenbergPicture
 
 ```mermaid
 flowchart LR
@@ -642,10 +642,10 @@ flowchart LR
   n146["pictureDuality"]
 ```
 
-- [pauliRotation](https://github.com/bestquark/formal_qchem/blob/main/FormalQChem/Dynamics/RealTimePropagation/HeisenbergPicture.lean#L38)
-- [pictureDuality](https://github.com/bestquark/formal_qchem/blob/main/FormalQChem/Dynamics/RealTimePropagation/HeisenbergPicture.lean#L33)
+- [pauliRotation](../../FQChem/Dynamics/RealTimePropagation/HeisenbergPicture.lean#L38)
+- [pictureDuality](../../FQChem/Dynamics/RealTimePropagation/HeisenbergPicture.lean#L33)
 
-## FormalQChem.Dynamics.RealTimePropagation.KrylovPropagation
+## FQChem.Dynamics.RealTimePropagation.KrylovPropagation
 
 ```mermaid
 flowchart LR
@@ -653,55 +653,55 @@ flowchart LR
   n148["krylovMoment"]
 ```
 
-- [krylovExact](https://github.com/bestquark/formal_qchem/blob/main/FormalQChem/Dynamics/RealTimePropagation/KrylovPropagation.lean#L34)
-- [krylovMoment](https://github.com/bestquark/formal_qchem/blob/main/FormalQChem/Dynamics/RealTimePropagation/KrylovPropagation.lean#L42)
+- [krylovExact](../../FQChem/Dynamics/RealTimePropagation/KrylovPropagation.lean#L34)
+- [krylovMoment](../../FQChem/Dynamics/RealTimePropagation/KrylovPropagation.lean#L42)
 
-## FormalQChem.Dynamics.RealTimePropagation.PathSampling
+## FQChem.Dynamics.RealTimePropagation.PathSampling
 
 ```mermaid
 flowchart LR
   n149["realTimeReweighting"]
 ```
 
-- [realTimeReweighting](https://github.com/bestquark/formal_qchem/blob/main/FormalQChem/Dynamics/RealTimePropagation/PathSampling.lean#L22)
+- [realTimeReweighting](../../FQChem/Dynamics/RealTimePropagation/PathSampling.lean#L22)
 
-## FormalQChem.Dynamics.RealTimePropagation.RingPolymer
+## FQChem.Dynamics.RealTimePropagation.RingPolymer
 
 ```mermaid
 flowchart LR
   n150["ringPolymerSpringForce"]
 ```
 
-- [ringPolymerSpringForce](https://github.com/bestquark/formal_qchem/blob/main/FormalQChem/Dynamics/RealTimePropagation/RingPolymer.lean#L26)
+- [ringPolymerSpringForce](../../FQChem/Dynamics/RealTimePropagation/RingPolymer.lean#L26)
 
-## FormalQChem.Dynamics.RealTimePropagation.SchrodingerGroup
+## FQChem.Dynamics.RealTimePropagation.SchrodingerGroup
 
 ```mermaid
 flowchart LR
   n151["unitaryEvolution"]
 ```
 
-- [unitaryEvolution](https://github.com/bestquark/formal_qchem/blob/main/FormalQChem/Dynamics/RealTimePropagation/SchrodingerGroup.lean#L41)
+- [unitaryEvolution](../../FQChem/Dynamics/RealTimePropagation/SchrodingerGroup.lean#L41)
 
-## FormalQChem.Dynamics.RealTimePropagation.SplitOperator
+## FQChem.Dynamics.RealTimePropagation.SplitOperator
 
 ```mermaid
 flowchart LR
   n152["splitOperator"]
 ```
 
-- [splitOperator](https://github.com/bestquark/formal_qchem/blob/main/FormalQChem/Dynamics/RealTimePropagation/SplitOperator.lean#L26)
+- [splitOperator](../../FQChem/Dynamics/RealTimePropagation/SplitOperator.lean#L26)
 
-## FormalQChem.Dynamics.RealTimePropagation.TimeDependentCI
+## FQChem.Dynamics.RealTimePropagation.TimeDependentCI
 
 ```mermaid
 flowchart LR
   n153["tdConfigurationInteraction"]
 ```
 
-- [tdConfigurationInteraction](https://github.com/bestquark/formal_qchem/blob/main/FormalQChem/Dynamics/RealTimePropagation/TimeDependentCI.lean#L28)
+- [tdConfigurationInteraction](../../FQChem/Dynamics/RealTimePropagation/TimeDependentCI.lean#L28)
 
-## FormalQChem.Dynamics.RealTimePropagation.VariationalEvolution
+## FQChem.Dynamics.RealTimePropagation.VariationalEvolution
 
 ```mermaid
 flowchart LR
@@ -709,46 +709,46 @@ flowchart LR
   n155["sampledTangentMetric"]
 ```
 
-- [mcLachlanProjection](https://github.com/bestquark/formal_qchem/blob/main/FormalQChem/Dynamics/RealTimePropagation/VariationalEvolution.lean#L56)
-- [sampledTangentMetric](https://github.com/bestquark/formal_qchem/blob/main/FormalQChem/Dynamics/RealTimePropagation/VariationalEvolution.lean#L38)
+- [mcLachlanProjection](../../FQChem/Dynamics/RealTimePropagation/VariationalEvolution.lean#L56)
+- [sampledTangentMetric](../../FQChem/Dynamics/RealTimePropagation/VariationalEvolution.lean#L38)
 
-## FormalQChem.Multiscale.ChoosingLayers.ClassicalEnvironments
+## FQChem.Multiscale.ChoosingLayers.ClassicalEnvironments
 
 ```mermaid
 flowchart LR
   n156["layeredForce"]
 ```
 
-- [layeredForce](https://github.com/bestquark/formal_qchem/blob/main/FormalQChem/Multiscale/ChoosingLayers/ClassicalEnvironments.lean#L26)
+- [layeredForce](../../FQChem/Multiscale/ChoosingLayers/ClassicalEnvironments.lean#L26)
 
-## FormalQChem.Multiscale.ChoosingLayers.Fragments
+## FQChem.Multiscale.ChoosingLayers.Fragments
 
 ```mermaid
 flowchart LR
   n157["pairReconstruction"]
 ```
 
-- [pairReconstruction](https://github.com/bestquark/formal_qchem/blob/main/FormalQChem/Multiscale/ChoosingLayers/Fragments.lean#L27)
+- [pairReconstruction](../../FQChem/Multiscale/ChoosingLayers/Fragments.lean#L27)
 
-## FormalQChem.Multiscale.ChoosingLayers.LearnedEnvironments
+## FQChem.Multiscale.ChoosingLayers.LearnedEnvironments
 
 ```mermaid
 flowchart LR
   n158["deltaLearningGap"]
 ```
 
-- [deltaLearningGap](https://github.com/bestquark/formal_qchem/blob/main/FormalQChem/Multiscale/ChoosingLayers/LearnedEnvironments.lean#L23)
+- [deltaLearningGap](../../FQChem/Multiscale/ChoosingLayers/LearnedEnvironments.lean#L23)
 
-## FormalQChem.Multiscale.ChoosingLayers.Partitions
+## FQChem.Multiscale.ChoosingLayers.Partitions
 
 ```mermaid
 flowchart LR
   n159["overlapAccounting"]
 ```
 
-- [overlapAccounting](https://github.com/bestquark/formal_qchem/blob/main/FormalQChem/Multiscale/ChoosingLayers/Partitions.lean#L36)
+- [overlapAccounting](../../FQChem/Multiscale/ChoosingLayers/Partitions.lean#L36)
 
-## FormalQChem.Multiscale.ChoosingLayers.QuantumEnvironments
+## FQChem.Multiscale.ChoosingLayers.QuantumEnvironments
 
 ```mermaid
 flowchart LR
@@ -756,55 +756,55 @@ flowchart LR
   n161["frozenSearch"]
 ```
 
-- [frozenDensityDerivative](https://github.com/bestquark/formal_qchem/blob/main/FormalQChem/Multiscale/ChoosingLayers/QuantumEnvironments.lean#L37)
-- [frozenSearch](https://github.com/bestquark/formal_qchem/blob/main/FormalQChem/Multiscale/ChoosingLayers/QuantumEnvironments.lean#L41)
+- [frozenDensityDerivative](../../FQChem/Multiscale/ChoosingLayers/QuantumEnvironments.lean#L37)
+- [frozenSearch](../../FQChem/Multiscale/ChoosingLayers/QuantumEnvironments.lean#L41)
 
-## FormalQChem.Multiscale.StitchingSolutions.EmbeddedSolvers
+## FQChem.Multiscale.StitchingSolutions.EmbeddedSolvers
 
 ```mermaid
 flowchart LR
   n162["feshbachReduction"]
 ```
 
-- [feshbachReduction](https://github.com/bestquark/formal_qchem/blob/main/FormalQChem/Multiscale/StitchingSolutions/EmbeddedSolvers.lean#L30)
+- [feshbachReduction](../../FQChem/Multiscale/StitchingSolutions/EmbeddedSolvers.lean#L30)
 
-## FormalQChem.Multiscale.StitchingSolutions.ErrorPropagation
+## FQChem.Multiscale.StitchingSolutions.ErrorPropagation
 
 ```mermaid
 flowchart LR
   n163["barrierRateError"]
 ```
 
-- [barrierRateError](https://github.com/bestquark/formal_qchem/blob/main/FormalQChem/Multiscale/StitchingSolutions/ErrorPropagation.lean#L23)
+- [barrierRateError](../../FQChem/Multiscale/StitchingSolutions/ErrorPropagation.lean#L23)
 
-## FormalQChem.Multiscale.StitchingSolutions.Observables
+## FQChem.Multiscale.StitchingSolutions.Observables
 
 ```mermaid
 flowchart LR
   n164["zwanzig"]
 ```
 
-- [zwanzig](https://github.com/bestquark/formal_qchem/blob/main/FormalQChem/Multiscale/StitchingSolutions/Observables.lean#L33)
+- [zwanzig](../../FQChem/Multiscale/StitchingSolutions/Observables.lean#L33)
 
-## FormalQChem.Properties.LinearSystems.DirichletPoisson
+## FQChem.Properties.LinearSystems.DirichletPoisson
 
 ```mermaid
 flowchart LR
   n165["dirichletPoissonMode"]
 ```
 
-- [dirichletPoissonMode](https://github.com/bestquark/formal_qchem/blob/main/FormalQChem/Properties/LinearSystems/DirichletPoisson.lean#L20)
+- [dirichletPoissonMode](../../FQChem/Properties/LinearSystems/DirichletPoisson.lean#L20)
 
-## FormalQChem.Properties.LinearSystems.HHL
+## FQChem.Properties.LinearSystems.HHL
 
 ```mermaid
 flowchart LR
   n166["hhlSpectralInversion"]
 ```
 
-- [hhlSpectralInversion](https://github.com/bestquark/formal_qchem/blob/main/FormalQChem/Properties/LinearSystems/HHL.lean#L18)
+- [hhlSpectralInversion](../../FQChem/Properties/LinearSystems/HHL.lean#L18)
 
-## FormalQChem.Properties.MeasurementTheory
+## FQChem.Properties.MeasurementTheory
 
 ```mermaid
 flowchart LR
@@ -813,38 +813,38 @@ flowchart LR
   n169["unsharpQubit"]
 ```
 
-- [bornCompleteness](https://github.com/bestquark/formal_qchem/blob/main/FormalQChem/Properties/MeasurementTheory.lean#L69)
-- [projectiveRepeatability](https://github.com/bestquark/formal_qchem/blob/main/FormalQChem/Properties/MeasurementTheory.lean#L78)
-- [unsharpQubit](https://github.com/bestquark/formal_qchem/blob/main/FormalQChem/Properties/MeasurementTheory.lean#L96)
+- [bornCompleteness](../../FQChem/Properties/MeasurementTheory.lean#L69)
+- [projectiveRepeatability](../../FQChem/Properties/MeasurementTheory.lean#L78)
+- [unsharpQubit](../../FQChem/Properties/MeasurementTheory.lean#L96)
 
-## FormalQChem.Properties.PhaseEstimation
+## FQChem.Properties.PhaseEstimation
 
 ```mermaid
 flowchart LR
   n170["exactGridQPE"]
 ```
 
-- [exactGridQPE](https://github.com/bestquark/formal_qchem/blob/main/FormalQChem/Properties/PhaseEstimation.lean#L17)
+- [exactGridQPE](../../FQChem/Properties/PhaseEstimation.lean#L17)
 
-## FormalQChem.Properties.ResponseAndEstimation.HellmannFeynman
+## FQChem.Properties.ResponseAndEstimation.HellmannFeynman
 
 ```mermaid
 flowchart LR
   n171["hellmannFeynman"]
 ```
 
-- [hellmannFeynman](https://github.com/bestquark/formal_qchem/blob/main/FormalQChem/Properties/ResponseAndEstimation/HellmannFeynman.lean#L39)
+- [hellmannFeynman](../../FQChem/Properties/ResponseAndEstimation/HellmannFeynman.lean#L39)
 
-## FormalQChem.Properties.ResponseAndEstimation.SpectralReconstruction
+## FQChem.Properties.ResponseAndEstimation.SpectralReconstruction
 
 ```mermaid
 flowchart LR
   n172["spectralIdentification"]
 ```
 
-- [spectralIdentification](https://github.com/bestquark/formal_qchem/blob/main/FormalQChem/Properties/ResponseAndEstimation/SpectralReconstruction.lean#L21)
+- [spectralIdentification](../../FQChem/Properties/ResponseAndEstimation/SpectralReconstruction.lean#L21)
 
-## FormalQChem.Properties.ResponseAndEstimation.VQEMeasurement
+## FQChem.Properties.ResponseAndEstimation.VQEMeasurement
 
 ```mermaid
 flowchart LR
@@ -855,11 +855,11 @@ flowchart LR
   n175 --> n174
 ```
 
-- [energyReconstruction](https://github.com/bestquark/formal_qchem/blob/main/FormalQChem/Properties/ResponseAndEstimation/VQEMeasurement.lean#L67)
-- [finiteShotVQE](https://github.com/bestquark/formal_qchem/blob/main/FormalQChem/Properties/ResponseAndEstimation/VQEMeasurement.lean#L118)
-- [shotStatistics](https://github.com/bestquark/formal_qchem/blob/main/FormalQChem/Properties/ResponseAndEstimation/VQEMeasurement.lean#L74)
+- [energyReconstruction](../../FQChem/Properties/ResponseAndEstimation/VQEMeasurement.lean#L67)
+- [finiteShotVQE](../../FQChem/Properties/ResponseAndEstimation/VQEMeasurement.lean#L118)
+- [shotStatistics](../../FQChem/Properties/ResponseAndEstimation/VQEMeasurement.lean#L74)
 
-## FormalQChem.StatePrep.AdiabaticPreparation.AdiabaticTheorem
+## FQChem.StatePrep.AdiabaticPreparation.AdiabaticTheorem
 
 ```mermaid
 flowchart LR
@@ -882,25 +882,25 @@ flowchart LR
   n180 --> n181
 ```
 
-- [adiabaticIntertwining](https://github.com/bestquark/formal_qchem/blob/main/FormalQChem/StatePrep/AdiabaticPreparation/AdiabaticTheorem.lean#L135)
-- [gappedBandPreparation](https://github.com/bestquark/formal_qchem/blob/main/FormalQChem/StatePrep/AdiabaticPreparation/AdiabaticTheorem.lean#L216)
-- [gappedBandPreparation_limit](https://github.com/bestquark/formal_qchem/blob/main/FormalQChem/StatePrep/AdiabaticPreparation/AdiabaticTheorem.lean#L311)
-- [katoTransport](https://github.com/bestquark/formal_qchem/blob/main/FormalQChem/StatePrep/AdiabaticPreparation/AdiabaticTheorem.lean#L186)
-- [projectionDerivative](https://github.com/bestquark/formal_qchem/blob/main/FormalQChem/StatePrep/AdiabaticPreparation/AdiabaticTheorem.lean#L174) (private)
-- [reducedResolventPreparation](https://github.com/bestquark/formal_qchem/blob/main/FormalQChem/StatePrep/AdiabaticPreparation/AdiabaticTheorem.lean#L264)
-- [sandwichBound](https://github.com/bestquark/formal_qchem/blob/main/FormalQChem/StatePrep/AdiabaticPreparation/AdiabaticTheorem.lean#L129) (private)
-- [transportedDerivative](https://github.com/bestquark/formal_qchem/blob/main/FormalQChem/StatePrep/AdiabaticPreparation/AdiabaticTheorem.lean#L119) (private)
+- [adiabaticIntertwining](../../FQChem/StatePrep/AdiabaticPreparation/AdiabaticTheorem.lean#L135)
+- [gappedBandPreparation](../../FQChem/StatePrep/AdiabaticPreparation/AdiabaticTheorem.lean#L216)
+- [gappedBandPreparation_limit](../../FQChem/StatePrep/AdiabaticPreparation/AdiabaticTheorem.lean#L311)
+- [katoTransport](../../FQChem/StatePrep/AdiabaticPreparation/AdiabaticTheorem.lean#L186)
+- [projectionDerivative](../../FQChem/StatePrep/AdiabaticPreparation/AdiabaticTheorem.lean#L174) (private)
+- [reducedResolventPreparation](../../FQChem/StatePrep/AdiabaticPreparation/AdiabaticTheorem.lean#L264)
+- [sandwichBound](../../FQChem/StatePrep/AdiabaticPreparation/AdiabaticTheorem.lean#L129) (private)
+- [transportedDerivative](../../FQChem/StatePrep/AdiabaticPreparation/AdiabaticTheorem.lean#L119) (private)
 
-## FormalQChem.StatePrep.AdiabaticPreparation.RydbergBlockade
+## FQChem.StatePrep.AdiabaticPreparation.RydbergBlockade
 
 ```mermaid
 flowchart LR
   n184["rydbergBlockade"]
 ```
 
-- [rydbergBlockade](https://github.com/bestquark/formal_qchem/blob/main/FormalQChem/StatePrep/AdiabaticPreparation/RydbergBlockade.lean#L28)
+- [rydbergBlockade](../../FQChem/StatePrep/AdiabaticPreparation/RydbergBlockade.lean#L28)
 
-## FormalQChem.StatePrep.CircuitPreparation.AmplitudeAmplification
+## FQChem.StatePrep.CircuitPreparation.AmplitudeAmplification
 
 ```mermaid
 flowchart LR
@@ -925,17 +925,17 @@ flowchart LR
   n189 --> n193
 ```
 
-- [inner_states](https://github.com/bestquark/formal_qchem/blob/main/FormalQChem/StatePrep/CircuitPreparation/AmplitudeAmplification.lean#L52) (private)
-- [inverse_sqrt_queries](https://github.com/bestquark/formal_qchem/blob/main/FormalQChem/StatePrep/CircuitPreparation/AmplitudeAmplification.lean#L138)
-- [iterate_state](https://github.com/bestquark/formal_qchem/blob/main/FormalQChem/StatePrep/CircuitPreparation/AmplitudeAmplification.lean#L98)
-- [mark_state](https://github.com/bestquark/formal_qchem/blob/main/FormalQChem/StatePrep/CircuitPreparation/AmplitudeAmplification.lean#L70) (private)
-- [project_state](https://github.com/bestquark/formal_qchem/blob/main/FormalQChem/StatePrep/CircuitPreparation/AmplitudeAmplification.lean#L46) (private)
-- [rounded_success](https://github.com/bestquark/formal_qchem/blob/main/FormalQChem/StatePrep/CircuitPreparation/AmplitudeAmplification.lean#L117)
-- [state_normalized](https://github.com/bestquark/formal_qchem/blob/main/FormalQChem/StatePrep/CircuitPreparation/AmplitudeAmplification.lean#L63)
-- [step_rotates](https://github.com/bestquark/formal_qchem/blob/main/FormalQChem/StatePrep/CircuitPreparation/AmplitudeAmplification.lean#L77)
-- [success_law](https://github.com/bestquark/formal_qchem/blob/main/FormalQChem/StatePrep/CircuitPreparation/AmplitudeAmplification.lean#L110)
+- [inner_states](../../FQChem/StatePrep/CircuitPreparation/AmplitudeAmplification.lean#L52) (private)
+- [inverse_sqrt_queries](../../FQChem/StatePrep/CircuitPreparation/AmplitudeAmplification.lean#L138)
+- [iterate_state](../../FQChem/StatePrep/CircuitPreparation/AmplitudeAmplification.lean#L98)
+- [mark_state](../../FQChem/StatePrep/CircuitPreparation/AmplitudeAmplification.lean#L70) (private)
+- [project_state](../../FQChem/StatePrep/CircuitPreparation/AmplitudeAmplification.lean#L46) (private)
+- [rounded_success](../../FQChem/StatePrep/CircuitPreparation/AmplitudeAmplification.lean#L117)
+- [state_normalized](../../FQChem/StatePrep/CircuitPreparation/AmplitudeAmplification.lean#L63)
+- [step_rotates](../../FQChem/StatePrep/CircuitPreparation/AmplitudeAmplification.lean#L77)
+- [success_law](../../FQChem/StatePrep/CircuitPreparation/AmplitudeAmplification.lean#L110)
 
-## FormalQChem.StatePrep.CircuitPreparation.ControlledRotations
+## FQChem.StatePrep.CircuitPreparation.ControlledRotations
 
 ```mermaid
 flowchart LR
@@ -953,15 +953,15 @@ flowchart LR
   n199 --> n198
 ```
 
-- [blockCount](https://github.com/bestquark/formal_qchem/blob/main/FormalQChem/StatePrep/CircuitPreparation/ControlledRotations.lean#L113)
-- [normalized](https://github.com/bestquark/formal_qchem/blob/main/FormalQChem/StatePrep/CircuitPreparation/ControlledRotations.lean#L87)
-- [preservesNorm](https://github.com/bestquark/formal_qchem/blob/main/FormalQChem/StatePrep/CircuitPreparation/ControlledRotations.lean#L42)
-- [exactPreparation](https://github.com/bestquark/formal_qchem/blob/main/FormalQChem/StatePrep/CircuitPreparation/ControlledRotations.lean#L122)
-- [preparePair_correct](https://github.com/bestquark/formal_qchem/blob/main/FormalQChem/StatePrep/CircuitPreparation/ControlledRotations.lean#L64)
-- [radius_sq](https://github.com/bestquark/formal_qchem/blob/main/FormalQChem/StatePrep/CircuitPreparation/ControlledRotations.lean#L54) (private)
-- [registerCard](https://github.com/bestquark/formal_qchem/blob/main/FormalQChem/StatePrep/CircuitPreparation/ControlledRotations.lean#L107) (private)
+- [blockCount](../../FQChem/StatePrep/CircuitPreparation/ControlledRotations.lean#L113)
+- [normalized](../../FQChem/StatePrep/CircuitPreparation/ControlledRotations.lean#L87)
+- [preservesNorm](../../FQChem/StatePrep/CircuitPreparation/ControlledRotations.lean#L42)
+- [exactPreparation](../../FQChem/StatePrep/CircuitPreparation/ControlledRotations.lean#L122)
+- [preparePair_correct](../../FQChem/StatePrep/CircuitPreparation/ControlledRotations.lean#L64)
+- [radius_sq](../../FQChem/StatePrep/CircuitPreparation/ControlledRotations.lean#L54) (private)
+- [registerCard](../../FQChem/StatePrep/CircuitPreparation/ControlledRotations.lean#L107) (private)
 
-## FormalQChem.StatePrep.CircuitPreparation.SlaterDeterminants
+## FQChem.StatePrep.CircuitPreparation.SlaterDeterminants
 
 ```mermaid
 flowchart LR
@@ -988,19 +988,19 @@ flowchart LR
   n208 --> n211
 ```
 
-- [coordinate_of_fixed](https://github.com/bestquark/formal_qchem/blob/main/FormalQChem/StatePrep/CircuitPreparation/SlaterDeterminants.lean#L89) (private)
-- [eliminateCoefficient](https://github.com/bestquark/formal_qchem/blob/main/FormalQChem/StatePrep/CircuitPreparation/SlaterDeterminants.lean#L130) (private)
-- [existsOrbitalUnitary](https://github.com/bestquark/formal_qchem/blob/main/FormalQChem/StatePrep/CircuitPreparation/SlaterDeterminants.lean#L39)
-- [existsSlaterPreparation](https://github.com/bestquark/formal_qchem/blob/main/FormalQChem/StatePrep/CircuitPreparation/SlaterDeterminants.lean#L60)
-- [existsTwoModeFactorization](https://github.com/bestquark/formal_qchem/blob/main/FormalQChem/StatePrep/CircuitPreparation/SlaterDeterminants.lean#L197)
-- [existsTwoModeSlaterPreparation](https://github.com/bestquark/formal_qchem/blob/main/FormalQChem/StatePrep/CircuitPreparation/SlaterDeterminants.lean#L247)
-- [exteriorGate_product](https://github.com/bestquark/formal_qchem/blob/main/FormalQChem/StatePrep/CircuitPreparation/SlaterDeterminants.lean#L235)
-- [gateForPair](https://github.com/bestquark/formal_qchem/blob/main/FormalQChem/StatePrep/CircuitPreparation/SlaterDeterminants.lean#L94) (private)
-- [listProduct_fixed](https://github.com/bestquark/formal_qchem/blob/main/FormalQChem/StatePrep/CircuitPreparation/SlaterDeterminants.lean#L187) (private)
-- [occupationAmplitude](https://github.com/bestquark/formal_qchem/blob/main/FormalQChem/StatePrep/CircuitPreparation/SlaterDeterminants.lean#L71)
-- [prepareVector](https://github.com/bestquark/formal_qchem/blob/main/FormalQChem/StatePrep/CircuitPreparation/SlaterDeterminants.lean#L151) (private)
+- [coordinate_of_fixed](../../FQChem/StatePrep/CircuitPreparation/SlaterDeterminants.lean#L89) (private)
+- [eliminateCoefficient](../../FQChem/StatePrep/CircuitPreparation/SlaterDeterminants.lean#L130) (private)
+- [existsOrbitalUnitary](../../FQChem/StatePrep/CircuitPreparation/SlaterDeterminants.lean#L39)
+- [existsSlaterPreparation](../../FQChem/StatePrep/CircuitPreparation/SlaterDeterminants.lean#L60)
+- [existsTwoModeFactorization](../../FQChem/StatePrep/CircuitPreparation/SlaterDeterminants.lean#L197)
+- [existsTwoModeSlaterPreparation](../../FQChem/StatePrep/CircuitPreparation/SlaterDeterminants.lean#L247)
+- [exteriorGate_product](../../FQChem/StatePrep/CircuitPreparation/SlaterDeterminants.lean#L235)
+- [gateForPair](../../FQChem/StatePrep/CircuitPreparation/SlaterDeterminants.lean#L94) (private)
+- [listProduct_fixed](../../FQChem/StatePrep/CircuitPreparation/SlaterDeterminants.lean#L187) (private)
+- [occupationAmplitude](../../FQChem/StatePrep/CircuitPreparation/SlaterDeterminants.lean#L71)
+- [prepareVector](../../FQChem/StatePrep/CircuitPreparation/SlaterDeterminants.lean#L151) (private)
 
-## FormalQChem.StatePrep.ImaginaryTimeProjection.AFQMC
+## FQChem.StatePrep.ImaginaryTimeProjection.AFQMC
 
 ```mermaid
 flowchart LR
@@ -1024,20 +1024,20 @@ flowchart LR
   n214 --> n220
 ```
 
-- [exactTrialLocalEnergy](https://github.com/bestquark/formal_qchem/blob/main/FormalQChem/StatePrep/ImaginaryTimeProjection/AFQMC.lean#L176)
-- [fieldHistoryExpansion](https://github.com/bestquark/formal_qchem/blob/main/FormalQChem/StatePrep/ImaginaryTimeProjection/AFQMC.lean#L83)
-- [freeProjection](https://github.com/bestquark/formal_qchem/blob/main/FormalQChem/StatePrep/ImaginaryTimeProjection/AFQMC.lean#L139)
-- [hirschLattice](https://github.com/bestquark/formal_qchem/blob/main/FormalQChem/StatePrep/ImaginaryTimeProjection/AFQMC.lean#L68)
-- [hirschLocal](https://github.com/bestquark/formal_qchem/blob/main/FormalQChem/StatePrep/ImaginaryTimeProjection/AFQMC.lean#L44)
-- [hubbardFreeProjection](https://github.com/bestquark/formal_qchem/blob/main/FormalQChem/StatePrep/ImaginaryTimeProjection/AFQMC.lean#L103)
-- [mixedEstimator](https://github.com/bestquark/formal_qchem/blob/main/FormalQChem/StatePrep/ImaginaryTimeProjection/AFQMC.lean#L163)
-- [phaselessWeightLoss](https://github.com/bestquark/formal_qchem/blob/main/FormalQChem/StatePrep/ImaginaryTimeProjection/AFQMC.lean#L187)
-- [projectedOverlap](https://github.com/bestquark/formal_qchem/blob/main/FormalQChem/StatePrep/ImaginaryTimeProjection/AFQMC.lean#L148)
-- [realHirschParameter](https://github.com/bestquark/formal_qchem/blob/main/FormalQChem/StatePrep/ImaginaryTimeProjection/AFQMC.lean#L39)
-- [slaterHistory](https://github.com/bestquark/formal_qchem/blob/main/FormalQChem/StatePrep/ImaginaryTimeProjection/AFQMC.lean#L124)
-- [spinOrbitalFactorization](https://github.com/bestquark/formal_qchem/blob/main/FormalQChem/StatePrep/ImaginaryTimeProjection/AFQMC.lean#L58)
+- [exactTrialLocalEnergy](../../FQChem/StatePrep/ImaginaryTimeProjection/AFQMC.lean#L176)
+- [fieldHistoryExpansion](../../FQChem/StatePrep/ImaginaryTimeProjection/AFQMC.lean#L83)
+- [freeProjection](../../FQChem/StatePrep/ImaginaryTimeProjection/AFQMC.lean#L139)
+- [hirschLattice](../../FQChem/StatePrep/ImaginaryTimeProjection/AFQMC.lean#L68)
+- [hirschLocal](../../FQChem/StatePrep/ImaginaryTimeProjection/AFQMC.lean#L44)
+- [hubbardFreeProjection](../../FQChem/StatePrep/ImaginaryTimeProjection/AFQMC.lean#L103)
+- [mixedEstimator](../../FQChem/StatePrep/ImaginaryTimeProjection/AFQMC.lean#L163)
+- [phaselessWeightLoss](../../FQChem/StatePrep/ImaginaryTimeProjection/AFQMC.lean#L187)
+- [projectedOverlap](../../FQChem/StatePrep/ImaginaryTimeProjection/AFQMC.lean#L148)
+- [realHirschParameter](../../FQChem/StatePrep/ImaginaryTimeProjection/AFQMC.lean#L39)
+- [slaterHistory](../../FQChem/StatePrep/ImaginaryTimeProjection/AFQMC.lean#L124)
+- [spinOrbitalFactorization](../../FQChem/StatePrep/ImaginaryTimeProjection/AFQMC.lean#L58)
 
-## FormalQChem.StatePrep.ImaginaryTimeProjection.DiffusionMonteCarlo
+## FQChem.StatePrep.ImaginaryTimeProjection.DiffusionMonteCarlo
 
 ```mermaid
 flowchart LR
@@ -1062,19 +1062,19 @@ flowchart LR
   n233 --> n231
 ```
 
-- [branchingLocalEnergy](https://github.com/bestquark/formal_qchem/blob/main/FormalQChem/StatePrep/ImaginaryTimeProjection/DiffusionMonteCarlo.lean#L95)
-- [constantBranchingIff](https://github.com/bestquark/formal_qchem/blob/main/FormalQChem/StatePrep/ImaginaryTimeProjection/DiffusionMonteCarlo.lean#L68)
-- [exactFixedNode](https://github.com/bestquark/formal_qchem/blob/main/FormalQChem/StatePrep/ImaginaryTimeProjection/DiffusionMonteCarlo.lean#L186)
-- [exactGuideGroundEnergy](https://github.com/bestquark/formal_qchem/blob/main/FormalQChem/StatePrep/ImaginaryTimeProjection/DiffusionMonteCarlo.lean#L197)
-- [exactGuideStationarity](https://github.com/bestquark/formal_qchem/blob/main/FormalQChem/StatePrep/ImaginaryTimeProjection/DiffusionMonteCarlo.lean#L75)
-- [fixedNodeEqualityIff](https://github.com/bestquark/formal_qchem/blob/main/FormalQChem/StatePrep/ImaginaryTimeProjection/DiffusionMonteCarlo.lean#L153)
-- [fixedNodeShift](https://github.com/bestquark/formal_qchem/blob/main/FormalQChem/StatePrep/ImaginaryTimeProjection/DiffusionMonteCarlo.lean#L132)
-- [fixedNodeUpperBound](https://github.com/bestquark/formal_qchem/blob/main/FormalQChem/StatePrep/ImaginaryTimeProjection/DiffusionMonteCarlo.lean#L176)
-- [guidedFeynmanKac](https://github.com/bestquark/formal_qchem/blob/main/FormalQChem/StatePrep/ImaginaryTimeProjection/DiffusionMonteCarlo.lean#L50)
-- [penalty_nonneg](https://github.com/bestquark/formal_qchem/blob/main/FormalQChem/StatePrep/ImaginaryTimeProjection/DiffusionMonteCarlo.lean#L145) (private)
-- [transitionMarkov](https://github.com/bestquark/formal_qchem/blob/main/FormalQChem/StatePrep/ImaginaryTimeProjection/DiffusionMonteCarlo.lean#L32)
+- [branchingLocalEnergy](../../FQChem/StatePrep/ImaginaryTimeProjection/DiffusionMonteCarlo.lean#L95)
+- [constantBranchingIff](../../FQChem/StatePrep/ImaginaryTimeProjection/DiffusionMonteCarlo.lean#L68)
+- [exactFixedNode](../../FQChem/StatePrep/ImaginaryTimeProjection/DiffusionMonteCarlo.lean#L186)
+- [exactGuideGroundEnergy](../../FQChem/StatePrep/ImaginaryTimeProjection/DiffusionMonteCarlo.lean#L197)
+- [exactGuideStationarity](../../FQChem/StatePrep/ImaginaryTimeProjection/DiffusionMonteCarlo.lean#L75)
+- [fixedNodeEqualityIff](../../FQChem/StatePrep/ImaginaryTimeProjection/DiffusionMonteCarlo.lean#L153)
+- [fixedNodeShift](../../FQChem/StatePrep/ImaginaryTimeProjection/DiffusionMonteCarlo.lean#L132)
+- [fixedNodeUpperBound](../../FQChem/StatePrep/ImaginaryTimeProjection/DiffusionMonteCarlo.lean#L176)
+- [guidedFeynmanKac](../../FQChem/StatePrep/ImaginaryTimeProjection/DiffusionMonteCarlo.lean#L50)
+- [penalty_nonneg](../../FQChem/StatePrep/ImaginaryTimeProjection/DiffusionMonteCarlo.lean#L145) (private)
+- [transitionMarkov](../../FQChem/StatePrep/ImaginaryTimeProjection/DiffusionMonteCarlo.lean#L32)
 
-## FormalQChem.StatePrep.ImaginaryTimeProjection.FCIQMC
+## FQChem.StatePrep.ImaginaryTimeProjection.FCIQMC
 
 ```mermaid
 flowchart LR
@@ -1101,20 +1101,20 @@ flowchart LR
   n241 --> n246
 ```
 
-- [annihilationPreserves](https://github.com/bestquark/formal_qchem/blob/main/FormalQChem/StatePrep/ImaginaryTimeProjection/FCIQMC.lean#L142)
-- [outcomeMass_nonneg](https://github.com/bestquark/formal_qchem/blob/main/FormalQChem/StatePrep/ImaginaryTimeProjection/FCIQMC.lean#L81)
-- [outcomeMass_sum](https://github.com/bestquark/formal_qchem/blob/main/FormalQChem/StatePrep/ImaginaryTimeProjection/FCIQMC.lean#L85)
-- [populationFirstMoment](https://github.com/bestquark/formal_qchem/blob/main/FormalQChem/StatePrep/ImaginaryTimeProjection/FCIQMC.lean#L184)
-- [populationMass_probability](https://github.com/bestquark/formal_qchem/blob/main/FormalQChem/StatePrep/ImaginaryTimeProjection/FCIQMC.lean#L174)
-- [productMarginal](https://github.com/bestquark/formal_qchem/blob/main/FormalQChem/StatePrep/ImaginaryTimeProjection/FCIQMC.lean#L150) (private)
-- [roundedCounts](https://github.com/bestquark/formal_qchem/blob/main/FormalQChem/StatePrep/ImaginaryTimeProjection/FCIQMC.lean#L94) (private)
-- [roundingFirstMoment](https://github.com/bestquark/formal_qchem/blob/main/FormalQChem/StatePrep/ImaginaryTimeProjection/FCIQMC.lean#L39)
-- [roundingMass_nonneg](https://github.com/bestquark/formal_qchem/blob/main/FormalQChem/StatePrep/ImaginaryTimeProjection/FCIQMC.lean#L30)
-- [roundingMass_sum](https://github.com/bestquark/formal_qchem/blob/main/FormalQChem/StatePrep/ImaginaryTimeProjection/FCIQMC.lean#L35)
-- [survivorsSignedCount](https://github.com/bestquark/formal_qchem/blob/main/FormalQChem/StatePrep/ImaginaryTimeProjection/FCIQMC.lean#L215)
-- [walkerFirstMoment](https://github.com/bestquark/formal_qchem/blob/main/FormalQChem/StatePrep/ImaginaryTimeProjection/FCIQMC.lean#L102)
+- [annihilationPreserves](../../FQChem/StatePrep/ImaginaryTimeProjection/FCIQMC.lean#L142)
+- [outcomeMass_nonneg](../../FQChem/StatePrep/ImaginaryTimeProjection/FCIQMC.lean#L81)
+- [outcomeMass_sum](../../FQChem/StatePrep/ImaginaryTimeProjection/FCIQMC.lean#L85)
+- [populationFirstMoment](../../FQChem/StatePrep/ImaginaryTimeProjection/FCIQMC.lean#L184)
+- [populationMass_probability](../../FQChem/StatePrep/ImaginaryTimeProjection/FCIQMC.lean#L174)
+- [productMarginal](../../FQChem/StatePrep/ImaginaryTimeProjection/FCIQMC.lean#L150) (private)
+- [roundedCounts](../../FQChem/StatePrep/ImaginaryTimeProjection/FCIQMC.lean#L94) (private)
+- [roundingFirstMoment](../../FQChem/StatePrep/ImaginaryTimeProjection/FCIQMC.lean#L39)
+- [roundingMass_nonneg](../../FQChem/StatePrep/ImaginaryTimeProjection/FCIQMC.lean#L30)
+- [roundingMass_sum](../../FQChem/StatePrep/ImaginaryTimeProjection/FCIQMC.lean#L35)
+- [survivorsSignedCount](../../FQChem/StatePrep/ImaginaryTimeProjection/FCIQMC.lean#L215)
+- [walkerFirstMoment](../../FQChem/StatePrep/ImaginaryTimeProjection/FCIQMC.lean#L102)
 
-## FormalQChem.StatePrep.ImaginaryTimeProjection.GaussianAuxiliaryField
+## FQChem.StatePrep.ImaginaryTimeProjection.GaussianAuxiliaryField
 
 ```mermaid
 flowchart LR
@@ -1123,10 +1123,10 @@ flowchart LR
   n248 --> n247
 ```
 
-- [gaussianHubbardStratonovich](https://github.com/bestquark/formal_qchem/blob/main/FormalQChem/StatePrep/ImaginaryTimeProjection/GaussianAuxiliaryField.lean#L46)
-- [gaussianPhaseAverage](https://github.com/bestquark/formal_qchem/blob/main/FormalQChem/StatePrep/ImaginaryTimeProjection/GaussianAuxiliaryField.lean#L34)
+- [gaussianHubbardStratonovich](../../FQChem/StatePrep/ImaginaryTimeProjection/GaussianAuxiliaryField.lean#L46)
+- [gaussianPhaseAverage](../../FQChem/StatePrep/ImaginaryTimeProjection/GaussianAuxiliaryField.lean#L34)
 
-## FormalQChem.StatePrep.ImaginaryTimeProjection.GroundStateProjection
+## FQChem.StatePrep.ImaginaryTimeProjection.GroundStateProjection
 
 ```mermaid
 flowchart LR
@@ -1160,19 +1160,19 @@ flowchart LR
   n254 --> n259
 ```
 
-- [bornWeight](https://github.com/bestquark/formal_qchem/blob/main/FormalQChem/StatePrep/ImaginaryTimeProjection/GroundStateProjection.lean#L78) (private)
-- [boundTendstoZero](https://github.com/bestquark/formal_qchem/blob/main/FormalQChem/StatePrep/ImaginaryTimeProjection/GroundStateProjection.lean#L121) (private)
-- [energyBound](https://github.com/bestquark/formal_qchem/blob/main/FormalQChem/StatePrep/ImaginaryTimeProjection/GroundStateProjection.lean#L139)
-- [energyLimit](https://github.com/bestquark/formal_qchem/blob/main/FormalQChem/StatePrep/ImaginaryTimeProjection/GroundStateProjection.lean#L150)
-- [excitedBound](https://github.com/bestquark/formal_qchem/blob/main/FormalQChem/StatePrep/ImaginaryTimeProjection/GroundStateProjection.lean#L95) (private)
-- [excited_nonneg](https://github.com/bestquark/formal_qchem/blob/main/FormalQChem/StatePrep/ImaginaryTimeProjection/GroundStateProjection.lean#L72) (private)
-- [infidelity](https://github.com/bestquark/formal_qchem/blob/main/FormalQChem/StatePrep/ImaginaryTimeProjection/GroundStateProjection.lean#L89) (private)
-- [normalization](https://github.com/bestquark/formal_qchem/blob/main/FormalQChem/StatePrep/ImaginaryTimeProjection/GroundStateProjection.lean#L83)
-- [projectionBound](https://github.com/bestquark/formal_qchem/blob/main/FormalQChem/StatePrep/ImaginaryTimeProjection/GroundStateProjection.lean#L106)
-- [projectionLimit](https://github.com/bestquark/formal_qchem/blob/main/FormalQChem/StatePrep/ImaginaryTimeProjection/GroundStateProjection.lean#L132)
-- [total_pos](https://github.com/bestquark/formal_qchem/blob/main/FormalQChem/StatePrep/ImaginaryTimeProjection/GroundStateProjection.lean#L75) (private)
+- [bornWeight](../../FQChem/StatePrep/ImaginaryTimeProjection/GroundStateProjection.lean#L78) (private)
+- [boundTendstoZero](../../FQChem/StatePrep/ImaginaryTimeProjection/GroundStateProjection.lean#L121) (private)
+- [energyBound](../../FQChem/StatePrep/ImaginaryTimeProjection/GroundStateProjection.lean#L139)
+- [energyLimit](../../FQChem/StatePrep/ImaginaryTimeProjection/GroundStateProjection.lean#L150)
+- [excitedBound](../../FQChem/StatePrep/ImaginaryTimeProjection/GroundStateProjection.lean#L95) (private)
+- [excited_nonneg](../../FQChem/StatePrep/ImaginaryTimeProjection/GroundStateProjection.lean#L72) (private)
+- [infidelity](../../FQChem/StatePrep/ImaginaryTimeProjection/GroundStateProjection.lean#L89) (private)
+- [normalization](../../FQChem/StatePrep/ImaginaryTimeProjection/GroundStateProjection.lean#L83)
+- [projectionBound](../../FQChem/StatePrep/ImaginaryTimeProjection/GroundStateProjection.lean#L106)
+- [projectionLimit](../../FQChem/StatePrep/ImaginaryTimeProjection/GroundStateProjection.lean#L132)
+- [total_pos](../../FQChem/StatePrep/ImaginaryTimeProjection/GroundStateProjection.lean#L75) (private)
 
-## FormalQChem.StatePrep.ImaginaryTimeProjection.HubbardProjection
+## FQChem.StatePrep.ImaginaryTimeProjection.HubbardProjection
 
 ```mermaid
 flowchart LR
@@ -1189,14 +1189,14 @@ flowchart LR
   n260 --> n262
 ```
 
-- [LieTrotter.lieTrotter](https://github.com/bestquark/formal_qchem/blob/main/FormalQChem/Dynamics/DigitalAlgorithms/LieTrotter.lean#L73)
-- [AFQMC.hubbardFreeProjection](https://github.com/bestquark/formal_qchem/blob/main/FormalQChem/StatePrep/ImaginaryTimeProjection/AFQMC.lean#L103)
-- [hirschHistoryMean_eq_split](https://github.com/bestquark/formal_qchem/blob/main/FormalQChem/StatePrep/ImaginaryTimeProjection/HubbardProjection.lean#L69)
-- [hirschHistoryMean_mulVec_tendsto](https://github.com/bestquark/formal_qchem/blob/main/FormalQChem/StatePrep/ImaginaryTimeProjection/HubbardProjection.lean#L93)
-- [hirschHistoryMean_tendsto](https://github.com/bestquark/formal_qchem/blob/main/FormalQChem/StatePrep/ImaginaryTimeProjection/HubbardProjection.lean#L78)
-- [interactionStep_eq_exp](https://github.com/bestquark/formal_qchem/blob/main/FormalQChem/StatePrep/ImaginaryTimeProjection/HubbardProjection.lean#L42)
+- [LieTrotter.lieTrotter](../../FQChem/Dynamics/DigitalAlgorithms/LieTrotter.lean#L73)
+- [AFQMC.hubbardFreeProjection](../../FQChem/StatePrep/ImaginaryTimeProjection/AFQMC.lean#L103)
+- [hirschHistoryMean_eq_split](../../FQChem/StatePrep/ImaginaryTimeProjection/HubbardProjection.lean#L69)
+- [hirschHistoryMean_mulVec_tendsto](../../FQChem/StatePrep/ImaginaryTimeProjection/HubbardProjection.lean#L93)
+- [hirschHistoryMean_tendsto](../../FQChem/StatePrep/ImaginaryTimeProjection/HubbardProjection.lean#L78)
+- [interactionStep_eq_exp](../../FQChem/StatePrep/ImaginaryTimeProjection/HubbardProjection.lean#L42)
 
-## FormalQChem.StatePrep.ImaginaryTimeProjection.PhaseEstimationFilter
+## FQChem.StatePrep.ImaginaryTimeProjection.PhaseEstimationFilter
 
 ```mermaid
 flowchart LR
@@ -1229,21 +1229,21 @@ flowchart LR
   n275 --> n276
 ```
 
-- [branchWeight](https://github.com/bestquark/formal_qchem/blob/main/FormalQChem/StatePrep/ImaginaryTimeProjection/PhaseEstimationFilter.lean#L88) (private)
-- [branch_normalized](https://github.com/bestquark/formal_qchem/blob/main/FormalQChem/StatePrep/ImaginaryTimeProjection/PhaseEstimationFilter.lean#L93)
-- [conditional_amplitudes](https://github.com/bestquark/formal_qchem/blob/main/FormalQChem/StatePrep/ImaginaryTimeProjection/PhaseEstimationFilter.lean#L71)
-- [exact_grid_preparation](https://github.com/bestquark/formal_qchem/blob/main/FormalQChem/StatePrep/ImaginaryTimeProjection/PhaseEstimationFilter.lean#L122)
-- [fidelity_eq](https://github.com/bestquark/formal_qchem/blob/main/FormalQChem/StatePrep/ImaginaryTimeProjection/PhaseEstimationFilter.lean#L99)
-- [heralding_pos](https://github.com/bestquark/formal_qchem/blob/main/FormalQChem/StatePrep/ImaginaryTimeProjection/PhaseEstimationFilter.lean#L85) (private)
-- [heralding_probability](https://github.com/bestquark/formal_qchem/blob/main/FormalQChem/StatePrep/ImaginaryTimeProjection/PhaseEstimationFilter.lean#L104)
-- [kernel_at_distinct_grid_phase](https://github.com/bestquark/formal_qchem/blob/main/FormalQChem/StatePrep/ImaginaryTimeProjection/PhaseEstimationFilter.lean#L28)
-- [kernel_at_target](https://github.com/bestquark/formal_qchem/blob/main/FormalQChem/StatePrep/ImaginaryTimeProjection/PhaseEstimationFilter.lean#L25)
-- [kernel_norm_le_one](https://github.com/bestquark/formal_qchem/blob/main/FormalQChem/StatePrep/ImaginaryTimeProjection/PhaseEstimationFilter.lean#L34)
-- [kernel_suppression](https://github.com/bestquark/formal_qchem/blob/main/FormalQChem/StatePrep/ImaginaryTimeProjection/PhaseEstimationFilter.lean#L41)
-- [leakage_nonneg](https://github.com/bestquark/formal_qchem/blob/main/FormalQChem/StatePrep/ImaginaryTimeProjection/PhaseEstimationFilter.lean#L82) (private)
-- [separated_preparation](https://github.com/bestquark/formal_qchem/blob/main/FormalQChem/StatePrep/ImaginaryTimeProjection/PhaseEstimationFilter.lean#L137)
+- [branchWeight](../../FQChem/StatePrep/ImaginaryTimeProjection/PhaseEstimationFilter.lean#L88) (private)
+- [branch_normalized](../../FQChem/StatePrep/ImaginaryTimeProjection/PhaseEstimationFilter.lean#L93)
+- [conditional_amplitudes](../../FQChem/StatePrep/ImaginaryTimeProjection/PhaseEstimationFilter.lean#L71)
+- [exact_grid_preparation](../../FQChem/StatePrep/ImaginaryTimeProjection/PhaseEstimationFilter.lean#L122)
+- [fidelity_eq](../../FQChem/StatePrep/ImaginaryTimeProjection/PhaseEstimationFilter.lean#L99)
+- [heralding_pos](../../FQChem/StatePrep/ImaginaryTimeProjection/PhaseEstimationFilter.lean#L85) (private)
+- [heralding_probability](../../FQChem/StatePrep/ImaginaryTimeProjection/PhaseEstimationFilter.lean#L104)
+- [kernel_at_distinct_grid_phase](../../FQChem/StatePrep/ImaginaryTimeProjection/PhaseEstimationFilter.lean#L28)
+- [kernel_at_target](../../FQChem/StatePrep/ImaginaryTimeProjection/PhaseEstimationFilter.lean#L25)
+- [kernel_norm_le_one](../../FQChem/StatePrep/ImaginaryTimeProjection/PhaseEstimationFilter.lean#L34)
+- [kernel_suppression](../../FQChem/StatePrep/ImaginaryTimeProjection/PhaseEstimationFilter.lean#L41)
+- [leakage_nonneg](../../FQChem/StatePrep/ImaginaryTimeProjection/PhaseEstimationFilter.lean#L82) (private)
+- [separated_preparation](../../FQChem/StatePrep/ImaginaryTimeProjection/PhaseEstimationFilter.lean#L137)
 
-## FormalQChem.StatePrep.ImaginaryTimeProjection.SignProblem
+## FQChem.StatePrep.ImaginaryTimeProjection.SignProblem
 
 ```mermaid
 flowchart LR
@@ -1264,43 +1264,43 @@ flowchart LR
   n277 --> n283
 ```
 
-- [VQEMeasurement.shotStatistics](https://github.com/bestquark/formal_qchem/blob/main/FormalQChem/Properties/ResponseAndEstimation/VQEMeasurement.lean#L74)
-- [absMean_sign](https://github.com/bestquark/formal_qchem/blob/main/FormalQChem/StatePrep/ImaginaryTimeProjection/SignProblem.lean#L33)
-- [abs_mul_sign](https://github.com/bestquark/formal_qchem/blob/main/FormalQChem/StatePrep/ImaginaryTimeProjection/SignProblem.lean#L28) (private)
-- [factorizedSign](https://github.com/bestquark/formal_qchem/blob/main/FormalQChem/StatePrep/ImaginaryTimeProjection/SignProblem.lean#L48)
-- [productMeanSign](https://github.com/bestquark/formal_qchem/blob/main/FormalQChem/StatePrep/ImaginaryTimeProjection/SignProblem.lean#L56)
-- [productSampleCost](https://github.com/bestquark/formal_qchem/blob/main/FormalQChem/StatePrep/ImaginaryTimeProjection/SignProblem.lean#L96)
-- [reweighting](https://github.com/bestquark/formal_qchem/blob/main/FormalQChem/StatePrep/ImaginaryTimeProjection/SignProblem.lean#L38)
-- [signStatistics](https://github.com/bestquark/formal_qchem/blob/main/FormalQChem/StatePrep/ImaginaryTimeProjection/SignProblem.lean#L78)
+- [VQEMeasurement.shotStatistics](../../FQChem/Properties/ResponseAndEstimation/VQEMeasurement.lean#L74)
+- [absMean_sign](../../FQChem/StatePrep/ImaginaryTimeProjection/SignProblem.lean#L33)
+- [abs_mul_sign](../../FQChem/StatePrep/ImaginaryTimeProjection/SignProblem.lean#L28) (private)
+- [factorizedSign](../../FQChem/StatePrep/ImaginaryTimeProjection/SignProblem.lean#L48)
+- [productMeanSign](../../FQChem/StatePrep/ImaginaryTimeProjection/SignProblem.lean#L56)
+- [productSampleCost](../../FQChem/StatePrep/ImaginaryTimeProjection/SignProblem.lean#L96)
+- [reweighting](../../FQChem/StatePrep/ImaginaryTimeProjection/SignProblem.lean#L38)
+- [signStatistics](../../FQChem/StatePrep/ImaginaryTimeProjection/SignProblem.lean#L78)
 
-## FormalQChem.StatePrep.ImaginaryTimeProjection.SpectralFiltering
+## FQChem.StatePrep.ImaginaryTimeProjection.SpectralFiltering
 
 ```mermaid
 flowchart LR
   n284["geometricFiltering"]
 ```
 
-- [geometricFiltering](https://github.com/bestquark/formal_qchem/blob/main/FormalQChem/StatePrep/ImaginaryTimeProjection/SpectralFiltering.lean#L45)
+- [geometricFiltering](../../FQChem/StatePrep/ImaginaryTimeProjection/SpectralFiltering.lean#L45)
 
-## FormalQChem.StatePrep.PerturbationTheory.CoupledCluster
+## FQChem.StatePrep.PerturbationTheory.CoupledCluster
 
 ```mermaid
 flowchart LR
   n285["coupledCluster"]
 ```
 
-- [coupledCluster](https://github.com/bestquark/formal_qchem/blob/main/FormalQChem/StatePrep/PerturbationTheory/CoupledCluster.lean#L18)
+- [coupledCluster](../../FQChem/StatePrep/PerturbationTheory/CoupledCluster.lean#L18)
 
-## FormalQChem.StatePrep.PerturbationTheory.Multireference
+## FQChem.StatePrep.PerturbationTheory.Multireference
 
 ```mermaid
 flowchart LR
   n286["mrpt2Shift"]
 ```
 
-- [mrpt2Shift](https://github.com/bestquark/formal_qchem/blob/main/FormalQChem/StatePrep/PerturbationTheory/Multireference.lean#L17)
+- [mrpt2Shift](../../FQChem/StatePrep/PerturbationTheory/Multireference.lean#L17)
 
-## FormalQChem.StatePrep.PerturbationTheory.RayleighSchrodinger
+## FQChem.StatePrep.PerturbationTheory.RayleighSchrodinger
 
 ```mermaid
 flowchart LR
@@ -1315,13 +1315,13 @@ flowchart LR
   n289 --> n290
 ```
 
-- [gap_ne_zero](https://github.com/bestquark/formal_qchem/blob/main/FormalQChem/StatePrep/PerturbationTheory/RayleighSchrodinger.lean#L81) (private)
-- [nondegenerateExpansion](https://github.com/bestquark/formal_qchem/blob/main/FormalQChem/StatePrep/PerturbationTheory/RayleighSchrodinger.lean#L95)
-- [residualIdentity_of_coefficients](https://github.com/bestquark/formal_qchem/blob/main/FormalQChem/StatePrep/PerturbationTheory/RayleighSchrodinger.lean#L144)
-- [secondOrderQuasimode](https://github.com/bestquark/formal_qchem/blob/main/FormalQChem/StatePrep/PerturbationTheory/RayleighSchrodinger.lean#L165)
-- [shift_sum](https://github.com/bestquark/formal_qchem/blob/main/FormalQChem/StatePrep/PerturbationTheory/RayleighSchrodinger.lean#L85) (private)
+- [gap_ne_zero](../../FQChem/StatePrep/PerturbationTheory/RayleighSchrodinger.lean#L81) (private)
+- [nondegenerateExpansion](../../FQChem/StatePrep/PerturbationTheory/RayleighSchrodinger.lean#L95)
+- [residualIdentity_of_coefficients](../../FQChem/StatePrep/PerturbationTheory/RayleighSchrodinger.lean#L144)
+- [secondOrderQuasimode](../../FQChem/StatePrep/PerturbationTheory/RayleighSchrodinger.lean#L165)
+- [shift_sum](../../FQChem/StatePrep/PerturbationTheory/RayleighSchrodinger.lean#L85) (private)
 
-## FormalQChem.StatePrep.SubspaceDiagonalization.ConfigurationInteraction
+## FQChem.StatePrep.SubspaceDiagonalization.ConfigurationInteraction
 
 ```mermaid
 flowchart LR
@@ -1334,12 +1334,12 @@ flowchart LR
   n336 --> n293
 ```
 
-- [sampledDiagonalization](https://github.com/bestquark/formal_qchem/blob/main/FormalQChem/StatePrep/SubspaceDiagonalization/ConfigurationInteraction.lean#L33)
-- [selectedCI](https://github.com/bestquark/formal_qchem/blob/main/FormalQChem/StatePrep/SubspaceDiagonalization/ConfigurationInteraction.lean#L27)
-- [RayleighRitz.basisEnlargement](https://github.com/bestquark/formal_qchem/blob/main/FormalQChem/StatePrep/VariationalOptimization/RayleighRitz.lean#L65)
-- [RayleighRitz.ritzEnergy_le](https://github.com/bestquark/formal_qchem/blob/main/FormalQChem/StatePrep/VariationalOptimization/RayleighRitz.lean#L54)
+- [sampledDiagonalization](../../FQChem/StatePrep/SubspaceDiagonalization/ConfigurationInteraction.lean#L33)
+- [selectedCI](../../FQChem/StatePrep/SubspaceDiagonalization/ConfigurationInteraction.lean#L27)
+- [RayleighRitz.basisEnlargement](../../FQChem/StatePrep/VariationalOptimization/RayleighRitz.lean#L65)
+- [RayleighRitz.ritzEnergy_le](../../FQChem/StatePrep/VariationalOptimization/RayleighRitz.lean#L54)
 
-## FormalQChem.StatePrep.SubspaceDiagonalization.Interlacing
+## FQChem.StatePrep.SubspaceDiagonalization.Interlacing
 
 ```mermaid
 flowchart LR
@@ -1355,13 +1355,13 @@ flowchart LR
   n335 --> n296
 ```
 
-- [ritzInterlacing](https://github.com/bestquark/formal_qchem/blob/main/FormalQChem/StatePrep/SubspaceDiagonalization/Interlacing.lean#L97)
-- [spectral_lower](https://github.com/bestquark/formal_qchem/blob/main/FormalQChem/StatePrep/SubspaceDiagonalization/Interlacing.lean#L73) (private)
-- [spectral_upper](https://github.com/bestquark/formal_qchem/blob/main/FormalQChem/StatePrep/SubspaceDiagonalization/Interlacing.lean#L85) (private)
-- [spectral_witness](https://github.com/bestquark/formal_qchem/blob/main/FormalQChem/StatePrep/SubspaceDiagonalization/Interlacing.lean#L48) (private)
-- [GapCertificate.spectralExpectation](https://github.com/bestquark/formal_qchem/blob/main/FormalQChem/StatePrep/VariationalOptimization/GapCertificate.lean#L38)
+- [ritzInterlacing](../../FQChem/StatePrep/SubspaceDiagonalization/Interlacing.lean#L97)
+- [spectral_lower](../../FQChem/StatePrep/SubspaceDiagonalization/Interlacing.lean#L73) (private)
+- [spectral_upper](../../FQChem/StatePrep/SubspaceDiagonalization/Interlacing.lean#L85) (private)
+- [spectral_witness](../../FQChem/StatePrep/SubspaceDiagonalization/Interlacing.lean#L48) (private)
+- [GapCertificate.spectralExpectation](../../FQChem/StatePrep/VariationalOptimization/GapCertificate.lean#L38)
 
-## FormalQChem.StatePrep.SubspaceDiagonalization.Krylov
+## FQChem.StatePrep.SubspaceDiagonalization.Krylov
 
 ```mermaid
 flowchart LR
@@ -1374,21 +1374,21 @@ flowchart LR
   n299 --> n300
 ```
 
-- [classicalKrylov](https://github.com/bestquark/formal_qchem/blob/main/FormalQChem/StatePrep/SubspaceDiagonalization/Krylov.lean#L32)
-- [orbit_step](https://github.com/bestquark/formal_qchem/blob/main/FormalQChem/StatePrep/SubspaceDiagonalization/Krylov.lean#L26) (private)
-- [quantumKrylov](https://github.com/bestquark/formal_qchem/blob/main/FormalQChem/StatePrep/SubspaceDiagonalization/Krylov.lean#L35)
-- [RayleighRitz.basisEnlargement](https://github.com/bestquark/formal_qchem/blob/main/FormalQChem/StatePrep/VariationalOptimization/RayleighRitz.lean#L65)
+- [classicalKrylov](../../FQChem/StatePrep/SubspaceDiagonalization/Krylov.lean#L32)
+- [orbit_step](../../FQChem/StatePrep/SubspaceDiagonalization/Krylov.lean#L26) (private)
+- [quantumKrylov](../../FQChem/StatePrep/SubspaceDiagonalization/Krylov.lean#L35)
+- [RayleighRitz.basisEnlargement](../../FQChem/StatePrep/VariationalOptimization/RayleighRitz.lean#L65)
 
-## FormalQChem.StatePrep.SubspaceDiagonalization.RitzGalerkin
+## FQChem.StatePrep.SubspaceDiagonalization.RitzGalerkin
 
 ```mermaid
 flowchart LR
   n301["residualCriterion"]
 ```
 
-- [residualCriterion](https://github.com/bestquark/formal_qchem/blob/main/FormalQChem/StatePrep/SubspaceDiagonalization/RitzGalerkin.lean#L32)
+- [residualCriterion](../../FQChem/StatePrep/SubspaceDiagonalization/RitzGalerkin.lean#L32)
 
-## FormalQChem.StatePrep.VariationalOptimization.DensityFunctionals.Continuum
+## FQChem.StatePrep.VariationalOptimization.DensityFunctionals.Continuum
 
 ```mermaid
 flowchart LR
@@ -1426,24 +1426,24 @@ flowchart LR
   n312 --> n316
 ```
 
-- [commonStateConstantLift](https://github.com/bestquark/formal_qchem/blob/main/FormalQChem/StatePrep/VariationalOptimization/DensityFunctionals/Continuum.lean#L214)
-- [energy_le_functional_add](https://github.com/bestquark/formal_qchem/blob/main/FormalQChem/StatePrep/VariationalOptimization/DensityFunctionals/Continuum.lean#L261) (private)
-- [energy_le_trial](https://github.com/bestquark/formal_qchem/blob/main/FormalQChem/StatePrep/VariationalOptimization/DensityFunctionals/Continuum.lean#L258) (private)
-- [euler_lagrange](https://github.com/bestquark/formal_qchem/blob/main/FormalQChem/StatePrep/VariationalOptimization/DensityFunctionals/Continuum.lean#L173)
-- [functional_le_internal](https://github.com/bestquark/formal_qchem/blob/main/FormalQChem/StatePrep/VariationalOptimization/DensityFunctionals/Continuum.lean#L266) (private)
-- [groundDensityExactness](https://github.com/bestquark/formal_qchem/blob/main/FormalQChem/StatePrep/VariationalOptimization/DensityFunctionals/Continuum.lean#L288)
-- [h0_expand](https://github.com/bestquark/formal_qchem/blob/main/FormalQChem/StatePrep/VariationalOptimization/DensityFunctionals/Continuum.lean#L162)
-- [hohenbergKohn](https://github.com/bestquark/formal_qchem/blob/main/FormalQChem/StatePrep/VariationalOptimization/DensityFunctionals/Continuum.lean#L254)
-- [integral_expand](https://github.com/bestquark/formal_qchem/blob/main/FormalQChem/StatePrep/VariationalOptimization/DensityFunctionals/Continuum.lean#L130)
-- [ip_expand](https://github.com/bestquark/formal_qchem/blob/main/FormalQChem/StatePrep/VariationalOptimization/DensityFunctionals/Continuum.lean#L149)
-- [liebVariationalPrinciple](https://github.com/bestquark/formal_qchem/blob/main/FormalQChem/StatePrep/VariationalOptimization/DensityFunctionals/Continuum.lean#L273)
-- [lin_coeff_zero](https://github.com/bestquark/formal_qchem/blob/main/FormalQChem/StatePrep/VariationalOptimization/DensityFunctionals/Continuum.lean#L119) (private)
-- [pf_expand](https://github.com/bestquark/formal_qchem/blob/main/FormalQChem/StatePrep/VariationalOptimization/DensityFunctionals/Continuum.lean#L157)
-- [strong_hk_of_ucp](https://github.com/bestquark/formal_qchem/blob/main/FormalQChem/StatePrep/VariationalOptimization/DensityFunctionals/Continuum.lean#L246)
-- [universalFunctionalExists](https://github.com/bestquark/formal_qchem/blob/main/FormalQChem/StatePrep/VariationalOptimization/DensityFunctionals/Continuum.lean#L285)
-- [weak_hk](https://github.com/bestquark/formal_qchem/blob/main/FormalQChem/StatePrep/VariationalOptimization/DensityFunctionals/Continuum.lean#L194)
+- [commonStateConstantLift](../../FQChem/StatePrep/VariationalOptimization/DensityFunctionals/Continuum.lean#L214)
+- [energy_le_functional_add](../../FQChem/StatePrep/VariationalOptimization/DensityFunctionals/Continuum.lean#L261) (private)
+- [energy_le_trial](../../FQChem/StatePrep/VariationalOptimization/DensityFunctionals/Continuum.lean#L258) (private)
+- [euler_lagrange](../../FQChem/StatePrep/VariationalOptimization/DensityFunctionals/Continuum.lean#L173)
+- [functional_le_internal](../../FQChem/StatePrep/VariationalOptimization/DensityFunctionals/Continuum.lean#L266) (private)
+- [groundDensityExactness](../../FQChem/StatePrep/VariationalOptimization/DensityFunctionals/Continuum.lean#L288)
+- [h0_expand](../../FQChem/StatePrep/VariationalOptimization/DensityFunctionals/Continuum.lean#L162)
+- [hohenbergKohn](../../FQChem/StatePrep/VariationalOptimization/DensityFunctionals/Continuum.lean#L254)
+- [integral_expand](../../FQChem/StatePrep/VariationalOptimization/DensityFunctionals/Continuum.lean#L130)
+- [ip_expand](../../FQChem/StatePrep/VariationalOptimization/DensityFunctionals/Continuum.lean#L149)
+- [liebVariationalPrinciple](../../FQChem/StatePrep/VariationalOptimization/DensityFunctionals/Continuum.lean#L273)
+- [lin_coeff_zero](../../FQChem/StatePrep/VariationalOptimization/DensityFunctionals/Continuum.lean#L119) (private)
+- [pf_expand](../../FQChem/StatePrep/VariationalOptimization/DensityFunctionals/Continuum.lean#L157)
+- [strong_hk_of_ucp](../../FQChem/StatePrep/VariationalOptimization/DensityFunctionals/Continuum.lean#L246)
+- [universalFunctionalExists](../../FQChem/StatePrep/VariationalOptimization/DensityFunctionals/Continuum.lean#L285)
+- [weak_hk](../../FQChem/StatePrep/VariationalOptimization/DensityFunctionals/Continuum.lean#L194)
 
-## FormalQChem.StatePrep.VariationalOptimization.DensityFunctionals.CoulombIntegrability
+## FQChem.StatePrep.VariationalOptimization.DensityFunctionals.CoulombIntegrability
 
 ```mermaid
 flowchart LR
@@ -1458,13 +1458,13 @@ flowchart LR
   n320 --> n321
 ```
 
-- [coulombConstrainedSearch](https://github.com/bestquark/formal_qchem/blob/main/FormalQChem/StatePrep/VariationalOptimization/DensityFunctionals/CoulombIntegrability.lean#L88)
-- [coulombLocallyIntegrable](https://github.com/bestquark/formal_qchem/blob/main/FormalQChem/StatePrep/VariationalOptimization/DensityFunctionals/CoulombIntegrability.lean#L38)
-- [locallyIntegrable_coordinate](https://github.com/bestquark/formal_qchem/blob/main/FormalQChem/StatePrep/VariationalOptimization/DensityFunctionals/CoulombIntegrability.lean#L54) (private)
-- [nuclearAttractionIntegrable](https://github.com/bestquark/formal_qchem/blob/main/FormalQChem/StatePrep/VariationalOptimization/DensityFunctionals/CoulombIntegrability.lean#L70)
-- [MolecularConstrainedSearch.constrainedSearch](https://github.com/bestquark/formal_qchem/blob/main/FormalQChem/StatePrep/VariationalOptimization/DensityFunctionals/MolecularConstrainedSearch.lean#L104)
+- [coulombConstrainedSearch](../../FQChem/StatePrep/VariationalOptimization/DensityFunctionals/CoulombIntegrability.lean#L88)
+- [coulombLocallyIntegrable](../../FQChem/StatePrep/VariationalOptimization/DensityFunctionals/CoulombIntegrability.lean#L38)
+- [locallyIntegrable_coordinate](../../FQChem/StatePrep/VariationalOptimization/DensityFunctionals/CoulombIntegrability.lean#L54) (private)
+- [nuclearAttractionIntegrable](../../FQChem/StatePrep/VariationalOptimization/DensityFunctionals/CoulombIntegrability.lean#L70)
+- [MolecularConstrainedSearch.constrainedSearch](../../FQChem/StatePrep/VariationalOptimization/DensityFunctionals/MolecularConstrainedSearch.lean#L104)
 
-## FormalQChem.StatePrep.VariationalOptimization.DensityFunctionals.MolecularConstrainedSearch
+## FQChem.StatePrep.VariationalOptimization.DensityFunctionals.MolecularConstrainedSearch
 
 ```mermaid
 flowchart LR
@@ -1478,13 +1478,13 @@ flowchart LR
   n323 --> n326
 ```
 
-- [born_mass](https://github.com/bestquark/formal_qchem/blob/main/FormalQChem/StatePrep/VariationalOptimization/DensityFunctionals/MolecularConstrainedSearch.lean#L81)
-- [constrainedSearch](https://github.com/bestquark/formal_qchem/blob/main/FormalQChem/StatePrep/VariationalOptimization/DensityFunctionals/MolecularConstrainedSearch.lean#L104)
-- [density_mass](https://github.com/bestquark/formal_qchem/blob/main/FormalQChem/StatePrep/VariationalOptimization/DensityFunctionals/MolecularConstrainedSearch.lean#L89)
-- [density_pairing](https://github.com/bestquark/formal_qchem/blob/main/FormalQChem/StatePrep/VariationalOptimization/DensityFunctionals/MolecularConstrainedSearch.lean#L94)
-- [molecularConstrainedSearch](https://github.com/bestquark/formal_qchem/blob/main/FormalQChem/StatePrep/VariationalOptimization/DensityFunctionals/MolecularConstrainedSearch.lean#L127)
+- [born_mass](../../FQChem/StatePrep/VariationalOptimization/DensityFunctionals/MolecularConstrainedSearch.lean#L81)
+- [constrainedSearch](../../FQChem/StatePrep/VariationalOptimization/DensityFunctionals/MolecularConstrainedSearch.lean#L104)
+- [density_mass](../../FQChem/StatePrep/VariationalOptimization/DensityFunctionals/MolecularConstrainedSearch.lean#L89)
+- [density_pairing](../../FQChem/StatePrep/VariationalOptimization/DensityFunctionals/MolecularConstrainedSearch.lean#L94)
+- [molecularConstrainedSearch](../../FQChem/StatePrep/VariationalOptimization/DensityFunctionals/MolecularConstrainedSearch.lean#L127)
 
-## FormalQChem.StatePrep.VariationalOptimization.DensityFunctionals.MolecularHohenbergKohn
+## FQChem.StatePrep.VariationalOptimization.DensityFunctionals.MolecularHohenbergKohn
 
 ```mermaid
 flowchart LR
@@ -1497,12 +1497,12 @@ flowchart LR
   n328 --> n327
 ```
 
-- [Continuum.commonStateConstantLift](https://github.com/bestquark/formal_qchem/blob/main/FormalQChem/StatePrep/VariationalOptimization/DensityFunctionals/Continuum.lean#L214)
-- [Continuum.weak_hk](https://github.com/bestquark/formal_qchem/blob/main/FormalQChem/StatePrep/VariationalOptimization/DensityFunctionals/Continuum.lean#L194)
-- [molecularHohenbergKohn](https://github.com/bestquark/formal_qchem/blob/main/FormalQChem/StatePrep/VariationalOptimization/DensityFunctionals/MolecularHohenbergKohn.lean#L84)
-- [oneBodyRigidity](https://github.com/bestquark/formal_qchem/blob/main/FormalQChem/StatePrep/VariationalOptimization/DensityFunctionals/MolecularHohenbergKohn.lean#L66)
+- [Continuum.commonStateConstantLift](../../FQChem/StatePrep/VariationalOptimization/DensityFunctionals/Continuum.lean#L214)
+- [Continuum.weak_hk](../../FQChem/StatePrep/VariationalOptimization/DensityFunctionals/Continuum.lean#L194)
+- [molecularHohenbergKohn](../../FQChem/StatePrep/VariationalOptimization/DensityFunctionals/MolecularHohenbergKohn.lean#L84)
+- [oneBodyRigidity](../../FQChem/StatePrep/VariationalOptimization/DensityFunctionals/MolecularHohenbergKohn.lean#L66)
 
-## FormalQChem.StatePrep.VariationalOptimization.ExcitedStates
+## FQChem.StatePrep.VariationalOptimization.ExcitedStates
 
 ```mermaid
 flowchart LR
@@ -1513,11 +1513,11 @@ flowchart LR
   n331 --> n330
 ```
 
-- [excitedStateBound](https://github.com/bestquark/formal_qchem/blob/main/FormalQChem/StatePrep/VariationalOptimization/ExcitedStates.lean#L31)
-- [quantumDeflation](https://github.com/bestquark/formal_qchem/blob/main/FormalQChem/StatePrep/VariationalOptimization/ExcitedStates.lean#L39)
-- [weighted_bound](https://github.com/bestquark/formal_qchem/blob/main/FormalQChem/StatePrep/VariationalOptimization/ExcitedStates.lean#L26) (private)
+- [excitedStateBound](../../FQChem/StatePrep/VariationalOptimization/ExcitedStates.lean#L31)
+- [quantumDeflation](../../FQChem/StatePrep/VariationalOptimization/ExcitedStates.lean#L39)
+- [weighted_bound](../../FQChem/StatePrep/VariationalOptimization/ExcitedStates.lean#L26) (private)
 
-## FormalQChem.StatePrep.VariationalOptimization.FermionicAnsatz
+## FQChem.StatePrep.VariationalOptimization.FermionicAnsatz
 
 ```mermaid
 flowchart LR
@@ -1527,11 +1527,11 @@ flowchart LR
   n340 --> n333
 ```
 
-- [neuralAntisymmetry](https://github.com/bestquark/formal_qchem/blob/main/FormalQChem/StatePrep/VariationalOptimization/FermionicAnsatz.lean#L54)
-- [slaterTrialBound](https://github.com/bestquark/formal_qchem/blob/main/FormalQChem/StatePrep/VariationalOptimization/FermionicAnsatz.lean#L47)
-- [RayleighRitz.ritzEnergy_le](https://github.com/bestquark/formal_qchem/blob/main/FormalQChem/StatePrep/VariationalOptimization/RayleighRitz.lean#L54)
+- [neuralAntisymmetry](../../FQChem/StatePrep/VariationalOptimization/FermionicAnsatz.lean#L54)
+- [slaterTrialBound](../../FQChem/StatePrep/VariationalOptimization/FermionicAnsatz.lean#L47)
+- [RayleighRitz.ritzEnergy_le](../../FQChem/StatePrep/VariationalOptimization/RayleighRitz.lean#L54)
 
-## FormalQChem.StatePrep.VariationalOptimization.GapCertificate
+## FQChem.StatePrep.VariationalOptimization.GapCertificate
 
 ```mermaid
 flowchart LR
@@ -1540,10 +1540,10 @@ flowchart LR
   n335 --> n334
 ```
 
-- [gapCertificate](https://github.com/bestquark/formal_qchem/blob/main/FormalQChem/StatePrep/VariationalOptimization/GapCertificate.lean#L48)
-- [spectralExpectation](https://github.com/bestquark/formal_qchem/blob/main/FormalQChem/StatePrep/VariationalOptimization/GapCertificate.lean#L38)
+- [gapCertificate](../../FQChem/StatePrep/VariationalOptimization/GapCertificate.lean#L48)
+- [spectralExpectation](../../FQChem/StatePrep/VariationalOptimization/GapCertificate.lean#L38)
 
-## FormalQChem.StatePrep.VariationalOptimization.RayleighRitz
+## FQChem.StatePrep.VariationalOptimization.RayleighRitz
 
 ```mermaid
 flowchart LR
@@ -1559,13 +1559,13 @@ flowchart LR
   n339 --> n340
 ```
 
-- [basisEnlargement](https://github.com/bestquark/formal_qchem/blob/main/FormalQChem/StatePrep/VariationalOptimization/RayleighRitz.lean#L65)
-- [groundEnergyPrinciple](https://github.com/bestquark/formal_qchem/blob/main/FormalQChem/StatePrep/VariationalOptimization/RayleighRitz.lean#L59)
-- [groundEnergy_le](https://github.com/bestquark/formal_qchem/blob/main/FormalQChem/StatePrep/VariationalOptimization/RayleighRitz.lean#L49)
-- [rayleigh_bddBelow](https://github.com/bestquark/formal_qchem/blob/main/FormalQChem/StatePrep/VariationalOptimization/RayleighRitz.lean#L42) (private)
-- [ritzEnergy_le](https://github.com/bestquark/formal_qchem/blob/main/FormalQChem/StatePrep/VariationalOptimization/RayleighRitz.lean#L54)
+- [basisEnlargement](../../FQChem/StatePrep/VariationalOptimization/RayleighRitz.lean#L65)
+- [groundEnergyPrinciple](../../FQChem/StatePrep/VariationalOptimization/RayleighRitz.lean#L59)
+- [groundEnergy_le](../../FQChem/StatePrep/VariationalOptimization/RayleighRitz.lean#L49)
+- [rayleigh_bddBelow](../../FQChem/StatePrep/VariationalOptimization/RayleighRitz.lean#L42) (private)
+- [ritzEnergy_le](../../FQChem/StatePrep/VariationalOptimization/RayleighRitz.lean#L54)
 
-## FormalQChem.StatePrep.VariationalOptimization.TensorNetworks.DMRG
+## FQChem.StatePrep.VariationalOptimization.TensorNetworks.DMRG
 
 ```mermaid
 flowchart LR
@@ -1581,14 +1581,14 @@ flowchart LR
   n343 --> n345
 ```
 
-- [RayleighRitz.groundEnergyPrinciple](https://github.com/bestquark/formal_qchem/blob/main/FormalQChem/StatePrep/VariationalOptimization/RayleighRitz.lean#L59)
-- [canonicalUpdate](https://github.com/bestquark/formal_qchem/blob/main/FormalQChem/StatePrep/VariationalOptimization/TensorNetworks/DMRG.lean#L100)
-- [effective_symmetric](https://github.com/bestquark/formal_qchem/blob/main/FormalQChem/StatePrep/VariationalOptimization/TensorNetworks/DMRG.lean#L93) (private)
-- [energy_identity](https://github.com/bestquark/formal_qchem/blob/main/FormalQChem/StatePrep/VariationalOptimization/TensorNetworks/DMRG.lean#L80)
-- [environmentMap_apply](https://github.com/bestquark/formal_qchem/blob/main/FormalQChem/StatePrep/VariationalOptimization/TensorNetworks/DMRG.lean#L68)
-- [oneSiteUpdate](https://github.com/bestquark/formal_qchem/blob/main/FormalQChem/StatePrep/VariationalOptimization/TensorNetworks/DMRG.lean#L86)
+- [RayleighRitz.groundEnergyPrinciple](../../FQChem/StatePrep/VariationalOptimization/RayleighRitz.lean#L59)
+- [canonicalUpdate](../../FQChem/StatePrep/VariationalOptimization/TensorNetworks/DMRG.lean#L100)
+- [effective_symmetric](../../FQChem/StatePrep/VariationalOptimization/TensorNetworks/DMRG.lean#L93) (private)
+- [energy_identity](../../FQChem/StatePrep/VariationalOptimization/TensorNetworks/DMRG.lean#L80)
+- [environmentMap_apply](../../FQChem/StatePrep/VariationalOptimization/TensorNetworks/DMRG.lean#L68)
+- [oneSiteUpdate](../../FQChem/StatePrep/VariationalOptimization/TensorNetworks/DMRG.lean#L86)
 
-## FormalQChem.StatePrep.VariationalOptimization.TensorNetworks.MatrixProductStates
+## FQChem.StatePrep.VariationalOptimization.TensorNetworks.MatrixProductStates
 
 ```mermaid
 flowchart LR
@@ -1596,10 +1596,10 @@ flowchart LR
   n347["mpsCutBound"]
 ```
 
-- [exactCutFactorization](https://github.com/bestquark/formal_qchem/blob/main/FormalQChem/StatePrep/VariationalOptimization/TensorNetworks/MatrixProductStates.lean#L41)
-- [mpsCutBound](https://github.com/bestquark/formal_qchem/blob/main/FormalQChem/StatePrep/VariationalOptimization/TensorNetworks/MatrixProductStates.lean#L30)
+- [exactCutFactorization](../../FQChem/StatePrep/VariationalOptimization/TensorNetworks/MatrixProductStates.lean#L41)
+- [mpsCutBound](../../FQChem/StatePrep/VariationalOptimization/TensorNetworks/MatrixProductStates.lean#L30)
 
-## FormalQChem.StatePrep.VariationalOptimization.VQE
+## FQChem.StatePrep.VariationalOptimization.VQE
 
 ```mermaid
 flowchart LR
@@ -1610,11 +1610,11 @@ flowchart LR
   n338 --> n349
 ```
 
-- [RayleighRitz.groundEnergy_le](https://github.com/bestquark/formal_qchem/blob/main/FormalQChem/StatePrep/VariationalOptimization/RayleighRitz.lean#L49)
-- [reachableVQEMinimum](https://github.com/bestquark/formal_qchem/blob/main/FormalQChem/StatePrep/VariationalOptimization/VQE.lean#L38)
-- [vqe](https://github.com/bestquark/formal_qchem/blob/main/FormalQChem/StatePrep/VariationalOptimization/VQE.lean#L28)
+- [RayleighRitz.groundEnergy_le](../../FQChem/StatePrep/VariationalOptimization/RayleighRitz.lean#L49)
+- [reachableVQEMinimum](../../FQChem/StatePrep/VariationalOptimization/VQE.lean#L38)
+- [vqe](../../FQChem/StatePrep/VariationalOptimization/VQE.lean#L28)
 
-## FormalQChem.StatePrep.VariationalOptimization.VariationalMonteCarlo
+## FQChem.StatePrep.VariationalOptimization.VariationalMonteCarlo
 
 ```mermaid
 flowchart LR
@@ -1646,18 +1646,18 @@ flowchart LR
   n357 --> n363
 ```
 
-- [RayleighRitz.groundEnergyPrinciple](https://github.com/bestquark/formal_qchem/blob/main/FormalQChem/StatePrep/VariationalOptimization/RayleighRitz.lean#L59)
-- [variationalMonteCarlo](https://github.com/bestquark/formal_qchem/blob/main/FormalQChem/StatePrep/VariationalOptimization/VariationalMonteCarlo.lean#L38)
-- [acceptedFlow](https://github.com/bestquark/formal_qchem/blob/main/FormalQChem/StatePrep/VariationalOptimization/VariationalMonteCarlo.lean#L141) (private)
-- [bornMean](https://github.com/bestquark/formal_qchem/blob/main/FormalQChem/StatePrep/VariationalOptimization/VariationalMonteCarlo.lean#L66)
-- [bornStationary](https://github.com/bestquark/formal_qchem/blob/main/FormalQChem/StatePrep/VariationalOptimization/VariationalMonteCarlo.lean#L186)
-- [detailedBalance](https://github.com/bestquark/formal_qchem/blob/main/FormalQChem/StatePrep/VariationalOptimization/VariationalMonteCarlo.lean#L147)
-- [eigenstateZeroVariance](https://github.com/bestquark/formal_qchem/blob/main/FormalQChem/StatePrep/VariationalOptimization/VariationalMonteCarlo.lean#L123)
-- [energyGradient](https://github.com/bestquark/formal_qchem/blob/main/FormalQChem/StatePrep/VariationalOptimization/VariationalMonteCarlo.lean#L209)
-- [residualDecomposition](https://github.com/bestquark/formal_qchem/blob/main/FormalQChem/StatePrep/VariationalOptimization/VariationalMonteCarlo.lean#L95)
-- [rowSum](https://github.com/bestquark/formal_qchem/blob/main/FormalQChem/StatePrep/VariationalOptimization/VariationalMonteCarlo.lean#L155)
-- [stationary](https://github.com/bestquark/formal_qchem/blob/main/FormalQChem/StatePrep/VariationalOptimization/VariationalMonteCarlo.lean#L180)
-- [sum_weight](https://github.com/bestquark/formal_qchem/blob/main/FormalQChem/StatePrep/VariationalOptimization/VariationalMonteCarlo.lean#L60)
-- [transitionNonnegative](https://github.com/bestquark/formal_qchem/blob/main/FormalQChem/StatePrep/VariationalOptimization/VariationalMonteCarlo.lean#L160)
-- [variationalBound](https://github.com/bestquark/formal_qchem/blob/main/FormalQChem/StatePrep/VariationalOptimization/VariationalMonteCarlo.lean#L77)
-- [zeroVarianceIff](https://github.com/bestquark/formal_qchem/blob/main/FormalQChem/StatePrep/VariationalOptimization/VariationalMonteCarlo.lean#L110)
+- [RayleighRitz.groundEnergyPrinciple](../../FQChem/StatePrep/VariationalOptimization/RayleighRitz.lean#L59)
+- [variationalMonteCarlo](../../FQChem/StatePrep/VariationalOptimization/VariationalMonteCarlo.lean#L38)
+- [acceptedFlow](../../FQChem/StatePrep/VariationalOptimization/VariationalMonteCarlo.lean#L141) (private)
+- [bornMean](../../FQChem/StatePrep/VariationalOptimization/VariationalMonteCarlo.lean#L66)
+- [bornStationary](../../FQChem/StatePrep/VariationalOptimization/VariationalMonteCarlo.lean#L186)
+- [detailedBalance](../../FQChem/StatePrep/VariationalOptimization/VariationalMonteCarlo.lean#L147)
+- [eigenstateZeroVariance](../../FQChem/StatePrep/VariationalOptimization/VariationalMonteCarlo.lean#L123)
+- [energyGradient](../../FQChem/StatePrep/VariationalOptimization/VariationalMonteCarlo.lean#L209)
+- [residualDecomposition](../../FQChem/StatePrep/VariationalOptimization/VariationalMonteCarlo.lean#L95)
+- [rowSum](../../FQChem/StatePrep/VariationalOptimization/VariationalMonteCarlo.lean#L155)
+- [stationary](../../FQChem/StatePrep/VariationalOptimization/VariationalMonteCarlo.lean#L180)
+- [sum_weight](../../FQChem/StatePrep/VariationalOptimization/VariationalMonteCarlo.lean#L60)
+- [transitionNonnegative](../../FQChem/StatePrep/VariationalOptimization/VariationalMonteCarlo.lean#L160)
+- [variationalBound](../../FQChem/StatePrep/VariationalOptimization/VariationalMonteCarlo.lean#L77)
+- [zeroVarianceIff](../../FQChem/StatePrep/VariationalOptimization/VariationalMonteCarlo.lean#L110)

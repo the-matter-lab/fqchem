@@ -1,15 +1,10 @@
-name = "formal_qchem"
-version = "0.2.0"
-defaultTargets = ["FormalQChem", "LegacyImports"]
+name = "fqchem"
+version = "0.1.0"
+defaultTargets = ["FQChem"]
 
 [[require]]
-name = "aaCompat"
+name = "aaronsonAmbainisPort"
 path = "integrations/aaronson-ambainis"
-
-[[require]]
-name = "AaronsonAmbainis"
-git = "https://github.com/physical-superintelligence/aaronson-ambainis.git"
-rev = "2a6ceaef872ae993708950f951989134084b851a"
 
 [[require]]
 name = "mathlib"
@@ -17,18 +12,13 @@ scope = "leanprover-community"
 rev = "v4.36.0-rc2"
 
 [[lean_lib]]
-name = "FormalQChem"
+name = "FQChem"
 roots = []
 globs = [
-  "FormalQChem",
-  "FormalQChem.Complexity.*",
-  "FormalQChem.StatePrep.*",
-  "FormalQChem.Dynamics.*",
-  "FormalQChem.Properties.*",
-  "FormalQChem.Multiscale.*",
+  "FQChem",
+  "FQChem.Complexity.*",
+  "FQChem.StatePrep.*",
+  "FQChem.Dynamics.*",
+  "FQChem.Properties.*",
+  "FQChem.Multiscale.*",
 ]
-
-[[lean_lib]]
-name = "LegacyImports"
-srcDir = "compat"
-globs = ["FormalQChem.Theorems.+", "FormalQChem.Proofs.+"]

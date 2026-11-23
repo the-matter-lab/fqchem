@@ -1,6 +1,6 @@
 # Aaronson–Ambainis proof dependency
 
-FormalQChem uses David Turturean’s Apache-2.0 Lean proof at commit
+fqchem uses David Turturean’s Apache-2.0 Lean proof at commit
 `2a6ceaef872ae993708950f951989134084b851a`. The upstream public theorems
 use Lean and Mathlib 4.33. This package compiles their source with the same
 Lean and Mathlib 4.36.0-rc2 environment as the chemistry application.
@@ -9,7 +9,7 @@ Lean and Mathlib 4.36.0-rc2 environment as the chemistry application.
 From the repository root, run
 
 ```sh
-lake build FormalQChem.Complexity.AaronsonAmbainis
+lake build FQChem.Complexity.AaronsonAmbainis
 ```
 
 Lake fetches the pinned repository and invokes `prepare.py` using Python 3

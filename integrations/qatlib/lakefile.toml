@@ -1,6 +1,6 @@
-name = "formal_qchem_kitaev"
+name = "fqchem_kitaev"
 version = "0.1.0"
-defaultTargets = ["FormalQChemKitaev"]
+defaultTargets = ["FQChemKitaev"]
 
 [[require]]
 name = "Qatlib"
@@ -8,17 +8,17 @@ git = "https://github.com/quantum-atlas-ai/qatlib.git"
 rev = "f76f71a7c5cd19a31c251d0feeab09c75a758d69"
 
 [[lean_lib]]
-name = "FormalQChemKitaev"
-globs = ["FormalQChemKitaev", "FormalQChemKitaev.+"]
+name = "FQChemKitaev"
+globs = ["FQChemKitaev", "FQChemKitaev.+"]
 
 [[lean_lib]]
-name = "FormalQChem"
+name = "FQChem"
 srcDir = "../.."
 roots = []
 globs = [
-  "FormalQChem.StatePrep.VariationalOptimization.RayleighRitz",
-  "FormalQChem.StatePrep.VariationalOptimization.VQE",
-  "FormalQChem.Complexity.ElectronicStructure",
-  "FormalQChem.Complexity.ElectronicStructureOperators",
-  "FormalQChem.Complexity.ElectronicStructurePauli",
+  "FQChem.StatePrep.VariationalOptimization.RayleighRitz",
+  "FQChem.StatePrep.VariationalOptimization.VQE",
+  "FQChem.Complexity.ElectronicStructure",
+  "FQChem.Complexity.ElectronicStructureOperators",
+  "FQChem.Complexity.ElectronicStructurePauli",
 ]

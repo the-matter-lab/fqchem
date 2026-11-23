@@ -52,7 +52,7 @@ def prepare(upstream: Path, destination: Path) -> None:
                     )
             notice = (
                 f"-- Generated from {path.as_posix()}, copyright 2026 David Turturean (Apache-2.0).\n"
-                "-- FormalQChem adapted this file for Lean 4.36. See lean-4.36.patch and NOTICE.\n"
+                "-- FQChem adapted this file for Lean 4.36. See lean-4.36.patch and NOTICE.\n"
             )
             content = notice + "module\n\n" + "".join(lines[:last_import + 1])
             content += "\n@[expose] public section\n" + "".join(lines[last_import + 1:])

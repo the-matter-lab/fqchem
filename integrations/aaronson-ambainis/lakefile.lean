@@ -1,11 +1,13 @@
 import Lake
 open Lake DSL System
 
-package aaCompat
+package aaronsonAmbainisPort
 
 require AaronsonAmbainis from git
   "https://github.com/physical-superintelligence/aaronson-ambainis.git" @
   "2a6ceaef872ae993708950f951989134084b851a"
+
+require "leanprover-community" / "mathlib" @ git "v4.36.0-rc2"
 
 target portSources pkg : Unit := do
   let some upstream ← findPackageByName? `AaronsonAmbainis

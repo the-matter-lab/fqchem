@@ -2,9 +2,9 @@
 
 Browse the diagrams directly on GitHub, or open [the interactive explorer](index.html) in a browser from a checkout. Search by theorem, method or family and select a result to trace its prerequisites and the results that use it. The explorer works offline with its accompanying data files.
 
-- [FormalQChem theorem graphs by module](library.md)
+- [fqchem theorem graphs by module](library.md)
 - [Kitaev integration theorem graphs by module](kitaev.md)
-- [Scope and references for the complexity results](../../FormalQChem/Complexity/README.md)
+- [Scope and references for the complexity results](../../FQChem/Complexity/README.md)
 
 ## Reading the graph
 
