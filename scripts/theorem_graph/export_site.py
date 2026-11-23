@@ -1,5 +1,6 @@
 """Export the committed explorer as one HTML file with revision-pinned source links."""
 
+import base64
 import json
 from pathlib import Path
 import subprocess
@@ -23,6 +24,14 @@ def export():
         return git("show", f"{revision}:{directory}/{name}")
 
     html = read("index.html")
+    font = subprocess.check_output(
+        ["git", "show", f"{revision}:{directory}/fonts/stix-two-text-latin.woff2"], cwd=ROOT,
+    )
+    font_uri = "data:font/woff2;base64," + base64.b64encode(font).decode("ascii")
+    css = read("atlas.css").replace("fonts/stix-two-text-latin.woff2", font_uri)
+    html = html.replace('<link rel="stylesheet" href="atlas.css">',
+                        f"<style>/* {read('fonts/OFL.txt')} */\n{css}</style>")
+    html = html.replace('<script src="atlas.js"></script>', f"<script>{read('atlas.js')}</script>")
     for name in ("library.js", "kitaev.js"):
         script = read(name).strip()
         prefix = "addTheoremGraph("

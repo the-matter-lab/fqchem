@@ -1,0 +1,157 @@
+@font-face {
+  font-family: "STIX Two Text";
+  src: url("fonts/stix-two-text-latin.woff2") format("woff2");
+  font-display: swap;
+  font-weight: 400 600;
+}
+:root {
+  color-scheme: light;
+  --paper: #f8f7f1;
+  --plate: #fffef9;
+  --ink: #202b27;
+  --quiet: #58615b;
+  --rule: #c9cdc0;
+  --soft: #e3e4d9;
+  --classical: #b45a29;
+  --quantum: #306ba0;
+  --general: #647e60;
+  --serif: "STIX Two Text", Georgia, serif;
+  --sans: "Helvetica Neue", Arial, sans-serif;
+  --mono: "IBM Plex Mono", ui-monospace, SFMono-Regular, Consolas, monospace;
+}
+* { box-sizing: border-box }
+body { background: var(--paper); color: var(--ink); margin: 0; font: 15px/1.45 var(--sans) }
+button, input, output { font: inherit; color: inherit }
+button { cursor: pointer }
+button:disabled { color: #858981; cursor: default }
+a { color: inherit; text-decoration-color: #969b8e; text-underline-offset: 3px }
+a:focus-visible, button:focus-visible, input:focus-visible, svg:focus-visible { outline: 2px solid #2e6795; outline-offset: 3px }
+::selection { background: #d7e4ee; color: #192f3c }
+[hidden] { display: none !important }
+.symbols, .sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap }
+.icon { width: 17px; height: 17px; fill: none; stroke: currentColor; stroke-width: 1.55; stroke-linecap: round; stroke-linejoin: round; flex-shrink: 0 }
+header { border-bottom: 1px solid var(--rule) }
+.mast, main { max-width: 1620px; margin-inline: auto; padding-inline: clamp(18px,3.4vw,60px) }
+.mast { min-height: 67px; display: flex; align-items: center; gap: 17px }
+.brand { display: flex; align-items: center; gap: 9px; font: 600 30px/.95 var(--serif); letter-spacing: -.035em; text-decoration: none }
+.mark { width: 30px; height: 30px; fill: var(--ink); stroke: var(--ink); stroke-width: 1.65; stroke-linejoin: round }
+.mark path { fill: none }
+.brand-context { border-left: 1px solid var(--rule); padding-left: 17px; font-size: 13px; color: var(--quiet) }
+.paper-link { margin-left: auto; display: flex; align-items: center; gap: 3px; font-size: 13px; text-decoration: none }
+.paper-link:hover { text-decoration: underline }
+.paper-link .icon { width: 13px; height: 13px }
+.repo-link { display: flex; align-items: center; gap: 7px; padding: 6px 10px; min-height: 34px; border: 1px solid var(--rule); border-radius: 5px; color: var(--ink); text-decoration: none; font-size: 13px; font-weight: 550 }
+.repo-link:hover { background: #eaece2; border-color: #a9afa4 }
+.repo-stars { display: inline-flex; align-items: center; gap: 4px; padding-left: 7px; border-left: 1px solid var(--rule); font-variant-numeric: tabular-nums }
+.repo-stars:has(#star-count:empty) { display: none }
+.intro { display: flex; align-items: end; justify-content: space-between; gap: 20px; padding-block: 28px 23px }
+h1, h2, h3, p { margin: 0 }
+h1 { font: 500 clamp(38px,4.2vw,61px)/1 var(--serif); letter-spacing: -.039em }
+.intro p { font-size: 15px; color: var(--quiet); margin-top: 8px }
+.totals { display: flex; gap: 22px; padding-bottom: 3px }
+.totals span { color: var(--quiet); font-size: 12px; display: grid }
+.totals span + span { padding-left: 22px; border-left: 1px solid var(--rule) }
+.totals b { font: 400 29px/1.12 var(--serif); font-variant-numeric: tabular-nums; color: var(--ink) }
+.workbench { display: grid; grid-template-columns: minmax(0,1fr) clamp(260px,23vw,335px); border: 1px solid #bfc5b7; background: var(--plate); border-radius: 6px; overflow: hidden }
+.figure { min-width: 0; display: grid; grid-template-rows: auto 1fr auto }
+.plotbar { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; column-gap: 6px; min-height: 46px; padding: 2px 15px 2px 20px; border-bottom: 1px solid var(--soft) }
+.plot-title, .zoom { display: flex; align-items: center }
+.plot-title { gap: 7px; font-size: 13px; font-weight: 600 }
+.plot-title { min-width: 0; flex: 1 }
+#view-name { overflow: hidden; text-overflow: ellipsis; white-space: nowrap }
+#details-jump { font-size: 11px; font-weight: 400; white-space: nowrap; display: none }
+.plot-title .icon { fill: var(--plate) }
+.zoom { gap: 2px; color: var(--quiet) }
+.zoom button { border: 0; background: transparent; width: 31px; height: 33px; display: grid; place-items: center; border-radius: 3px }
+.zoom button:hover:enabled { background: #ebede3; color: var(--ink) }
+.zoom .icon { width: 15px; height: 15px }
+#fit { margin-left: 6px; border-left: 1px solid var(--rule); border-radius: 0; width: 37px }
+#scale { font: 11px var(--mono); min-width: 4.2ch; text-align: center; font-variant-numeric: tabular-nums }
+.plot { position: relative; overflow: hidden; height: clamp(387px,56vh,720px); background: var(--plate) }
+#network { width: 100%; height: 100%; display: block; touch-action: none; cursor: grab; user-select: none }
+#network:active { cursor: grabbing }
+.edge { fill: none; stroke: #788277; stroke-width: .85; opacity: .62 }
+.edge.via { stroke-dasharray: 2.3 2.2 }
+.edge.cross { stroke: #90988e; opacity: .48 }
+.edge.dim { opacity: .065 }
+.edge.active { stroke: #273a42; stroke-width: 1.45; opacity: .95 }
+.dot { cursor: pointer; stroke: var(--plate); stroke-width: .65 }
+.dot.dim { opacity: .18 }
+.dot.neighbor { stroke: #26362d; stroke-width: 1 }
+.dot.selected { stroke: var(--ink); stroke-width: 2 }
+.map-label { cursor: pointer; fill: #364137; font: 500 17px var(--serif); letter-spacing: -.02em; paint-order: stroke; stroke: var(--plate); stroke-width: 5px; stroke-linejoin: round }
+.map-label.dim { opacity: .42 }
+#focus-label { pointer-events: none }
+#zoom-labels { pointer-events: none }
+.zoom-text { font-family: var(--sans); fill: var(--ink); paint-order: stroke; stroke: var(--plate); stroke-linejoin: round }
+.focus-text { font: 600 12px var(--sans); fill: #182c35; paint-order: stroke; stroke: var(--plate); stroke-width: 4px; stroke-linejoin: round }
+#tip { position: absolute; pointer-events: none; background: var(--ink); color: #fff; padding: 6px 10px; border-radius: 3px; z-index: 1; max-width: 90%; font: 12px/1.4 var(--mono); overflow-wrap: anywhere }
+.legend { display: flex; flex-wrap: wrap; gap: 8px 22px; padding: 13px 20px; border-top: 1px solid var(--soft) }
+.key { display: inline-flex; align-items: center; gap: 7px; font-size: 12px; color: var(--quiet) }
+.key i { width: 9px; height: 9px; border-radius: 50%; background: var(--color) }
+.classical { --color: var(--classical) } .quantum { --color: var(--quantum) } .general { --color: var(--general) }
+aside { border-left: 1px solid var(--rule); background: #f4f4ec; display: flex; flex-direction: column; min-height: 0; min-width: 0 }
+.sidehead { padding: 18px 19px 13px }
+h2 { font: 500 25px/1.15 var(--serif); letter-spacing: -.025em }
+.searchbox { display: flex; align-items: center; gap: 7px; margin-top: 13px; background: var(--plate); border: 1px solid #b9c0b2; border-radius: 4px; padding: 0 9px; color: var(--quiet) }
+.searchbox:focus-within { outline: 2px solid #2e6795; outline-offset: 1px }
+.searchbox input { border: none; outline: none; width: 100%; min-width: 0; height: 38px; background: transparent; font-size: 13px; color: var(--ink); caret-color: var(--quantum) }
+.searchbox input:focus-visible { outline: none }
+.searchbox kbd { font: 11px var(--mono); border: 1px solid var(--soft); border-radius: 3px; padding: 0 4px }
+#panel { height: 0; flex: 1; overflow: auto; scrollbar-color: #bec5b6 transparent; padding: 0 19px 16px }
+.section-title { margin: 9px 0 5px; font: 600 12px/1.5 var(--sans); color: var(--quiet) }
+.rows { display: grid }
+.row, .back { width: 100%; border: 0; background: none; text-align: left; min-width: 0; cursor: pointer }
+.row { display: flex; align-items: center; gap: 8px; min-height: 35px; padding: 6px 2px; border-bottom: 1px solid var(--soft); font-size: 13px; color: var(--ink) }
+.row:hover, .back:hover { background: #e9ece1 }
+.row .label { flex: 1; min-width: 0; overflow-wrap: anywhere }
+.row small { display: block; font-size: 11px; color: var(--quiet) }
+.row .count { font: 11px var(--mono); color: var(--quiet); font-variant-numeric: tabular-nums }
+.row .icon { width: 13px; height: 13px; color: #686f65 }
+.row .swatch { width: 7px; height: 7px; border-radius: 50%; background: var(--color); flex-shrink: 0 }
+.subsection { margin-top: 20px }
+.back { padding: 6px 0; display: flex; align-items: center; gap: 5px; font-size: 12px; color: var(--quiet) }
+.back .icon { width: 15px; height: 15px }
+.detail-title { font: 500 21px/1.2 var(--serif); overflow-wrap: anywhere; margin: 7px 0 }
+.detail-module { font: 11px/1.5 var(--mono); color: var(--quiet); overflow-wrap: anywhere; margin: 7px 0 }
+.source-link { display: inline-flex; align-items: center; gap: 3px; font-size: 13px; margin-top: 4px }
+.source-link .icon { width: 14px; height: 14px }
+.empty { font-size: 13px; color: var(--quiet); margin: 9px 0 }
+footer { display: flex; align-items: center; gap: 7px; font-size: 11px; color: var(--quiet); padding: 13px 0 17px }
+.arrow-sample { font-size: 23px; line-height: 10px }
+.dash-sample { width: 18px; border-top: 1px dashed var(--quiet); margin-left: 10px }
+.gesture { margin-left: auto }
+@media (min-width: 1540px) { .plot { height: clamp(520px,62vh,790px) } }
+@media (max-width: 800px) {
+  #details-jump { display: inline }
+  .workbench { grid-template-columns: 1fr }
+  .plot { height: clamp(320px,48vh,510px) }
+  aside { border-left: 0; border-top: 1px solid var(--rule) }
+  #panel { flex: auto; height: auto; max-height: 410px }
+  .sidehead { display: flex; align-items: center; gap: 20px; padding: 14px 18px 7px }
+  .searchbox { flex: 1; margin: 0 }
+  .totals { gap: 13px }
+  .totals span + span { padding-left: 13px }
+}
+@media (max-width: 540px) {
+  .mast, main { padding-inline: 13px }
+  .mast { min-height: 52px; gap: 12px }
+  .brand { font-size: 26px }
+  .brand-context { display: none }
+  .intro { align-items: start; flex-direction: column; gap: 7px; padding-block: 18px 13px }
+  h1 { font-size: 37px }
+  .intro p { display: none }
+  .totals { gap: 9px }
+  .totals span { flex-direction: row; display: flex; align-items: baseline; gap: 4px; font-size: 12px }
+  .totals b { font: 600 12px var(--sans) }
+  .totals span + span { padding-left: 9px }
+  .plotbar { min-height: 40px; padding-inline: 10px 4px }
+  .plot { height: clamp(335px,46vh,490px) }
+  .legend { padding: 9px 10px; gap: 5px 12px }
+  .key { font-size: 11px; gap: 4px }
+  .key i { width: 7px; height: 7px }
+  .sidehead { padding-inline: 13px; gap: 12px }
+  #panel { padding-inline: 13px }
+  footer { flex-wrap: wrap }
+  .gesture { display: none }
+}
