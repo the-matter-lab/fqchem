@@ -1,0 +1,20 @@
+name: Lean
+on: [push, pull_request]
+permissions:
+  contents: read
+jobs:
+  proofs:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: leanprover/lean-action@v1
+        with:
+          auto-config: false
+          use-mathlib-cache: false
+          use-github-cache: false
+      - name: Fetch compiled dependencies
+        run: |
+          mapfile -t modules < <(awk '$1 == "import" && $2 ~ /^Mathlib/ {print $2} $2 == "import" && $3 ~ /^Mathlib/ {print $3}' FormalQChem/{Theorems,Proofs}/*.lean | sort -u)
+          lake exe cache get "${modules[@]}"
+      - run: lake build
+      - run: lake env lean Audit.lean
