@@ -19,6 +19,9 @@ Import this chapter with `import FormalQChem.Dynamics`.
 ## [Fault-tolerant digital algorithms](DigitalAlgorithms)
 
 - **Digital Hamiltonian simulation**. [Noncommuting Lie–Trotter convergence for bounded generators](DigitalAlgorithms/LieTrotter.lean#L73) · [Exact multislice product formula for commuting terms](DigitalAlgorithms/CommutingTerms.lean#L18). [Trotter (1959)](https://doi.org/10.1090/S0002-9939-1959-0108732-6), [Lloyd (1996)](https://doi.org/10.1126/science.273.5278.1073)
+- **Linear combinations of unitaries (LCU)**. The PREPARE–SELECT–unprepare circuit [block-encodes H/α](DigitalAlgorithms/LinearCombinationOfUnitaries.lean#L69) when its ancilla probabilities give the normalized term weights. For a unit input ψ the [postselection probability](DigitalAlgorithms/LinearCombinationOfUnitaries.lean#L81) is ‖Hψ‖²/α². [Berry et al. (2015)](https://doi.org/10.1103/PhysRevLett.114.090502)
+- **Truncated Taylor simulation**. A [factorial one-segment truncation bound](DigitalAlgorithms/TruncatedTaylor.lean#L109) yields a [total operator-norm error bound](DigitalAlgorithms/TruncatedTaylor.lean#L116) for equal time segments and a bounded self-adjoint Hamiltonian. [Berry et al. (2015)](https://doi.org/10.1103/PhysRevLett.114.090502)
+- **Qubitization**. For an orthogonal signal projector P and a Hermitian involution S, [the projected nth walk power](DigitalAlgorithms/Qubitization.lean#L100) implements the Chebyshev polynomial of the encoded Hamiltonian. This gives the [eigenphase relation](DigitalAlgorithms/Qubitization.lean#L150) and a [short-time error bound](DigitalAlgorithms/Qubitization.lean#L169) for a weighted combination of walk steps. [Low & Chuang (2019)](https://doi.org/10.22331/q-2019-07-12-163)
 
 ## [Reduced-state and open-system evolution](OpenSystems)
 

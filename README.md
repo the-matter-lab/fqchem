@@ -4,8 +4,8 @@ Machine-checked quantum chemistry in Lean 4. Choose a physical task to browse it
 
 | Chapter | What you’ll find |
 | --- | --- |
-| [State preparation](FormalQChem/StatePrep/) | Variational optimization, imaginary-time projection and filtering, perturbation theory, subspace diagonalization, and adiabatic preparation |
-| [Dynamics](FormalQChem/Dynamics/) | Real-time propagation, digital simulation, open systems, and learned potentials |
+| [State preparation](FormalQChem/StatePrep/) | Variational optimization, Monte Carlo projection, perturbation theory, subspace diagonalization, adiabatic and circuit preparation |
+| [Dynamics](FormalQChem/Dynamics/) | Real-time propagation, product formulas, LCU, qubitization, open systems, and learned potentials |
 | [Properties](FormalQChem/Properties/) | Measurements, response and estimators, phase estimation, and linear systems |
 | [Multiscale methods](FormalQChem/Multiscale/) | Choosing layers and combining their solutions, from embedding and fragmentation to free energies and error bounds |
 

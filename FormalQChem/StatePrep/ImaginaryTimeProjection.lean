@@ -1,4 +1,10 @@
 module
 
+public import FormalQChem.StatePrep.ImaginaryTimeProjection.AFQMC
+public import FormalQChem.StatePrep.ImaginaryTimeProjection.DiffusionMonteCarlo
+public import FormalQChem.StatePrep.ImaginaryTimeProjection.FCIQMC
+public import FormalQChem.StatePrep.ImaginaryTimeProjection.GaussianAuxiliaryField
 public import FormalQChem.StatePrep.ImaginaryTimeProjection.GroundStateProjection
+public import FormalQChem.StatePrep.ImaginaryTimeProjection.HubbardProjection
+public import FormalQChem.StatePrep.ImaginaryTimeProjection.PhaseEstimationFilter
 public import FormalQChem.StatePrep.ImaginaryTimeProjection.SpectralFiltering
