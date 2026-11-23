@@ -7,6 +7,13 @@ import Lean.Elab.Command
 open Lean Elab Command in
 run_cmd do
   let env ← getEnv
+  let mut proofModules : Nat := 0
+  for file in ← ("FormalQChem" : System.FilePath).walkDir do
+    if file.fileName == some "Proofs.lean" then
+      let modName := (file.withExtension "").components.foldl Name.str Name.anonymous
+      unless env.header.moduleNames.contains modName do
+        throwError "The library root does not import {modName}"
+      proofModules := proofModules + 1
   let allowed := #[``propext, ``Classical.choice, ``Quot.sound]
   let mut count : Nat := 0
   for (name, info) in env.constants.toList do
@@ -19,4 +26,4 @@ run_cmd do
         count := count + 1
       | _ => pure ()
   if count == 0 then throwError "No package theorems were imported"
-  logInfo m!"Verified axiom dependencies of {count} theorem declarations."
+  logInfo m!"Imported all {proofModules} proof modules. Verified axiom dependencies of {count} theorem declarations."

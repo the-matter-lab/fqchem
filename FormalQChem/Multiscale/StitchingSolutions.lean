@@ -1,0 +1,5 @@
+module
+
+public import FormalQChem.Multiscale.StitchingSolutions.EmbeddedSolvers
+public import FormalQChem.Multiscale.StitchingSolutions.Observables
+public import FormalQChem.Multiscale.StitchingSolutions.ErrorPropagation

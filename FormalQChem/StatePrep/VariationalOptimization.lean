@@ -1,0 +1,14 @@
+module
+
+public import FormalQChem.StatePrep.VariationalOptimization.Proofs
+public import FormalQChem.StatePrep.VariationalOptimization.DMRG.Proofs
+public import FormalQChem.StatePrep.VariationalOptimization.ExcitedStates.Proofs
+public import FormalQChem.StatePrep.VariationalOptimization.FermionicAnsatz.Proofs
+public import FormalQChem.StatePrep.VariationalOptimization.MatrixProductStates.Proofs
+public import FormalQChem.StatePrep.VariationalOptimization.MonteCarlo.Proofs
+public import FormalQChem.StatePrep.VariationalOptimization.RayleighRitz.Proofs
+public import FormalQChem.StatePrep.VariationalOptimization.VQE.Proofs
+public import FormalQChem.StatePrep.VariationalOptimization.DensityFunctionals.CoulombIntegrability.Proofs
+public import FormalQChem.StatePrep.VariationalOptimization.DensityFunctionals.DFT.Proofs
+public import FormalQChem.StatePrep.VariationalOptimization.DensityFunctionals.MolecularDFT.Proofs
+public import FormalQChem.StatePrep.VariationalOptimization.DensityFunctionals.MolecularHK.Proofs

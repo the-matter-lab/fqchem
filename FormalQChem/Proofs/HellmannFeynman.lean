@@ -1,42 +1,5 @@
 module
 
-public import FormalQChem.Theorems.HellmannFeynman
-public import Mathlib.Analysis.Calculus.Deriv.Inv
-public import Mathlib.Analysis.Calculus.Deriv.Mul
+public import FormalQChem.Properties.ResponseAndEstimation.HellmannFeynman.Proofs
 
-public section
-
-namespace FormalQChem
-
-open Filter
-open scoped InnerProductSpace Topology
-
-/-- Differentiate the eigenvalue equation against the fixed vector at `x`.
-Its overlap with the moving eigenvector stays nonzero near `x`, so the energy
-is locally a quotient. Symmetry cancels the two eigenvector-derivative terms. -/
-theorem hellmannFeynman (V : Type*) [NormedAddCommGroup V] [InnerProductSpace ℝ V] :
-    HellmannFeynman V := by
-  intro H H' ψ ψ' energy x hH hψ hsym hnorm heigen
-  have hself : ⟪ψ x, ψ x⟫_ℝ = 1 := by
-    simp [hnorm]
-  have hfixed := hasDerivAt_const x (ψ x)
-  have hden : HasDerivAt (fun t => ⟪ψ x, ψ t⟫_ℝ) ⟪ψ x, ψ'⟫_ℝ x := by
-    simpa using hfixed.inner ℝ hψ
-  have hnum : HasDerivAt (fun t => ⟪ψ x, H t (ψ t)⟫_ℝ)
-      ⟪ψ x, H' (ψ x) + H x ψ'⟫_ℝ x := by
-    simpa using hfixed.inner ℝ (hH.clm_apply hψ)
-  have hnz : ⟪ψ x, ψ x⟫_ℝ ≠ 0 := by rw [hself]; norm_num
-  have hquot := hnum.div hden hnz
-  have hlocal : energy =ᶠ[𝓝 x]
-      (fun t => ⟪ψ x, H t (ψ t)⟫_ℝ / ⟪ψ x, ψ t⟫_ℝ) := by
-    filter_upwards [heigen, hden.continuousAt.eventually_ne hnz] with t ht hne
-    rw [ht, real_inner_smul_right]
-    exact (mul_div_cancel_right₀ _ hne).symm
-  have hswap : ⟪ψ x, H x ψ'⟫_ℝ = energy x * ⟪ψ x, ψ'⟫_ℝ := by
-    calc
-      _ = ⟪H x (ψ x), ψ'⟫_ℝ := (hsym _ _).symm
-      _ = _ := by rw [heigen.self_of_nhds, real_inner_smul_left]
-  simpa [inner_add_right, hswap, heigen.self_of_nhds, real_inner_smul_right,
-    hnorm] using hquot.congr_of_eventuallyEq hlocal
-
-end FormalQChem
+/-! Compatibility imports for the original package layout. -/
