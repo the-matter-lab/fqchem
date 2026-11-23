@@ -1,0 +1,48 @@
+diff --git a/AaronsonAmbainis/DetBij/Perm.lean b/AaronsonAmbainis/DetBij/Perm.lean
+index eda3170..19e9e4e 100644
+--- a/AaronsonAmbainis/DetBij/Perm.lean
++++ b/AaronsonAmbainis/DetBij/Perm.lean
+@@ -75,7 +75,7 @@ theorem Qmat_prod_eq (g : Cube ι → Bool) (A : Cube ι → Finset ι) (σ : Eq
+ omit [Fintype ι] [DecidableEq ι] in
+ /-- A sign does not change whether a coefficient vanishes. -/
+ theorem coeff_units_smul_ne_zero (m : ι →₀ ℕ) (u : ℤˣ) (p : MvPolynomial ι ℤ)
+-    (h : coeff m (u • p) ≠ 0) : coeff m p ≠ 0 := by
++    (h : (u • p).coeff m ≠ 0) : p.coeff m ≠ 0 := by
+   rcases Int.units_eq_one_or u with rfl | rfl
+   · simpa using h
+   · simpa using h
+diff --git a/AaronsonAmbainis/DetLow/Unit.lean b/AaronsonAmbainis/DetLow/Unit.lean
+index 0a7e70e..4a0cc0b 100644
+--- a/AaronsonAmbainis/DetLow/Unit.lean
++++ b/AaronsonAmbainis/DetLow/Unit.lean
+@@ -17,10 +17,10 @@ open Finset MvPolynomial
+ theorem coeff_unit_mul {ι : Type} [Fintype ι] (u q : MvPolynomial ι ℤ)
+     (hu : constantCoeff u = 1) (m : ι →₀ ℕ)
+     (hm : ∀ m' ∈ q.support, ∑ i, m i ≤ ∑ i, m' i) :
+-    coeff m (u * q) = coeff m q := by
++    (u * q).coeff m = q.coeff m := by
+   classical
+   rw [coeff_mul, Finset.sum_eq_single (0, m)]
+-  · have h0 : coeff 0 u = 1 := hu
++  · have h0 : u.coeff 0 = 1 := hu
+     simp [h0]
+   · rintro ⟨a, b⟩ hab hne
+     have hsum : a + b = m := by simpa using hab
+@@ -29,7 +29,7 @@ theorem coeff_unit_mul {ι : Type} [Fintype ι] (u q : MvPolynomial ι ℤ)
+       apply hne
+       rw [zero_add] at hsum
+       rw [hsum]
+-    have hb : coeff b q = 0 := by
++    have hb : q.coeff b = 0 := by
+       by_contra h
+       have h1 := hm b (mem_support_iff.mpr h)
+       obtain ⟨i, hi⟩ : ∃ i, a i ≠ 0 := by
+@@ -61,7 +61,7 @@ theorem isLowest_unit_mul {ι : Type} [Fintype ι] (u q : MvPolynomial ι ℤ)
+     have hmin' : ∀ m'' ∈ q.support, ∑ i, m' i ≤ ∑ i, m'' i := fun m'' h'' =>
+       hlt.le.trans (hmin m'' h'')
+     have h1 := coeff_unit_mul u q hu m' hmin'
+-    have h2 : coeff m' q = 0 := by
++    have h2 : q.coeff m' = 0 := by
+       by_contra hne
+       have := hmin m' (mem_support_iff.mpr hne)
+       omega

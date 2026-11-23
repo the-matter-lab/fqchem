@@ -8,6 +8,9 @@ Machine-checked quantum chemistry in Lean 4. Choose a physical task to browse it
 | [Dynamics](FormalQChem/Dynamics/) | Real-time propagation, product formulas, LCU, qubitization, open systems, and learned potentials |
 | [Properties](FormalQChem/Properties/) | Measurements, response and estimators, phase estimation, and linear systems |
 | [Multiscale methods](FormalQChem/Multiscale/) | Choosing layers and combining their solutions, from embedding and fragmentation to free energies and error bounds |
+| [Complexity and limits](FormalQChem/Complexity/) | Query lower bounds for ground-state preparation and orbital simulation, Aaronson–Ambainis influence, the Kitaev reduction, and fixed-particle encoding |
+
+Browse the [theorem dependency graph](docs/theorems/README.md) to trace a result through its prerequisites or find the theorems that use it.
 
 Each topic file contains its definitions, theorem statements, and proofs. For example, the variational principle is in [RayleighRitz.lean](FormalQChem/StatePrep/VariationalOptimization/RayleighRitz.lean). VQE uses it in the [same family](FormalQChem/StatePrep/VariationalOptimization/VQE.lean). Its finite-shot energy estimator is in [Properties](FormalQChem/Properties/ResponseAndEstimation/VQEMeasurement.lean).
 
@@ -30,5 +33,7 @@ lake exe cache get
 lake build
 lake env lean test/Audit.lean
 ```
+
+The [Kitaev integration](integrations/qatlib/) has its own pinned Lean 4.35 build. The main library uses Lean 4.36 and builds its [Aaronson–Ambainis dependency](integrations/aaronson-ambainis/) through Lake.
 
 The audit checks that the library imports every scientific module and verifies the axiom dependencies of its theorems. The continuum DFT formalization adapts [Miguel Marques’s lean_dft](https://github.com/hyllios/lean_dft/tree/b9065256a6ddb1a7a4e1df3fbbf49a9a3fd546a4).

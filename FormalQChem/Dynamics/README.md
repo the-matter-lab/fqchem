@@ -32,3 +32,5 @@ Import this chapter with `import FormalQChem.Dynamics`.
 ## [Learned surrogates of electronic structure](LearnedSurrogates.lean)
 
 - **Learned potentials**. [Directional forces transform covariantly under energy-preserving isometries](LearnedSurrogates.lean#L28). [Chmiela et al. (2017)](https://doi.org/10.1126/sciadv.1603015)
+
+For the term-query lower bound on two-orbital simulation and the influence of binary onsite potentials on readout, see [Complexity and limits](../Complexity/README.md).

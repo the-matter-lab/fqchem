@@ -7,4 +7,5 @@ public import FormalQChem.StatePrep.ImaginaryTimeProjection.GaussianAuxiliaryFie
 public import FormalQChem.StatePrep.ImaginaryTimeProjection.GroundStateProjection
 public import FormalQChem.StatePrep.ImaginaryTimeProjection.HubbardProjection
 public import FormalQChem.StatePrep.ImaginaryTimeProjection.PhaseEstimationFilter
+public import FormalQChem.StatePrep.ImaginaryTimeProjection.SignProblem
 public import FormalQChem.StatePrep.ImaginaryTimeProjection.SpectralFiltering
