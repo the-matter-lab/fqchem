@@ -1,0 +1,125 @@
+[
+  {
+    "module": "FQChem.Complexity.LocalHamiltonianVerification",
+    "names": [
+      "termEffects"
+    ],
+    "papers": [
+      "https://doi.org/10.1090/gsm/047"
+    ],
+    "relation": "paper-result",
+    "scope": "Proposition 14.2, pp. 142–143. For a positive contraction H, the positive-square-root outcome operators have effects H and I−H, the binary POVM in the local verification step."
+  },
+  {
+    "module": "FQChem.Complexity.LocalHamiltonianVerification",
+    "names": [
+      "acceptance_eq"
+    ],
+    "papers": [
+      "https://doi.org/10.1090/gsm/047"
+    ],
+    "relation": "paper-result",
+    "scope": "Proposition 14.2, p. 143. Choosing a term uniformly among r positive contractions gives Born acceptance probability 1−⟨ψ,Hψ⟩/r on every normalized witness ψ, where H is the sum of the terms."
+  },
+  {
+    "module": "FQChem.Complexity.LocalHamiltonianVerification",
+    "names": [
+      "maximumAcceptance"
+    ],
+    "papers": [
+      "https://doi.org/10.1090/gsm/047"
+    ],
+    "relation": "paper-result",
+    "scope": "Proposition 14.2, pp. 142–143. In finite dimension the best acceptance probability equals 1−λmin(H)/r and a normalized witness attains it. This supplies the measurement and energy-gap argument; efficient synthesis and witness amplification are separate complexity claims."
+  },
+  {
+    "module": "FQChemQatlib.Dynamics.SparseHamiltonianSimulation",
+    "names": [
+      "sparseSignalEncoding"
+    ],
+    "papers": [
+      "https://doi.org/10.22331/q-2019-07-12-163"
+    ],
+    "relation": "specialization",
+    "scope": "Lemma 6, Eqs. (11)–(13). Starting with row sparsity d and entry bound b>0, Hermiticity gives column sparsity. The constructed isometry and self-adjoint unitary swap compress to H/(db). The construction is in matrix frames."
+  },
+  {
+    "module": "FQChemQatlib.Dynamics.SparseHamiltonianSimulation",
+    "names": [
+      "segmentedSparseEvolution"
+    ],
+    "papers": [
+      "https://doi.org/10.1103/PhysRevLett.118.010501",
+      "https://doi.org/10.22331/q-2019-07-12-163"
+    ],
+    "relation": "derived",
+    "scope": "From a d-row-sparse Hermitian H with entry magnitudes at most b, one segmented QSP word simulates physical time τ/(db) for rational τ on every input with relative vector-norm error at most 2⁻ᵏ. Both counts belong to that word and charge its walk oracle and exact matrix gates. Theorem 3 (2017) counts elementary gates and position/entry queries with an optimal truncation schedule."
+  },
+  {
+    "module": "Qatlib.Papers.Qubitization19.SparseSim.SourceSparse",
+    "names": [
+      "lemma6_sparse_standard_form"
+    ],
+    "papers": [
+      "https://doi.org/10.22331/q-2019-07-12-163"
+    ],
+    "relation": "specialization",
+    "scope": "Lemma 6, Eqs. (11)–(13), in frames. Row and column sparsity d and entry bound b yield isometries with overlap H/(db), related by a self-adjoint unitary swap. The declaration constructs the encoding mathematically."
+  },
+  {
+    "module": "Qatlib.Concepts.QspSimulation.Achievability.ComputedSignalConsumers",
+    "names": [
+      "computed_signal_full_segmented_program_and_cost"
+    ],
+    "papers": [
+      "https://doi.org/10.1103/PhysRevLett.118.010501"
+    ],
+    "relation": "derived",
+    "scope": "For an existing projected unitary encoding, a segmented, amplified QSP word approximates the time-evolution action on the embedded input. Its exact oracle and fixed-matrix gate counts use its own cutoff and segment parameters."
+  },
+  {
+    "module": "FQChemQatlib.Properties.LinearSystems",
+    "names": [
+      "signedInverseState"
+    ],
+    "papers": [
+      "https://doi.org/10.1103/PhysRevLett.103.150502"
+    ],
+    "relation": "derived",
+    "scope": "Appendix A, Theorem 1(3), with a uniform-clock phase-estimation variant. For a Hermitian A with all eigenvalue magnitudes in [d,1/4], a single run with clock M=max(2,⌈65536/(d⁶ε⁴)⌉) succeeds with probability at least d²/4. The postselected state is within ε of normalized A⁻¹b in the clean success registers. Its circuit uses 2(M−1) exact spectral-oracle queries and 4(M−1)+6 fixed-matrix gates."
+  },
+  {
+    "module": "Qatlib.Concepts.HhlAlgorithms.UniformHHL.OffGridSignedHHL",
+    "names": [
+      "uniform_offgrid_signed_hhl_born_and_solution"
+    ],
+    "papers": [
+      "https://doi.org/10.1103/PhysRevLett.103.150502"
+    ],
+    "relation": "derived",
+    "scope": "For signed gapped spectral data the uniform-clock reciprocal filter has Born success at least d²/4 and normalized pseudoinverse-state error at most 2η/d when M ≥ 4096/(d²η⁴) and η ≤ d/2. These are variant-specific precision bounds."
+  },
+  {
+    "module": "Qatlib.Concepts.HhlAlgorithms.UniformHHL.UniformHHLFilter",
+    "names": [
+      "uniform_hhl_actual_legal_forward_inverse_ledger"
+    ],
+    "papers": [
+      "https://doi.org/10.1103/PhysRevLett.103.150502"
+    ],
+    "relation": "supporting",
+    "scope": "Counts the forward and inverse phase-estimation parts of the uniform-clock signed HHL variant. For a legal preparation and M≥2 the word is well formed and uses 2(M−1) oracle calls and 4(M−1)+6 fixed-matrix gates."
+  },
+  {
+    "module": "Qatlib.Papers.QLinearSolver18.MainResults.Readout.PseudoinverseReadout",
+    "names": [
+      "pseudoinverse_eq_inv_of_ne_zero"
+    ],
+    "papers": [
+      "https://arxiv.org/abs/1805.10549",
+      "https://doi.org/10.1103/PhysRevLett.103.150502"
+    ],
+    "relation": "supporting",
+    "scope": "Eq. (1) of Subaşı, Somma and Orsucci and the HHL solution-state readout. For a unitary eigenbasis and nonzero real eigenvalues, the spectral Hermitian matrix’s pseudoinverse equals its ordinary inverse."
+  }
+]

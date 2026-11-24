@@ -116,7 +116,7 @@ section RealAlgebra
 
 variable {R : Type*} [NormedRing R] [NormedAlgebra ℝ R]
 
-private theorem transportedDerivative {A F U V : ℝ → R} {d : R} {T s : ℝ}
+theorem transportedDerivative {A F U V : ℝ → R} {d : R} {T s : ℝ}
     (ev : SlowEvolution A T U V) (hs : s ∈ Icc 0 1) (hf : HasDerivAt F d s) :
     HasDerivAt (fun t => V t * F t * U t)
       (V s * (d - T • (A s * F s - F s * A s)) * U s) s := by
@@ -126,7 +126,7 @@ private theorem transportedDerivative {A F U V : ℝ → R} {d : R} {T s : ℝ}
   abel
 
 omit [NormedAlgebra ℝ R] in
-private theorem sandwichBound {u v x : R} (hu : ‖u‖ ≤ 1) (hv : ‖v‖ ≤ 1) :
+theorem sandwichBound {u v x : R} (hu : ‖u‖ ≤ 1) (hv : ‖v‖ ≤ 1) :
     ‖u * x * v‖ ≤ ‖x‖ := calc
   _ ≤ (‖u‖ * ‖x‖) * ‖v‖ := (norm_mul_le ..).trans (by gcongr; exact norm_mul_le ..)
   _ ≤ (1 * ‖x‖) * 1 := by gcongr

@@ -1,0 +1,66 @@
+[
+  {
+    "module": "FQChem.StatePrep.AdiabaticPreparation.GaplessAdiabatic",
+    "names": [
+      "gaplessAdiabaticDistance"
+    ],
+    "papers": [
+      "https://doi.org/10.1007/s002200050620"
+    ],
+    "relation": "paper-result",
+    "scope": "Theorem 1, bounded self-adjoint Hamiltonians on a complex Hilbert space. For a smooth finite-rank spectral projection, Schrödinger evolution of any normalized initial vector in its range has distance tending to zero uniformly over scaled time in [0,1]. The proof works for a continuous Hamiltonian path and a continuously differentiable projection, without a spectral gap or a universal rate.",
+    "aliases": {
+      "paper/avron-elgart-adiabatic": "FQChem.StatePrep.AdiabaticPreparation.gaplessAdiabaticDistance"
+    }
+  },
+  {
+    "module": "FQChem.StatePrep.AdiabaticPreparation.GaplessAdiabatic",
+    "names": [
+      "gaplessAdiabatic"
+    ],
+    "papers": [
+      "https://doi.org/10.1007/s002200050620"
+    ],
+    "relation": "paper-result",
+    "scope": "Uniform leakage in the equivalent norm-of-the-orthogonal-residual formulation, with the finite spectral projection specified by its eigenbasis."
+  },
+  {
+    "module": "FQChem.StatePrep.AdiabaticPreparation.GaplessAdiabatic",
+    "names": [
+      "approximateSpectralCommutator"
+    ],
+    "papers": [
+      "https://doi.org/10.1007/s002200050620"
+    ],
+    "relation": "derived",
+    "scope": "Finite rank and inclusion of every selected eigenspace in full place the projection tangent in the norm closure of commutators with the Hamiltonian. The pointwise proof uses the orthogonal complement of the kernel and finite sums of rank-one operators."
+  },
+  {
+    "module": "FQChem.StatePrep.AdiabaticPreparation.GaplessAdiabatic",
+    "names": [
+      "band_selfAdjoint",
+      "band_idempotent",
+      "comm_rankOne",
+      "band_commutes",
+      "star_comm_closure",
+      "rankOne_comm_closure"
+    ],
+    "papers": [
+      "https://doi.org/10.1007/s002200050620"
+    ],
+    "relation": "supporting",
+    "scope": "Finite spectral projection identities, a rank-one commutator formula and norm-closure arguments used to construct approximate solutions."
+  },
+  {
+    "module": "FQChem.StatePrep.AdiabaticPreparation.ApproximateCommutator",
+    "names": [
+      "interval_defect",
+      "approximateCommutatorTransport"
+    ],
+    "papers": [
+      "https://doi.org/10.1007/s002200050620"
+    ],
+    "relation": "derived",
+    "scope": "An approximate commutator on one interval gives error bounded by its residual times the interval length plus an endpoint correction. A finite partition gives a uniform adiabatic limit from pointwise approximate solutions."
+  }
+]

@@ -14,53 +14,6 @@
     ]
   },
   {
-    "id": "berry-sparse-no-fast-forwarding",
-    "title": "Sparse-oracle no-fast-forwarding",
-    "chapter": "Complexity",
-    "status": "published",
-    "papers": [
-      "https://doi.org/10.1007/s00220-006-0150-x"
-    ],
-    "locator": "Theorem 3 · parity-encoded chain",
-    "scope": "For every positive integer N the paper constructs a 2-sparse row-oracle Hamiltonian family with scaled time τ = ‖H‖t = πN/2. A simulator attaining trace-distance precision 1/4 for the family requires at least τ/(2π) = N/4 queries in the worst case.",
-    "related": [
-      "FQChem.Complexity.SparseParityPath.twoSparse",
-      "FQChem.Complexity.SparseParityPath.endpoint_amplitude",
-      "FQChem.Complexity.OrbitalSimulation.simulation_query_lower_bound"
-    ]
-  },
-  {
-    "id": "huang-shadow-sample-complexity",
-    "title": "Simultaneous classical-shadow predictions",
-    "chapter": "Properties",
-    "status": "published",
-    "papers": [
-      "https://doi.org/10.1038/s41567-020-0932-7"
-    ],
-    "locator": "Supplementary Section 1, Theorem 1 · Eqs. (S7), (S12)–(S14)",
-    "scope": "Fix M Hermitian observables on n qubits and an invertible shadow measurement channel. Use K = ⌈2 log(2M/δ)⌉ independent batches of order 34 maxᵢ‖Oᵢ − Tr(Oᵢ)I/2ⁿ‖²shadow/ε² snapshots each. For 0 < ε,δ < 1 the medians of the batch means are simultaneously within ε of all M expectations with probability at least 1−δ. The finite-ensemble Lean result applies to arbitrary Hermitian observables with a different choice of constants. This target tracks the published Eq. (S13) confidence bound for the general measurement primitive.",
-    "related": [
-      "FQChem.Properties.ClassicalShadows.secondMoment",
-      "FQChem.Properties.ClassicalShadows.predictionAtConfidence",
-      "FQChemQatlib.Properties.ClassicalShadows.shadowNormSquaredMaximum",
-      "FQChemQatlib.Properties.ClassicalShadows.simultaneousPrediction"
-    ],
-    "upstream": [
-      {
-        "label": "Qatlib · Born record law for finite unitary measurement ensembles",
-        "url": "https://github.com/quantum-atlas-ai/qatlib/blob/f76f71a7c5cd19a31c251d0feeab09c75a758d69/Qatlib/Concepts/ShadowModels/ShadowChannel/FiniteEnsembleMeasurement.lean#L290-L301"
-      },
-      {
-        "label": "Qatlib · centered variance and maximum over density states",
-        "url": "https://github.com/quantum-atlas-ai/qatlib/blob/f76f71a7c5cd19a31c251d0feeab09c75a758d69/Qatlib/Concepts/ShadowModels/ShadowChannel/FiniteEnsembleShadows.lean#L465-L503"
-      },
-      {
-        "label": "Qatlib · simultaneous prediction for arbitrary Hermitian observables and finite ensembles",
-        "url": "https://github.com/quantum-atlas-ai/qatlib/blob/f76f71a7c5cd19a31c251d0feeab09c75a758d69/Qatlib/Concepts/ShadowModels/ShadowChannel/FiniteEnsembleShadows.lean#L505-L539"
-      }
-    ]
-  },
-  {
     "id": "huang-learning-separation",
     "title": "Quantum memory advantage for predicting observables",
     "chapter": "Properties",
@@ -118,20 +71,6 @@
     ]
   },
   {
-    "id": "avron-elgart-adiabatic",
-    "title": "Adiabatic following without a gap",
-    "chapter": "StatePrep",
-    "status": "published",
-    "papers": [
-      "https://doi.org/10.1007/s002200050620"
-    ],
-    "locator": "Section 2, Theorem 1 · bounded-Hamiltonian case",
-    "scope": "Let H(s) be a smooth bounded self-adjoint Hamiltonian path with a smooth finite-rank spectral projection P(s). For a state initially in ran P(0), evolution over runtime τ has distance o(1) from ran P(s), uniformly for s ∈ [0,1] as τ → ∞. The theorem needs no uniform spectral gap and supplies no universal rate.",
-    "related": [
-      "FQChem.StatePrep.AdiabaticPreparation.gappedBandPreparation_limit"
-    ]
-  },
-  {
     "id": "troyer-wiese-sign-problem",
     "title": "Complexity of a generic sign-problem solution",
     "chapter": "StatePrep",
@@ -143,20 +82,6 @@
     "scope": "For the constructed quantum spin model, the related sign-free bosonic system has a polynomial-time Monte Carlo method. A generic polynomial-complexity cure for estimating the signed thermal average would decide an NP-complete spin-glass instance in polynomial time with bounded error. Monte Carlo sampling gives the randomized implication NP ⊆ BPP.",
     "related": [
       "FQChem.StatePrep.ImaginaryTimeProjection.SignProblem.productSampleCost"
-    ]
-  },
-  {
-    "id": "zalka-search",
-    "title": "Optimality of quantum search",
-    "chapter": "Complexity",
-    "status": "published",
-    "papers": [
-      "https://doi.org/10.1103/PhysRevA.60.2746"
-    ],
-    "locator": "Sections 2–3 · Eqs. (6), (22) and (27)",
-    "scope": "For N equiprobable single-marked-item phase oracles and T queries up to the first Grover maximum, Grover’s average success sin²((2T+1) arcsin(1/√N)) is optimal. To reach success tending to one takes at least (π/4 − o(1))√N oracle calls.",
-    "related": [
-      "FQChem.StatePrep.CircuitPreparation.AmplitudeAmplification.success_law"
     ]
   },
   {
@@ -206,7 +131,8 @@
     "locator": "Proposition 14.2 and Theorem 14.3 · five-local clock in §14.4.5",
     "scope": "Given a sum of polynomially many qubit terms 0 ≤ Hⱼ ≤ I acting on at most five qubits each and thresholds a < b with inverse-polynomial separation, distinguish λmin(H) ≤ a from λmin(H) > b. This promise problem is QMA-complete under polynomial-time Karp reductions. The book calls the witness class BQNP.",
     "related": [
-      "FQChem.Complexity.Kitaev.BoundedErrorReduction.transducer_correct"
+      "FQChem.Complexity.Kitaev.BoundedErrorReduction.transducer_correct",
+      "FQChem.Complexity.LocalHamiltonianVerification.maximumAcceptance"
     ]
   },
   {
@@ -281,7 +207,8 @@
     "locator": "§II and supplementary Appendix A.1–A.2 · Theorem 1(3), Eq. (A6)",
     "scope": "Let A be an N-by-N s-sparse, efficiently row-computable Hermitian matrix with ‖A‖ ≤ 1 and ‖A⁻¹‖ ≤ κ, and let a unitary of cost Tᵦ prepare normalized |b⟩. With constant success HHL prepares a state within vector-norm error ε of A⁻¹|b⟩/‖A⁻¹|b⟩‖ in time Õ(κTᵦ + κ²s² log(N)/ε), suppressing the slowly growing simulation factors as in the paper. The output is a quantum state.",
     "related": [
-      "FQChem.Algorithms.hhlSpectralInversion"
+      "FQChem.Algorithms.hhlSpectralInversion",
+      "FQChemQatlib.Properties.LinearSystems.signedInverseState"
     ],
     "upstream": [
       {
@@ -302,7 +229,8 @@
     "scope": "Let G prepare |g⟩ on a d-dimensional ancilla and let the |g⟩ block of unitary U be Hermitian H on dimension N. For 0 < ε < 1, evolution for time t has spectral-norm error ≤ ε and failure O(ε) with Θ(Q) queries to controlled G, U and their inverses, O(Q log d) extra two-qubit gates and at most ⌈log₂ N⌉+⌈log₂ d⌉+2 qubits. Q is the least positive q with 4(|t|/2)ᑫ/q! ≤ ε. This trade-off is optimal up to constants in the oracle model.",
     "related": [
       "FQChem.Dynamics.DigitalAlgorithms.Qubitization.Encoding.chebyshev_block",
-      "FQChem.Dynamics.DigitalAlgorithms.Qubitization.Encoding.quadratic_simulation_bound"
+      "FQChem.Dynamics.DigitalAlgorithms.Qubitization.Encoding.quadratic_simulation_bound",
+      "FQChemQatlib.Dynamics.SparseHamiltonianSimulation.segmentedSparseEvolution"
     ],
     "upstream": [
       {
@@ -323,7 +251,8 @@
     "locator": "Theorems 2–3, Eqs. (8), (14)–(18) · distinct time and precision limits clarified in Low–Chuang (2019), p. 2, note 3",
     "scope": "Given position and m-bit entry oracles for d-sparse H on n qubits, put τ = |t|d maxᵢⱼ|Hᵢⱼ|. For 0 < ε < 1/2, choose q ≥ τ+1 with 4(τ/2)ᑫ/q! ≤ ε/8. Quantum signal processing simulates evolution with error ≤ ε and success at least 1−2ε using O(q) queries and O(n + m polylog m) additional elementary gates per query. At fixed nonzero τ the optimal query scaling is Θ(log(1/ε)/log log(1/ε)); at fixed ε it is Θ(τ) for large τ.",
     "related": [
-      "FQChem.Dynamics.DigitalAlgorithms.Qubitization.Encoding.simulation_error"
+      "FQChem.Dynamics.DigitalAlgorithms.Qubitization.Encoding.simulation_error",
+      "FQChemQatlib.Dynamics.SparseHamiltonianSimulation.segmentedSparseEvolution"
     ],
     "upstream": [
       {

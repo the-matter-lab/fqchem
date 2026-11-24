@@ -1,0 +1,69 @@
+[
+  {
+    "module": "FQChem.Complexity.SearchOptimality",
+    "names": [
+      "grover_is_optimal"
+    ],
+    "papers": [
+      "https://doi.org/10.1103/PhysRevA.60.2746"
+    ],
+    "relation": "paper-result",
+    "scope": "Sections 2–3, equal-prior single-marked phase-oracle search. For every nonempty finite database, normalized initial workspace, oracle-independent gates and projective readout, average Born success up to the first maximum is bounded by the success of the explicit Grover circuit with the same query count.",
+    "aliases": {
+      "paper/zalka-search": "FQChem.Complexity.SearchOptimality.grover_is_optimal"
+    }
+  },
+  {
+    "module": "FQChem.Complexity.SearchOptimality",
+    "names": [
+      "optimal_average_success",
+      "grover_attains"
+    ],
+    "papers": [
+      "https://doi.org/10.1103/PhysRevA.60.2746"
+    ],
+    "relation": "paper-result",
+    "scope": "Sharp sine-squared success upper bound through the first maximum and its attainment by computational-basis marking, uniform preparation and one common diffusion reflection per call. For at least two items the construction gives the sine law at every iteration."
+  },
+  {
+    "module": "FQChem.Complexity.SearchOptimality",
+    "names": [
+      "near_certain_queries"
+    ],
+    "papers": [
+      "https://doi.org/10.1103/PhysRevA.60.2746"
+    ],
+    "relation": "paper-result",
+    "scope": "If equal-prior success tends to one, then for every positive ε, all sufficiently large N require at least (π/4−ε)√N queries. The algorithm and workspace may vary with N."
+  },
+  {
+    "module": "FQChem.Complexity.SearchOptimality",
+    "names": [
+      "query_angle_bound"
+    ],
+    "papers": [
+      "https://doi.org/10.1103/PhysRevA.60.2746"
+    ],
+    "relation": "derived",
+    "scope": "The angle of the square root of average success is at most (2T+1) arcsin(1/√N), via a direct sum over candidate labels, the identity-oracle trajectory and a reflection about the readout sectors."
+  },
+  {
+    "module": "FQChem.Complexity.SearchOptimality",
+    "names": [
+      "angle_formula",
+      "angle_map",
+      "success_mem",
+      "reflection_angle",
+      "reference_angle",
+      "run_norm",
+      "coordinateProjection",
+      "uniform_norm",
+      "grover_run"
+    ],
+    "papers": [
+      "https://doi.org/10.1103/PhysRevA.60.2746"
+    ],
+    "relation": "supporting",
+    "scope": "Hilbert direct-sum geometry, Born mass and reflections used in the upper bound, plus the computational basis, normalized uniform state and explicit Grover iterate used for equality."
+  }
+]

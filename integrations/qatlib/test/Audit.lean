@@ -3,8 +3,10 @@ module
 import all FQChemQatlib
 import all FQChemQatlib.Complexity.QueryAlgorithms
 import all FQChemQatlib.Dynamics.SingularValueTransformation
+import all FQChemQatlib.Dynamics.SparseHamiltonianSimulation
 import all FQChemQatlib.Properties.AmplitudeEstimation
 import all FQChemQatlib.Properties.ClassicalShadows
+import all FQChemQatlib.Properties.LinearSystems
 import all FQChemKitaev
 import all FQChemKitaev.AmplificationBounds
 import all FQChemKitaev.AmplifierCost

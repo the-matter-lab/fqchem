@@ -1,4 +1,8 @@
 {
+  "https://arxiv.org/abs/1805.10549": {
+    "authors": "Subaşı, Somma & Orsucci (2019)",
+    "title": "Quantum algorithms for systems of linear equations inspired by adiabatic quantum computing"
+  },
   "https://arxiv.org/abs/1806.01838": {
     "authors": "Gilyén et al. (2019)",
     "title": "Quantum singular value transformation and beyond: exponential improvements for quantum matrix arithmetics"

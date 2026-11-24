@@ -1,0 +1,194 @@
+[
+  {
+    "module": "FQChem.Properties.ResponseAndEstimation.ShadowConfidence",
+    "names": [
+      "productDraw"
+    ],
+    "papers": [
+      "https://doi.org/10.1038/s41567-020-0932-7"
+    ],
+    "relation": "supporting",
+    "scope": "A coordinate of the K-by-N product law has the original one-shot marginal; this constructs the independent sampling model in Supplementary Theorem 1."
+  },
+  {
+    "module": "FQChem.Properties.ResponseAndEstimation.ShadowConfidence",
+    "names": [
+      "blockFailure"
+    ],
+    "papers": [
+      "https://doi.org/10.1038/s41567-020-0932-7"
+    ],
+    "relation": "supporting",
+    "scope": "Under independence, Nε²≥34V and single-shot variance at most V give block failure probability at most 1/34 by Chebyshev."
+  },
+  {
+    "module": "FQChem.Properties.ResponseAndEstimation.ShadowConfidence",
+    "names": [
+      "medianWitness",
+      "medianFailure"
+    ],
+    "papers": [
+      "https://doi.org/10.1038/s41567-020-0932-7"
+    ],
+    "relation": "supporting",
+    "scope": "An upper median that misses the target has at least ⌈K/2⌉ bad blocks. For independent block estimates with failure probabilities at most 1/34, the median fails with probability at most 2⁻ᴷ, for odd and even K."
+  },
+  {
+    "module": "FQChem.Properties.ResponseAndEstimation.ShadowConfidence",
+    "names": [
+      "blocks_pos",
+      "confidence"
+    ],
+    "papers": [
+      "https://doi.org/10.1038/s41567-020-0932-7"
+    ],
+    "relation": "supporting",
+    "scope": "Rounding K=2 ln(2M/δ) upward gives a positive block count for M≥1 and 0<δ≤1; M·2⁻ᴷ≤δ."
+  },
+  {
+    "module": "FQChem.Properties.ResponseAndEstimation.ShadowConfidence",
+    "names": [
+      "simultaneousConfidence"
+    ],
+    "papers": [
+      "https://doi.org/10.1038/s41567-020-0932-7"
+    ],
+    "relation": "supporting",
+    "scope": "Median-of-means concentration in Supplementary Theorem 1 for arbitrary square-integrable real scores, sharing the same records across all targets. The means and variance bounds are parameters of this statistical lemma."
+  },
+  {
+    "module": "FQChem.Properties.ResponseAndEstimation.ShadowMeasurement",
+    "names": [
+      "traceProjector",
+      "sumProjector",
+      "basisEntry",
+      "projectorHermitian"
+    ],
+    "papers": [
+      "https://doi.org/10.1038/s41567-020-0932-7"
+    ],
+    "relation": "supporting",
+    "scope": "Unitary-basis Born projectors are Hermitian, have trace one, and sum to the identity in each basis. Each unitary entry has norm at most one."
+  },
+  {
+    "module": "FQChem.Properties.ResponseAndEstimation.ShadowMeasurement",
+    "names": [
+      "projectorMeasurable",
+      "pairingMeasurable",
+      "pairingBound",
+      "scoreMeasurable",
+      "scoreLp"
+    ],
+    "papers": [
+      "https://doi.org/10.1038/s41567-020-0932-7"
+    ],
+    "relation": "supporting",
+    "scope": "Entrywise measurability of the unitary matrices gives measurable trace scores; uniform entry bounds supply finite second moments for arbitrary probability measures on the bases."
+  },
+  {
+    "module": "FQChem.Properties.ResponseAndEstimation.ShadowMeasurement",
+    "names": [
+      "pairingAdjoint",
+      "channelSymmetric",
+      "inverseHermitian",
+      "channelOne"
+    ],
+    "papers": [
+      "https://doi.org/10.1038/s41567-020-0932-7"
+    ],
+    "relation": "supporting",
+    "scope": "The outcome-projector channel of Eq. (S2) is unital, symmetric under the trace pairing and adjoint preserving. Its inverse preserves Hermitian observables."
+  },
+  {
+    "module": "FQChem.Properties.ResponseAndEstimation.ShadowMeasurement",
+    "names": [
+      "inverseSnapshotScore",
+      "hermitianScore"
+    ],
+    "papers": [
+      "https://doi.org/10.1038/s41567-020-0932-7"
+    ],
+    "relation": "supporting",
+    "scope": "For Eq. (S3), applying the inverse channel to the rank-one snapshot or to the observable gives the same trace score. For Hermitian observables the score is real."
+  },
+  {
+    "module": "FQChem.Properties.ResponseAndEstimation.ShadowMeasurement",
+    "names": [
+      "scoreMean"
+    ],
+    "papers": [
+      "https://doi.org/10.1038/s41567-020-0932-7"
+    ],
+    "relation": "paper-result",
+    "scope": "Eq. (S5). The Born outcome law and invertibility of the channel imply the mean of the inverse-snapshot estimator is the desired trace expectation."
+  },
+  {
+    "module": "FQChem.Properties.ResponseAndEstimation.ShadowMeasurement",
+    "names": [
+      "scoreCentered"
+    ],
+    "papers": [
+      "https://doi.org/10.1038/s41567-020-0932-7"
+    ],
+    "relation": "supporting",
+    "scope": "Eq. (S8). Subtracting the normalized trace of the observable shifts every individual score by that same scalar."
+  },
+  {
+    "module": "FQChem.Properties.ResponseAndEstimation.ShadowMeasurement",
+    "names": [
+      "bornSecondMoment"
+    ],
+    "papers": [
+      "https://doi.org/10.1038/s41567-020-0932-7"
+    ],
+    "relation": "paper-result",
+    "scope": "Eq. (S7), before maximizing over states. The squared real score integrates to the ensemble average of the Born-weighted squared matrix element of the inverse observable, including continuous basis ensembles."
+  },
+  {
+    "module": "FQChem.Properties.ResponseAndEstimation.ShadowMeasurement",
+    "names": [
+      "moment_le"
+    ],
+    "papers": [
+      "https://doi.org/10.1038/s41567-020-0932-7"
+    ],
+    "relation": "supporting",
+    "scope": "The one-state second moment is bounded by its supremum over all density states. Bounded scores and the normalization of every Born law give a finite upper bound."
+  },
+  {
+    "module": "FQChem.Properties.ResponseAndEstimation.ShadowMeasurement",
+    "names": [
+      "centeredVariance"
+    ],
+    "papers": [
+      "https://doi.org/10.1038/s41567-020-0932-7"
+    ],
+    "relation": "paper-result",
+    "scope": "Supplementary Lemma 1, Eq. (S6). The variance of the actual one-shot score is bounded by the squared shadow norm after subtracting the observable’s scalar part."
+  },
+  {
+    "module": "FQChem.Properties.ResponseAndEstimation.ShadowMeasurement",
+    "names": [
+      "sampleComplexity"
+    ],
+    "papers": [
+      "https://doi.org/10.1038/s41567-020-0932-7"
+    ],
+    "relation": "paper-result",
+    "scope": "Supplementary Theorem 1 with the constants of Eq. (S13), on any probability space realizing the independent shared Born records. The basis ensemble may be continuous. Each block uses at least one shot when every centered norm is zero."
+  },
+  {
+    "module": "FQChem.Properties.ResponseAndEstimation.ShadowMeasurement",
+    "names": [
+      "iidSampleComplexity"
+    ],
+    "papers": [
+      "https://doi.org/10.1038/s41567-020-0932-7"
+    ],
+    "relation": "paper-result",
+    "scope": "Supplementary Theorem 1, Eqs. (S7), (S12)–(S14). From the NK-fold product of the Born law, the medians predict every Hermitian observable simultaneously with failure at most δ. K=⌈2 ln(2M/δ)⌉ and N=max(1,⌈34 maxᵢ‖Oᵢ−Tr(Oᵢ)I/d‖²shadow/ε²⌉).",
+    "aliases": {
+      "paper/huang-shadow-sample-complexity": "FQChem.Properties.ShadowMeasurement.Primitive.iidSampleComplexity"
+    }
+  }
+]

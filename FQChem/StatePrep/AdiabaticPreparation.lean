@@ -1,4 +1,5 @@
 module
 
 public import FQChem.StatePrep.AdiabaticPreparation.AdiabaticTheorem
+public import FQChem.StatePrep.AdiabaticPreparation.GaplessAdiabatic
 public import FQChem.StatePrep.AdiabaticPreparation.RydbergBlockade

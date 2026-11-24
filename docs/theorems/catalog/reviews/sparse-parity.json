@@ -1,0 +1,244 @@
+[
+  {
+    "module": "FQChem.Complexity.SpinPathEvolution",
+    "names": [
+      "couplings",
+      "row_action"
+    ],
+    "papers": [
+      "https://doi.org/10.1007/s00220-006-0150-x"
+    ],
+    "relation": "supporting",
+    "scope": "Binomial recursion gives the two weighted nearest-neighbor terms in the action of the bare tridiagonal matrix. The formulas also cover the two end levels."
+  },
+  {
+    "module": "FQChem.Complexity.SpinPathEvolution",
+    "names": [
+      "binomial_eigenvector"
+    ],
+    "papers": [
+      "https://doi.org/10.1007/s00220-006-0150-x"
+    ],
+    "relation": "supporting",
+    "scope": "The positive vector with entries √(N choose j) has eigenvalue N/2 on the spin path. This supplies the norm-attaining vector for the crossed Hamiltonians."
+  },
+  {
+    "module": "FQChem.Complexity.SpinPathEvolution",
+    "names": [
+      "state_deriv",
+      "state_zero"
+    ],
+    "papers": [
+      "https://doi.org/10.1007/s00220-006-0150-x"
+    ],
+    "relation": "supporting",
+    "scope": "The binomial spin amplitudes start at the zero endpoint and satisfy the constant-coefficient Schrödinger equation for the actual path matrix."
+  },
+  {
+    "module": "FQChem.Complexity.SpinPathEvolution",
+    "names": [
+      "exp_column"
+    ],
+    "papers": [
+      "https://doi.org/10.1007/s00220-006-0150-x"
+    ],
+    "relation": "supporting",
+    "scope": "A differentiable finite vector obeying v′ = Av evolves by the matrix exponential. The integrating factor exp((t−z)A) proves this auxiliary uniqueness statement."
+  },
+  {
+    "module": "FQChem.Complexity.SpinPathEvolution",
+    "names": [
+      "evolution_column",
+      "transfer_amplitude"
+    ],
+    "papers": [
+      "https://doi.org/10.1007/s00220-006-0150-x"
+    ],
+    "relation": "derived",
+    "scope": "Explicit all-time solution underlying Berry et al., Theorem 3. The level-j amplitude is √(N choose j) cos(t/2)^(N−j)(−i sin(t/2))^j. The far-end matrix entry is (−i sin(t/2))^N."
+  },
+  {
+    "module": "FQChem.Complexity.SpinPathEvolution",
+    "names": [
+      "perfect_transfer"
+    ],
+    "papers": [
+      "https://doi.org/10.1007/s00220-006-0150-x"
+    ],
+    "relation": "paper-result",
+    "scope": "At physical time π the spin path transfers the zero endpoint to the opposite endpoint with unit amplitude magnitude, as used in the proof of Berry et al., Theorem 3. The exact ket phase is (−i)^N."
+  },
+  {
+    "module": "FQChem.Complexity.SparseParityQueries",
+    "names": [
+      "xor_character",
+      "row_character"
+    ],
+    "papers": [
+      "https://doi.org/10.1007/s00220-006-0150-x"
+    ],
+    "relation": "supporting",
+    "scope": "The Fourier character of a reversible two-bit XOR row answer factors into the two phase queries for the crossing bits; missing end edges and inactive answer-mask positions contribute phase one."
+  },
+  {
+    "module": "FQChem.Complexity.SparseParityQueries",
+    "names": [
+      "response_decodes"
+    ],
+    "papers": [
+      "https://doi.org/10.1007/s00220-006-0150-x"
+    ],
+    "relation": "supporting",
+    "scope": "Given the row vertex and the two incident edge bits, the decoder reconstructs every complex entry of that row, including endpoints."
+  },
+  {
+    "module": "FQChem.Complexity.SparseParityQueries",
+    "names": [
+      "walsh_adjoint",
+      "walsh_square",
+      "walsh_lookup",
+      "basis_unitary",
+      "coherent_lookup"
+    ],
+    "papers": [
+      "https://doi.org/10.1007/s00220-006-0150-x"
+    ],
+    "relation": "supporting",
+    "scope": "The normalized two-bit Walsh transform is an involutive unitary. With coherent row addressing, conjugating the phase query by this fixed transform gives the computational-basis permutation that XORs both incident bits into the answer."
+  },
+  {
+    "module": "FQChem.Complexity.SparseParityQueries",
+    "names": [
+      "unitary_product",
+      "apply_gate"
+    ],
+    "papers": [
+      "https://doi.org/10.1007/s00220-006-0150-x"
+    ],
+    "relation": "supporting",
+    "scope": "Input-independent unitary composition and closure of the row-query circuit under a final fixed gate preserve the query budget. The construction also handles the initial state."
+  },
+  {
+    "module": "FQChem.Complexity.SparseParityQueries",
+    "names": [
+      "compile",
+      "xor_step"
+    ],
+    "papers": [
+      "https://doi.org/10.1007/s00220-006-0150-x"
+    ],
+    "relation": "supporting",
+    "scope": "A conventional reversible XOR lookup compiles into one phase-basis row call. Each such call compiles into two input-bit phase queries. The amplitudes agree for all inputs and arbitrary fixed interleaving unitaries."
+  },
+  {
+    "module": "FQChem.Complexity.SparseParityQueries",
+    "names": [
+      "sign_prefixParity",
+      "parity_eq"
+    ],
+    "papers": [
+      "https://doi.org/10.1007/s00220-006-0150-x"
+    ],
+    "relation": "supporting",
+    "scope": "The sign of the final crossed-path prefix parity equals the product of the N input-bit signs in the polynomial query lower bound."
+  },
+  {
+    "module": "FQChem.Complexity.SparseParityQueries",
+    "names": [
+      "parity_query_lower_bound",
+      "endpoint_query_lower_bound"
+    ],
+    "papers": [
+      "https://doi.org/10.1007/s00220-006-0150-x"
+    ],
+    "relation": "paper-result",
+    "scope": "In the Berry parity construction, recovering the final track with bounded error needs at least N/4 full row queries. The endpoint version reads the Born probability of the physical evolution at π with additive error at most 1/4."
+  },
+  {
+    "module": "FQChem.Complexity.SparseParityNorm",
+    "names": [
+      "w_pos",
+      "eigen",
+      "positive_entries",
+      "row_mass"
+    ],
+    "papers": [
+      "https://doi.org/10.1007/s00220-006-0150-x"
+    ],
+    "relation": "supporting",
+    "scope": "The two tracks carry a strictly positive binomial eigenvector with eigenvalue N/2. The crossed entries are real and nonnegative, giving exact weighted row sums."
+  },
+  {
+    "module": "FQChem.Complexity.SparseParityNorm",
+    "names": [
+      "eigenvalue_bound"
+    ],
+    "papers": [
+      "https://doi.org/10.1007/s00220-006-0150-x"
+    ],
+    "relation": "supporting",
+    "scope": "At a coordinate maximizing |uᵢ|/wᵢ, the weighted row-sum identity bounds the absolute value of any eigenvalue of the crossed Hamiltonian by N/2."
+  },
+  {
+    "module": "FQChem.Complexity.SparseParityNorm",
+    "names": [
+      "spectral_norm"
+    ],
+    "papers": [
+      "https://doi.org/10.1007/s00220-006-0150-x"
+    ],
+    "relation": "paper-result",
+    "scope": "For every input string the physical Hilbert-space operator norm of the Hermitian two-track matrix is exactly N/2. At time π its scaled simulation time is πN/2."
+  },
+  {
+    "module": "FQChem.Complexity.SparseNoFastForwarding",
+    "names": [
+      "diagonal_bound"
+    ],
+    "papers": [
+      "https://doi.org/10.1007/s00220-006-0150-x"
+    ],
+    "relation": "supporting",
+    "scope": "For a traceless finite Hermitian matrix, the absolute real part of any diagonal entry is at most half the sum of absolute eigenvalues. This bounds a basis-outcome probability error by the trace distance."
+  },
+  {
+    "module": "FQChem.Complexity.SparseNoFastForwarding",
+    "names": [
+      "reduced_hermitian",
+      "trace_reduced",
+      "difference_hermitian",
+      "readout"
+    ],
+    "papers": [
+      "https://doi.org/10.1007/s00220-006-0150-x"
+    ],
+    "relation": "supporting",
+    "scope": "Tracing out finite simulator workspace gives a Hermitian output with trace equal to the squared norm of the global state. A diagonal entry sums the workspace probabilities for that output."
+  },
+  {
+    "module": "FQChem.Complexity.SparseNoFastForwarding",
+    "names": [
+      "evolved_state",
+      "evolved_density"
+    ],
+    "papers": [
+      "https://doi.org/10.1007/s00220-006-0150-x"
+    ],
+    "relation": "paper-result",
+    "scope": "Physical evolution by the crossed Hamiltonian for time π places the initial endpoint exactly on the far-end parity track, with global phase (−i)^N. Its density matrix is the projector onto this endpoint."
+  },
+  {
+    "module": "FQChem.Complexity.SparseNoFastForwarding",
+    "names": [
+      "no_fast_forwarding"
+    ],
+    "papers": [
+      "https://doi.org/10.1007/s00220-006-0150-x"
+    ],
+    "relation": "paper-result",
+    "scope": "Berry et al., Theorem 3. For every positive N the crossed row-computable Hamiltonians are 2-sparse with scaled time ‖H‖₂π = πN/2. A finite coherent whole-row query algorithm achieving trace distance ≤1/4 on all inputs after discarding any finite workspace uses at least N/4 queries. The reversible row answer contains both incident bits. Its address determines the neighboring levels and edge weights.",
+    "aliases": {
+      "paper/berry-sparse-no-fast-forwarding": "FQChem.Complexity.SparseNoFastForwarding.no_fast_forwarding"
+    }
+  }
+]
