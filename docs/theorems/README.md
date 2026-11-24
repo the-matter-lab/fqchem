@@ -1,11 +1,11 @@
 # Theorem dependencies
 
-Open [the theorem atlas](https://fqchem.matterlab.ca/) to see the complete directed graph. Each point is a declaration, including isolated results and imported prerequisites. Click a point or search by theorem or method to highlight its incoming and outgoing arrows. Zoom in to see names, select a chapter to focus the map, or share the address of a selected theorem. For example, explore the [VMC variational bound](https://fqchem.matterlab.ca/#FQChem.StatePrep.VariationalOptimization.VariationalMonteCarlo.variationalBound).
+Open [the theorem atlas](https://fqchem.matterlab.ca/) to see the complete directed graph. Each point is a declaration, including isolated results and imported prerequisites. Click a point or search by theorem or method to highlight its incoming and outgoing arrows. Zoom in to see names, select a chapter to see its results and their immediate neighbors in other chapters, or share the address of a selected theorem. For example, explore the [VMC variational bound](https://fqchem.matterlab.ca/#FQChem.StatePrep.VariationalOptimization.VariationalMonteCarlo.variationalBound).
 
-For offline use, open [index.html](index.html) from a checkout with its adjacent scripts, stylesheet and font.
+For offline use, download the [standalone atlas](https://raw.githubusercontent.com/the-matter-lab/fqchem/atlas/docs/theorems/index.html) and open it in a browser.
 
-- [fqchem theorem graphs by module](library.md)
-- [Kitaev integration theorem graphs by module](kitaev.md)
+- [fqchem theorem graphs by module](https://github.com/the-matter-lab/fqchem/blob/atlas/docs/theorems/library.md)
+- [Kitaev integration theorem graphs by module](https://github.com/the-matter-lab/fqchem/blob/atlas/docs/theorems/kitaev.md)
 - [Scope and references for the complexity results](../../FQChem/Complexity/README.md)
 
 ## Reading the graph
@@ -25,6 +25,12 @@ python3 scripts/theorem_graph/generate.py
 python3 scripts/theorem_graph/generate.py --project kitaev
 ```
 
-Pass `--check` to either command to compare the committed graphs with the compiled proofs. The extractor obtains names, source ranges, and constant references from Lean and checks that each written theorem and lemma has a node. Its counts differ from an environment-wide axiom audit, which also sees compiler-generated theorem declarations.
+Pass `--check` to either command to check previously generated files against the compiled proofs. The extractor obtains names, source ranges, and constant references from Lean and checks that each written theorem and lemma has a node. Its counts differ from an environment-wide axiom audit, which also sees compiler-generated theorem declarations.
 
-To publish an update after committing the regenerated graphs, run `python3 scripts/theorem_graph/export_site.py > /tmp/fqchem-index.html` from the repository and deploy the resulting file as the site's `index.html`. It includes both graphs and links each local declaration to its line at the exported Git revision.
+Open `docs/theorems/index.html` after extraction to browse locally. To export a single HTML file, run `python3 scripts/theorem_graph/export_site.py > /tmp/fqchem-index.html` in a clean source checkout after generating both graphs. Source links are pinned to the checkout’s revision.
+
+## Publication
+
+Every push to `main` triggers both Lean builds, axiom audits and dependency extractions. After both pass, the [Lean workflow](../../.github/workflows/lean.yml) publishes the generated module diagrams, graph data and standalone HTML to the [atlas branch](https://github.com/the-matter-lab/fqchem/tree/atlas/docs/theorems). Its first parent is the exact source revision. Authors can add a theorem and push its Lean source without generating or committing graph files.
+
+The Clawderon launch agent checks the publication branch every minute and on login. It sends each new verified site to the Clawtilde Mac Mini over SSH, checks its checksum at the origin and over public HTTPS, and records the deployed revision. If the laptop is offline, it catches up to the latest published graph when it reconnects. A failed proof build leaves the last published graph online. See the [deployment worker](../../scripts/theorem_graph/deploy.sh).

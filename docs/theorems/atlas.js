@@ -73,6 +73,8 @@ for (const entries of graphParts) {
   });
 }
 const groups = new Map([...chapters.keys()].map(key => [key,nodes.filter(n => n.chapter === key)]));
+const chapterNeighbors = new Map([...groups].map(([key,members]) =>
+  [key,new Set(members.flatMap(n => [n,...n.before,...n.after]))]));
 const ordered = [...nodes].sort((a,b) => a.short.localeCompare(b.short) || a.name.localeCompare(b.name));
 $("total-nodes").textContent = nodes.length.toLocaleString();
 $("total-edges").textContent = edges.length.toLocaleString();
@@ -189,7 +191,11 @@ function camera(cx,cy,k) { zoom=k; tx=W/2-cx*k; ty=H/2-cy*k; drawCamera(); }
 function fit() {
   if (chapter) {
     const [cx,cy,rx,ry]=boxes[chapter];
-    camera(cx,cy-4,Math.min(7,W/(rx*2+80),H/(ry*2+72)));
+    const visible=[...chapterNeighbors.get(chapter)];
+    const xs=visible.map(n=>n.x), ys=visible.map(n=>n.y);
+    const left=Math.min(cx-rx,...xs), right=Math.max(cx+rx,...xs);
+    const top=Math.min(cy-ry-12,...ys), bottom=Math.max(cy+ry,...ys);
+    camera((left+right)/2,(top+bottom)/2,Math.min(7,W/(right-left+64),H/(bottom-top+56)));
   } else camera(W/2,H/2,1);
 }
 function transformAt(k,p) {
@@ -222,7 +228,7 @@ function scheduleLabels() {
     const occupied=[];
     const unit=1/Math.max(.2,network.getScreenCTM().a);
     for(const n of ranked) {
-      if(n===active || (active?!neighbors.has(n):!matches(n))) continue;
+      if(n===active || !visibleNode(n)) continue;
       const x=tx+n.x*zoom+(n.r*zoom+3*unit),y=ty+n.y*zoom;
       const width=n.short.length*5.9*unit,height=13*unit;
       if(x<5||y<height||x+width>W-5||y>H-5) continue;
@@ -236,16 +242,21 @@ function scheduleLabels() {
   });
 }
 function matches(n) { return (!chapter || n.chapter===chapter) && (!query || n.match.includes(query)); }
+function visibleNode(n) {
+  if(active) return neighbors.has(n);
+  return chapter && !query ? chapterNeighbors.get(chapter).has(n) : matches(n);
+}
 function highlight() {
   neighbors=new Set(active?[active,...active.before,...active.after]:[]);
   selectedEdges=new Set(active?edges.filter(e=>e.from===active||e.to===active):[]);
   for(const n of nodes) {
-    const dim=active?!neighbors.has(n):!matches(n);
+    const dim=!visibleNode(n);
     n.el.setAttribute("class","dot"+(dim?" dim":"")+(active===n?" selected":active&&neighbors.has(n)?" neighbor":""));
   }
   for(const e of edges) {
     const focus=selectedEdges.has(e);
-    const dim=active?!focus:(query||chapter)&&(!matches(e.from)||!matches(e.to));
+    const dim=active ? !focus : query ? !matches(e.from)||!matches(e.to) :
+      chapter && e.from.chapter!==chapter && e.to.chapter!==chapter;
     e.el.setAttribute("class","edge "+e.kind+(e.from.chapter!==e.to.chapter?" cross":"")+(dim?" dim":"")+(focus?" active":""));
     e.el.setAttribute("marker-end",focus?"url(#focus-arrow)":"url(#ink-arrow)");
     if(focus) $("links").append(e.el);

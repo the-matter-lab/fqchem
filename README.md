@@ -10,7 +10,7 @@ fqchem is a Lean 4 library of machine-checked theorems for quantum chemistry. It
 | [Multiscale methods](FQChem/Multiscale/) | Choosing layers and combining their solutions, from embedding and fragmentation to free energies and error bounds |
 | [Complexity and limits](FQChem/Complexity/) | Query lower bounds for ground-state preparation and orbital simulation, Aaronson–Ambainis influence, the Kitaev reduction, and fixed-particle encoding |
 
-Explore the [interactive theorem dependency graph](https://fqchem.matterlab.ca/) to trace a result through its prerequisites or find the theorems that use it. The [graph guide](docs/theorems/README.md) explains the arrows and links to diagrams by module.
+Explore the [interactive theorem dependency graph](https://fqchem.matterlab.ca/) to trace a result through its prerequisites or find the theorems that use it. The atlas is rebuilt from both Lean projects after each successful push to `main`. The [graph guide](docs/theorems/README.md) explains the arrows and links to diagrams by module.
 
 Each topic file contains its definitions, theorem statements, and proofs. For example, the variational principle is in [RayleighRitz.lean](FQChem/StatePrep/VariationalOptimization/RayleighRitz.lean). VQE uses it in the [same family](FQChem/StatePrep/VariationalOptimization/VQE.lean). Its finite-shot energy estimator is in [Properties](FQChem/Properties/ResponseAndEstimation/VQEMeasurement.lean).
 

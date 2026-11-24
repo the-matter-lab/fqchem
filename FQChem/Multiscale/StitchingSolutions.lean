@@ -2,4 +2,5 @@ module
 
 public import FQChem.Multiscale.StitchingSolutions.EmbeddedSolvers
 public import FQChem.Multiscale.StitchingSolutions.ErrorPropagation
+public import FQChem.Multiscale.StitchingSolutions.LayeredQM
 public import FQChem.Multiscale.StitchingSolutions.Observables

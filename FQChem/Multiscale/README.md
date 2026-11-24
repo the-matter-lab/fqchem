@@ -15,6 +15,7 @@ Import this chapter with `import FQChem.Multiscale`.
 ### [Quantum environments](ChoosingLayers/QuantumEnvironments.lean)
 
 - **Electronic embedding**. [Frozen-density upper bound and exactness for a compatible minimizing split](ChoosingLayers/QuantumEnvironments.lean#L41). [Wesołowski & Warshel (1993)](https://doi.org/10.1021/j100132a040)
+- [Frozen-density bound for the molecular Coulomb energy](ChoosingLayers/FrozenMolecularDensity.lean). The restricted infimum equals the molecular trial-space infimum if an admissible split attains it.
 
 ### [Fragments and many-body expansions](ChoosingLayers/Fragments.lean)
 
@@ -29,6 +30,9 @@ Import this chapter with `import FQChem.Multiscale`.
 ### [Solvers inside the embedded problem](StitchingSolutions/EmbeddedSolvers.lean)
 
 - [Feshbach reduction gives an equivalent active-space eigenproblem and reconstructs the environment amplitudes wherever the environment resolvent exists](StitchingSolutions/EmbeddedSolvers.lean#L30). [Feshbach (1958)](https://doi.org/10.1016/0003-4916(58)90007-1)
+
+- [Imaginary-time QM solver on a layered energy surface](StitchingSolutions/LayeredQM.lean). At fixed nuclear geometry, the finite-time ONIOM energy inherits the model solver’s exponential error bound and converges to its ground-state ONIOM value.
+- [Layered nuclear dynamics](StitchingSolutions/LayeredQM.lean#L61). For a smooth electronic eigenbranch, the Hellmann–Feynman derivative combines with the two MM forces. Newton motion under that force gives zero time derivative of total mechanical energy.
 
 ### [Properties of the whole system](StitchingSolutions/Observables.lean)
 

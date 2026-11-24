@@ -1,2 +1,8 @@
 /.lake/
 .DS_Store
+
+# Generated from both Lean environments and published on the atlas branch.
+/docs/theorems/library.js
+/docs/theorems/library.md
+/docs/theorems/kitaev.js
+/docs/theorems/kitaev.md

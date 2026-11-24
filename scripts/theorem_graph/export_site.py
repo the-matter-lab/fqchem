@@ -1,4 +1,4 @@
-"""Export the committed explorer as one HTML file with revision-pinned source links."""
+"""Export freshly generated graphs and the committed explorer as one HTML file with revision-pinned source links."""
 
 import base64
 import json
@@ -23,7 +23,8 @@ def export():
     def read(name):
         return git("show", f"{revision}:{directory}/{name}")
 
-    html = read("index.html")
+    html = read("index.html").replace('<meta charset="utf-8">',
+        f'<meta charset="utf-8">\n  <meta name="fqchem-revision" content="{revision}">')
     font = subprocess.check_output(
         ["git", "show", f"{revision}:{directory}/fonts/stix-two-text-latin.woff2"], cwd=ROOT,
     )
@@ -33,7 +34,7 @@ def export():
                         f"<style>/* {read('fonts/OFL.txt')} */\n{css}</style>")
     html = html.replace('<script src="atlas.js"></script>', f"<script>{read('atlas.js')}</script>")
     for name in ("library.js", "kitaev.js"):
-        script = read(name).strip()
+        script = (ROOT / directory / name).read_text().strip()
         prefix = "addTheoremGraph("
         if not script.startswith(prefix) or not script.endswith(");"):
             raise ValueError(f"Unexpected graph format in {name}")

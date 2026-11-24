@@ -43,11 +43,11 @@ lake exe cache get
 lake build
 ```
 
-The CI audit checks the transitive axiom dependencies of every declaration defined in the integration, including private declarations. It also checks that the audit imports every integration source module. Run the audit and graph check from this directory. Downstream Lean code can access all results with `import FQChemKitaev`.
+The CI audit checks the transitive axiom dependencies of every declaration defined in the integration, including private declarations. It also checks that the audit imports every integration source module. Run the audit and graph extraction from this directory. Downstream Lean code can access all results with `import FQChemKitaev`.
 
 ```sh
 lake env lean test/Audit.lean
-python3 ../../scripts/theorem_graph/generate.py --project kitaev --check
+python3 ../../scripts/theorem_graph/generate.py --project kitaev
 ```
 
 Qatlib Contributors supplied the unary-clock construction, the rounded dyadic Hamiltonian, its locality, its norm bounds and the accepting/rejecting history-state estimates. The dependency is pinned to commit `f76f71a7c5cd19a31c251d0feeab09c75a758d69`. Its Apache 2.0 source is imported by Lake. [Qatlib license](https://github.com/quantum-atlas-ai/qatlib/blob/f76f71a7c5cd19a31c251d0feeab09c75a758d69/LICENSE) · [Completeness and soundness contract](https://github.com/quantum-atlas-ai/qatlib/blob/f76f71a7c5cd19a31c251d0feeab09c75a758d69/Qatlib/Papers/LocalHam06/MainResults/QmaCompletenessNormalized.lean)
