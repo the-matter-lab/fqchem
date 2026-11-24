@@ -1,0 +1,72 @@
+[
+  {
+    "module": "FQChem.StatePrep.PerturbationTheory.CoupledCluster",
+    "names": [
+      "expClusterInverse"
+    ],
+    "papers": [
+      "https://doi.org/10.1063/1.1727484"
+    ],
+    "relation": "supporting",
+    "scope": "The two opposite cluster exponentials are inverse matrices, for any finite index set. This supplies the cancellation in the coupled-cluster similarity transform."
+  },
+  {
+    "module": "FQChem.StatePrep.PerturbationTheory.CoupledClusterReplicas",
+    "names": [
+      "expRight",
+      "expSeparated"
+    ],
+    "papers": [
+      "https://doi.org/10.1038/s41467-023-37587-6"
+    ],
+    "relation": "supporting",
+    "scope": "The exponential of a sum of cluster generators acting on disjoint fragments is the Kronecker product of the fragment exponentials, even for approximate fragment amplitudes."
+  },
+  {
+    "module": "FQChem.StatePrep.PerturbationTheory.CoupledClusterReplicas",
+    "names": [
+      "transformedSeparated",
+      "projectedSeparated"
+    ],
+    "papers": [
+      "https://doi.org/10.1038/s41467-023-37587-6"
+    ],
+    "relation": "derived",
+    "scope": "For independent fragments and a product reference determinant, the similarity-transformed Hamiltonian is the sum of the individual transformed operators lifted to the composite. The projected coupled-cluster energies add exactly."
+  },
+  {
+    "module": "FQChem.StatePrep.PerturbationTheory.CoupledClusterReplicas",
+    "names": [
+      "tensorAction",
+      "groundSeparated"
+    ],
+    "papers": [
+      "https://doi.org/10.1038/s41467-023-37587-6"
+    ],
+    "relation": "supporting",
+    "scope": "A positive-semidefinite energy lower bound and a saturating product eigenvector certify that independent fragments have additive ground energies, including minimization over entangled states."
+  },
+  {
+    "module": "FQChem.StatePrep.PerturbationTheory.CoupledClusterReplicas",
+    "names": [
+      "projectedCopies",
+      "groundCopies"
+    ],
+    "papers": [
+      "https://doi.org/10.1038/s41467-023-37587-6"
+    ],
+    "relation": "derived",
+    "scope": "For L identical independent copies, exact ground energy and projected coupled-cluster energy are each L times their fragment value. The cluster amplitudes may be approximate."
+  },
+  {
+    "module": "FQChem.StatePrep.PerturbationTheory.CoupledClusterReplicas",
+    "names": [
+      "replicaScaling"
+    ],
+    "papers": [
+      "https://doi.org/10.1038/s41467-023-37587-6"
+    ],
+    "relation": "specialization",
+    "scope": "Lee et al., discussion at Fig. 3A. For L independent copies of a fixed finite fragment, assume the fragment calculation reaches absolute error δ in at most C δ⁻ᵇ work. Solving at δ = ε/L gives total absolute energy error ≤ ε with at most (C+1)Lᵇ⁺¹ ε⁻ᵇ work, counting one energy addition per copy. The fragment convergence rate is an explicit hypothesis."
+  }
+]

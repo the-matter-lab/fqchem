@@ -34,7 +34,7 @@ Import this chapter with `import FQChem.StatePrep`.
 
 - [In a finite orthonormal eigenbasis, the nondegenerate Rayleigh–Schrödinger coefficient equations determine the first-order state response and the first two energy corrections](PerturbationTheory/RayleighSchrodinger.lean#L95). [Schrödinger (1926)](https://doi.org/10.1002/andp.19263851302)
 - [The truncated eigenpair has an exact Schrödinger residual divisible by the cube of the perturbation parameter](PerturbationTheory/RayleighSchrodinger.lean#L165). [Schrödinger (1926)](https://doi.org/10.1002/andp.19263851302)
-- **Coupled cluster**. [Full exponential similarity and the reference eigen-equation](PerturbationTheory/CoupledCluster.lean#L18). [Čížek (1966)](https://doi.org/10.1063/1.1727484)
+- **Coupled cluster**. [Full exponential similarity and the reference eigen-equation](PerturbationTheory/CoupledCluster.lean#L27) and [energy accuracy and cost for independent replicas](https://fqchem.matterlab.ca/#FQChem.StatePrep.CoupledClusterReplicas.replicaScaling). [Čížek (1966)](https://doi.org/10.1063/1.1727484) · [Lee et al. (2023)](https://doi.org/10.1038/s41467-023-37587-6)
 - **Multireference perturbation**. [Nonpositive second-order shift for positive external gaps](PerturbationTheory/Multireference.lean#L17). [Andersson, Malmqvist & Roos (1992)](https://doi.org/10.1063/1.462209)
 
 ## [Subspace diagonalization](SubspaceDiagonalization)

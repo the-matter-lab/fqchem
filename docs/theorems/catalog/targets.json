@@ -115,6 +115,7 @@
     "locator": "Single-reference coupled-cluster discussion at Fig. 3A · Supplementary §§S2.7, S5",
     "scope": "Lee et al. propose poly(L)·poly(1/ε) effort for coupled cluster to reach energy error ε on single-reference problems, with L measuring system size. The argument uses empirical excitation-rank convergence for N₂ and extensivity for noninteracting replicas. Uniform input-class, convergence and iteration guarantees remain to be established.",
     "related": [
+      "FQChem.StatePrep.CoupledClusterReplicas.replicaScaling",
       "FQChem.VariationalMethods.coupledCluster",
       "FQChem.StatePrep.TruncationScaling.fixedRankBoundsDoNotGiveJointPolynomial"
     ]
