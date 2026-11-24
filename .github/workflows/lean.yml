@@ -49,6 +49,8 @@ jobs:
           path: docs/theorems
           merge-multiple: true
       - name: Assemble the atlas and advance its publication branch
+        env:
+          FQCHEM_GITHUB_STARS: ${{ github.event.repository.stargazers_count }}
         run: bash scripts/theorem_graph/publish.sh
 
   review-catalog:

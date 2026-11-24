@@ -1,7 +1,9 @@
 """Export freshly generated graphs and the committed explorer as one HTML file with revision-pinned source links."""
 
 import base64
+from http.client import HTTPException
 import json
+import os
 from pathlib import Path
 import subprocess
 from urllib.parse import urljoin
@@ -13,6 +15,19 @@ REPO = "the-matter-lab/fqchem"
 
 def git(*args):
     return subprocess.check_output(["git", *args], cwd=ROOT, text=True)
+
+
+def repository_stars():
+    snapshot = os.environ.get("FQCHEM_GITHUB_STARS", "")
+    if snapshot.isascii() and snapshot.isdecimal():
+        return f"{int(snapshot):,}"
+    try:
+        with urlopen(f"https://api.github.com/repos/{REPO}", timeout=5) as response:
+            repo = json.load(response)
+    except (OSError, ValueError, HTTPException):
+        return ""
+    count = repo.get("stargazers_count") if isinstance(repo, dict) else None
+    return f"{count:,}" if type(count) is int and count >= 0 else ""
 
 
 def export():
@@ -52,14 +67,10 @@ def export():
             raise ValueError(f"Missing or duplicate script tag for {name}")
         html = html.replace(tag, f"<script>addTheoremGraph({data});</script>")
 
-    with urlopen(f"https://api.github.com/repos/{REPO}", timeout=15) as response:
-        stars = json.load(response)["stargazers_count"]
-    if type(stars) is not int or stars < 0:
-        raise ValueError("Invalid GitHub star count")
     marker = '<span id="star-count"></span>'
     if html.count(marker) != 1:
         raise ValueError("Missing or duplicate repository star count")
-    return html.replace(marker, f'<span id="star-count">{stars:,}</span>')
+    return html.replace(marker, f'<span id="star-count">{repository_stars()}</span>')
 
 
 if __name__ == "__main__":
