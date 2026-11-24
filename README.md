@@ -1,6 +1,6 @@
 # fqchem
 
-fqchem is a Lean 4 library of machine-checked theorems for quantum chemistry. Its five chapters group proofs by the physical task and method. The [paper index](#papers-and-proved-results) links each reference to its Lean results.
+fqchem is a Lean 4 library of machine-checked theorems for quantum chemistry. Its five chapters group proofs by the physical task and method. The [paper index](https://github.com/the-matter-lab/fqchem/blob/atlas/docs/theorems/papers.md) groups Lean declarations and outstanding proofs by their original reference.
 
 | Chapter | What you’ll find |
 | --- | --- |
@@ -48,6 +48,8 @@ The [Kitaev integration](integrations/qatlib/) has its own pinned Lean 4.35 buil
 The audit checks that the library imports every scientific module and verifies the axiom dependencies of its theorems. The continuum DFT formalization adapts [Miguel Marques’s lean_dft](https://github.com/hyllios/lean_dft/tree/b9065256a6ddb1a7a4e1df3fbbf49a9a3fd546a4).
 
 ## Papers and proved results
+
+The [complete paper index](https://github.com/the-matter-lab/fqchem/blob/atlas/docs/theorems/papers.md) gives each declaration’s scope and distinguishes published theorems awaiting Lean formalization from literature hypotheses. The [review survey](docs/theorems/Surveys.md) explains the selection. Explore the [open proof list](https://fqchem.matterlab.ca/#needs-proof), [classical Pauli-shadow moments](https://fqchem.matterlab.ca/#FQChem.Properties.ClassicalShadows.secondMoment), [two-copy Bell learning](https://fqchem.matterlab.ca/#FQChem.Properties.BellSampling.magnitudeSquaredPauliExpectation), or [fast-forwarding by concatenation](https://fqchem.matterlab.ca/#FQChem.Complexity.FastForwarding.byConcatenation).
 
 The right column links to the exact Lean declarations. Some entries formalize a paper’s central theorem. Others prove a finite-dimensional case, an estimator identity, or a step of the published algorithm. The links give the hypotheses for each result.
 
@@ -97,7 +99,7 @@ The right column links to the exact Lean declarations. Some entries formalize a 
 | Möttönen et al. (2005), [Transformation of quantum states using uniformly controlled rotations](https://arxiv.org/abs/quant-ph/0407010) | [Exact preparation of normalized complex n-qubit amplitudes](FQChem/StatePrep/CircuitPreparation/ControlledRotations.lean#L122) · [Prefix-controlled rotation count](FQChem/StatePrep/CircuitPreparation/ControlledRotations.lean#L113) |
 | Brassard et al. (2002), [Quantum amplitude amplification and estimation](https://doi.org/10.1090/conm/305/05215) | [Two-reflection success law](FQChem/StatePrep/CircuitPreparation/AmplitudeAmplification.lean#L110) · [Success after rounding the iteration count](FQChem/StatePrep/CircuitPreparation/AmplitudeAmplification.lean#L117) · [Inverse-square-root query bound for known starting success](FQChem/StatePrep/CircuitPreparation/AmplitudeAmplification.lean#L138) |
 | Jiang et al. (2018), [Quantum Algorithms to Simulate Many-Body Physics of Correlated Fermions](https://doi.org/10.1103/PhysRevApplied.9.044036) | [Exact Slater preparation with number-conserving one- and two-mode gates and unrestricted connectivity](FQChem/StatePrep/CircuitPreparation/SlaterDeterminants.lean#L247) · [Occupation amplitudes as minors](FQChem/StatePrep/CircuitPreparation/SlaterDeterminants.lean#L71) |
-| Galerkin (1915), [Series in some questions of elastic equilibrium of rods and plates](https://www.mathnet.ru/PresentFiles/29594/galerkin_150_bubnov_galerkin_method.pdf) | [Galerkin residual orthogonality](FQChem/StatePrep/SubspaceDiagonalization/RitzGalerkin.lean#L32) |
+| Galerkin (1915), [Series in some questions of elastic equilibrium of rods and plates](https://www.unige.ch/~gander/HistoricalReferences/GALERKIN.pdf) | [Galerkin residual orthogonality](FQChem/StatePrep/SubspaceDiagonalization/RitzGalerkin.lean#L32) |
 | Kivlichan et al. (2018), [Quantum Simulation of Electronic Structure with Linear Depth and Connectivity](https://doi.org/10.1103/PhysRevLett.120.110501) | [Exact Slater preparation with number-conserving one- and two-mode gates and unrestricted connectivity](FQChem/StatePrep/CircuitPreparation/SlaterDeterminants.lean#L247) |
 
 ### Dynamics

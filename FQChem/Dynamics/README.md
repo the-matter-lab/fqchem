@@ -16,6 +16,8 @@ Import this chapter with `import FQChem.Dynamics`.
 - **Short-time, cluster & hydrodynamic expansions**. [Finite linked-cluster subtraction as Möbius inversion](RealTimePropagation/ClusterExpansions.lean#L20). [Rigol, Bryant & Singh (2006)](https://doi.org/10.1103/PhysRevLett.97.187202)
 - **Variational time evolution**. [An orthogonally projected tangent velocity minimizes the instantaneous residual](RealTimePropagation/VariationalEvolution.lean#L56). [McLachlan (1964)](https://doi.org/10.1080/00268976400100041)
 
+- **Out-of-time-order correlators**. The four-point OTOC with a local Z probe is determined by the Pauli mass that anticommutes with Z. The two-copy swap readout and uniform identity/swap tails are also formalized. The complete one-dimensional window-propagation guarantee is a separate proof target. [Checked identities](RealTimePropagation/OutOfTimeOrder.lean) · [Lewis et al. (2026)](https://arxiv.org/abs/2611.24640) · [Full simulation theorem](https://fqchem.matterlab.ca/#paper/lewis-window-propagation)
+
 ## [Fault-tolerant digital algorithms](DigitalAlgorithms)
 
 - **Digital Hamiltonian simulation**. [Noncommuting Lie–Trotter convergence for bounded generators](DigitalAlgorithms/LieTrotter.lean#L73) · [Exact multislice product formula for commuting terms](DigitalAlgorithms/CommutingTerms.lean#L18). [Trotter (1959)](https://doi.org/10.1090/S0002-9939-1959-0108732-6), [Lloyd (1996)](https://doi.org/10.1126/science.273.5278.1073)

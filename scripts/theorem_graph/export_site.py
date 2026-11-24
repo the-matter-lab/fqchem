@@ -33,6 +33,11 @@ def export():
     html = html.replace('<link rel="stylesheet" href="atlas.css">',
                         f"<style>/* {read('fonts/OFL.txt')} */\n{css}</style>")
     html = html.replace('<script src="atlas.js"></script>', f"<script>{read('atlas.js')}</script>")
+    literature = (ROOT / directory / "literature.js").read_text()
+    tag = '<script src="literature.js"></script>'
+    if html.count(tag) != 1:
+        raise ValueError("Missing or duplicate literature script tag")
+    html = html.replace(tag, f"<script>{literature}</script>")
     for name in ("library.js", "kitaev.js"):
         script = (ROOT / directory / name).read_text().strip()
         prefix = "addTheoremGraph("

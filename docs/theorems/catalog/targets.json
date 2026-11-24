@@ -1,0 +1,227 @@
+[
+  {
+    "id": "atia-aharonov-no-fast-forwarding",
+    "title": "No generic fast-forwarding",
+    "chapter": "Complexity",
+    "status": "published",
+    "papers": [
+      "https://doi.org/10.1038/s41467-017-01637-7"
+    ],
+    "locator": "Supplementary Note 8, Theorem 5 · arXiv v2, Definition 1 and Theorem 6",
+    "scope": "Fix c > 1. If one efficient procedure could fast-forward every norm-one, 2-sparse, efficiently row-computable n-qubit Hamiltonian to any time t ≤ 2^(n^(1/c)) with error n^(−4/c), then BQP = PSPACE. The error bounds the vector norm on every input with clean ancillas, relative to ideal evolution with those ancillas returned to zero.",
+    "related": [
+      "FQChem.Complexity.FastForwarding.byConcatenation"
+    ]
+  },
+  {
+    "id": "berry-sparse-no-fast-forwarding",
+    "title": "Sparse-oracle no-fast-forwarding",
+    "chapter": "Complexity",
+    "status": "published",
+    "papers": [
+      "https://doi.org/10.1007/s00220-006-0150-x"
+    ],
+    "locator": "Theorem 3 · parity-encoded chain",
+    "scope": "For every positive integer N the paper constructs a 2-sparse row-oracle Hamiltonian family with scaled time τ = ‖H‖t = πN/2. A simulator attaining trace-distance precision 1/4 for the family requires at least τ/(2π) = N/4 queries in the worst case.",
+    "related": [
+      "FQChem.Complexity.SparseParityPath.twoSparse",
+      "FQChem.Complexity.SparseParityPath.endpoint_amplitude",
+      "FQChem.Complexity.OrbitalSimulation.simulation_query_lower_bound"
+    ]
+  },
+  {
+    "id": "huang-shadow-sample-complexity",
+    "title": "Simultaneous classical-shadow predictions",
+    "chapter": "Properties",
+    "status": "published",
+    "papers": [
+      "https://doi.org/10.1038/s41567-020-0932-7"
+    ],
+    "locator": "Supplementary Section 1, Theorem 1 · Eqs. (S7), (S12)–(S14)",
+    "scope": "Fix M Hermitian observables on n qubits and an invertible shadow measurement channel. Use K = ⌈2 log(2M/δ)⌉ independent batches of order 34 maxᵢ‖Oᵢ − Tr(Oᵢ)I/2ⁿ‖²shadow/ε² snapshots each. For 0 < ε,δ < 1 the medians of the batch means are simultaneously within ε of all M expectations with probability at least 1−δ.",
+    "related": [
+      "FQChem.Properties.ClassicalShadows.secondMoment",
+      "FQChem.Properties.ClassicalShadows.predictionAtConfidence"
+    ]
+  },
+  {
+    "id": "huang-learning-separation",
+    "title": "Quantum memory advantage for predicting observables",
+    "chapter": "Properties",
+    "status": "published",
+    "papers": [
+      "https://doi.org/10.1126/science.abn7293"
+    ],
+    "locator": "Theorem 1 · Supplementary Definition 2 and Theorem 6, Appendix D.1–D.3",
+    "scope": "Draw a uniform nonidentity Pauli P. With equal probability prepare ρ = I/2ⁿ or ρ = (I + 0.9sP)/2ⁿ for a hidden uniform sign s. P is revealed after acquisition. Estimating |Tr(Pρ)| within 0.25 with success at least 0.8 requires Ω(2ⁿ) copies under adaptive single-copy measurements with classical memory. Joint Bell measurements on pairs of copies suffice with O(1) copies.",
+    "related": [
+      "FQChem.Properties.BellSampling.magnitudeSquaredPauliExpectation"
+    ]
+  },
+  {
+    "id": "lewis-window-propagation",
+    "title": "Window propagation for first-order OTOCs",
+    "chapter": "Dynamics",
+    "status": "published",
+    "papers": [
+      "https://arxiv.org/abs/2611.24640"
+    ],
+    "locator": "Theorem 1, Eq. (III.1) · Definition 3, Algorithm 2, Appendix C.4 Theorem 4",
+    "scope": "For n,d ≥ 2 (even for notation) let U be an open 1D depth-d brickwork circuit of independent Haar U(4) gates. Given its efficient description and 0 < ε < 1, deterministic window propagation estimates 2⁻ⁿ Tr[(U† Xₙ U Z₁)²] with mean-squared error at most ε over U. The polynomial runtime in n, d and 1/ε counts updates of retained coefficients. The source leaves finite-precision gate encoding and bit-cost analysis implicit.",
+    "related": [
+      "FQChem.Dynamics.OTOC.firstOrder_eq_anticommutingMass",
+      "FQChem.Dynamics.OTOC.twoCopyReadout",
+      "FQChem.Dynamics.OTOC.invariantTails"
+    ]
+  },
+  {
+    "id": "vidal-circuit-simulation",
+    "title": "Classical simulation at bounded Schmidt rank",
+    "chapter": "StatePrep",
+    "status": "published",
+    "papers": [
+      "https://doi.org/10.1103/PhysRevLett.91.147902"
+    ],
+    "locator": "Theorem 1 · Eq. (2), Lemmas 1–2",
+    "scope": "In a polynomial-size pure-state computation with one- and two-qubit gates, suppose χ, the maximum Schmidt rank over bipartitions, stays polynomial in n at all steps. Vidal’s tensor representation and gate updates then simulate the computation with polynomial classical time and memory.",
+    "related": [
+      "FQChem.Algorithms.mpsCutBound",
+      "FQChem.Algorithms.exactCutFactorization"
+    ]
+  },
+  {
+    "id": "avron-elgart-adiabatic",
+    "title": "Adiabatic following without a gap",
+    "chapter": "StatePrep",
+    "status": "published",
+    "papers": [
+      "https://doi.org/10.1007/s002200050620"
+    ],
+    "locator": "Section 2, Theorem 1 · bounded-Hamiltonian case",
+    "scope": "Let H(s) be a smooth bounded self-adjoint Hamiltonian path with a smooth finite-rank spectral projection P(s). For a state initially in ran P(0), evolution over runtime τ has distance o(1) from ran P(s), uniformly for s ∈ [0,1] as τ → ∞. The theorem needs no uniform spectral gap and supplies no universal rate.",
+    "related": [
+      "FQChem.StatePrep.AdiabaticPreparation.gappedBandPreparation_limit"
+    ]
+  },
+  {
+    "id": "troyer-wiese-sign-problem",
+    "title": "Complexity of a generic sign-problem solution",
+    "chapter": "StatePrep",
+    "status": "published",
+    "papers": [
+      "https://doi.org/10.1103/PhysRevLett.94.170201"
+    ],
+    "locator": "Sign-free comparison and complexity definition, Eqs. (8)–(9) · spin-glass reduction and note [9]",
+    "scope": "For the constructed quantum spin model, the related sign-free bosonic system has a polynomial-time Monte Carlo method. A generic polynomial-complexity cure for estimating the signed thermal average would decide an NP-complete spin-glass instance in polynomial time with bounded error. Monte Carlo sampling gives the randomized implication NP ⊆ BPP.",
+    "related": [
+      "FQChem.StatePrep.ImaginaryTimeProjection.SignProblem.productSampleCost"
+    ]
+  },
+  {
+    "id": "brassard-amplitude-estimation",
+    "title": "Amplitude-estimation error guarantee",
+    "chapter": "Properties",
+    "status": "published",
+    "papers": [
+      "https://doi.org/10.1090/conm/305/05215"
+    ],
+    "locator": "Theorem 12 (Est_Amp), k = 1",
+    "scope": "For success probability a, amplitude estimation Est_Amp(A, χ, M) uses M evaluations of the Boolean success predicate. With probability at least 8/π² its estimate differs from a by at most 2π√(a(1−a))/M + π²/M².",
+    "related": [
+      "FQChem.StatePrep.CircuitPreparation.AmplitudeAmplification.success_law",
+      "FQChem.Algorithms.exactGridQPE"
+    ]
+  },
+  {
+    "id": "zalka-search",
+    "title": "Optimality of quantum search",
+    "chapter": "Complexity",
+    "status": "published",
+    "papers": [
+      "https://doi.org/10.1103/PhysRevA.60.2746"
+    ],
+    "locator": "Sections 2–3 · Eqs. (6), (22) and (27)",
+    "scope": "For N equiprobable single-marked-item phase oracles and T queries up to the first Grover maximum, Grover’s average success sin²((2T+1) arcsin(1/√N)) is optimal. To reach success tending to one takes at least (π/4 − o(1))√N oracle calls.",
+    "related": [
+      "FQChem.StatePrep.CircuitPreparation.AmplitudeAmplification.success_law"
+    ]
+  },
+  {
+    "id": "gilyen-singular-transformation",
+    "title": "Polynomial singular-value transformation",
+    "chapter": "Dynamics",
+    "status": "published",
+    "papers": [
+      "https://arxiv.org/abs/1806.01838"
+    ],
+    "locator": "Theorem 17, Eq. (32) · phase admissibility in Corollary 8",
+    "scope": "Let U be unitary on a finite-dimensional Hilbert space, Π and Π̃ orthogonal projectors, and P a complex degree-d polynomial satisfying Corollary 8’s parity and magnitude conditions. A sequence of d phases and alternating U/U† applications implements the singular-value transform of Π̃UΠ. Its extracted block is Π̃UΦΠ for odd d and ΠUΦΠ for even d.",
+    "related": [
+      "FQChem.Dynamics.DigitalAlgorithms.Qubitization.Encoding.chebyshev_block"
+    ]
+  },
+  {
+    "id": "ogorman-fixed-basis-energy",
+    "title": "Fixed-basis electronic energy is QMA-complete",
+    "chapter": "Complexity",
+    "status": "published",
+    "papers": [
+      "https://doi.org/10.1103/PRXQuantum.3.020322"
+    ],
+    "locator": "Definition 1 (ESFBS) and Theorem 1 · Eqs. (3)–(6)",
+    "scope": "Given electron number η, a concisely specified single-particle basis and external potential with efficiently computable integrals, decide E₀ ≤ a versus E₀ ≥ b on the η-electron sector for b−a ≥ 1/poly(η). This promise problem is QMA-complete. The hardness construction uses V = 0 and physical kinetic and Coulomb integrals.",
+    "related": []
+  },
+  {
+    "id": "ogorman-slater-energy",
+    "title": "Lowest Slater energy is NP-complete",
+    "chapter": "Complexity",
+    "status": "published",
+    "papers": [
+      "https://doi.org/10.1103/PRXQuantum.3.020322"
+    ],
+    "locator": "Definition 2 (LESD) and Theorem 2 · Section 5",
+    "scope": "For the same fixed-basis electronic Hamiltonians and electron-number sector, decide whether some single Slater determinant has expected energy ≤ a or every such determinant has energy ≥ b, at inverse-polynomial promise gap. This problem is NP-complete.",
+    "related": []
+  },
+  {
+    "id": "liu-n-representability",
+    "title": "Fermionic N-representability",
+    "chapter": "Complexity",
+    "status": "published",
+    "papers": [
+      "https://doi.org/10.1103/PhysRevLett.98.110503"
+    ],
+    "locator": "Main N-representability promise problem, pp. 1–2 · oracle reduction and QMA verifier",
+    "scope": "For N fermions in d ≤ poly(N) modes, the input is a two-fermion density matrix ρ and β ≥ 1/poly(N) given to polynomially many bits. Decide exact representability by an N-fermion mixed state versus trace-norm distance at least β from every representable marginal. The problem is QMA-complete under polynomial-time Turing reductions.",
+    "related": []
+  },
+  {
+    "id": "kitaev-local-hamiltonian",
+    "title": "Five-local Hamiltonian is QMA-complete",
+    "chapter": "Complexity",
+    "status": "published",
+    "papers": [
+      "https://doi.org/10.1090/gsm/047"
+    ],
+    "locator": "Proposition 14.2 and Theorem 14.3 · five-local clock in §14.4.5",
+    "scope": "Given a sum of polynomially many qubit terms 0 ≤ Hⱼ ≤ I acting on at most five qubits each and thresholds a < b with inverse-polynomial separation, distinguish λmin(H) ≤ a from λmin(H) > b. This promise problem is QMA-complete under polynomial-time Karp reductions. The book calls the witness class BQNP.",
+    "related": [
+      "FQChem.Complexity.Kitaev.BoundedErrorReduction.transducer_correct"
+    ]
+  },
+  {
+    "id": "lee-coupled-cluster-scaling",
+    "title": "Single-reference coupled-cluster scaling",
+    "chapter": "StatePrep",
+    "status": "hypothesis",
+    "papers": [
+      "https://doi.org/10.1038/s41467-023-37587-6"
+    ],
+    "locator": "Single-reference coupled-cluster discussion at Fig. 3A · Supplementary §§S2.7, S5",
+    "scope": "Lee et al. propose poly(L)·poly(1/ε) effort for coupled cluster to reach energy error ε on single-reference problems, with L measuring system size. The argument uses empirical excitation-rank convergence for N₂ and extensivity for noninteracting replicas. Uniform input-class, convergence and iteration guarantees remain to be established.",
+    "related": [
+      "FQChem.VariationalMethods.coupledCluster"
+    ]
+  }
+]

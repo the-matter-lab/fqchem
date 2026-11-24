@@ -7,6 +7,7 @@ const chapters = new Map(Object.entries({
   Multiscale: "Multiscale", Complexity: "Complexity", Upstream: "Upstream results",
 }));
 const types = {
+  pending: {name: "Needs proof", color: "#ad3244"},
   classical: {name: "Classical computing", color: "#b45a29"},
   quantum: {name: "Quantum computing", color: "#306ba0"},
   general: {name: "General theory", color: "#647e60"},
@@ -16,12 +17,12 @@ const types = {
 const classicalModules = new Set((
   "AFQMC AmplifierCost ClassicalEnvironments ClusterExpansions Compiler ConfigurationInteraction " +
   "CoupledCluster DMRG DiffusionMonteCarlo DyadicCoefficients FCIQMC Fragments GaussianAuxiliaryField " +
-  "HubbardProjection KrylovPropagation LearnedEnvironments LearnedSurrogates MatrixProductStates " +
+  "OutOfTimeOrder HubbardProjection KrylovPropagation LearnedEnvironments LearnedSurrogates MatrixProductStates " +
   "Multireference PathSampling RingPolymer SignProblem SpectralReconstruction SplitOperator " +
   "TimeDependentCI VariationalMonteCarlo"
 ).split(" "));
 const quantumModules = new Set((
-  "AaronsonAmbainis AaronsonAmbainisOrbitals AaronsonAmbainisQuery Amplify AmplitudeAmplification " +
+  "BellSampling ClassicalShadows FastForwarding AaronsonAmbainis AaronsonAmbainisOrbitals AaronsonAmbainisQuery Amplify AmplitudeAmplification " +
   "BoundedErrorReduction ControlledRotations ElectronicStructure ElectronicStructureOperators " +
   "ElectronicStructurePauli GroundStateSearch HHL HistoryHamiltonian LinearCombinationOfUnitaries " +
   "Majority OrbitalSimulation PhaseEstimation PhaseEstimationFilter Qubitization RydbergBlockade " +
@@ -48,17 +49,22 @@ const aliases = {VariationalMonteCarlo: "VMC", DiffusionMonteCarlo: "DMC", AFQMC
   VQE: "variational quantum eigensolver", AaronsonAmbainis: "Aaronson Ambainis"};
 const norm = s => s.toLowerCase().replace(/[^a-z0-9]/g, "");
 const nodes = [], edges = [], byName = new Map(), byDeclaration = new Map();
-for (const entries of graphParts) {
+const targets = atlasLiterature.targets.map(t => ({
+  ...t, name:"paper/"+t.id, module:"FQChem."+t.chapter+".Literature", deps:[], pending:true,
+}));
+for (const entries of [...graphParts,targets]) {
   const mapped = entries.map(n => {
     const identity = n.module + "/" + n.name;
     const existing = byDeclaration.get(identity);
     if (existing) return existing;
-    const node = {...n, id: nodes.length, short: n.name.split(".").at(-1), topic: n.module.split(".").at(-1),
+    const node = {...n, id: nodes.length, short: n.pending ? n.title : n.name.split(".").at(-1), topic: n.module.split(".").at(-1),
       chapter: n.external ? "Upstream" : n.module.startsWith("FQChemKitaev") ? "Complexity" : n.module.split(".")[1],
       before: [], after: []};
-    node.kind = methodType(node);
+    node.kind = n.pending ? "pending" : methodType(node);
+    node.review = n.pending ? n : atlasLiterature.groups[atlasLiterature.byNode[identity]];
+    const citations = node.review.papers.map(id=>atlasLiterature.papers[id]);
     const terms = Object.entries(aliases).filter(([key]) => node.module.includes(key)).map(([,v]) => v);
-    node.match = norm([node.name, node.module, chapters.get(node.chapter), types[node.kind].name, ...terms].join(" "));
+    node.match = norm([node.short, node.name, node.module, chapters.get(node.chapter), types[node.kind].name, ...terms, ...citations.flatMap(p=>[p.authors,p.title,...(p.keywords||[])])].join(" "));
     byDeclaration.set(identity,node);
     if (!byName.has(node.name)) byName.set(node.name,node);
     nodes.push(node);
@@ -76,7 +82,8 @@ const groups = new Map([...chapters.keys()].map(key => [key,nodes.filter(n => n.
 const chapterNeighbors = new Map([...groups].map(([key,members]) =>
   [key,new Set(members.flatMap(n => [n,...n.before,...n.after]))]));
 const ordered = [...nodes].sort((a,b) => a.short.localeCompare(b.short) || a.name.localeCompare(b.name));
-$("total-nodes").textContent = nodes.length.toLocaleString();
+$("total-nodes").textContent = (nodes.length-targets.length).toLocaleString();
+$("total-targets").textContent = targets.length.toLocaleString();
 $("total-edges").textContent = edges.length.toLocaleString();
 
 function svg(tag, attrs) {
@@ -251,7 +258,7 @@ function highlight() {
   selectedEdges=new Set(active?edges.filter(e=>e.from===active||e.to===active):[]);
   for(const n of nodes) {
     const dim=!visibleNode(n);
-    n.el.setAttribute("class","dot"+(dim?" dim":"")+(active===n?" selected":active&&neighbors.has(n)?" neighbor":""));
+    n.el.setAttribute("class","dot"+(n.pending?" pending":"")+(dim?" dim":"")+(active===n?" selected":active&&neighbors.has(n)?" neighbor":""));
   }
   for(const e of edges) {
     const focus=selectedEdges.has(e);
@@ -262,7 +269,7 @@ function highlight() {
     if(focus) $("links").append(e.el);
   }
   for(const [key,label] of labels) label.setAttribute("class","map-label"+(chapter&&key!==chapter?" dim":""));
-  $("view-name").textContent=active?active.short:chapter?chapters.get(chapter):query?"Search matches":"Library overview";
+  $("view-name").textContent=active?active.short:chapter?chapters.get(chapter):query==="needsproof"?"Needs proof":query?"Search matches":"Library overview";
   $("details-jump").hidden=!active;
   updateFocusLabel(); scheduleLabels();
 }
@@ -279,7 +286,7 @@ function sub(label,items) {
   const section=html("section","subsection"); section.append(html("h3","section-title",label),...items); return section;
 }
 function theoremRow(n,subtitle) {
-  const el=row(n.short,()=>select(n),{kind:n.kind,subtitle:subtitle?n.topic:""});
+  const el=row(n.short,()=>select(n),{kind:n.kind,subtitle:subtitle?(n.pending?"Needs proof":n.topic):""});
   el.title=n.name; return el;
 }
 function back() {
@@ -290,15 +297,33 @@ function showPanel(resetScroll=true) {
   if(active) {
     panel.append(back(),html("h3","detail-title",active.short));
     const key=html("span","key "+active.kind); key.append(html("i"),types[active.kind].name);
-    const source=html("a","source-link","Open Lean declaration"); source.href=active.url; source.append(icon("ext"));
-    panel.append(key,html("p","detail-module",active.name),source);
-    for(const [name,list] of [["Prerequisites",active.before],["Used by",active.after]]) {
-      panel.append(sub(name+" · "+list.length,list.length?list.map(n=>theoremRow(n,true)):
-        [html("p","empty",active.external&&name==="Prerequisites"?"Upstream proof boundary":"None in this graph.")]));
+    panel.append(key);
+    const review=active.review;
+    if(active.pending) {
+      const status=active.status==="hypothesis" ? "Hypothesis in the literature" : "Proof in the paper";
+      panel.append(html("p","review-status",status+" · Lean proof needed"),html("p","locator",active.locator));
+    } else {
+      panel.append(html("p","review-status","Lean checked · "+atlasLiterature.relations[review.relation]));
+      const source=html("a","source-link","Open Lean declaration"); source.href=active.url; source.append(icon("ext"));
+      panel.append(html("p","detail-module",active.name),source);
+    }
+    panel.append(html("p","review-scope",review.scope));
+    const sources=review.papers.map(id=>{
+      const p=atlasLiterature.papers[id], a=html("a","original-paper");
+      a.href=p.url; a.append(html("strong","",p.authors || "Cited in Lean"),html("span","",p.title),icon("ext")); return a;
+    });
+    panel.append(sub(sources.length===1?"Original reference":"Original references",sources));
+    if(active.pending) {
+      if(active.related.length) panel.append(sub("Related checked results",active.related.map(id=>theoremRow(byName.get(id),true))));
+    } else {
+      for(const [name,list] of [["Prerequisites",active.before],["Used by",active.after]]) {
+        panel.append(sub(name+" · "+list.length,list.length?list.map(n=>theoremRow(n,true)):
+          [html("p","empty",active.external&&name==="Prerequisites"?"Upstream proof boundary":"None in this graph.")]));
+      }
     }
   } else if(chapter || query || browsing) {
     const list=ordered.filter(matches);
-    panel.append(back(),html("h3","section-title",(chapter?chapters.get(chapter):query?"Search results":"All declarations")+" · "+list.length));
+    panel.append(back(),html("h3","section-title",(chapter?chapters.get(chapter):query==="needsproof"?"Needs proof":query?"Search results":"All results")+" · "+list.length));
     panel.append(...list.slice(0,limit).map(n=>theoremRow(n,true)));
     if(!list.length) panel.append(html("p","empty","No matching theorems. Try a method such as VMC or a Lean name."));
     if(list.length>limit) panel.append(row("Show more",()=>{limit+=45;showPanel(false);},{count:list.length-limit}));
@@ -315,7 +340,7 @@ function showPanel(resetScroll=true) {
       return n?[row(title,()=>select(n),{kind:n.kind})]:[];
     });
     panel.append(sub("Trace a proof",examples));
-    panel.append(row("Browse all declarations",()=>{browsing=true;showPanel();},{count:nodes.length}));
+    panel.append(row("Browse all results",()=>{browsing=true;showPanel();},{count:nodes.length}));
   }
   if(resetScroll) panel.scrollTop=0;
 }
@@ -341,8 +366,15 @@ function select(n,record=true) {
   highlight(); showPanel(); $("tip").hidden=true;
   $("notice").textContent=n.short+". "+n.before.length+" prerequisites. "+n.after.length+" dependent results.";
 }
+function showPending(record=true) {
+  active=null; chapter=null; browsing=true; limit=45; query="needsproof"; $("search").value="Needs proof";
+  if(record) setHash("needs-proof");
+  fit(); highlight(); showPanel();
+}
+$("needs-proof").onclick=()=>showPending();
 function fromHash() {
   let id=""; try { id=decodeURIComponent(location.hash.slice(1)); } catch {}
+  if(id==="needs-proof") { showPending(false); return; }
   const n=byName.get(id)||byDeclaration.get(id);
   if(n) select(n,false); else overview(false);
 }

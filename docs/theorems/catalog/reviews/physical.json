@@ -1,0 +1,758 @@
+[
+  {
+    "module": "FQChem.Dynamics.DigitalAlgorithms.CommutingTerms",
+    "names": [
+      "commutingProductFormula"
+    ],
+    "papers": [
+      "https://doi.org/10.1126/science.273.5278.1073"
+    ],
+    "relation": "specialization",
+    "scope": "For two commuting finite complex matrices the product of their exponentials, repeated n times, exactly exponentiates n times their sum. Lloyd also treats noncommuting local terms with approximation error."
+  },
+  {
+    "module": "FQChem.Dynamics.DigitalAlgorithms.LieTrotter",
+    "names": [
+      "lieTrotter"
+    ],
+    "papers": [
+      "https://doi.org/10.1090/S0002-9939-1959-0108732-6"
+    ],
+    "relation": "specialization",
+    "scope": "Two bounded generators in a complete unital real normed algebra obey the Lie–Trotter limit in norm. Trotter’s semigroup theorem also allows generators with domain conditions."
+  },
+  {
+    "module": "FQChem.Dynamics.DigitalAlgorithms.LieTrotter",
+    "names": [
+      "power_defect",
+      "globalStepError"
+    ],
+    "papers": [
+      "https://doi.org/10.1090/S0002-9939-1959-0108732-6"
+    ],
+    "relation": "supporting",
+    "scope": "Telescoping bounds the norm difference of nth powers in terms of the one-step difference. For two contractions the factor is at most n."
+  },
+  {
+    "module": "FQChem.Dynamics.DigitalAlgorithms.LieTrotter",
+    "names": [
+      "exp_norm_bound"
+    ],
+    "papers": [
+      "https://doi.org/10.1090/S0002-9939-1959-0108732-6"
+    ],
+    "relation": "supporting",
+    "scope": "Bounds the norm of the algebra exponential by exp of the argument norm in the bounded-generator proof."
+  },
+  {
+    "module": "FQChem.Dynamics.DigitalAlgorithms.LinearCombinationOfUnitaries",
+    "names": [
+      "select_unitary",
+      "circuit_unitary",
+      "select_prepare"
+    ],
+    "papers": [
+      "https://doi.org/10.1103/PhysRevLett.114.090502"
+    ],
+    "relation": "supporting",
+    "scope": "Finite matrix identities for the controlled SELECT operation and its conjugation by a unitary ancilla preparation. They certify unitarity and one joint matrix element."
+  },
+  {
+    "module": "FQChem.Dynamics.DigitalAlgorithms.LinearCombinationOfUnitaries",
+    "names": [
+      "referenceBlock",
+      "blockEncodes"
+    ],
+    "papers": [
+      "https://doi.org/10.1103/PhysRevLett.114.090502"
+    ],
+    "relation": "paper-result",
+    "scope": "In Eqs. (7)–(11), the reference ancilla block of PREPARE† SELECT PREPARE equals the sum of term unitaries weighted by prepared probabilities. Probabilities cₖ/α give H/α, as in the paper’s LCU construction."
+  },
+  {
+    "module": "FQChem.Dynamics.DigitalAlgorithms.LinearCombinationOfUnitaries",
+    "names": [
+      "postselectionWeight"
+    ],
+    "papers": [
+      "https://doi.org/10.1103/PhysRevLett.114.090502"
+    ],
+    "relation": "derived",
+    "scope": "The squared weight in the reference ancilla sector is ‖Hψ‖²/α². This is a success probability for a unit system input and is derived from the circuit block."
+  },
+  {
+    "module": "FQChem.Dynamics.DigitalAlgorithms.Qubitization",
+    "names": [
+      "reflection_sq",
+      "proj_reflection",
+      "involution_inner",
+      "walk_preserves_inner"
+    ],
+    "papers": [
+      "https://doi.org/10.22331/q-2019-07-12-163"
+    ],
+    "relation": "supporting",
+    "scope": "An orthogonal projector gives an involutory reflection. A product of two symmetric involutions preserves the complex inner product, as required by the signal walk."
+  },
+  {
+    "module": "FQChem.Dynamics.DigitalAlgorithms.Qubitization",
+    "names": [
+      "block_recurrence"
+    ],
+    "papers": [
+      "https://doi.org/10.22331/q-2019-07-12-163"
+    ],
+    "relation": "supporting",
+    "scope": "The compressed powers of the walk obey a second-order operator recurrence for a symmetric involutory oracle and an orthogonal signal projector."
+  },
+  {
+    "module": "FQChem.Dynamics.DigitalAlgorithms.Qubitization",
+    "names": [
+      "chebyshev_block",
+      "eigenvector_amplitude",
+      "eigenphase_cosine"
+    ],
+    "papers": [
+      "https://doi.org/10.22331/q-2019-07-12-163"
+    ],
+    "relation": "specialization",
+    "scope": "For the Hermitian involution encoding, compression of the nth walk power gives the Chebyshev polynomial of the signal. A signal eigenvector of value λ acquires the projected amplitude Tₙ(λ), or cos(n arccos λ) for a unit eigenvector. This realizes the signal dynamics of Theorem 2."
+  },
+  {
+    "module": "FQChem.Dynamics.DigitalAlgorithms.Qubitization",
+    "names": [
+      "eigenvalue_abs_le_one"
+    ],
+    "papers": [
+      "https://doi.org/10.22331/q-2019-07-12-163"
+    ],
+    "relation": "supporting",
+    "scope": "A real eigenvalue of the signal on a normalized encoded eigenvector has absolute value at most one."
+  },
+  {
+    "module": "FQChem.Dynamics.DigitalAlgorithms.Qubitization",
+    "names": [
+      "simulation_error"
+    ],
+    "papers": [
+      "https://doi.org/10.22331/q-2019-07-12-163"
+    ],
+    "relation": "derived",
+    "scope": "For a unit encoded eigenvector the state-vector error of a finite weighted sum of projected walks is the scalar approximation error at its eigenvalue."
+  },
+  {
+    "module": "FQChem.Dynamics.DigitalAlgorithms.Qubitization",
+    "names": [
+      "quadratic_simulation_bound"
+    ],
+    "papers": [
+      "https://doi.org/10.22331/q-2019-07-12-163"
+    ],
+    "relation": "derived",
+    "scope": "A degree-two walk polynomial approximates the real-time phase on a unit encoded eigenvector for |t| ≤ 1. Lean gives the explicit error 2|tλ|³/9 for this polynomial."
+  },
+  {
+    "module": "FQChem.Dynamics.DigitalAlgorithms.TruncatedTaylor",
+    "names": [
+      "segment_error",
+      "segment_tendsto"
+    ],
+    "papers": [
+      "https://doi.org/10.1103/PhysRevLett.114.090502"
+    ],
+    "relation": "supporting",
+    "scope": "The first k exponential Taylor terms have norm error at most eˢsᵏ/k! at s = ‖x‖, and converge in a complete normed algebra. These estimates support the segment analysis."
+  },
+  {
+    "module": "FQChem.Dynamics.DigitalAlgorithms.TruncatedTaylor",
+    "names": [
+      "power_error",
+      "generator_norm"
+    ],
+    "papers": [
+      "https://doi.org/10.1103/PhysRevLett.114.090502"
+    ],
+    "relation": "supporting",
+    "scope": "The proof controls the perturbation of repeated powers near a contraction and identifies the norm of the scaled generator −ihH."
+  },
+  {
+    "module": "FQChem.Dynamics.DigitalAlgorithms.TruncatedTaylor",
+    "names": [
+      "realTime_segment",
+      "realTime_segmented",
+      "realTime_state_error"
+    ],
+    "papers": [
+      "https://doi.org/10.1103/PhysRevLett.114.090502"
+    ],
+    "relation": "specialization",
+    "scope": "For a bounded Hamiltonian the one-segment truncation has a factorial remainder. For self-adjoint H and r positive equal segments the operator error is bounded by (1+δ)ʳ−1, with a corresponding bound on input vectors. Circuit synthesis and query cost require additional results."
+  },
+  {
+    "module": "FQChem.Dynamics.LearnedSurrogates",
+    "names": [
+      "invariantDirectionalForce"
+    ],
+    "papers": [
+      "https://doi.org/10.1126/sciadv.1603015"
+    ],
+    "relation": "derived",
+    "scope": "Differentiating energy invariance under a linear isometry gives the directional force transformation at a differentiable configuration. The cited work develops a gradient-domain force-field model."
+  },
+  {
+    "module": "FQChem.Dynamics.OpenSystems.Kraus",
+    "names": [
+      "lifted_operation"
+    ],
+    "papers": [
+      "https://doi.org/10.1016/0024-3795(75)90075-0",
+      "https://doi.org/10.1016/0003-4916(71)90108-4"
+    ],
+    "relation": "supporting",
+    "scope": "The matrix amplification acting on system blocks equals conjugation and summation with the ancilla-extended Kraus matrices."
+  },
+  {
+    "module": "FQChem.Dynamics.OpenSystems.Kraus",
+    "names": [
+      "complexLinearity",
+      "completePositivity"
+    ],
+    "papers": [
+      "https://doi.org/10.1016/0024-3795(75)90075-0"
+    ],
+    "relation": "specialization",
+    "scope": "The finite Kraus representation gives a complex linear map preserving positivity at every finite ancilla size. This is the representation-to-complete-positivity direction of Choi’s characterization."
+  },
+  {
+    "module": "FQChem.Dynamics.OpenSystems.Kraus",
+    "names": [
+      "tracePreservation",
+      "jointDensityPreservation"
+    ],
+    "papers": [
+      "https://doi.org/10.1016/0003-4916(71)90108-4",
+      "https://doi.org/10.1016/0024-3795(75)90075-0"
+    ],
+    "relation": "derived",
+    "scope": "Kraus completeness preserves trace with an arbitrary finite ancilla. Combined with complete positivity it preserves normalized positive joint states."
+  },
+  {
+    "module": "FQChem.Dynamics.OpenSystems.TracePreservation",
+    "names": [
+      "krausTrace"
+    ],
+    "papers": [
+      "https://doi.org/10.1016/0003-4916(71)90108-4"
+    ],
+    "relation": "specialization",
+    "scope": "For a finite family of matrices, the completeness relation ΣK†K=I makes the operator sum trace preserving."
+  },
+  {
+    "module": "FQChem.Dynamics.OpenSystems.TracePreservation",
+    "names": [
+      "lindbladTrace"
+    ],
+    "papers": [
+      "https://doi.org/10.1007/BF01608499"
+    ],
+    "relation": "derived",
+    "scope": "The trace of one finite-matrix Lindblad dissipator vanishes by cyclicity. The generator characterization in the paper is a stronger statement."
+  },
+  {
+    "module": "FQChem.Dynamics.RealTimePropagation.BornOppenheimer",
+    "names": [
+      "bornOppenheimerEnergy"
+    ],
+    "papers": [
+      "https://doi.org/10.1002/andp.19273892002"
+    ],
+    "relation": "derived",
+    "scope": "For one nuclear coordinate on a differentiable potential surface, Newton’s law implies zero instantaneous derivative of kinetic plus potential energy. Existence and accuracy of a molecular adiabatic approximation are additional questions."
+  },
+  {
+    "module": "FQChem.Dynamics.RealTimePropagation.ClusterExpansions",
+    "names": [
+      "linkedClusterInversion"
+    ],
+    "papers": [
+      "https://doi.org/10.1103/PhysRevLett.97.187202"
+    ],
+    "relation": "specialization",
+    "scope": "When clusters are labeled finite subsets and a weight is the observable minus all proper subcluster weights, Boolean-lattice Möbius inversion recovers that weight. This models the linked-cluster subtraction step."
+  },
+  {
+    "module": "FQChem.Dynamics.RealTimePropagation.HeisenbergPicture",
+    "names": [
+      "pictureDuality"
+    ],
+    "papers": [
+      "https://doi.org/10.1103/PRXQuantum.6.020302"
+    ],
+    "relation": "supporting",
+    "scope": "A cyclic trace identity exchanges propagation of a finite matrix state with propagation of the observable. This is a mathematical prerequisite for the Heisenberg-picture algorithm."
+  },
+  {
+    "module": "FQChem.Dynamics.RealTimePropagation.HeisenbergPicture",
+    "names": [
+      "pauliRotation"
+    ],
+    "papers": [
+      "https://doi.org/10.1103/PRXQuantum.6.020302"
+    ],
+    "relation": "specialization",
+    "scope": "Conjugating an anticommuting string Q by a rotation generated by P with P²=I gives two terms in Q and PQ. The trigonometric rotation follows by choosing its half-angle coefficients."
+  },
+  {
+    "module": "FQChem.Dynamics.RealTimePropagation.KrylovPropagation",
+    "names": [
+      "krylovExact"
+    ],
+    "papers": [
+      "https://doi.org/10.1063/1.451548"
+    ],
+    "relation": "supporting",
+    "scope": "An exact matrix intertwiner HQ=QK propagates to all powers HᵏQ=QKᵏ."
+  },
+  {
+    "module": "FQChem.Dynamics.RealTimePropagation.KrylovPropagation",
+    "names": [
+      "krylovMoment"
+    ],
+    "papers": [
+      "https://doi.org/10.1063/1.451548"
+    ],
+    "relation": "specialization",
+    "scope": "If QQ† fixes every Krylov vector through degree d, lifting the dth power of Q†HQ reproduces Hᵈv. The paper uses the projected operator for time propagation."
+  },
+  {
+    "module": "FQChem.Dynamics.RealTimePropagation.PathSampling",
+    "names": [
+      "realTimeReweighting"
+    ],
+    "papers": [
+      "https://doi.org/10.1103/PhysRevB.79.035320"
+    ],
+    "relation": "specialization",
+    "scope": "For finite complex trajectory weights of nonzero total weight, sampling with magnitudes and restoring the phase gives the exact reweighted ratio. The average phase has modulus at most one."
+  },
+  {
+    "module": "FQChem.Dynamics.RealTimePropagation.RingPolymer",
+    "names": [
+      "ringPolymerSpringForce"
+    ],
+    "papers": [
+      "https://doi.org/10.1063/1.1777575"
+    ],
+    "relation": "derived",
+    "scope": "For a finite permutation of beads, the sum of harmonic nearest-neighbor spring forces vanishes. This is internal-force cancellation in the ring-polymer model."
+  },
+  {
+    "module": "FQChem.Dynamics.RealTimePropagation.SchrodingerGroup",
+    "names": [
+      "unitaryEvolution"
+    ],
+    "papers": [
+      "https://doi.org/10.2307/1968538"
+    ],
+    "relation": "specialization",
+    "scope": "For an everywhere-defined bounded self-adjoint Hamiltonian, exp(−itH) is a unitary one-parameter group and is differentiable with the Schrödinger generator. Stone also characterizes general strongly continuous groups via possibly unbounded generators."
+  },
+  {
+    "module": "FQChem.Dynamics.RealTimePropagation.SplitOperator",
+    "names": [
+      "splitOperator"
+    ],
+    "papers": [
+      "https://doi.org/10.1016/0021-9991(82)90091-2"
+    ],
+    "relation": "supporting",
+    "scope": "The symmetric product VTV has (VTV)†(VTV)=I when each factor does. This verifies norm preservation of a split step and leaves splitting error as a separate estimate."
+  },
+  {
+    "module": "FQChem.Dynamics.RealTimePropagation.TimeDependentCI",
+    "names": [
+      "tdConfigurationInteraction"
+    ],
+    "papers": [
+      "https://doi.org/10.1063/1.1999636"
+    ],
+    "relation": "derived",
+    "scope": "In a fixed real basis with symmetric linear H, the real and imaginary TD-CI component equations imply zero derivative of their total squared norm."
+  },
+  {
+    "module": "FQChem.Dynamics.RealTimePropagation.VariationalEvolution",
+    "names": [
+      "mcLachlanProjection"
+    ],
+    "papers": [
+      "https://doi.org/10.1080/00268976400100041"
+    ],
+    "relation": "specialization",
+    "scope": "In a real inner-product space any tangent trial velocity whose residual is orthogonal to the tangent subspace minimizes squared residual over that subspace."
+  },
+  {
+    "module": "FQChem.Dynamics.RealTimePropagation.VariationalEvolution",
+    "names": [
+      "sampledTangentMetric"
+    ],
+    "papers": [
+      "https://doi.org/10.1038/srep00243"
+    ],
+    "relation": "derived",
+    "scope": "A finite weighted sum of outer products of centered real log-derivative samples has nonnegative quadratic form when the weights are nonnegative. This supplies a sampled variational metric property."
+  },
+  {
+    "module": "FQChem.Multiscale.ChoosingLayers.ClassicalEnvironments",
+    "names": [
+      "layeredForce"
+    ],
+    "papers": [
+      "https://doi.org/10.1021/jp962071j"
+    ],
+    "relation": "derived",
+    "scope": "Differentiating the subtractive two-layer ONIOM energy gives full-low force plus model-high force minus model-low force along one coordinate."
+  },
+  {
+    "module": "FQChem.Multiscale.ChoosingLayers.Fragments",
+    "names": [
+      "pairReconstruction"
+    ],
+    "papers": [
+      "https://doi.org/10.1016/S0009-2614(99)00874-X"
+    ],
+    "relation": "specialization",
+    "scope": "For pair-additive dimer energies the two-body fragment expansion equals the sum of monomer energies and pair corrections. Equality assumes the stated pair model."
+  },
+  {
+    "module": "FQChem.Multiscale.ChoosingLayers.FrozenMolecularDensity",
+    "names": [
+      "frozenMolecularEnergy"
+    ],
+    "papers": [
+      "https://doi.org/10.1021/j100132a040",
+      "https://doi.org/10.1073/pnas.76.12.6062"
+    ],
+    "relation": "derived",
+    "scope": "Restricting the Coulomb constrained search to active densities plus a fixed environment gives an upper bound on the library’s molecular trial-class infimum. Attainment by a compatible split gives equality."
+  },
+  {
+    "module": "FQChem.Multiscale.ChoosingLayers.LearnedEnvironments",
+    "names": [
+      "deltaLearningGap"
+    ],
+    "papers": [
+      "https://doi.org/10.1021/acs.jctc.5b00099"
+    ],
+    "relation": "derived",
+    "scope": "Given error bounds on learned high-minus-low energy corrections at two configurations, the gap error is at most the sum of the endpoint bounds."
+  },
+  {
+    "module": "FQChem.Multiscale.ChoosingLayers.Partitions",
+    "names": [
+      "overlapAccounting"
+    ],
+    "papers": [
+      "https://doi.org/10.1063/1.4742816"
+    ],
+    "relation": "derived",
+    "scope": "For finite supported interaction terms, regional inclusion–exclusion plus terms crossing the two regions reconstructs the union energy. This is an accounting identity for a specified decomposition."
+  },
+  {
+    "module": "FQChem.Multiscale.ChoosingLayers.QuantumEnvironments",
+    "names": [
+      "frozenDensityDerivative"
+    ],
+    "papers": [
+      "https://doi.org/10.1021/j100132a040"
+    ],
+    "relation": "specialization",
+    "scope": "Along a scalar density variation, the derivative of total minus active minus constant frozen energy equals the difference of the first two derivatives."
+  },
+  {
+    "module": "FQChem.Multiscale.ChoosingLayers.QuantumEnvironments",
+    "names": [
+      "frozenSearch"
+    ],
+    "papers": [
+      "https://doi.org/10.1021/j100132a040",
+      "https://doi.org/10.1073/pnas.76.12.6062"
+    ],
+    "relation": "derived",
+    "scope": "In an additive density model each active-plus-frozen split must be feasible. Restricting the infimum gives an upper bound, with equality if a split realizes the unrestricted infimum."
+  },
+  {
+    "module": "FQChem.Multiscale.StitchingSolutions.EmbeddedSolvers",
+    "names": [
+      "feshbachReduction"
+    ],
+    "papers": [
+      "https://doi.org/10.1016/0003-4916(58)90007-1"
+    ],
+    "relation": "specialization",
+    "scope": "Assuming z−D invertible on the eliminated sector, a nonzero eigenvector of a block operator is equivalent to a nonzero solution of the effective equation with unique reconstructed environment component."
+  },
+  {
+    "module": "FQChem.Multiscale.StitchingSolutions.ErrorPropagation",
+    "names": [
+      "barrierRateError"
+    ],
+    "papers": [
+      "https://doi.org/10.1063/1.1749604"
+    ],
+    "relation": "derived",
+    "scope": "For a shared positive rate prefactor, nonnegative inverse temperature β and a barrier error at most ε, the predicted/exact exponential rate ratio lies between exp(−βε) and exp(βε)."
+  },
+  {
+    "module": "FQChem.Multiscale.StitchingSolutions.LayeredQM",
+    "names": [
+      "projectedLayeredEnergy_eq",
+      "layeredProjectionError",
+      "layeredProjectionLimit"
+    ],
+    "papers": [
+      "https://doi.org/10.1021/jp962071j",
+      "https://doi.org/10.1038/s41567-019-0704-4"
+    ],
+    "relation": "derived",
+    "scope": "At fixed geometry the ONIOM solver error equals the high-level imaginary-time energy excess. A finite gapped model with initial ground overlap gives pointwise convergence and, with an excitation cutoff, an exponential upper bound."
+  },
+  {
+    "module": "FQChem.Multiscale.StitchingSolutions.LayeredQM",
+    "names": [
+      "layeredEigenForce"
+    ],
+    "papers": [
+      "https://doi.org/10.1021/jp962071j",
+      "https://doi.org/10.1103/PhysRev.56.340"
+    ],
+    "relation": "derived",
+    "scope": "The derivative of a normalized differentiable eigenbranch of a locally symmetric bounded Hamiltonian supplies the high-level force in the one-coordinate ONIOM surface."
+  },
+  {
+    "module": "FQChem.Multiscale.StitchingSolutions.LayeredQM",
+    "names": [
+      "layeredBornOppenheimerEnergy"
+    ],
+    "papers": [
+      "https://doi.org/10.1021/jp962071j",
+      "https://doi.org/10.1103/PhysRev.56.340",
+      "https://doi.org/10.1002/andp.19273892002"
+    ],
+    "relation": "derived",
+    "scope": "On a one-coordinate Newton trajectory driven by the eigenbranch force and both MM forces, kinetic plus layered electronic potential energy has zero derivative."
+  },
+  {
+    "module": "FQChem.Multiscale.StitchingSolutions.Observables",
+    "names": [
+      "zwanzig"
+    ],
+    "papers": [
+      "https://doi.org/10.1063/1.1740409"
+    ],
+    "relation": "specialization",
+    "scope": "For a nonempty finite canonical ensemble and β>0, the difference of free energies is −β⁻¹ log of the reference expectation of exp(−βΔU)."
+  },
+  {
+    "module": "FQChem.Properties.LinearSystems.DirichletPoisson",
+    "names": [
+      "dirichletPoissonMode"
+    ],
+    "papers": [
+      "https://doi.org/10.1088/1367-2630/15/1/013021"
+    ],
+    "relation": "specialization",
+    "scope": "For a 1D uniform grid with homogeneous Dirichlet boundaries and mode index 1 through N, the sine mode is nonzero and diagonalizes the second-difference stencil with its explicit eigenvalue."
+  },
+  {
+    "module": "FQChem.Properties.LinearSystems.HHL",
+    "names": [
+      "hhlSpectralInversion"
+    ],
+    "papers": [
+      "https://doi.org/10.1103/PhysRevLett.103.150502"
+    ],
+    "relation": "specialization",
+    "scope": "Given finitely many eigenvectors with nonzero eigenvalues, multiplying their reciprocally weighted superposition by A recovers the input superposition. HHL’s approximation, success probability and complexity need further proofs."
+  },
+  {
+    "module": "FQChem.Properties.MeasurementTheory",
+    "names": [
+      "bornCompleteness"
+    ],
+    "papers": [
+      "https://doi.org/10.1007/BF01397477",
+      "https://doi.org/10.1016/0003-4916(71)90108-4"
+    ],
+    "relation": "derived",
+    "scope": "Squared branch norms ‖Kᵢψ‖² are nonnegative and sum to one for a normalized input under Kraus completeness. This extends the probability rule to a finite generalized measurement."
+  },
+  {
+    "module": "FQChem.Properties.MeasurementTheory",
+    "names": [
+      "projectiveRepeatability"
+    ],
+    "papers": [
+      "https://doi.org/10.1002/andp.19504430510"
+    ],
+    "relation": "specialization",
+    "scope": "Given orthogonal idempotent branch operators, conditioning on a positive-probability projection yields a unit state with probability one of the same outcome on repetition."
+  },
+  {
+    "module": "FQChem.Properties.MeasurementTheory",
+    "names": [
+      "unsharpQubit"
+    ],
+    "papers": [
+      "https://doi.org/10.1103/PhysRevLett.95.110409"
+    ],
+    "relation": "specialization",
+    "scope": "For a normalized qubit and diagonal weak branches of strength η in [−1,1], Lean computes the branch probabilities and posterior z polarization. This is an explicit measurement example in the setting of weak-measurement decomposition."
+  },
+  {
+    "module": "FQChem.Properties.PhaseEstimation",
+    "names": [
+      "exactGridQPE"
+    ],
+    "papers": [
+      "https://doi.org/10.1103/PhysRevLett.83.5162"
+    ],
+    "relation": "specialization",
+    "scope": "Finite Fourier orthogonality yields unit readout amplitude on the exact eigenphase grid point and zero at every other grid point. Off-grid phase error is a separate analysis."
+  },
+  {
+    "module": "FQChem.Properties.ResponseAndEstimation.HellmannFeynman",
+    "names": [
+      "hellmannFeynman"
+    ],
+    "papers": [
+      "https://doi.org/10.1103/PhysRev.56.340"
+    ],
+    "relation": "specialization",
+    "scope": "For a differentiable eigenbranch in a real Hilbert space and bounded differentiable H, normalization and symmetry at the evaluation point give E′=⟨ψ,H′ψ⟩."
+  },
+  {
+    "module": "FQChem.Properties.ResponseAndEstimation.SpectralReconstruction",
+    "names": [
+      "spectralIdentification"
+    ],
+    "papers": [
+      "https://doi.org/10.1103/PhysRevB.41.2380"
+    ],
+    "relation": "derived",
+    "scope": "For known distinct real energies, exact samples at n uniformly spaced imaginary times with positive spacing identify n discrete amplitudes by a Vandermonde argument. Silver et al. study ill-conditioned noisy analytic continuation."
+  },
+  {
+    "module": "FQChem.Properties.ResponseAndEstimation.VQEMeasurement",
+    "names": [
+      "energyReconstruction"
+    ],
+    "papers": [
+      "https://doi.org/10.1038/ncomms5213"
+    ],
+    "relation": "specialization",
+    "scope": "A real-coefficient finite Pauli decomposition reconstructs the Hamiltonian expectation as the coefficient-weighted sum of measured term expectations."
+  },
+  {
+    "module": "FQChem.Properties.ResponseAndEstimation.VQEMeasurement",
+    "names": [
+      "shotStatistics",
+      "finiteShotVQE"
+    ],
+    "papers": [
+      "https://doi.org/10.1038/ncomms5213"
+    ],
+    "relation": "derived",
+    "scope": "For equally many calibrated ±1 shots per term with pairwise independence, Lean proves unbiasedness and bounds the energy-estimator variance by Σcᵢ²/n. The statistics lemma also gives the exact variance."
+  },
+  {
+    "module": "FQChem.Dynamics.RealTimePropagation.OutOfTimeOrder",
+    "names": [
+      "dualEntry_trace",
+      "traceCoefficient",
+      "expansion",
+      "traceExpansion"
+    ],
+    "papers": [
+      "https://arxiv.org/abs/2611.24640"
+    ],
+    "relation": "supporting",
+    "scope": "Computational-basis identities connect the repository’s Pauli expansion to normalized traces against Pauli strings and linear combinations. These support the evaluation in Appendix D, equations (D.7)–(D.8)."
+  },
+  {
+    "module": "FQChem.Dynamics.RealTimePropagation.OutOfTimeOrder",
+    "names": [
+      "zConjugation"
+    ],
+    "papers": [
+      "https://arxiv.org/abs/2611.24640"
+    ],
+    "relation": "supporting",
+    "scope": "Conjugation by a single-site Z multiplies a Pauli word by −1 when the word carries X or Y there and by +1 otherwise. This identifies the sum in equation (D.8)."
+  },
+  {
+    "module": "FQChem.Dynamics.RealTimePropagation.OutOfTimeOrder",
+    "names": [
+      "butterflyMass"
+    ],
+    "papers": [
+      "https://arxiv.org/abs/2611.24640"
+    ],
+    "relation": "paper-result",
+    "scope": "Equation (D.7). For a Hermitian involutory n-qubit butterfly the squared real coefficients in the concrete Pauli basis sum to one."
+  },
+  {
+    "module": "FQChem.Dynamics.RealTimePropagation.OutOfTimeOrder",
+    "names": [
+      "firstOrder_eq_anticommutingMass"
+    ],
+    "papers": [
+      "https://arxiv.org/abs/2611.24640"
+    ],
+    "relation": "paper-result",
+    "scope": "Equation (D.8). For a Hermitian involutory evolved butterfly, its normalized first-order OTOC with local Z equals one minus twice the squared Pauli weight of words that anticommute with Z."
+  },
+  {
+    "module": "FQChem.Dynamics.RealTimePropagation.OutOfTimeOrder",
+    "names": [
+      "discardedWeightError"
+    ],
+    "papers": [
+      "https://arxiv.org/abs/2611.24640"
+    ],
+    "relation": "derived",
+    "scope": "Dropping words only from the final sum in (D.8) overestimates the exact OTOC by twice their discarded anticommuting weight. The propagation error of the paper’s window algorithm requires Theorem 1."
+  },
+  {
+    "module": "FQChem.Dynamics.RealTimePropagation.OutOfTimeOrder",
+    "names": [
+      "swapTrace"
+    ],
+    "papers": [
+      "https://arxiv.org/abs/2611.24640"
+    ],
+    "relation": "supporting",
+    "scope": "The unnormalized trace of (A ⊗ B) times the global swap equals Tr(AB). This contraction identity underlies the two-copy readout."
+  },
+  {
+    "module": "FQChem.Dynamics.RealTimePropagation.OutOfTimeOrder",
+    "names": [
+      "twoCopyReadout"
+    ],
+    "papers": [
+      "https://arxiv.org/abs/2611.24640"
+    ],
+    "relation": "paper-result",
+    "scope": "Equation (III.2). The normalized four-point trace equals the normalized two-copy trace of the evolved butterfly tensored with itself, the doubled probe and the global swap. This is the readout used for window propagation."
+  },
+  {
+    "module": "FQChem.Dynamics.RealTimePropagation.OutOfTimeOrder",
+    "names": [
+      "invariantTails"
+    ],
+    "papers": [
+      "https://arxiv.org/abs/2611.24640"
+    ],
+    "relation": "paper-result",
+    "scope": "Appendix A, Fact 1. Conjugation by U ⊗ U fixes both identity and swap, here for any finite-dimensional unitary U. These invariant tails are used in the window representation."
+  }
+]

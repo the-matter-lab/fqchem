@@ -1,0 +1,1255 @@
+[
+  {
+    "module": "FQChem.StatePrep.AdiabaticPreparation.AdiabaticTheorem",
+    "names": [
+      "transportedDerivative",
+      "sandwichBound"
+    ],
+    "papers": [
+      "https://doi.org/10.1007/s002200050620"
+    ],
+    "relation": "supporting",
+    "scope": "Product differentiation and a norm estimate for a bounded observable conjugated by the supplied contractive evolution."
+  },
+  {
+    "module": "FQChem.StatePrep.AdiabaticPreparation.AdiabaticTheorem",
+    "names": [
+      "projectionDerivative"
+    ],
+    "papers": [
+      "https://doi.org/10.1143/JPSJ.5.435"
+    ],
+    "relation": "supporting",
+    "scope": "Differentiating an idempotent yields the double-commutator identity for its tangent."
+  },
+  {
+    "module": "FQChem.StatePrep.AdiabaticPreparation.AdiabaticTheorem",
+    "names": [
+      "katoTransport"
+    ],
+    "papers": [
+      "https://doi.org/10.1143/JPSJ.5.435"
+    ],
+    "relation": "specialization",
+    "scope": "The commutator-corrected evolution exactly intertwines a differentiable idempotent on [0,1]. A commuting generator and a contractive propagator with specified derivatives and inverse are hypotheses."
+  },
+  {
+    "module": "FQChem.StatePrep.AdiabaticPreparation.AdiabaticTheorem",
+    "names": [
+      "adiabaticIntertwining"
+    ],
+    "papers": [
+      "https://doi.org/10.1007/s002200050620"
+    ],
+    "relation": "derived",
+    "scope": "For a supplied slow propagator and a bounded differentiable solution of the exact commutator equation, the intertwining defect is at most (2B+sD)/T. Avron–Elgart’s general gapless theorem allows an approximate commutator and gives convergence without a universal rate."
+  },
+  {
+    "module": "FQChem.StatePrep.AdiabaticPreparation.AdiabaticTheorem",
+    "names": [
+      "reducedResolventPreparation"
+    ],
+    "papers": [
+      "https://doi.org/10.1143/JPSJ.5.435",
+      "https://doi.org/10.1007/s002200050620"
+    ],
+    "relation": "derived",
+    "scope": "Leakage is at most (4L/g+sD)/T when a reduced inverse of the shifted generator and a differentiable commutator correction obey the stated uniform bounds."
+  },
+  {
+    "module": "FQChem.StatePrep.AdiabaticPreparation.AdiabaticTheorem",
+    "names": [
+      "gappedBandPreparation",
+      "gappedBandPreparation_limit"
+    ],
+    "papers": [
+      "https://doi.org/10.1143/JPSJ.5.435",
+      "https://doi.org/10.1007/s002200050620"
+    ],
+    "relation": "specialization",
+    "scope": "A two-band generator a(s)I+gap·P(s) with fixed nonzero splitting, contractive idempotents, bounded first and second projection derivatives and supplied slow evolutions has O(1/T) leakage. The limit is at s=1."
+  },
+  {
+    "module": "FQChem.StatePrep.AdiabaticPreparation.RydbergBlockade",
+    "names": [
+      "rydbergBlockade"
+    ],
+    "papers": [
+      "https://arxiv.org/abs/1808.10816"
+    ],
+    "relation": "specialization",
+    "scope": "For finite classical configurations with unit reward per occupied vertex and uniform edge penalty greater than the vertex count, the energy minimizers are exactly the maximum independent sets. Physical geometry and preparation time are outside this energy model."
+  },
+  {
+    "module": "FQChem.StatePrep.CircuitPreparation.AmplitudeAmplification",
+    "names": [
+      "inner_states",
+      "project_state",
+      "state_normalized"
+    ],
+    "papers": [
+      "https://doi.org/10.1090/conm/305/05215"
+    ],
+    "relation": "supporting",
+    "scope": "In the plane of unit good and bad components, the projected amplitude is sin θ, the state has unit norm and the inner product is the cosine of the angle difference."
+  },
+  {
+    "module": "FQChem.StatePrep.CircuitPreparation.AmplitudeAmplification",
+    "names": [
+      "mark_state"
+    ],
+    "papers": [
+      "https://doi.org/10.1090/conm/305/05215"
+    ],
+    "relation": "supporting",
+    "scope": "The good-subspace sign reflection negates the angle in the two-component representation."
+  },
+  {
+    "module": "FQChem.StatePrep.CircuitPreparation.AmplitudeAmplification",
+    "names": [
+      "step_rotates",
+      "iterate_state",
+      "success_law"
+    ],
+    "papers": [
+      "https://doi.org/10.1090/conm/305/05215"
+    ],
+    "relation": "paper-result",
+    "scope": "The two reflections rotate by 2θ. Starting at angle θ, k ideal iterations give angle (2k+1)θ and good-outcome probability sin²((2k+1)θ), as in the amplitude-amplification analysis."
+  },
+  {
+    "module": "FQChem.StatePrep.CircuitPreparation.AmplitudeAmplification",
+    "names": [
+      "rounded_success",
+      "inverse_sqrt_queries"
+    ],
+    "papers": [
+      "https://doi.org/10.1090/conm/305/05215"
+    ],
+    "relation": "specialization",
+    "scope": "For known a=sin²θ with 0<θ≤π/2, choosing the integer iteration count gives success at least 1−a using at most π/(4√a) marking reflections. State preparation and its inverse are separate operations."
+  },
+  {
+    "module": "FQChem.StatePrep.CircuitPreparation.ControlledRotations",
+    "names": [
+      "preservesNorm",
+      "radius_sq",
+      "preparePair_correct"
+    ],
+    "papers": [
+      "https://arxiv.org/abs/quant-ph/0407010"
+    ],
+    "relation": "supporting",
+    "scope": "Each complex SU(2) block preserves the pair norm and can split a nonnegative branch radius into its two specified amplitudes, including a zero branch."
+  },
+  {
+    "module": "FQChem.StatePrep.CircuitPreparation.ControlledRotations",
+    "names": [
+      "normalized"
+    ],
+    "papers": [
+      "https://arxiv.org/abs/quant-ph/0407010"
+    ],
+    "relation": "supporting",
+    "scope": "Induction on prefixes proves normalization of all outputs of the specified recursive circuit."
+  },
+  {
+    "module": "FQChem.StatePrep.CircuitPreparation.ControlledRotations",
+    "names": [
+      "registerCard",
+      "blockCount"
+    ],
+    "papers": [
+      "https://arxiv.org/abs/quant-ph/0407010"
+    ],
+    "relation": "derived",
+    "scope": "The binary prefix tree has 2ⁿ−1 controlled pair rotations and a separate root phase. This counts blocks before elementary-gate decomposition."
+  },
+  {
+    "module": "FQChem.StatePrep.CircuitPreparation.ControlledRotations",
+    "names": [
+      "exactPreparation"
+    ],
+    "papers": [
+      "https://arxiv.org/abs/quant-ph/0407010"
+    ],
+    "relation": "specialization",
+    "scope": "Every normalized complex n-qubit amplitude table is obtained exactly by a recursive prefix-controlled rotation circuit including a global phase. Costs are measured in prefix-controlled blocks."
+  },
+  {
+    "module": "FQChem.StatePrep.CircuitPreparation.SlaterDeterminants",
+    "names": [
+      "existsOrbitalUnitary",
+      "existsSlaterPreparation"
+    ],
+    "papers": [
+      "https://doi.org/10.1103/PhysRevApplied.9.044036"
+    ],
+    "relation": "supporting",
+    "scope": "An orthonormal frame extends to an orbital unitary. Its exterior power sends the selected occupation determinant to the target wedge."
+  },
+  {
+    "module": "FQChem.StatePrep.CircuitPreparation.SlaterDeterminants",
+    "names": [
+      "occupationAmplitude"
+    ],
+    "papers": [
+      "https://doi.org/10.1103/PhysRevApplied.9.044036"
+    ],
+    "relation": "specialization",
+    "scope": "The coefficient of a fixed occupation determinant in a wedge of orbitals is the corresponding orbital-matrix minor."
+  },
+  {
+    "module": "FQChem.StatePrep.CircuitPreparation.SlaterDeterminants",
+    "names": [
+      "coordinate_of_fixed",
+      "listProduct_fixed"
+    ],
+    "papers": [
+      "https://doi.org/10.1103/PhysRevApplied.9.044036"
+    ],
+    "relation": "supporting",
+    "scope": "A mode fixed by orbital gates is unchanged by their product, and its coordinate is unchanged under inverse action."
+  },
+  {
+    "module": "FQChem.StatePrep.CircuitPreparation.SlaterDeterminants",
+    "names": [
+      "gateForPair",
+      "eliminateCoefficient",
+      "prepareVector"
+    ],
+    "papers": [
+      "https://doi.org/10.1103/PhysRevApplied.9.044036"
+    ],
+    "relation": "supporting",
+    "scope": "A two-mode orbital unitary can eliminate one coefficient. Iterating eliminations prepares a normalized vector on its allowed support."
+  },
+  {
+    "module": "FQChem.StatePrep.CircuitPreparation.SlaterDeterminants",
+    "names": [
+      "existsTwoModeFactorization",
+      "exteriorGate_product"
+    ],
+    "papers": [
+      "https://doi.org/10.1103/PhysRevApplied.9.044036",
+      "https://doi.org/10.1103/PhysRevLett.120.110501"
+    ],
+    "relation": "supporting",
+    "scope": "Unrestricted pairs of orbital modes suffice to factor an orbital unitary. Exterior-power lifting respects the product of gates."
+  },
+  {
+    "module": "FQChem.StatePrep.CircuitPreparation.SlaterDeterminants",
+    "names": [
+      "existsTwoModeSlaterPreparation"
+    ],
+    "papers": [
+      "https://doi.org/10.1103/PhysRevApplied.9.044036",
+      "https://doi.org/10.1103/PhysRevLett.120.110501"
+    ],
+    "relation": "specialization",
+    "scope": "Any target orthonormal frame gives a Slater determinant preparable by a finite list of number-preserving one- or two-mode gates. The circuit model permits unrestricted mode pairs and asserts existence of a gate list."
+  },
+  {
+    "module": "FQChem.StatePrep.ImaginaryTimeProjection.AFQMC",
+    "names": [
+      "realHirschParameter"
+    ],
+    "papers": [
+      "https://doi.org/10.1103/PhysRevB.28.4059"
+    ],
+    "relation": "supporting",
+    "scope": "For repulsive step coupling x≥0 a real nonnegative Hirsch parameter solves cosh γ=exp(x/2)."
+  },
+  {
+    "module": "FQChem.StatePrep.ImaginaryTimeProjection.AFQMC",
+    "names": [
+      "hirschLocal"
+    ],
+    "papers": [
+      "https://doi.org/10.1103/PhysRevB.28.4059"
+    ],
+    "relation": "paper-result",
+    "scope": "Hirsch’s discrete spin-field identity for the shifted Hubbard interaction is checked on all four local occupation pairs under cosh γ=exp(x/2)."
+  },
+  {
+    "module": "FQChem.StatePrep.ImaginaryTimeProjection.AFQMC",
+    "names": [
+      "spinOrbitalFactorization",
+      "hirschLattice"
+    ],
+    "papers": [
+      "https://doi.org/10.1103/PhysRevB.28.4059"
+    ],
+    "relation": "specialization",
+    "scope": "Each field weight separates into spin-up and spin-down factors, and independent binary fields decouple the product over finitely many sites."
+  },
+  {
+    "module": "FQChem.StatePrep.ImaginaryTimeProjection.AFQMC",
+    "names": [
+      "fieldHistoryExpansion"
+    ],
+    "papers": [
+      "https://doi.org/10.1016/0003-4916%2886%2990107-7"
+    ],
+    "relation": "supporting",
+    "scope": "Distributivity expands a power of a finite noncommutative sum into all ordered field histories."
+  },
+  {
+    "module": "FQChem.StatePrep.ImaginaryTimeProjection.AFQMC",
+    "names": [
+      "hubbardFreeProjection"
+    ],
+    "papers": [
+      "https://doi.org/10.1103/PhysRevB.28.4059",
+      "https://doi.org/10.1016/0003-4916%2886%2990107-7"
+    ],
+    "relation": "derived",
+    "scope": "A fixed number of split kinetic/interaction steps equals the exact sum of all discrete Hubbard field histories."
+  },
+  {
+    "module": "FQChem.StatePrep.ImaginaryTimeProjection.AFQMC",
+    "names": [
+      "slaterHistory",
+      "freeProjection"
+    ],
+    "papers": [
+      "https://doi.org/10.1016/0003-4916%2886%2990107-7"
+    ],
+    "relation": "specialization",
+    "scope": "For a finite field decomposition by weighted one-body exterior maps, a Slater state propagates as the exact signed or complex weighted sum of propagated orbital wedges."
+  },
+  {
+    "module": "FQChem.StatePrep.ImaginaryTimeProjection.AFQMC",
+    "names": [
+      "projectedOverlap"
+    ],
+    "papers": [
+      "https://doi.org/10.1016/0003-4916%2886%2990107-7"
+    ],
+    "relation": "specialization",
+    "scope": "A trial exterior-product bra evaluated on the finite field-history sum gives a weighted sum of orbital overlap determinants."
+  },
+  {
+    "module": "FQChem.StatePrep.ImaginaryTimeProjection.AFQMC",
+    "names": [
+      "mixedEstimator",
+      "exactTrialLocalEnergy"
+    ],
+    "papers": [
+      "https://doi.org/10.1103/PhysRevLett.90.136401"
+    ],
+    "relation": "specialization",
+    "scope": "With nonzero individual and total overlaps, importance-weighted local energies reproduce the mixed estimator. A left eigenbra gives its eigenvalue on each overlapping walker."
+  },
+  {
+    "module": "FQChem.StatePrep.ImaginaryTimeProjection.AFQMC",
+    "names": [
+      "phaselessWeightLoss"
+    ],
+    "papers": [
+      "https://doi.org/10.1103/PhysRevLett.90.136401"
+    ],
+    "relation": "derived",
+    "scope": "For the paper’s max(0,cos Δθ) weight projection, loss in the product of cosine factors is bounded by half the sum of squared phase increments. The argument fixes every other weight factor."
+  },
+  {
+    "module": "FQChem.StatePrep.ImaginaryTimeProjection.DiffusionMonteCarlo",
+    "names": [
+      "transitionMarkov",
+      "guidedFeynmanKac"
+    ],
+    "papers": [
+      "https://doi.org/10.1063/1.465195"
+    ],
+    "relation": "specialization",
+    "scope": "For a positive guide and positive propagated guide on a finite state space, the guided transition and branching factors expand Gᵏ exactly. Nonnegative entries of G make the transition a Markov kernel."
+  },
+  {
+    "module": "FQChem.StatePrep.ImaginaryTimeProjection.DiffusionMonteCarlo",
+    "names": [
+      "constantBranchingIff",
+      "branchingLocalEnergy"
+    ],
+    "papers": [
+      "https://doi.org/10.1063/1.465195"
+    ],
+    "relation": "derived",
+    "scope": "A nowhere-zero guide has constant branching exactly when it is an eigenvector. For a shifted Euler propagator, the branching factor is one minus the step times the local-energy offset."
+  },
+  {
+    "module": "FQChem.StatePrep.ImaginaryTimeProjection.DiffusionMonteCarlo",
+    "names": [
+      "exactGuideStationarity"
+    ],
+    "papers": [
+      "https://doi.org/10.1063/1.465195"
+    ],
+    "relation": "derived",
+    "scope": "With a symmetric nonnegative finite propagator and a positive eigenvector guide, the guided kernel obeys detailed balance and preserves the squared guide weights."
+  },
+  {
+    "module": "FQChem.StatePrep.ImaginaryTimeProjection.DiffusionMonteCarlo",
+    "names": [
+      "penalty_nonneg",
+      "fixedNodeShift"
+    ],
+    "papers": [
+      "https://doi.org/10.1103/PhysRevB.51.13039"
+    ],
+    "relation": "specialization",
+    "scope": "For a real symmetric lattice model and a nowhere-zero guide, the fixed-node quadratic form adds a sum of nonnegative penalties on sign-flip edges."
+  },
+  {
+    "module": "FQChem.StatePrep.ImaginaryTimeProjection.DiffusionMonteCarlo",
+    "names": [
+      "fixedNodeUpperBound"
+    ],
+    "papers": [
+      "https://doi.org/10.1103/PhysRevB.51.13039"
+    ],
+    "relation": "paper-result",
+    "scope": "The finite real lattice fixed-node ground-energy infimum bounds the original one from above for any guide nonzero on every site, by positivity of the sign-flip correction."
+  },
+  {
+    "module": "FQChem.StatePrep.ImaginaryTimeProjection.DiffusionMonteCarlo",
+    "names": [
+      "fixedNodeEqualityIff",
+      "exactFixedNode",
+      "exactGuideGroundEnergy"
+    ],
+    "papers": [
+      "https://doi.org/10.1103/PhysRevB.51.13039"
+    ],
+    "relation": "specialization",
+    "scope": "Trial energies agree exactly when the trial-to-guide ratios match on each sign-flip edge. If a normalized minimizing state matches those ratios, the two ground energies coincide, including for an exact nonvanishing guide."
+  },
+  {
+    "module": "FQChem.StatePrep.ImaginaryTimeProjection.FCIQMC",
+    "names": [
+      "roundingMass_nonneg",
+      "roundingMass_sum",
+      "roundingFirstMoment",
+      "roundedCounts"
+    ],
+    "papers": [
+      "https://doi.org/10.1063/1.3193710"
+    ],
+    "relation": "supporting",
+    "scope": "Randomized integer rounding has nonnegative normalized masses and the intended first moment. The two independent roundings implement spawning and diagonal death or cloning."
+  },
+  {
+    "module": "FQChem.StatePrep.ImaginaryTimeProjection.FCIQMC",
+    "names": [
+      "outcomeMass_nonneg",
+      "outcomeMass_sum",
+      "populationMass_probability",
+      "productMarginal"
+    ],
+    "papers": [
+      "https://doi.org/10.1063/1.3193710"
+    ],
+    "relation": "supporting",
+    "scope": "A normalized proposal and normalized rounding laws define finite one-walker and independent-population outcome laws. Summing over other walkers recovers the selected marginal."
+  },
+  {
+    "module": "FQChem.StatePrep.ImaginaryTimeProjection.FCIQMC",
+    "names": [
+      "annihilationPreserves",
+      "survivorsSignedCount"
+    ],
+    "papers": [
+      "https://doi.org/10.1063/1.3193710"
+    ],
+    "relation": "specialization",
+    "scope": "Local cancellation leaves at most one sign at each determinant and preserves the net signed walker count exactly."
+  },
+  {
+    "module": "FQChem.StatePrep.ImaginaryTimeProjection.FCIQMC",
+    "names": [
+      "walkerFirstMoment",
+      "populationFirstMoment"
+    ],
+    "papers": [
+      "https://doi.org/10.1063/1.3193710"
+    ],
+    "relation": "specialization",
+    "scope": "For a supported spawning proposal and a fixed shift, the expected one-step signed counts give the Euler imaginary-time CI update, for one walker and for a finite population. This is a first-moment identity."
+  },
+  {
+    "module": "FQChem.StatePrep.ImaginaryTimeProjection.GaussianAuxiliaryField",
+    "names": [
+      "gaussianPhaseAverage"
+    ],
+    "papers": [
+      "https://doi.org/10.1103/PhysRevLett.3.77"
+    ],
+    "relation": "supporting",
+    "scope": "The characteristic function of a standard real Gaussian gives the scalar phase-average identity for real v and τ≥0."
+  },
+  {
+    "module": "FQChem.StatePrep.ImaginaryTimeProjection.GaussianAuxiliaryField",
+    "names": [
+      "gaussianHubbardStratonovich"
+    ],
+    "papers": [
+      "https://doi.org/10.1103/PhysRevLett.3.77"
+    ],
+    "relation": "specialization",
+    "scope": "For a finite Hermitian channel V and τ≥0, the Gaussian average of exp(i√τ xV) exists and equals exp(−τV²/2)."
+  },
+  {
+    "module": "FQChem.StatePrep.ImaginaryTimeProjection.GroundStateProjection",
+    "names": [
+      "excited_nonneg",
+      "total_pos",
+      "bornWeight",
+      "normalization",
+      "infidelity"
+    ],
+    "papers": [
+      "https://doi.org/10.1063/1.431514",
+      "https://doi.org/10.1038/s41567-019-0704-4"
+    ],
+    "relation": "supporting",
+    "scope": "In a finite eigenbasis with nonzero initial ground overlap, normalization gives explicit Born weights. The infidelity is the excited mass divided by total filtered mass."
+  },
+  {
+    "module": "FQChem.StatePrep.ImaginaryTimeProjection.GroundStateProjection",
+    "names": [
+      "excitedBound",
+      "boundTendstoZero"
+    ],
+    "papers": [
+      "https://doi.org/10.1063/1.431514",
+      "https://doi.org/10.1038/s41567-019-0704-4"
+    ],
+    "relation": "supporting",
+    "scope": "A positive lower bound on excitation energies exponentially suppresses the unnormalized excited mass, and the resulting exponential envelope tends to zero."
+  },
+  {
+    "module": "FQChem.StatePrep.ImaginaryTimeProjection.GroundStateProjection",
+    "names": [
+      "projectionBound",
+      "projectionLimit"
+    ],
+    "papers": [
+      "https://doi.org/10.1063/1.431514",
+      "https://doi.org/10.1038/s41567-019-0704-4"
+    ],
+    "relation": "specialization",
+    "scope": "For nonnegative imaginary time, initial ground mass greater than zero and a finite gapped spectrum, infidelity is bounded by the initial excited-to-ground mass ratio times exp(−2Δτ), so ground-sector fidelity tends to one. Evolution here uses the exact diagonal filter."
+  },
+  {
+    "module": "FQChem.StatePrep.ImaginaryTimeProjection.GroundStateProjection",
+    "names": [
+      "energyBound",
+      "energyLimit"
+    ],
+    "papers": [
+      "https://doi.org/10.1063/1.431514",
+      "https://doi.org/10.1038/s41567-019-0704-4"
+    ],
+    "relation": "derived",
+    "scope": "The normalized energy excess lies between zero and the spectral width times the infidelity envelope. Finiteness of the spectrum gives an energy excess tending to zero."
+  },
+  {
+    "module": "FQChem.StatePrep.ImaginaryTimeProjection.HubbardProjection",
+    "names": [
+      "interactionStep_eq_exp",
+      "hirschHistoryMean_eq_split"
+    ],
+    "papers": [
+      "https://doi.org/10.1103/PhysRevB.28.4059",
+      "https://doi.org/10.1090/S0002-9939-1959-0108732-6"
+    ],
+    "relation": "derived",
+    "scope": "The shifted lattice interaction step is its diagonal exponential. For β,U≥0 the exact sum over binary field histories realizes the m-step Lie product at time β."
+  },
+  {
+    "module": "FQChem.StatePrep.ImaginaryTimeProjection.HubbardProjection",
+    "names": [
+      "hirschHistoryMean_tendsto",
+      "hirschHistoryMean_mulVec_tendsto"
+    ],
+    "papers": [
+      "https://doi.org/10.1103/PhysRevB.28.4059",
+      "https://doi.org/10.1090/S0002-9939-1959-0108732-6"
+    ],
+    "relation": "specialization",
+    "scope": "At fixed β≥0 and repulsive U, the finite-dimensional, exactly summed field-history propagator tends to exp(−β(K+V)), including after application to a fixed state. The limit refines the time grid."
+  },
+  {
+    "module": "FQChem.StatePrep.ImaginaryTimeProjection.PhaseEstimationFilter",
+    "names": [
+      "kernel_at_target",
+      "kernel_at_distinct_grid_phase",
+      "kernel_norm_le_one",
+      "kernel_suppression"
+    ],
+    "papers": [
+      "https://doi.org/10.1103/PhysRevLett.83.5162"
+    ],
+    "relation": "supporting",
+    "scope": "The normalized finite Fourier kernel is one at the target, vanishes on other exact grid phases, and has magnitude ≤2/(Nδ) for a unit phase at chord distance at least δ from the target."
+  },
+  {
+    "module": "FQChem.StatePrep.ImaginaryTimeProjection.PhaseEstimationFilter",
+    "names": [
+      "leakage_nonneg",
+      "heralding_pos",
+      "branchWeight",
+      "conditional_amplitudes",
+      "branch_normalized"
+    ],
+    "papers": [
+      "https://doi.org/10.1103/PhysRevLett.83.5162"
+    ],
+    "relation": "supporting",
+    "scope": "Normalizing the postselected Fourier-filter branch gives the kernel-weighted amplitudes. A positive initial ground overlap keeps the normalizer positive."
+  },
+  {
+    "module": "FQChem.StatePrep.ImaginaryTimeProjection.PhaseEstimationFilter",
+    "names": [
+      "fidelity_eq",
+      "heralding_probability"
+    ],
+    "papers": [
+      "https://doi.org/10.1103/PhysRevLett.83.5162"
+    ],
+    "relation": "specialization",
+    "scope": "The conditional ground-sector weight is initial ground mass divided by branch weight. A normalized input makes the heralding probability positive and at most one."
+  },
+  {
+    "module": "FQChem.StatePrep.ImaginaryTimeProjection.PhaseEstimationFilter",
+    "names": [
+      "exact_grid_preparation"
+    ],
+    "papers": [
+      "https://doi.org/10.1103/PhysRevLett.83.5162"
+    ],
+    "relation": "specialization",
+    "scope": "If every excited phase is an Nth root of unity distinct from the target, the ideal target readout eliminates all excited amplitudes. The success weight is the initial ground mass."
+  },
+  {
+    "module": "FQChem.StatePrep.ImaginaryTimeProjection.PhaseEstimationFilter",
+    "names": [
+      "separated_preparation"
+    ],
+    "papers": [
+      "https://doi.org/10.1103/PhysRevLett.83.5162"
+    ],
+    "relation": "derived",
+    "scope": "With positive initial ground mass and all excited phases separated by chord distance δ, the finite N-point filter bounds the heralding probability and gives an explicit conditional-fidelity lower bound."
+  },
+  {
+    "module": "FQChem.StatePrep.ImaginaryTimeProjection.SignProblem",
+    "names": [
+      "abs_mul_sign",
+      "absMean_sign",
+      "reweighting"
+    ],
+    "papers": [
+      "https://doi.org/10.1103/PhysRevLett.94.170201"
+    ],
+    "relation": "specialization",
+    "scope": "For finite real signed weights the absolute-weight average of the sign gives the mean sign. Dividing the signed numerator estimate by it recovers the reweighted average when the signed partition sum is nonzero. Lean division is total."
+  },
+  {
+    "module": "FQChem.StatePrep.ImaginaryTimeProjection.SignProblem",
+    "names": [
+      "factorizedSign",
+      "productMeanSign"
+    ],
+    "papers": [
+      "https://doi.org/10.1103/PhysRevLett.94.170201"
+    ],
+    "relation": "derived",
+    "scope": "For independent product weights the mean sign factorizes. The explicit two-outcome weights 3 and −1 give mean sign 2⁻ᴸ."
+  },
+  {
+    "module": "FQChem.StatePrep.ImaginaryTimeProjection.SignProblem",
+    "names": [
+      "signStatistics",
+      "productSampleCost"
+    ],
+    "papers": [
+      "https://doi.org/10.1103/PhysRevLett.94.170201"
+    ],
+    "relation": "derived",
+    "scope": "For n positive, pairwise-independent sign draws from the absolute-weight law give variance (1−s²)/n. For the explicit product example a relative RMS target δ requires nδ²≥4ᴸ−1. The paper’s separate NP-hardness reduction concerns a generic solution of the sign problem."
+  },
+  {
+    "module": "FQChem.StatePrep.ImaginaryTimeProjection.SpectralFiltering",
+    "names": [
+      "geometricFiltering"
+    ],
+    "papers": [
+      "https://doi.org/10.22331/q-2020-11-11-361"
+    ],
+    "relation": "derived",
+    "scope": "For any supplied diagonal filter with constant nonzero ground gain and relative squared excited gain ≤q<1, repeated application contracts the excited-to-ground odds by qᵏ. The minimax polynomial construction and query cost in Lin–Tong are additional results."
+  },
+  {
+    "module": "FQChem.StatePrep.PerturbationTheory.CoupledCluster",
+    "names": [
+      "coupledCluster"
+    ],
+    "papers": [
+      "https://doi.org/10.1063/1.1727484"
+    ],
+    "relation": "supporting",
+    "scope": "In a finite matrix space e^(−T)He^T has the reference as an eigenvector precisely when H has e^T times the reference as an eigenvector, at the same energy. The result addresses exact similarity before any truncation or amplitude solver."
+  },
+  {
+    "module": "FQChem.StatePrep.PerturbationTheory.Multireference",
+    "names": [
+      "mrpt2Shift"
+    ],
+    "papers": [
+      "https://doi.org/10.1063/1.462209"
+    ],
+    "relation": "derived",
+    "scope": "For finitely many couplings and strictly positive diagonal gaps, the sum of negative squared couplings divided by their gaps is nonpositive. CASPT2 in the cited work also treats nondiagonal blocks."
+  },
+  {
+    "module": "FQChem.StatePrep.PerturbationTheory.RayleighSchrodinger",
+    "names": [
+      "gap_ne_zero",
+      "shift_sum"
+    ],
+    "papers": [
+      "https://doi.org/10.1002/andp.19263851302"
+    ],
+    "relation": "supporting",
+    "scope": "A simple target level gives nonzero energy denominators. Hermiticity turns the contraction of the first-order response into the real quadratic shift."
+  },
+  {
+    "module": "FQChem.StatePrep.PerturbationTheory.RayleighSchrodinger",
+    "names": [
+      "nondegenerateExpansion"
+    ],
+    "papers": [
+      "https://doi.org/10.1002/andp.19263851302"
+    ],
+    "relation": "specialization",
+    "scope": "In a finite unperturbed eigenbasis with simple target and Hermitian perturbation, the coefficient equations through degree two admit a solution, and fix the first-order state and first two energy corrections in intermediate normalization."
+  },
+  {
+    "module": "FQChem.StatePrep.PerturbationTheory.RayleighSchrodinger",
+    "names": [
+      "residualIdentity_of_coefficients",
+      "secondOrderQuasimode"
+    ],
+    "papers": [
+      "https://doi.org/10.1002/andp.19263851302"
+    ],
+    "relation": "derived",
+    "scope": "The second-order truncated state and energy from coefficient matching obey an exact polynomial residual identity with factor t³ for the finite matrix family. This controls the quasimode residual."
+  },
+  {
+    "module": "FQChem.StatePrep.SubspaceDiagonalization.ConfigurationInteraction",
+    "names": [
+      "selectedCI"
+    ],
+    "papers": [
+      "https://doi.org/10.1098/rspa.1950.0036",
+      "https://doi.org/10.1515/crll.1909.135.1"
+    ],
+    "relation": "derived",
+    "scope": "A bounded Hamiltonian and nested spans of determinants give nonincreasing Ritz energy whenever the smaller span contains a nonzero trial determinant."
+  },
+  {
+    "module": "FQChem.StatePrep.SubspaceDiagonalization.ConfigurationInteraction",
+    "names": [
+      "sampledDiagonalization"
+    ],
+    "papers": [
+      "https://doi.org/10.1126/sciadv.adu9991",
+      "https://doi.org/10.1515/crll.1909.135.1"
+    ],
+    "relation": "derived",
+    "scope": "The Ritz infimum in a sampled span is exact if the span contains a nonzero vector attaining the full-space infimum. Sampling that span with adequate probability is an additional algorithmic question."
+  },
+  {
+    "module": "FQChem.StatePrep.SubspaceDiagonalization.Interlacing",
+    "names": [
+      "spectral_witness",
+      "spectral_lower",
+      "spectral_upper"
+    ],
+    "papers": [
+      "https://doi.org/10.1103/PhysRev.43.830"
+    ],
+    "relation": "supporting",
+    "scope": "Dimension counting gives a nonzero vector with prescribed spectral support. The energy quadratic form on such a vector obeys the minimum and maximum eigenvalue bounds on that support."
+  },
+  {
+    "module": "FQChem.StatePrep.SubspaceDiagonalization.Interlacing",
+    "names": [
+      "ritzInterlacing"
+    ],
+    "papers": [
+      "https://doi.org/10.1103/PhysRev.43.830"
+    ],
+    "relation": "specialization",
+    "scope": "For an m-dimensional compression of an n-dimensional Hermitian operator, each compressed eigenvalue lies between the two full eigenvalues with the Poincaré index shifts (Lean orders them decreasingly)."
+  },
+  {
+    "module": "FQChem.StatePrep.SubspaceDiagonalization.Krylov",
+    "names": [
+      "orbit_step"
+    ],
+    "papers": [
+      "https://doi.org/10.1515/crll.1909.135.1"
+    ],
+    "relation": "supporting",
+    "scope": "The nested spans of finite prefixes of an arbitrary nonzero starting vector’s orbit give nonincreasing Ritz infima."
+  },
+  {
+    "module": "FQChem.StatePrep.SubspaceDiagonalization.Krylov",
+    "names": [
+      "classicalKrylov"
+    ],
+    "papers": [
+      "https://doi.org/10.6028/jres.045.026",
+      "https://doi.org/10.1515/crll.1909.135.1"
+    ],
+    "relation": "derived",
+    "scope": "Enlarging the Hamiltonian-power Krylov space of a nonzero vector by one step cannot raise its Ritz infimum."
+  },
+  {
+    "module": "FQChem.StatePrep.SubspaceDiagonalization.Krylov",
+    "names": [
+      "quantumKrylov"
+    ],
+    "papers": [
+      "https://doi.org/10.1021/acs.jctc.9b01125",
+      "https://doi.org/10.1515/crll.1909.135.1"
+    ],
+    "relation": "derived",
+    "scope": "Enlarging the orbit space of a nonzero vector under any unitary step cannot raise the Hamiltonian Ritz infimum. The statement assumes exact subspaces and overlaps."
+  },
+  {
+    "module": "FQChem.StatePrep.SubspaceDiagonalization.RitzGalerkin",
+    "names": [
+      "residualCriterion"
+    ],
+    "papers": [
+      "https://www.unige.ch/~gander/HistoricalReferences/GALERKIN.pdf",
+      "https://doi.org/10.1515/crll.1909.135.1"
+    ],
+    "relation": "specialization",
+    "scope": "For a bounded operator and an orthogonally projectable subspace, a nonzero trial vector solves the compressed eigenproblem exactly when its full residual is orthogonal to the trial subspace."
+  },
+  {
+    "module": "FQChem.StatePrep.VariationalOptimization.DensityFunctionals.Continuum",
+    "names": [
+      "lin_coeff_zero",
+      "integral_expand",
+      "ip_expand",
+      "pf_expand",
+      "h0_expand"
+    ],
+    "papers": [
+      "https://doi.org/10.1103/PhysRev.136.B864"
+    ],
+    "relation": "supporting",
+    "scope": "Scalar polynomial and quadratic-form variation identities for the real form-domain pairing, external coupling and symmetric internal energy used in the weak eigen-equation."
+  },
+  {
+    "module": "FQChem.StatePrep.VariationalOptimization.DensityFunctionals.Continuum",
+    "names": [
+      "euler_lagrange"
+    ],
+    "papers": [
+      "https://doi.org/10.1103/PhysRev.136.B864"
+    ],
+    "relation": "supporting",
+    "scope": "A minimizer of the real-form Rayleigh quotient satisfies the weak eigen-equation against every vector of the assumed form domain."
+  },
+  {
+    "module": "FQChem.StatePrep.VariationalOptimization.DensityFunctionals.Continuum",
+    "names": [
+      "weak_hk"
+    ],
+    "papers": [
+      "https://doi.org/10.1103/PhysRev.136.B864"
+    ],
+    "relation": "specialization",
+    "scope": "Two minimizing wavefunctions with matching squared norms and densities share a ground state for the two potentials, by the variational inequalities."
+  },
+  {
+    "module": "FQChem.StatePrep.VariationalOptimization.DensityFunctionals.Continuum",
+    "names": [
+      "commonStateConstantLift",
+      "strong_hk_of_ucp",
+      "hohenbergKohn"
+    ],
+    "papers": [
+      "https://doi.org/10.1103/PhysRev.136.B864"
+    ],
+    "relation": "specialization",
+    "scope": "In the real-form setting, equal densities of equal-norm ground states give potentials differing by a constant under test-function separation, rigidity of the one-body lift and almost-everywhere nonvanishing. The common-state lemmas start with a shared ground state and derive constant lift, then constant potential."
+  },
+  {
+    "module": "FQChem.StatePrep.VariationalOptimization.DensityFunctionals.Continuum",
+    "names": [
+      "energy_le_trial",
+      "energy_le_functional_add",
+      "functional_le_internal"
+    ],
+    "papers": [
+      "https://doi.org/10.1002/qua.560240302"
+    ],
+    "relation": "supporting",
+    "scope": "The normalized-trial energy infimum and the potential-dual supremum give the inequalities used to establish the density variational identity."
+  },
+  {
+    "module": "FQChem.StatePrep.VariationalOptimization.DensityFunctionals.Continuum",
+    "names": [
+      "liebVariationalPrinciple",
+      "universalFunctionalExists"
+    ],
+    "papers": [
+      "https://doi.org/10.1002/qua.560240302"
+    ],
+    "relation": "specialization",
+    "scope": "For normalized representable densities in the supplied form setting, the potential-dual supremum defines a universal extended-real functional and recovers the ground-energy infimum. The identity uses infima."
+  },
+  {
+    "module": "FQChem.StatePrep.VariationalOptimization.DensityFunctionals.Continuum",
+    "names": [
+      "groundDensityExactness"
+    ],
+    "papers": [
+      "https://doi.org/10.1002/qua.560240302"
+    ],
+    "relation": "specialization",
+    "scope": "At the density of an attained normalized ground state the supremum-defined functional equals that state’s internal energy."
+  },
+  {
+    "module": "FQChem.StatePrep.VariationalOptimization.DensityFunctionals.CoulombIntegrability",
+    "names": [
+      "coulombLocallyIntegrable",
+      "locallyIntegrable_coordinate",
+      "nuclearAttractionIntegrable"
+    ],
+    "papers": [
+      "https://doi.org/10.1073/pnas.76.12.6062",
+      "https://doi.org/10.1002/qua.560240302"
+    ],
+    "relation": "supporting",
+    "scope": "The inverse-distance kernel is locally integrable in three dimensions. Its coordinate lifts give finite nuclear-attraction integrals against marginals of real smooth compactly supported molecular trial states."
+  },
+  {
+    "module": "FQChem.StatePrep.VariationalOptimization.DensityFunctionals.CoulombIntegrability",
+    "names": [
+      "coulombConstrainedSearch"
+    ],
+    "papers": [
+      "https://doi.org/10.1073/pnas.76.12.6062"
+    ],
+    "relation": "specialization",
+    "scope": "For finitely many fixed point nuclei in three dimensions, the extended-real energy infimum over real, smooth, compactly supported, normalized antisymmetric trial functions equals the density constrained-search infimum. The proof discharges the nuclear-attraction integrability condition within this trial class."
+  },
+  {
+    "module": "FQChem.StatePrep.VariationalOptimization.DensityFunctionals.MolecularConstrainedSearch",
+    "names": [
+      "born_mass",
+      "density_mass",
+      "density_pairing"
+    ],
+    "papers": [
+      "https://doi.org/10.1073/pnas.76.12.6062"
+    ],
+    "relation": "supporting",
+    "scope": "A normalized molecular trial gives a unit Born measure and a one-body density measure of mass N. Integrating a potential against that density sums its electron-coordinate expectations under the marginal integrability hypothesis."
+  },
+  {
+    "module": "FQChem.StatePrep.VariationalOptimization.DensityFunctionals.MolecularConstrainedSearch",
+    "names": [
+      "constrainedSearch",
+      "molecularConstrainedSearch"
+    ],
+    "papers": [
+      "https://doi.org/10.1073/pnas.76.12.6062"
+    ],
+    "relation": "specialization",
+    "scope": "The energy infimum over normalized smooth compactly supported real antisymmetric trial states on (ℝ³)ᴺ equals the infimum over densities of the internal-energy fiber infimum plus the potential pairing. This module assumes marginal integrability, including for fixed nuclei."
+  },
+  {
+    "module": "FQChem.StatePrep.VariationalOptimization.DensityFunctionals.MolecularHohenbergKohn",
+    "names": [
+      "oneBodyRigidity"
+    ],
+    "papers": [
+      "https://doi.org/10.1103/PhysRev.136.B864"
+    ],
+    "relation": "supporting",
+    "scope": "For one or more three-dimensional coordinates, almost-everywhere constancy of the sum of copies of a one-body potential implies its almost-everywhere constancy."
+  },
+  {
+    "module": "FQChem.StatePrep.VariationalOptimization.DensityFunctionals.MolecularHohenbergKohn",
+    "names": [
+      "molecularHohenbergKohn"
+    ],
+    "papers": [
+      "https://doi.org/10.1103/PhysRev.136.B864"
+    ],
+    "relation": "specialization",
+    "scope": "For two finite point-nucleus potentials in the supplied molecular form setting, ground states with equal density and equal squared norm determine the potential difference up to an almost-everywhere constant, assuming separation and the almost-everywhere nonvanishing of one state."
+  },
+  {
+    "module": "FQChem.StatePrep.VariationalOptimization.ExcitedStates",
+    "names": [
+      "weighted_bound"
+    ],
+    "papers": [
+      "https://doi.org/10.1103/PhysRev.43.830"
+    ],
+    "relation": "supporting",
+    "scope": "The energy-weighted bound sums termwise inequalities against a normalized family of weights."
+  },
+  {
+    "module": "FQChem.StatePrep.VariationalOptimization.ExcitedStates",
+    "names": [
+      "excitedStateBound"
+    ],
+    "papers": [
+      "https://doi.org/10.1103/PhysRev.43.830"
+    ],
+    "relation": "specialization",
+    "scope": "In normalized eigenbasis coefficients, vanishing on all eigenstates below the target energy implies that the mean energy is at least the target."
+  },
+  {
+    "module": "FQChem.StatePrep.VariationalOptimization.ExcitedStates",
+    "names": [
+      "quantumDeflation"
+    ],
+    "papers": [
+      "https://doi.org/10.22331/q-2019-07-01-156"
+    ],
+    "relation": "specialization",
+    "scope": "With an exact common eigenbasis and diagonal penalties that lift every energy to at least the target while leaving the target unchanged, the minimum penalized expectation equals the target energy. Degeneracies are allowed."
+  },
+  {
+    "module": "FQChem.StatePrep.VariationalOptimization.FermionicAnsatz",
+    "names": [
+      "slaterTrialBound"
+    ],
+    "papers": [
+      "https://doi.org/10.1007/BF01340294",
+      "https://doi.org/10.1515/crll.1909.135.1"
+    ],
+    "relation": "derived",
+    "scope": "A nonzero finite-basis Slater determinant is antisymmetric, so its Rayleigh quotient bounds the infimum over the fermion sector. The proof concerns the trial-state upper bound used in Hartree–Fock."
+  },
+  {
+    "module": "FQChem.StatePrep.VariationalOptimization.FermionicAnsatz",
+    "names": [
+      "neuralAntisymmetry"
+    ],
+    "papers": [
+      "https://doi.org/10.1103/PhysRevResearch.2.033429"
+    ],
+    "relation": "specialization",
+    "scope": "A weighted sum of determinants built from row-equivariant orbital matrices is antisymmetric under particle permutations. This proves the symmetry property of the ansatz under the stated equivariance."
+  },
+  {
+    "module": "FQChem.StatePrep.VariationalOptimization.GapCertificate",
+    "names": [
+      "spectralExpectation"
+    ],
+    "papers": [
+      "https://doi.org/10.1088/2058-9565/2/1/015004"
+    ],
+    "relation": "supporting",
+    "scope": "In a finite orthonormal eigenbasis, the Hermitian expectation is the sum of energies weighted by squared overlaps."
+  },
+  {
+    "module": "FQChem.StatePrep.VariationalOptimization.GapCertificate",
+    "names": [
+      "gapCertificate"
+    ],
+    "papers": [
+      "https://doi.org/10.1088/2058-9565/2/1/015004",
+      "https://doi.org/10.1038/ncomms1147"
+    ],
+    "relation": "specialization",
+    "scope": "The lower bound in Hangleiter et al., Lemma 2, is proved for normalized pure states and extended to a possibly degenerate ground sector. A gap Δ and energy error ε certify ground-sector weight ≥1−ε/Δ."
+  },
+  {
+    "module": "FQChem.StatePrep.VariationalOptimization.RayleighRitz",
+    "names": [
+      "rayleigh_bddBelow",
+      "groundEnergy_le",
+      "ritzEnergy_le"
+    ],
+    "papers": [
+      "https://doi.org/10.1515/crll.1909.135.1"
+    ],
+    "relation": "supporting",
+    "scope": "Boundedness of a continuous operator bounds its real Rayleigh quotients below. The full-space and restricted infima therefore bound each admissible nonzero trial quotient."
+  },
+  {
+    "module": "FQChem.StatePrep.VariationalOptimization.RayleighRitz",
+    "names": [
+      "groundEnergyPrinciple"
+    ],
+    "papers": [
+      "https://doi.org/10.1515/crll.1909.135.1"
+    ],
+    "relation": "specialization",
+    "scope": "For a self-adjoint operator on a nontrivial finite-dimensional complex Hilbert space, the Rayleigh-quotient infimum is an eigenvalue and bounds every nonzero trial quotient."
+  },
+  {
+    "module": "FQChem.StatePrep.VariationalOptimization.RayleighRitz",
+    "names": [
+      "basisEnlargement"
+    ],
+    "papers": [
+      "https://doi.org/10.1515/crll.1909.135.1"
+    ],
+    "relation": "specialization",
+    "scope": "Enlarging a nonzero trial subspace decreases its Ritz infimum, which still bounds the full-space infimum from above."
+  },
+  {
+    "module": "FQChem.StatePrep.VariationalOptimization.TensorNetworks.DMRG",
+    "names": [
+      "environmentMap_apply"
+    ],
+    "papers": [
+      "https://doi.org/10.1103/PhysRevLett.69.2863",
+      "https://doi.org/10.1103/PhysRevB.72.180403"
+    ],
+    "relation": "supporting",
+    "scope": "Contracting fixed left and right environments with a free site tensor gives the entries of the explicit linear map to physical states."
+  },
+  {
+    "module": "FQChem.StatePrep.VariationalOptimization.TensorNetworks.DMRG",
+    "names": [
+      "effective_symmetric",
+      "energy_identity"
+    ],
+    "papers": [
+      "https://doi.org/10.1103/PhysRevLett.69.2863",
+      "https://doi.org/10.1103/PhysRevB.72.180403"
+    ],
+    "relation": "supporting",
+    "scope": "The compressed Hamiltonian B†HB is Hermitian for Hermitian H. The local quotient using overlap B†B agrees with the physical Rayleigh quotient on the embedded tensor."
+  },
+  {
+    "module": "FQChem.StatePrep.VariationalOptimization.TensorNetworks.DMRG",
+    "names": [
+      "oneSiteUpdate",
+      "canonicalUpdate"
+    ],
+    "papers": [
+      "https://doi.org/10.1103/PhysRevLett.69.2863",
+      "https://doi.org/10.1103/PhysRevB.72.180403"
+    ],
+    "relation": "specialization",
+    "scope": "With fixed environments an exact minimizing site update cannot raise the energy. For an isometric embedding of a nonzero finite-dimensional site space and Hermitian H, a lowest effective eigenvector attains the local minimum. This concerns a single update."
+  },
+  {
+    "module": "FQChem.StatePrep.VariationalOptimization.TensorNetworks.MatrixProductStates",
+    "names": [
+      "mpsCutBound",
+      "exactCutFactorization"
+    ],
+    "papers": [
+      "https://doi.org/10.1103/PhysRevLett.91.147902"
+    ],
+    "relation": "supporting",
+    "scope": "For a fixed bipartition, a bond of size χ bounds the coefficient matrix rank. Rank at most D is equivalent to a factorization across a D-dimensional bond. Vidal’s circuit simulation additionally requires tracking ranks and updating tensors throughout the computation."
+  },
+  {
+    "module": "FQChem.StatePrep.VariationalOptimization.VQE",
+    "names": [
+      "vqe",
+      "reachableVQEMinimum"
+    ],
+    "papers": [
+      "https://doi.org/10.1038/ncomms5213",
+      "https://doi.org/10.1515/crll.1909.135.1"
+    ],
+    "relation": "specialization",
+    "scope": "A unitary ansatz acting on a normalized reference gives a variational upper bound. The parameterized energies attain the variational ground value if the ansatz reaches a ground eigenvector."
+  },
+  {
+    "module": "FQChem.StatePrep.VariationalOptimization.VariationalMonteCarlo",
+    "names": [
+      "sum_weight"
+    ],
+    "papers": [
+      "https://doi.org/10.1103/PhysRev.138.A442"
+    ],
+    "relation": "supporting",
+    "scope": "Squared amplitudes in the finite orthonormal sampling basis sum to one for a unit trial vector."
+  },
+  {
+    "module": "FQChem.StatePrep.VariationalOptimization.VariationalMonteCarlo",
+    "names": [
+      "variationalMonteCarlo",
+      "bornMean",
+      "variationalBound"
+    ],
+    "papers": [
+      "https://doi.org/10.1103/PhysRev.138.A442",
+      "https://doi.org/10.1515/crll.1909.135.1"
+    ],
+    "relation": "specialization",
+    "scope": "The finite-basis Born average of local energy equals the trial expectation, including at zero amplitudes via zero weight. For a normalized Hermitian trial problem its real part bounds the lowest eigenvalue. There are separate real-matrix and complex Hilbert-space formulations."
+  },
+  {
+    "module": "FQChem.StatePrep.VariationalOptimization.VariationalMonteCarlo",
+    "names": [
+      "residualDecomposition",
+      "zeroVarianceIff",
+      "eigenstateZeroVariance"
+    ],
+    "papers": [
+      "https://arxiv.org/abs/physics/0310035"
+    ],
+    "relation": "specialization",
+    "scope": "The squared residual at a real reference energy equals the Born-weighted centered second moment plus omitted-node contributions. Eigenstates have zero moment. The converse requires Hψ to vanish at every node of ψ."
+  },
+  {
+    "module": "FQChem.StatePrep.VariationalOptimization.VariationalMonteCarlo",
+    "names": [
+      "acceptedFlow",
+      "rowSum",
+      "transitionNonnegative"
+    ],
+    "papers": [
+      "https://doi.org/10.1063/1.1699114"
+    ],
+    "relation": "supporting",
+    "scope": "The finite Metropolis acceptance flow is the minimum of the two weights after removing the symmetric proposal. Adding the rejection probability gives unit row sums and, for a stochastic proposal, nonnegative entries."
+  },
+  {
+    "module": "FQChem.StatePrep.VariationalOptimization.VariationalMonteCarlo",
+    "names": [
+      "detailedBalance",
+      "stationary",
+      "bornStationary"
+    ],
+    "papers": [
+      "https://doi.org/10.1063/1.1699114",
+      "https://doi.org/10.1103/PhysRev.138.A442"
+    ],
+    "relation": "specialization",
+    "scope": "With a symmetric stochastic proposal, the finite Metropolis chain preserves the Born distribution of a normalized trial state by detailed balance. This establishes stationarity. Ergodicity needs additional hypotheses."
+  },
+  {
+    "module": "FQChem.StatePrep.VariationalOptimization.VariationalMonteCarlo",
+    "names": [
+      "energyGradient"
+    ],
+    "papers": [
+      "https://arxiv.org/abs/cond-mat/0502553"
+    ],
+    "relation": "specialization",
+    "scope": "For a finite real symmetric Hamiltonian and differentiable real trial amplitudes with full support and nonzero mass, the derivative of the normalized energy is twice the covariance of local energy and the logarithmic derivative."
+  }
+]

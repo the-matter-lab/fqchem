@@ -21,7 +21,7 @@
 <header><nav class="mast" aria-label="Site navigation">
   <a class="brand" href="index.html" aria-label="fqchem theorem atlas"><svg class="mark" viewBox="0 0 38 34" aria-hidden="true"><path d="m5 23 10-17 18 11-17 11-11-5 28-6M15 6l1 22"/><circle cx="5" cy="23" r="3"/><circle cx="15" cy="6" r="3.4"/><circle cx="33" cy="17" r="3.2"/><circle cx="16" cy="28" r="3"/></svg>fqchem</a>
   <span class="brand-context">Formal quantum chemistry</span>
-  <a class="paper-link" href="https://github.com/the-matter-lab/fqchem#papers-and-proved-results">Paper index <svg class="icon"><use href="#i-ext"/></svg></a>
+  <a class="paper-link" href="https://github.com/the-matter-lab/fqchem/blob/atlas/docs/theorems/papers.md">Paper index <svg class="icon"><use href="#i-ext"/></svg></a>
   <!-- GitHub mark from Primer Octicons.
 MIT License
 
@@ -52,8 +52,8 @@ SOFTWARE.
     </a>
 </nav></header>
 <main>
-  <div class="intro"><div><h1>Theorem atlas</h1><p>Select a theorem to trace its proof dependencies in the fqchem Lean library.</p></div>
-    <div class="totals"><span><b id="total-nodes">—</b>Declarations</span><span><b id="total-edges">—</b>Dependencies</span></div>
+  <div class="intro"><div><h1>Theorem atlas</h1><p>Trace a Lean proof or explore a result awaiting formalization.</p></div>
+    <div class="totals"><span><b id="total-nodes">—</b>Lean declarations</span><span><b id="total-targets">—</b>Need proof</span><span><b id="total-edges">—</b>Dependencies</span></div>
   </div>
   <div class="workbench">
     <section class="figure" aria-label="Interactive dependency graph">
@@ -64,7 +64,7 @@ SOFTWARE.
         <defs><marker id="ink-arrow" orient="auto" markerUnits="userSpaceOnUse" markerWidth="4" markerHeight="4" refX="3.6" refY="2"><path d="M0 .3 3.7 2 0 3.7z" fill="#59665f"/></marker><marker id="focus-arrow" orient="auto" markerUnits="userSpaceOnUse" markerWidth="6" markerHeight="6" refX="5.5" refY="3"><path d="M0 .3 5.7 3 0 5.7z" fill="#273a42"/></marker></defs>
         <g id="world"><g id="links"></g><g id="dots"></g><g id="map-labels"></g><g id="zoom-labels"></g><g id="focus-label"></g></g>
       </svg><div id="tip" hidden></div></div>
-      <div class="legend" aria-label="Result types"><span class="key classical"><i></i>Classical computing</span><span class="key quantum"><i></i>Quantum computing</span><span class="key general"><i></i>General theory</span></div>
+      <div class="legend" aria-label="Result types"><span class="key classical"><i></i>Classical computing</span><span class="key quantum"><i></i>Quantum computing</span><span class="key general"><i></i>General theory</span><button type="button" id="needs-proof" class="key pending"><i></i>Needs proof</button></div>
     </section>
     <aside aria-label="Theorem index">
       <div class="sidehead"><h2>Explore</h2><label class="searchbox"><svg class="icon"><use href="#i-find"/></svg><input id="search" type="search" autocomplete="off" placeholder="Find a theorem or method" aria-label="Find a theorem or method"><kbd>/</kbd></label></div>
@@ -78,5 +78,6 @@ SOFTWARE.
 <script>const graphParts = []; function addTheoremGraph(nodes) { graphParts.push(nodes); }</script>
 <script src="library.js"></script>
 <script src="kitaev.js"></script>
+<script src="literature.js"></script>
 <script src="atlas.js"></script>
 </body></html>

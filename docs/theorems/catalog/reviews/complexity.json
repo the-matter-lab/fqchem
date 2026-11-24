@@ -1,0 +1,1700 @@
+[
+  {
+    "module": "AaronsonAmbainisPort.Main",
+    "names": [
+      "aaronson_ambainis"
+    ],
+    "papers": [
+      "https://arxiv.org/abs/2611.09773",
+      "https://doi.org/10.4086/toc.2014.v010a006"
+    ],
+    "relation": "paper-result",
+    "scope": "Turturean, Corollary 1.2, proves the Aaronson–Ambainis influence conjecture on the uniform Boolean cube. For a [0,1]-valued polynomial of degree at most d and variance at least ε > 0, some squared-flip influence is at least (ε/d)⁷."
+  },
+  {
+    "module": "AaronsonAmbainisPort.Main",
+    "names": [
+      "aaronson_ambainis_explicit"
+    ],
+    "papers": [
+      "https://arxiv.org/abs/2611.09773",
+      "https://doi.org/10.4086/toc.2014.v010a006"
+    ],
+    "relation": "derived",
+    "scope": "The pinned proof converts Turturean’s Theorem 1.1 to the {0,1} cube and the unnormalized squared flip difference. The bound has coefficient 8√15/(125π⁴) multiplying ε^(5/2)/d⁶."
+  },
+  {
+    "module": "FQChem.Complexity.AaronsonAmbainis",
+    "names": [
+      "acceptance_influential"
+    ],
+    "papers": [
+      "https://arxiv.org/abs/2611.09773",
+      "https://doi.org/10.4086/toc.2014.v010a006",
+      "https://arxiv.org/abs/quant-ph/9802049"
+    ],
+    "relation": "specialization",
+    "scope": "Applies the proved Boolean influence bound to the acceptance probability of a T-query phase circuit on independent uniform input bits, assuming positive variance at least ε."
+  },
+  {
+    "module": "FQChem.Complexity.AaronsonAmbainis",
+    "names": [
+      "orbitalPopulation_influential"
+    ],
+    "papers": [
+      "https://arxiv.org/abs/2611.09773",
+      "https://doi.org/10.4086/toc.2014.v010a006",
+      "https://arxiv.org/abs/quant-ph/9802049"
+    ],
+    "relation": "specialization",
+    "scope": "Applies the explicit squared-flip influence bound with degree 2T to a chosen orbital population after T binary onsite pulses, assuming uniform independent inputs and variance at least ε."
+  },
+  {
+    "module": "FQChem.Complexity.AaronsonAmbainis",
+    "names": [
+      "mean_oneBit"
+    ],
+    "papers": [
+      "https://arxiv.org/abs/2611.09773",
+      "https://doi.org/10.4086/toc.2014.v010a006"
+    ],
+    "relation": "supporting",
+    "scope": "Computes the uniform mean of a function on one Boolean bit for the two-orbital witness."
+  },
+  {
+    "module": "FQChem.Complexity.AaronsonAmbainis",
+    "names": [
+      "antibondingVariance",
+      "antibondingInfluence"
+    ],
+    "papers": [
+      "https://arxiv.org/abs/2611.09773",
+      "https://doi.org/10.4086/toc.2014.v010a006"
+    ],
+    "relation": "derived",
+    "scope": "For the specific one-bit orbital probe, the Bernoulli antibonding readout has variance 1/4 and squared-flip influence 1."
+  },
+  {
+    "module": "FQChem.Complexity.AaronsonAmbainis",
+    "names": [
+      "antibonding_influential"
+    ],
+    "papers": [
+      "https://arxiv.org/abs/2611.09773",
+      "https://doi.org/10.4086/toc.2014.v010a006"
+    ],
+    "relation": "derived",
+    "scope": "Instantiates the explicit influence inequality for a single binary pulse, the antibonding readout, and variance 1/4."
+  },
+  {
+    "module": "FQChem.Complexity.AaronsonAmbainisQuery",
+    "names": [
+      "phase_eval",
+      "phase_degree",
+      "phaseScale_value",
+      "phaseScale_degree"
+    ],
+    "papers": [
+      "https://arxiv.org/abs/quant-ph/9802049"
+    ],
+    "relation": "supporting",
+    "scope": "Represents a binary phase oracle or coherent bypass by a degree-at-most-one real factor. Multiplying an amplitude by it adds at most one to the degree."
+  },
+  {
+    "module": "FQChem.Complexity.AaronsonAmbainisQuery",
+    "names": [
+      "mix_value",
+      "mix_degree"
+    ],
+    "papers": [
+      "https://arxiv.org/abs/quant-ph/9802049"
+    ],
+    "relation": "supporting",
+    "scope": "A fixed complex mixing matrix acts linearly on the real and imaginary polynomial components and preserves the common degree bound."
+  },
+  {
+    "module": "FQChem.Complexity.AaronsonAmbainisQuery",
+    "names": [
+      "amplitudes_value",
+      "amplitudes_degree"
+    ],
+    "papers": [
+      "https://arxiv.org/abs/quant-ph/9802049"
+    ],
+    "relation": "specialization",
+    "scope": "Beals et al., Lemma 4.1, specialized to phase queries. After T queries the real and imaginary amplitude polynomials evaluate correctly and have total degree at most T. Boolean multilinear reduction is unnecessary for these bounds."
+  },
+  {
+    "module": "FQChem.Complexity.AaronsonAmbainisQuery",
+    "names": [
+      "sqnorm_eq",
+      "unitary_preserves",
+      "amplitudes_normalized",
+      "acceptance_mem_unitInterval"
+    ],
+    "papers": [
+      "https://arxiv.org/abs/quant-ph/9802049"
+    ],
+    "relation": "supporting",
+    "scope": "Relates squared amplitudes to a complex inner product, preserves mass under phase queries and fixed unitaries, and bounds the probability of a finite basis event by [0,1]."
+  },
+  {
+    "module": "FQChem.Complexity.AaronsonAmbainisQuery",
+    "names": [
+      "acceptancePolynomial_eval",
+      "acceptancePolynomial_degree"
+    ],
+    "papers": [
+      "https://arxiv.org/abs/quant-ph/9802049"
+    ],
+    "relation": "specialization",
+    "scope": "Beals et al., Lemma 4.2, for a T-query phase circuit. The constructed real polynomial agrees with the event probability on Boolean inputs and has total degree at most 2T. Lean uses ordinary polynomials."
+  },
+  {
+    "module": "FQChem.Complexity.AaronsonAmbainisOrbitals",
+    "names": [
+      "onsiteHamiltonian_isHermitian",
+      "onsite_evolution"
+    ],
+    "papers": [
+      "https://arxiv.org/abs/quant-ph/9802049"
+    ],
+    "relation": "derived",
+    "scope": "The diagonal one-particle Hamiltonian with entries 0 or π is Hermitian, and its unit-time exponential implements the sign oracle on the addressed orbitals."
+  },
+  {
+    "module": "FQChem.Complexity.AaronsonAmbainisOrbitals",
+    "names": [
+      "orbitalEvolution_eq",
+      "orbitalPopulation_eq"
+    ],
+    "papers": [
+      "https://arxiv.org/abs/quant-ph/9802049"
+    ],
+    "relation": "derived",
+    "scope": "Amplitude and probability identities identify alternating orbital mixing and binary onsite evolution with the phase-query circuit in the polynomial method."
+  },
+  {
+    "module": "FQChem.Complexity.AaronsonAmbainisOrbitals",
+    "names": [
+      "halfAmplitude_sq",
+      "bondingNormalized",
+      "bondingReadout_unitary"
+    ],
+    "papers": [
+      "https://arxiv.org/abs/quant-ph/9802049"
+    ],
+    "relation": "supporting",
+    "scope": "The one-bit interference example uses 1/√2, a normalized bonding state, and a unitary bonding/antibonding readout."
+  },
+  {
+    "module": "FQChem.Complexity.AaronsonAmbainisOrbitals",
+    "names": [
+      "antibondingPopulation"
+    ],
+    "papers": [
+      "https://arxiv.org/abs/quant-ph/9802049"
+    ],
+    "relation": "derived",
+    "scope": "Calculates a two-orbital realization of a single-bit query. The antibonding probability equals the encoded bit."
+  },
+  {
+    "module": "FQChem.Complexity.OrbitalSimulation",
+    "names": [
+      "parity_cases",
+      "parity_orthogonal"
+    ],
+    "papers": [
+      "https://arxiv.org/abs/quant-ph/9802049",
+      "https://doi.org/10.1103/PhysRevLett.81.5442"
+    ],
+    "relation": "supporting",
+    "scope": "The product of Boolean signs equals ±1 and is orthogonal under the cube sum to every polynomial of total degree strictly below the number of bits."
+  },
+  {
+    "module": "FQChem.Complexity.OrbitalSimulation",
+    "names": [
+      "hermitian",
+      "onsite_bounds",
+      "evolution",
+      "population_parity"
+    ],
+    "papers": [
+      "https://arxiv.org/abs/quant-ph/9802049",
+      "https://doi.org/10.1103/PhysRevLett.81.5442"
+    ],
+    "relation": "derived",
+    "scope": "In the library’s two-orbital model, the diagonal onsite energy is bounded by π. Evolving for time N implements a relative parity sign, which determines the antibonding population for N > 0."
+  },
+  {
+    "module": "FQChem.Complexity.OrbitalSimulation",
+    "names": [
+      "simulation_query_lower_bound"
+    ],
+    "papers": [
+      "https://arxiv.org/abs/quant-ph/9802049",
+      "https://doi.org/10.1103/PhysRevLett.81.5442",
+      "https://doi.org/10.1007/s00220-006-0150-x"
+    ],
+    "relation": "derived",
+    "scope": "For individual Boolean potential-term queries, uniform additive error < 1/2 on the parity-encoding population at time N forces N ≤ 2T. Berry et al., Theorem 3, uses sparse matrix row queries and trace distance for a different Hamiltonian family."
+  },
+  {
+    "module": "FQChem.Complexity.GroundStateSearch",
+    "names": [
+      "groundSpace",
+      "energy_eq_failure"
+    ],
+    "papers": [
+      "https://arxiv.org/abs/quant-ph/9701001"
+    ],
+    "relation": "derived",
+    "scope": "For the complementary projector Hamiltonian I−P, the kernel is the marked subspace and the normalized energy equals one minus its population."
+  },
+  {
+    "module": "FQChem.Complexity.GroundStateSearch",
+    "names": [
+      "mark_eq_neg_reflection",
+      "queried_norm",
+      "reference_norm"
+    ],
+    "papers": [
+      "https://arxiv.org/abs/quant-ph/9701001"
+    ],
+    "relation": "supporting",
+    "scope": "Relates the marking oracle to a subspace reflection and checks normalization for both the queried trajectory and the query-free reference trajectory."
+  },
+  {
+    "module": "FQChem.Complexity.GroundStateSearch",
+    "names": [
+      "orthonormal_addresses",
+      "sum_amplitudes_le"
+    ],
+    "papers": [
+      "https://arxiv.org/abs/quant-ph/9701001"
+    ],
+    "relation": "supporting",
+    "scope": "Bessel’s inequality supplies the address bound for orthonormal candidates. The sum of projection amplitudes for a normalized reference is at most √N."
+  },
+  {
+    "module": "FQChem.Complexity.GroundStateSearch",
+    "names": [
+      "hybrid_step",
+      "hybrid_bound"
+    ],
+    "papers": [
+      "https://arxiv.org/abs/quant-ph/9701001"
+    ],
+    "relation": "specialization",
+    "scope": "BBBV hybrid argument for reflection queries to subspaces satisfying the address bound. Summed distance from the reference after T queries is at most 2T√N."
+  },
+  {
+    "module": "FQChem.Complexity.GroundStateSearch",
+    "names": [
+      "query_lower_bound",
+      "energy_query_lower_bound",
+      "orthonormal_energy_lower_bound"
+    ],
+    "papers": [
+      "https://arxiv.org/abs/quant-ph/9701001"
+    ],
+    "relation": "derived",
+    "scope": "Converts the hybrid estimate into a success-probability or complementary-projector energy bound for uniform performance across marked subspaces. For orthonormal candidates, energy error ε implies N√(1−ε) ≤ (2T+1)√N."
+  },
+  {
+    "module": "FQChem.Complexity.ElectronicStructure",
+    "names": [
+      "encode_legal",
+      "defects_zero_iff"
+    ],
+    "papers": [
+      "https://doi.org/10.1103/PhysRevLett.98.110503"
+    ],
+    "relation": "supporting",
+    "scope": "The one-particle-per-pair qubit encoding is legal, and zero occupation defects characterize the code sector."
+  },
+  {
+    "module": "FQChem.Complexity.ElectronicStructure",
+    "names": [
+      "railMove_count",
+      "railMove_twice",
+      "physicalMove_legal",
+      "move_encode",
+      "phase_encode",
+      "physicalPhase_norm"
+    ],
+    "papers": [
+      "https://doi.org/10.1103/PhysRevLett.98.110503"
+    ],
+    "relation": "supporting",
+    "scope": "Checks the occupation permutation and phase for each encoded Pauli word: moves preserve particle number and legality, reproduce the logical action on the code, and have bounded phase magnitude."
+  },
+  {
+    "module": "FQChem.Complexity.ElectronicStructure",
+    "names": [
+      "expectation_bound",
+      "splitSum",
+      "mass_split",
+      "leakage_expectation"
+    ],
+    "papers": [
+      "https://doi.org/10.1103/PhysRevLett.98.110503"
+    ],
+    "relation": "supporting",
+    "scope": "Splits norm and expectation over legal and leakage sectors, and bounds the magnitude of each phase-weighted permutation expectation by the state mass."
+  },
+  {
+    "module": "FQChem.Complexity.ElectronicStructure",
+    "names": [
+      "interactionError",
+      "leakagePenalty"
+    ],
+    "papers": [
+      "https://doi.org/10.1103/PhysRevLett.98.110503"
+    ],
+    "relation": "derived",
+    "scope": "Quantifies possible energy gain off the qubit code by total coefficient strength times leakage mass, and bounds this mass by the pair-occupation penalty."
+  },
+  {
+    "module": "FQChem.Complexity.ElectronicStructure",
+    "names": [
+      "spinPart_encodeState",
+      "leakagePart_encodeState"
+    ],
+    "papers": [
+      "https://doi.org/10.1103/PhysRevLett.98.110503"
+    ],
+    "relation": "supporting",
+    "scope": "Restricting the zero-extended encoded state recovers the spin state on the code and zero amplitudes in the leakage sector."
+  },
+  {
+    "module": "FQChem.Complexity.ElectronicStructure",
+    "names": [
+      "encodeState_mass",
+      "encodeState_energy"
+    ],
+    "papers": [
+      "https://doi.org/10.1103/PhysRevLett.98.110503"
+    ],
+    "relation": "specialization",
+    "scope": "The two-mode encoding in the spin-to-fermion reduction preserves norm and the full energy expectation for the zero-extended encoded spin state."
+  },
+  {
+    "module": "FQChem.Complexity.ElectronicStructure",
+    "names": [
+      "mass_nonneg",
+      "mass_scale",
+      "expectation_scale",
+      "spinEnergy_scale",
+      "homogeneous_lower"
+    ],
+    "papers": [
+      "https://doi.org/10.1103/PhysRevLett.98.110503"
+    ],
+    "relation": "supporting",
+    "scope": "Checks homogeneity under complex rescaling and extends a normalized Rayleigh lower bound to arbitrary amplitudes, including zero."
+  },
+  {
+    "module": "FQChem.Complexity.ElectronicStructure",
+    "names": [
+      "lowerBound_transfer",
+      "energyPromise_transfer"
+    ],
+    "papers": [
+      "https://doi.org/10.1103/PhysRevLett.98.110503"
+    ],
+    "relation": "derived",
+    "scope": "For real Pauli coefficients and J ≥ 0 with J ≥ b + total coefficient strength, the constructed fixed-number Hamiltonian preserves the spin YES and NO energy thresholds for arbitrary normalized amplitudes, including leakage."
+  },
+  {
+    "module": "FQChem.Complexity.ElectronicStructureOperators",
+    "names": [
+      "oneBody_apply",
+      "sum_rail",
+      "railPhase_reverse"
+    ],
+    "papers": [
+      "https://doi.org/10.1103/PhysRevLett.98.110503"
+    ],
+    "relation": "supporting",
+    "scope": "Computes creation–annihilation products on the four pair occupations and checks conjugate phases under the reversed encoded Pauli move."
+  },
+  {
+    "module": "FQChem.Complexity.ElectronicStructureOperators",
+    "names": [
+      "railMatrix_secondQuantized",
+      "numberPenalty"
+    ],
+    "papers": [
+      "https://doi.org/10.1103/PhysRevLett.98.110503"
+    ],
+    "relation": "specialization",
+    "scope": "Checks the two-mode hopping representations of Pauli X and Y, the occupation difference for Z, and the projector penalizing zero or double occupation via (n₀+n₁−1)²."
+  },
+  {
+    "module": "FQChem.Complexity.ElectronicStructureOperators",
+    "names": [
+      "encodingResources"
+    ],
+    "papers": [
+      "https://doi.org/10.1103/PhysRevLett.98.110503"
+    ],
+    "relation": "derived",
+    "scope": "A k-site Pauli term touches at most 2k modes and the register has 2n modes. For m coefficients bounded in absolute value by B, their total strength is at most mB."
+  },
+  {
+    "module": "FQChem.Complexity.ElectronicStructureOperators",
+    "names": [
+      "kernelSum_expectation",
+      "spinKernel_expectation",
+      "fermionKernel_expectation",
+      "fermionExpectation"
+    ],
+    "papers": [
+      "https://doi.org/10.1103/PhysRevLett.98.110503"
+    ],
+    "relation": "supporting",
+    "scope": "Identifies the expectation of sums of permutation kernels and the Hilbert-space operator with the spin or fixed-particle energy formulas used in the reduction."
+  },
+  {
+    "module": "FQChem.Complexity.ElectronicStructureOperators",
+    "names": [
+      "fermionKernel_hermitian"
+    ],
+    "papers": [
+      "https://doi.org/10.1103/PhysRevLett.98.110503"
+    ],
+    "relation": "derived",
+    "scope": "For real coefficients and real J, the finite occupation-space matrix including the pair penalty equals its conjugate transpose."
+  },
+  {
+    "module": "FQChem.Complexity.ElectronicStructureOperators",
+    "names": [
+      "variationalUpperBound"
+    ],
+    "papers": [
+      "https://doi.org/10.1038/ncomms5213",
+      "https://doi.org/10.1103/PhysRevLett.98.110503",
+      "https://doi.org/10.1515/crll.1909.135.1"
+    ],
+    "relation": "specialization",
+    "scope": "Rayleigh–Ritz applied to the encoded fermionic operator gives an upper bound on ground energy for each isometrically prepared normalized trial state."
+  },
+  {
+    "module": "FQChem.Complexity.ElectronicStructureOperators",
+    "names": [
+      "variationalThreshold"
+    ],
+    "papers": [
+      "https://doi.org/10.1103/PhysRevLett.98.110503",
+      "https://doi.org/10.1038/ncomms5213"
+    ],
+    "relation": "derived",
+    "scope": "A normalized trial within ε of the variational optimum, readout error ≤ δ, sufficient pair penalty and ε+2δ < b−a yield a threshold test for the spin energy promise."
+  },
+  {
+    "module": "FQChem.Complexity.ElectronicStructurePauli",
+    "names": [
+      "pauliEntry_conj",
+      "spinResolution",
+      "wordEntry_eq",
+      "wordEntry_conj",
+      "dualEntry_conj",
+      "entry_norm_le_one",
+      "dualEntry_norm"
+    ],
+    "papers": [
+      "https://doi.org/10.1103/PhysRevLett.98.110503"
+    ],
+    "relation": "supporting",
+    "scope": "Matrix identities for one-bit Pauli entries, tensor-product words, dual coordinates and their conjugation or norm bounds support the real-coefficient encoding."
+  },
+  {
+    "module": "FQChem.Complexity.ElectronicStructurePauli",
+    "names": [
+      "pauliResolution",
+      "pauliExpansion",
+      "pauliCoefficient_real",
+      "localHermitianExpansion"
+    ],
+    "papers": [
+      "https://doi.org/10.1103/PhysRevLett.98.110503"
+    ],
+    "relation": "supporting",
+    "scope": "Pauli basis resolution expands an arbitrary finite local table. Hermiticity makes coefficients real and there are exactly 4^k candidate words on k qubits."
+  },
+  {
+    "module": "FQChem.Complexity.ElectronicStructurePauli",
+    "names": [
+      "untouched_eq",
+      "extendWord_entry",
+      "extendWord_support",
+      "localTerm_expansion"
+    ],
+    "papers": [
+      "https://doi.org/10.1103/PhysRevLett.98.110503"
+    ],
+    "relation": "supporting",
+    "scope": "Extending Pauli words by identities embeds a table on an injective list of wires, preserving its entries and bounding the support by the arity."
+  },
+  {
+    "module": "FQChem.Complexity.ElectronicStructurePauli",
+    "names": [
+      "localExpansion_kernel",
+      "localExpansion_size",
+      "localExpansion_strength"
+    ],
+    "papers": [
+      "https://doi.org/10.1103/PhysRevLett.98.110503"
+    ],
+    "relation": "derived",
+    "scope": "Expands a sum of m k-local tables exactly, bounds the number of words by m·4^k, and bounds coefficient strength in terms of arity and a uniform bound on the entries."
+  },
+  {
+    "module": "FQChem.Complexity.ElectronicStructurePauli",
+    "names": [
+      "localHamiltonian_to_fixedParticle"
+    ],
+    "papers": [
+      "https://doi.org/10.1103/PhysRevLett.98.110503"
+    ],
+    "relation": "derived",
+    "scope": "Composes finite Hermitian table expansion with the dual-rail penalty. Under a sufficient penalty, the normalized energy promises transfer to the n-particle occupation sector with the same cutoffs. Arbitrary k-local inputs may yield higher-body interactions."
+  },
+  {
+    "module": "FQChemKitaev.HistoryHamiltonian",
+    "names": [
+      "energy_range_bddBelow",
+      "energy_range_nonempty"
+    ],
+    "papers": [
+      "https://doi.org/10.1090/gsm/047"
+    ],
+    "relation": "supporting",
+    "scope": "Finite matrix expectations on normalized states have a nonempty range bounded below, permitting the use of an infimum for ground energy."
+  },
+  {
+    "module": "FQChemKitaev.HistoryHamiltonian",
+    "names": [
+      "cutoffDen_pos",
+      "cutoffDen_le",
+      "rationalCutoffs",
+      "promiseGap"
+    ],
+    "papers": [
+      "https://doi.org/10.1090/gsm/047"
+    ],
+    "relation": "supporting",
+    "scope": "For a padded circuit, the positive integer denominator D defines cutoffs 1/D and 2/D. The implementation bounds D by 2¹³·130·s⁴, where s is gates + qubits + 65."
+  },
+  {
+    "module": "FQChemKitaev.HistoryHamiltonian",
+    "names": [
+      "resources"
+    ],
+    "papers": [
+      "https://doi.org/10.1090/gsm/047"
+    ],
+    "relation": "specialization",
+    "scope": "Explicit resources for the five-local history construction of §14.4. The encoded terms are Hermitian, have norm at most one, and satisfy gate-, clock-, and initialization-dependent count and encoding-length bounds."
+  },
+  {
+    "module": "FQChemKitaev.HistoryHamiltonian",
+    "names": [
+      "witnessEnergy_promise",
+      "groundEnergy_promise",
+      "verifier_reduction"
+    ],
+    "papers": [
+      "https://doi.org/10.1090/gsm/047"
+    ],
+    "relation": "specialization",
+    "scope": "For a legal verifier with T gates, a normalized witness of acceptance at least 1−1/[2¹⁴(T+65)²] gives low energy. Acceptance at most 1/4 for every legal normalized witness gives high energy for every normalized history state. The three declarations express this via states, an infimum, or a bit-string promise."
+  },
+  {
+    "module": "FQChemKitaev.HistoryHamiltonian",
+    "names": [
+      "serialize_injective",
+      "reduction_length"
+    ],
+    "papers": [
+      "https://doi.org/10.1090/gsm/047"
+    ],
+    "relation": "supporting",
+    "scope": "The Qatlib-derived Hamiltonian and denominator can be recovered uniquely from the chosen bit-string encoding, whose length is polynomial in padded circuit size."
+  },
+  {
+    "module": "FQChemKitaev.HistoryHamiltonian",
+    "names": [
+      "termDescriptors_correct",
+      "termDescriptors_count",
+      "scalarEntries_bound"
+    ],
+    "papers": [
+      "https://doi.org/10.1090/gsm/047"
+    ],
+    "relation": "supporting",
+    "scope": "Implementation lemmas identify template-generated local tables with the history construction, count propagation, initialization, output and clock descriptors, and bound scalar table entries."
+  },
+  {
+    "module": "FQChemKitaev.HistoryHamiltonian",
+    "names": [
+      "localEnergy_disjoint",
+      "estimate_decides",
+      "preparation_and_measurement_decide"
+    ],
+    "papers": [
+      "https://doi.org/10.1090/gsm/047"
+    ],
+    "relation": "derived",
+    "scope": "Separated cutoffs make the two energy promises disjoint. Ground-energy estimation within one third of the stated gap bound, or normalized preparation and measurement each within one fifth, decides the verifier promise."
+  },
+  {
+    "module": "FQChemKitaev.HistoryHamiltonian",
+    "names": [
+      "run_scalar",
+      "zero_input_legal"
+    ],
+    "papers": [
+      "https://doi.org/10.1090/gsm/047"
+    ],
+    "relation": "supporting",
+    "scope": "Linear circuit evolution commutes with complex rescaling, and the zero ket obeys the verifier initialization predicate."
+  },
+  {
+    "module": "FQChemKitaev.HistoryHamiltonian",
+    "names": [
+      "witnessFree_acceptance",
+      "witnessFree_groundEnergy"
+    ],
+    "papers": [
+      "https://doi.org/10.1090/gsm/047"
+    ],
+    "relation": "specialization",
+    "scope": "If every work wire must start at zero, all legal normalized witnesses give the same acceptance as the zero ket. Its high or low acceptance at the specified thresholds suffices for the history-energy bounds."
+  },
+  {
+    "module": "FQChemKitaev.Majority",
+    "names": [
+      "distinct",
+      "involution",
+      "read_toggle"
+    ],
+    "papers": [
+      "https://doi.org/10.1090/gsm/047"
+    ],
+    "relation": "supporting",
+    "scope": "Checks distinct wire addresses, involutivity of the majority-controlled update and preservation of the three vote bits."
+  },
+  {
+    "module": "FQChemKitaev.Majority",
+    "names": [
+      "toffoli_legal",
+      "toffoli_run"
+    ],
+    "papers": [
+      "https://doi.org/10.1017/CBO9780511976667"
+    ],
+    "relation": "supporting",
+    "scope": "Qatlib’s 15-gate Clifford+T word acts on three distinct wires as a Toffoli on computational-basis inputs. This is the gate used three times in the coherent readout."
+  },
+  {
+    "module": "FQChemKitaev.Majority",
+    "names": [
+      "word_legal",
+      "word_length",
+      "word_ket",
+      "word_amplitude"
+    ],
+    "papers": [
+      "https://doi.org/10.1090/gsm/047",
+      "https://doi.org/10.1017/CBO9780511976667"
+    ],
+    "relation": "derived",
+    "scope": "Composes three Toffolis to XOR the majority of three distinct vote bits into a fourth wire. The legal 45-gate word implements that permutation on basis kets and on arbitrary amplitudes."
+  },
+  {
+    "module": "FQChemKitaev.Majority",
+    "names": [
+      "readout_probability",
+      "independent_votes",
+      "three_copy_readout"
+    ],
+    "papers": [
+      "https://doi.org/10.1090/gsm/047"
+    ],
+    "relation": "derived",
+    "scope": "For a clean answer wire the readout probability is the total mass of the majority patterns. Independent votes with marginal p, in particular three independently prepared copies, give 3p²−2p³. This is the witness-free gadget used for repetition amplification."
+  },
+  {
+    "module": "FQChemKitaev.Majority",
+    "names": [
+      "productMass",
+      "failure_probability"
+    ],
+    "papers": [
+      "https://doi.org/10.1090/gsm/047"
+    ],
+    "relation": "supporting",
+    "scope": "The Born weights of independent product amplitudes factor, and three-vote failure obeys the same cubic recursion as success."
+  },
+  {
+    "module": "FQChemKitaev.Majority",
+    "names": [
+      "error_bound",
+      "squared_error_decay",
+      "three_level_halving"
+    ],
+    "papers": [
+      "https://doi.org/10.1090/gsm/047"
+    ],
+    "relation": "derived",
+    "scope": "For initial decision error at most 1/3, iteration of the three-vote map obeys the explicit geometric, three-round halving, and doubly exponential bounds proved here."
+  },
+  {
+    "module": "FQChemKitaev.Wiring",
+    "names": [
+      "wireGate_mulVec_update",
+      "one_wire",
+      "two_wires",
+      "renamedGate_action"
+    ],
+    "papers": [
+      "https://doi.org/10.1017/CBO9780511976667"
+    ],
+    "relation": "supporting",
+    "scope": "Computes gate actions after an injective relabeling of wires, preserving the spectator amplitude factor. Cases cover a single-wire matrix and CNOT on distinct wires."
+  },
+  {
+    "module": "FQChemKitaev.Wiring",
+    "names": [
+      "renamedGate_legal",
+      "onWires_legal",
+      "onWires_length",
+      "onWires_run"
+    ],
+    "papers": [
+      "https://doi.org/10.1017/CBO9780511976667"
+    ],
+    "relation": "supporting",
+    "scope": "Relabeling a legal gate word on an injected register preserves legality and length. Its evolution on a factored extension acts only on the selected register."
+  },
+  {
+    "module": "FQChemKitaev.Amplify",
+    "names": [
+      "copy_ne",
+      "joint_product",
+      "joint_run",
+      "joint_zero"
+    ],
+    "papers": [
+      "https://doi.org/10.1090/gsm/047"
+    ],
+    "relation": "supporting",
+    "scope": "Verifies disjoint wire addresses and factorization of zero initialization and evolution for three independently prepared copies."
+  },
+  {
+    "module": "FQChemKitaev.Amplify",
+    "names": [
+      "word_legal",
+      "word_length",
+      "word_accept",
+      "step_accept"
+    ],
+    "papers": [
+      "https://doi.org/10.1090/gsm/047"
+    ],
+    "relation": "derived",
+    "scope": "For a legal witness-free gate word on the zero input, moving three copies to disjoint registers and appending majority uses 3T+45 gates and changes acceptance p to 3p²−2p³."
+  },
+  {
+    "module": "FQChemKitaev.Amplify",
+    "names": [
+      "repeat_all_zero",
+      "repeat_gate_count",
+      "repeat_width",
+      "zeroAcceptance_mem"
+    ],
+    "papers": [
+      "https://doi.org/10.1090/gsm/047"
+    ],
+    "relation": "supporting",
+    "scope": "Checks all-zero initialization after a round, the gate and width recurrences, and the unit-interval bound on acceptance."
+  },
+  {
+    "module": "FQChemKitaev.Amplify",
+    "names": [
+      "repeat_accept",
+      "repeat_reject"
+    ],
+    "papers": [
+      "https://doi.org/10.1090/gsm/047"
+    ],
+    "relation": "derived",
+    "scope": "After k recursive rounds on zero-input circuits, the acceptance and rejection probabilities equal k iterations of the three-vote cubic on the original success or error."
+  },
+  {
+    "module": "FQChemKitaev.AmplificationBounds",
+    "names": [
+      "size_after",
+      "polynomial_size",
+      "budget"
+    ],
+    "papers": [
+      "https://doi.org/10.1090/gsm/047"
+    ],
+    "relation": "supporting",
+    "scope": "Bounds the size and precision budget for the library’s recursively tripled circuit. At 9+floor(log₂ s) rounds the amplified padded size is at most 4⁹s³."
+  },
+  {
+    "module": "FQChemKitaev.AmplificationBounds",
+    "names": [
+      "reaches_precision"
+    ],
+    "papers": [
+      "https://doi.org/10.1090/gsm/047"
+    ],
+    "relation": "derived",
+    "scope": "With initial decision error in [0,1/3], the chosen majority depth reaches error at most 1/(2¹⁴u²), where the final size u satisfies the proved growth bound."
+  },
+  {
+    "module": "FQChemKitaev.AmplifierCost",
+    "names": [
+      "add_spec",
+      "less_spec",
+      "half_spec",
+      "logarithm_spec",
+      "indices_spec",
+      "depth_spec"
+    ],
+    "papers": [
+      "https://doi.org/10.1090/gsm/047"
+    ],
+    "relation": "supporting",
+    "scope": "Unary arithmetic, index enumeration and integer logarithm compute the amplifier depth. The correctness and step counts use the library’s list-cell cost model."
+  },
+  {
+    "module": "FQChemKitaev.AmplifierCost",
+    "names": [
+      "valid_spec",
+      "readWord_correct",
+      "readWord_legal",
+      "readWord_time"
+    ],
+    "papers": [
+      "https://doi.org/10.1090/gsm/047"
+    ],
+    "relation": "supporting",
+    "scope": "Checks legality, parsing and cost for finite gate-code words. Decoding an encoded legal circuit reconstructs its gates."
+  },
+  {
+    "module": "FQChemKitaev.AmplifierCost",
+    "names": [
+      "shift_cost",
+      "shift_wire",
+      "prepend_cost",
+      "prepend_wire",
+      "copies_time"
+    ],
+    "papers": [
+      "https://doi.org/10.1090/gsm/047"
+    ],
+    "relation": "supporting",
+    "scope": "Renumbers a gate or word onto a disjoint register, letting the compiler emit three copies with bounded list-processing cost."
+  },
+  {
+    "module": "FQChemKitaev.AmplifierCost",
+    "names": [
+      "layer_correct",
+      "layer_time",
+      "layers_correct",
+      "layers_time",
+      "growth"
+    ],
+    "papers": [
+      "https://doi.org/10.1090/gsm/047"
+    ],
+    "relation": "supporting",
+    "scope": "One amplifier layer and k iterated layers implement the specified majority circuits. Width and circuit growth control the step bounds."
+  },
+  {
+    "module": "FQChemKitaev.AmplifierCost",
+    "names": [
+      "gateRows_spec",
+      "gates_weight",
+      "row_weight",
+      "emit_time",
+      "emit_paid",
+      "binary_paid"
+    ],
+    "papers": [
+      "https://doi.org/10.1090/gsm/047"
+    ],
+    "relation": "supporting",
+    "scope": "Relates gate encodings, unary row weights, and tape emission cost to the sizes of the register and gate word."
+  },
+  {
+    "module": "FQChemKitaev.AmplifierCost",
+    "names": [
+      "output_correct",
+      "output_paid",
+      "output_time",
+      "fromRows_paid",
+      "fromRows_time"
+    ],
+    "papers": [
+      "https://doi.org/10.1090/gsm/047"
+    ],
+    "relation": "supporting",
+    "scope": "Output routines serialize the all-zero-input circuit word, bound the emitted length by steps, and bound serialization or parsing time in the chosen representation."
+  },
+  {
+    "module": "FQChemKitaev.AmplifierCost",
+    "names": [
+      "amplify_correct",
+      "amplify_time",
+      "amplify_paid",
+      "budget_mono"
+    ],
+    "papers": [
+      "https://doi.org/10.1090/gsm/047"
+    ],
+    "relation": "supporting",
+    "scope": "The internal register compiler emits the encoded repeated-majority circuit, with a monotone polynomial cost bound and sufficient steps to write its output."
+  },
+  {
+    "module": "FQChemKitaev.AmplifierCost",
+    "names": [
+      "compile_correct",
+      "compile_time",
+      "length_le_steps"
+    ],
+    "papers": [
+      "https://doi.org/10.1090/gsm/047"
+    ],
+    "relation": "derived",
+    "scope": "The bit-list compiler maps a serialized decision circuit to its amplified word and has a polynomial step count in input length. Each output bit is covered by that budget."
+  },
+  {
+    "module": "FQChemKitaev.Compiler",
+    "names": [
+      "read_gateRow",
+      "read_descriptorRow",
+      "read_records"
+    ],
+    "papers": [
+      "https://doi.org/10.1090/gsm/047"
+    ],
+    "relation": "supporting",
+    "scope": "Parsing a serialized gate row, a local-term descriptor row, or a sequence of such descriptors recovers its input."
+  },
+  {
+    "module": "FQChemKitaev.Compiler",
+    "names": [
+      "count_spec",
+      "pad_spec",
+      "paddedWord"
+    ],
+    "papers": [
+      "https://doi.org/10.1090/gsm/047"
+    ],
+    "relation": "supporting",
+    "scope": "Implements counting and padding by 64 gates and agrees with the padded Qatlib gate list, with explicit list-processing costs."
+  },
+  {
+    "module": "FQChemKitaev.Compiler",
+    "names": [
+      "scan_eq_scanLoop",
+      "scan_cost",
+      "scan_budget",
+      "rowLength_le",
+      "rowMember_le",
+      "rowsLength_le",
+      "rowsMember_le"
+    ],
+    "papers": [
+      "https://doi.org/10.1090/gsm/047"
+    ],
+    "relation": "supporting",
+    "scope": "The tape scanner agrees with its loop. Consumed tape length bounds parsing cost and the unary sizes of decoded fields, rows, and their individual entries."
+  },
+  {
+    "module": "FQChemKitaev.Compiler",
+    "names": [
+      "tallies_val",
+      "tallies_steps",
+      "tallies_funded",
+      "fields_val",
+      "fields_steps",
+      "fields_funded"
+    ],
+    "papers": [
+      "https://doi.org/10.1090/gsm/047"
+    ],
+    "relation": "supporting",
+    "scope": "Unary tally and field emission produce the expected cells. Step bounds account for their size and for the cost of writing the tape."
+  },
+  {
+    "module": "FQChemKitaev.Compiler",
+    "names": [
+      "scan_tallies",
+      "scan_fields",
+      "emit_val",
+      "scan_emit",
+      "scan_serialize"
+    ],
+    "papers": [
+      "https://doi.org/10.1090/gsm/047"
+    ],
+    "relation": "supporting",
+    "scope": "Connects the parser with emission of tallies, fields and full records. Scanning serialized rows recovers the records."
+  },
+  {
+    "module": "FQChemKitaev.Compiler",
+    "names": [
+      "cell_funded",
+      "charge_funded",
+      "compileRows_funded",
+      "compileRows_steps"
+    ],
+    "papers": [
+      "https://doi.org/10.1090/gsm/047"
+    ],
+    "relation": "supporting",
+    "scope": "Tracks whether the step count pays for the output tape, and proves a cubic bound on template compilation for inputs of bounded row weight."
+  },
+  {
+    "module": "FQChemKitaev.Compiler",
+    "names": [
+      "init_val",
+      "init_steps",
+      "init_funded",
+      "prop_val",
+      "prop_steps",
+      "prop_funded"
+    ],
+    "papers": [
+      "https://doi.org/10.1090/gsm/047"
+    ],
+    "relation": "supporting",
+    "scope": "Generates initialization and propagation templates for the unary clock and finite gate list. Checks their contents, write accounting and cost."
+  },
+  {
+    "module": "FQChemKitaev.Compiler",
+    "names": [
+      "cols_val",
+      "cols_steps",
+      "cols_funded",
+      "clocks_val",
+      "clock_steps",
+      "clocks_funded"
+    ],
+    "papers": [
+      "https://doi.org/10.1090/gsm/047"
+    ],
+    "relation": "supporting",
+    "scope": "Enumerates the clock-pair templates in rows and columns, with bounds on their emitted size and list traversal costs."
+  },
+  {
+    "module": "FQChemKitaev.Compiler",
+    "names": [
+      "compile_tape",
+      "compile_correct",
+      "compile_energyPromise"
+    ],
+    "papers": [
+      "https://doi.org/10.1090/gsm/047"
+    ],
+    "relation": "derived",
+    "scope": "From an encoded finite verifier, the tape compiler emits descriptors decoding to its five-local Hamiltonian and rational cutoffs, and thereby preserves the amplified verifier promise."
+  },
+  {
+    "module": "FQChemKitaev.Compiler",
+    "names": [
+      "energyPromise_disjoint"
+    ],
+    "papers": [
+      "https://doi.org/10.1090/gsm/047"
+    ],
+    "relation": "supporting",
+    "scope": "The decoded tape cannot satisfy both the YES and NO energy promises because the cutoffs are strictly ordered."
+  },
+  {
+    "module": "FQChemKitaev.Compiler",
+    "names": [
+      "compile_time",
+      "length_compile_le_steps",
+      "after_time",
+      "after_energyPromise"
+    ],
+    "papers": [
+      "https://doi.org/10.1090/gsm/047"
+    ],
+    "relation": "derived",
+    "scope": "Bounds compiler steps by 100(L+70)³ on L tape symbols and accounts for every output cell. A preceding generator with the stipulated clock, output bound and semantic correctness composes with this compiler."
+  },
+  {
+    "module": "FQChemKitaev.Compiler",
+    "names": [
+      "binary_cost",
+      "unbinary_cost",
+      "readBitPairs_spec",
+      "binary_eq_binaryLoop",
+      "unbinary_eq_unbinaryLoop",
+      "binary_roundtrip",
+      "unbinary_compileBits"
+    ],
+    "papers": [
+      "https://doi.org/10.1090/gsm/047"
+    ],
+    "relation": "supporting",
+    "scope": "Implements the tape alphabet by bit pairs. Parsing and tail-recursive loops agree with the specification and commute with the compiled output on encoded inputs."
+  },
+  {
+    "module": "FQChemKitaev.Compiler",
+    "names": [
+      "compileBits_correct",
+      "compileBits_time",
+      "afterBits_reduction"
+    ],
+    "papers": [
+      "https://doi.org/10.1090/gsm/047"
+    ],
+    "relation": "derived",
+    "scope": "The compact bit output decodes to the specified Hamiltonian and thresholds. Its cost is bounded in the list-cell model and composes with a source generator satisfying the stated bit, time and output-length hypotheses."
+  },
+  {
+    "module": "FQChemKitaev.DyadicCoefficients",
+    "names": [
+      "value_lt",
+      "value_tail",
+      "bitSubtract",
+      "subtract_borrow",
+      "subtract_shape",
+      "subtract_value",
+      "increment_spec",
+      "pow2bits"
+    ],
+    "papers": [
+      "https://doi.org/10.1090/gsm/047"
+    ],
+    "relation": "supporting",
+    "scope": "Integer-arithmetic helpers for the dyadic coefficient compiler. They characterize little-endian magnitude, subtraction with borrow, increment, and powers of two with explicit width bounds."
+  },
+  {
+    "module": "FQChemKitaev.DyadicCoefficients",
+    "names": [
+      "next_value",
+      "run_certificate",
+      "run_isqrt",
+      "run_shape"
+    ],
+    "papers": [
+      "https://doi.org/10.1090/gsm/047"
+    ],
+    "relation": "supporting",
+    "scope": "A restoring square-root loop computes floor(sqrt(2^(2b+1))). The proofs track remainder invariants, bit widths, and the number of examined positions."
+  },
+  {
+    "module": "FQChemKitaev.DyadicCoefficients",
+    "names": [
+      "rootOutput_correct",
+      "rootOutput_resources",
+      "materialize_floor",
+      "materialize_spec"
+    ],
+    "papers": [
+      "https://doi.org/10.1090/gsm/047"
+    ],
+    "relation": "supporting",
+    "scope": "Produces the signed dyadic numerator for each finite gate-table atom at precision b and bounds magnitude width and work. Rounding uses floor(2^b·a+1/2)."
+  },
+  {
+    "module": "FQChemKitaev.DyadicCoefficients",
+    "names": [
+      "circuit_atom_cost",
+      "gateOutput_spec",
+      "propagation_from_bits"
+    ],
+    "papers": [
+      "https://doi.org/10.1090/gsm/047"
+    ],
+    "relation": "derived",
+    "scope": "Computes rounded integer entries for the finite gate alphabet and the corresponding propagation terms. Atom extraction and gate entries have explicit quadratic bit-position bounds."
+  },
+  {
+    "module": "FQChemKitaev.ElectronicStructure",
+    "names": [
+      "distinctWire_range",
+      "distinctWire_readWire",
+      "tableIndex_restrict",
+      "outside_iff"
+    ],
+    "papers": [
+      "https://doi.org/10.1090/gsm/047",
+      "https://doi.org/10.1103/PhysRevLett.98.110503"
+    ],
+    "relation": "supporting",
+    "scope": "Reconciles potentially repeated Qatlib wire lists with injective local supports and checks basis indexing and agreement on spectator wires."
+  },
+  {
+    "module": "FQChemKitaev.ElectronicStructure",
+    "names": [
+      "decodeTerm_kernel",
+      "decodeHamiltonian"
+    ],
+    "papers": [
+      "https://doi.org/10.1090/gsm/047",
+      "https://doi.org/10.1103/PhysRevLett.98.110503"
+    ],
+    "relation": "supporting",
+    "scope": "Reading the history Hamiltonian’s finite tables as local Hermitian spin terms reproduces individual embedded kernels and their matrix sum."
+  },
+  {
+    "module": "FQChemKitaev.ElectronicStructure",
+    "names": [
+      "entry_norm_bound",
+      "table_is_global_entry",
+      "circuitTables"
+    ],
+    "papers": [
+      "https://doi.org/10.1090/gsm/047",
+      "https://doi.org/10.1103/PhysRevLett.98.110503"
+    ],
+    "relation": "supporting",
+    "scope": "Bounds local entries by the embedded operator norm; each decoded circuit term acts on at most five qubits with entries of norm at most one."
+  },
+  {
+    "module": "FQChemKitaev.ElectronicStructure",
+    "names": [
+      "circuitFermionResources",
+      "circuitPenalty_sufficient",
+      "electronCount"
+    ],
+    "papers": [
+      "https://doi.org/10.1090/gsm/047",
+      "https://doi.org/10.1103/PhysRevLett.98.110503"
+    ],
+    "relation": "derived",
+    "scope": "For this encoding each history qubit corresponds to one electron among two modes. The number of Pauli words, support size and penalty are explicitly bounded, with up to ten modes per history term."
+  },
+  {
+    "module": "FQChemKitaev.ElectronicStructure",
+    "names": [
+      "circuit_to_fixedParticle"
+    ],
+    "papers": [
+      "https://doi.org/10.1090/gsm/047",
+      "https://doi.org/10.1103/PhysRevLett.98.110503"
+    ],
+    "relation": "derived",
+    "scope": "For the amplified-verifier promise, both energy cutoffs transfer from the five-local history construction to the fixed-number dual-rail Hamiltonian. This is a construction of occupation-space operators with a penalty."
+  },
+  {
+    "module": "FQChemKitaev.ElectronicStructure",
+    "names": [
+      "ground_le_trial"
+    ],
+    "papers": [
+      "https://doi.org/10.1515/crll.1909.135.1",
+      "https://doi.org/10.1103/PhysRevLett.98.110503"
+    ],
+    "relation": "supporting",
+    "scope": "Applies the variational lower bound for the encoded fermionic operator to a normalized occupation-state trial."
+  },
+  {
+    "module": "FQChemKitaev.ElectronicStructure",
+    "names": [
+      "electronicPreparation_decides"
+    ],
+    "papers": [
+      "https://doi.org/10.1090/gsm/047",
+      "https://doi.org/10.1103/PhysRevLett.98.110503"
+    ],
+    "relation": "derived",
+    "scope": "A normalized preparation and energy readout, each accurate to one fifth of the proved gap bound, suffice to distinguish the amplified verifier promise for this constructed fixed-number Hamiltonian."
+  },
+  {
+    "module": "FQChemKitaev.UniformCircuits",
+    "names": [
+      "load_subset",
+      "inputWord_legal",
+      "inputWord_length",
+      "inputWord_prepares"
+    ],
+    "papers": [
+      "https://doi.org/10.1090/gsm/047"
+    ],
+    "relation": "supporting",
+    "scope": "A sequence of X gates on distinct selected wires loads a specified basis string from the zero register in at most q gates for q wires."
+  },
+  {
+    "module": "FQChemKitaev.UniformCircuits",
+    "names": [
+      "reject_probability",
+      "initialized_acceptance",
+      "history_acceptance"
+    ],
+    "papers": [
+      "https://doi.org/10.1090/gsm/047"
+    ],
+    "relation": "supporting",
+    "scope": "Matches the acceptance probability of the basis-loaded decision word to that of the history verifier, including the degenerate zero-width fallback."
+  },
+  {
+    "module": "FQChemKitaev.UniformCircuits",
+    "names": [
+      "generated_electronic_promise"
+    ],
+    "papers": [
+      "https://doi.org/10.1090/gsm/047",
+      "https://doi.org/10.1103/PhysRevLett.98.110503"
+    ],
+    "relation": "derived",
+    "scope": "For a valid clocked uniform circuit generator, each basis input’s amplified-completeness or soundness promise gives the corresponding fixed-number energy bound with explicit size control."
+  },
+  {
+    "module": "FQChemKitaev.BoundedErrorReduction",
+    "names": [
+      "size_positive",
+      "growth",
+      "initialized_after",
+      "denominator_ge_four",
+      "amplified_size"
+    ],
+    "papers": [
+      "https://doi.org/10.1090/gsm/047"
+    ],
+    "relation": "supporting",
+    "scope": "Establishes size growth, full initialization and denominator bounds for the repeated witness-free verifier, including its cubic amplified-size bound."
+  },
+  {
+    "module": "FQChemKitaev.BoundedErrorReduction",
+    "names": [
+      "amplified_promise"
+    ],
+    "papers": [
+      "https://doi.org/10.1090/gsm/047"
+    ],
+    "relation": "derived",
+    "scope": "An all-zero-input decision circuit with acceptance ≥2/3 or ≤1/3 satisfies the particular high-completeness or soundness promise required by the history encoding after the chosen majority rounds."
+  },
+  {
+    "module": "FQChemKitaev.BoundedErrorReduction",
+    "names": [
+      "circuit_to_local_energy"
+    ],
+    "papers": [
+      "https://doi.org/10.1090/gsm/047"
+    ],
+    "relation": "derived",
+    "scope": "Maps the ordinary bounded-error decision-circuit promise to low or high ground energy of the decoded five-local template output."
+  },
+  {
+    "module": "FQChemKitaev.BoundedErrorReduction",
+    "names": [
+      "circuit_to_electronic_energy",
+      "uniform_circuit_to_electronic_energy"
+    ],
+    "papers": [
+      "https://doi.org/10.1090/gsm/047",
+      "https://doi.org/10.1103/PhysRevLett.98.110503"
+    ],
+    "relation": "derived",
+    "scope": "Composes bounded-error amplification, the history Hamiltonian, and dual-rail encoding for decision circuits. The uniform version takes a valid clocked generator and arbitrary basis input."
+  },
+  {
+    "module": "FQChemKitaev.BoundedErrorReduction",
+    "names": [
+      "transducer_output",
+      "transducer_value"
+    ],
+    "papers": [
+      "https://doi.org/10.1090/gsm/047"
+    ],
+    "relation": "supporting",
+    "scope": "Identifies the bit-list transducer output with applying amplification and the history-template compiler in succession."
+  },
+  {
+    "module": "FQChemKitaev.BoundedErrorReduction",
+    "names": [
+      "transducer_correct",
+      "transducer_time",
+      "transducer_promise_gap"
+    ],
+    "papers": [
+      "https://doi.org/10.1090/gsm/047"
+    ],
+    "relation": "derived",
+    "scope": "The serialized bounded-error decision circuit maps to decodable five-local terms and rational cutoffs. The gap is inverse polynomial in original size and the transducer has a polynomial clock in the specified bit-list model."
+  },
+  {
+    "module": "Qatlib.Concepts.GateVocabulary.FiniteGateDescription",
+    "names": [
+      "finite_gate_description_rejection_unitarity_and_counts"
+    ],
+    "papers": [
+      "https://doi.org/10.1017/CBO9780511976667"
+    ],
+    "relation": "supporting",
+    "scope": "Qatlib’s finite gate parser rejects malformed words. Legal words have unitary gates, zero oracle queries and gate count equal to the list length."
+  },
+  {
+    "module": "Qatlib.Concepts.GateVocabulary.LocalReflectionGates",
+    "names": [
+      "applyGate_wireGate_ket",
+      "wireGate_apply",
+      "cnotUpdate_involutive"
+    ],
+    "papers": [
+      "https://doi.org/10.1017/CBO9780511976667"
+    ],
+    "relation": "supporting",
+    "scope": "Computes the action and entries of a gate on a selected register wire and proves that the classical update corresponding to a CNOT on distinct wires is involutive."
+  },
+  {
+    "module": "Qatlib.Concepts.QmaCompleteness.HistoryHam.QmaCompletenessDefs",
+    "names": [
+      "run_finiteCodeCircuit"
+    ],
+    "papers": [
+      "https://doi.org/10.1090/gsm/047"
+    ],
+    "relation": "supporting",
+    "scope": "For Qatlib’s gate vocabulary the interpreter equals matrix-vector multiplication by the gate-word matrix."
+  },
+  {
+    "module": "Qatlib.Concepts.QmaCompleteness.HistoryHam.QmaCompletenessRefined",
+    "names": [
+      "clause3Aux_encNat_selfDelimiting",
+      "clause3Aux_toBits_injective"
+    ],
+    "papers": [
+      "https://doi.org/10.1090/gsm/047"
+    ],
+    "relation": "supporting",
+    "scope": "Qatlib’s self-delimiting integers let the bit representation uniquely determine its five-local Hamiltonian encoding."
+  },
+  {
+    "module": "Qatlib.Concepts.QueryComplexity.DegreeMethod.QmaCompletenessNativeOutput",
+    "names": [
+      "outputTerms_length"
+    ],
+    "papers": [
+      "https://doi.org/10.1090/gsm/047"
+    ],
+    "relation": "supporting",
+    "scope": "Counts propagation, initialization, output, and ordered clock pairs in Qatlib’s concrete local term constructor."
+  },
+  {
+    "module": "Qatlib.Concepts.UniformBqp.FiniteGateWord.FiniteThermal.FiniteThermalToffoli",
+    "names": [
+      "thermalToffoliWord_exact"
+    ],
+    "papers": [
+      "https://doi.org/10.1017/CBO9780511976667"
+    ],
+    "relation": "specialization",
+    "scope": "Qatlib verifies a 15-gate Clifford+T realization of the Toffoli transformation on distinct wires, pointwise on basis kets, with exact resource counts. Compare the standard decomposition in Nielsen & Chuang, Fig. 4.9."
+  },
+  {
+    "module": "Qatlib.Concepts.UniformBqp.FiniteGateWord.QmaCompletenessNumerics",
+    "names": [
+      "floor_atom"
+    ],
+    "papers": [
+      "https://doi.org/10.1090/gsm/047"
+    ],
+    "relation": "supporting",
+    "scope": "Identifies the exact integer obtained by rounding a finite gate coefficient atom to dyadic precision for the discretized history construction."
+  },
+  {
+    "module": "Qatlib.Foundations.BornMetrics.EventProbability",
+    "names": [
+      "measureProb_le_one",
+      "measureProb_smul"
+    ],
+    "papers": [
+      "https://doi.org/10.1007/BF01397477"
+    ],
+    "relation": "supporting",
+    "scope": "Qatlib sums squared amplitudes over a finite basis event. For a normalized state the probability is ≤1, and arbitrary complex rescaling multiplies it by the scalar’s squared norm."
+  },
+  {
+    "module": "Qatlib.Foundations.PureStateMath.Qubit",
+    "names": [
+      "applyGate_permMatrix"
+    ],
+    "papers": [
+      "https://doi.org/10.1017/CBO9780511976667"
+    ],
+    "relation": "supporting",
+    "scope": "Multiplication by the matrix of an involution permutes pure-state coordinates accordingly."
+  },
+  {
+    "module": "Qatlib.Foundations.PureStateMath.Qubit",
+    "names": [
+      "inner_apply",
+      "normalized_ket",
+      "measureProb_nonneg"
+    ],
+    "papers": [
+      "https://doi.org/10.1017/CBO9780511976667",
+      "https://doi.org/10.1007/BF01397477"
+    ],
+    "relation": "supporting",
+    "scope": "Qatlib’s finite-state primitives expand the complex inner product, normalize each basis ket and give nonnegative event weights from squared amplitudes."
+  },
+  {
+    "module": "Qatlib.Foundations.QueryWordCore.Circuit",
+    "names": [
+      "normalized_run",
+      "run_append"
+    ],
+    "papers": [
+      "https://arxiv.org/abs/quant-ph/9802049"
+    ],
+    "relation": "supporting",
+    "scope": "Sequential composition is list concatenation in Qatlib’s query-word semantics. A unitary oracle and unitary gate steps preserve normalization."
+  },
+  {
+    "module": "Qatlib.Papers.LocalHam06.MainResults.QmaCompleteness",
+    "names": [
+      "qma_history_locality_description_and_energy_bounds"
+    ],
+    "papers": [
+      "https://doi.org/10.1090/gsm/047"
+    ],
+    "relation": "specialization",
+    "scope": "Qatlib checks an explicit five-local dyadic history encoding and energy bounds for its specified verifier promises. This construction supplies part of the circuit-to-Hamiltonian argument in §14.4."
+  },
+  {
+    "module": "Qatlib.Papers.LocalHam06.MainResults.QmaCompletenessNormalized",
+    "names": [
+      "denominator_le_poly",
+      "denominator_pos",
+      "gap_inverse_poly",
+      "gap_positive"
+    ],
+    "papers": [
+      "https://doi.org/10.1090/gsm/047"
+    ],
+    "relation": "supporting",
+    "scope": "Qatlib bounds the scale and the positive inverse-polynomial gap for its normalized dyadic circuit Hamiltonian."
+  },
+  {
+    "module": "Qatlib.Papers.LocalHam06.MainResults.QmaCompletenessNormalized",
+    "names": [
+      "padded_normalized_contract"
+    ],
+    "papers": [
+      "https://doi.org/10.1090/gsm/047"
+    ],
+    "relation": "specialization",
+    "scope": "The padded history Hamiltonian separates legal high-acceptance witnesses from universal low acceptance. Completeness requires deficit ≤1/[2¹⁴(T_padded+1)²] and soundness ≤1/4, with rational thresholds dependent on the encoding."
+  },
+  {
+    "module": "Qatlib.Papers.LocalHam06.MainResults.QmaCompletenessPadding",
+    "names": [
+      "paid64_length"
+    ],
+    "papers": [
+      "https://doi.org/10.1090/gsm/047"
+    ],
+    "relation": "supporting",
+    "scope": "The circuit used in Qatlib’s history-state soundness estimate has exactly 64 additional gates."
+  },
+  {
+    "module": "Qatlib.Papers.LocalHam06.MainResults.QmaCompletenessSize",
+    "names": [
+      "encNat_length_le_self",
+      "termEntries_length"
+    ],
+    "papers": [
+      "https://doi.org/10.1090/gsm/047"
+    ],
+    "relation": "supporting",
+    "scope": "Encoding-specific size facts control the length of self-delimiting integers and the exact number of real and imaginary table entries for a local term."
+  },
+  {
+    "module": "FQChem.Complexity.FastForwarding",
+    "names": [
+      "copies_length",
+      "run_append"
+    ],
+    "papers": [
+      "https://doi.org/10.1038/s41467-017-01637-7"
+    ],
+    "relation": "supporting",
+    "scope": "A word of unitary gates acts in execution order, and concatenating k copies multiplies its gate count by exactly k. These identities implement the composition in the fast-forwarding lemma."
+  },
+  {
+    "module": "FQChem.Complexity.FastForwarding",
+    "names": [
+      "repeat_error"
+    ],
+    "papers": [
+      "https://doi.org/10.1038/s41467-017-01637-7"
+    ],
+    "relation": "supporting",
+    "scope": "A hybrid argument accumulates at most kα state-vector distance on k segments. The one-step error is assumed only for normalized inputs with a clean ancilla, while the simulated intermediate states may leak out of that subspace."
+  },
+  {
+    "module": "FQChem.Complexity.FastForwarding",
+    "names": [
+      "byConcatenation"
+    ],
+    "papers": [
+      "https://doi.org/10.1038/s41467-017-01637-7"
+    ],
+    "relation": "specialization",
+    "scope": "Supplementary Lemma 2 (arXiv v2, Lemma 3). Atia–Aharonov, arXiv v2, Lemma 3. For every time t up to kT, k copies of a word for t/k simulate bounded self-adjoint evolution on clean inputs with error ≤kα and gate count ≤kB. B bounds the shorter circuits in the chosen unitary gate alphabet."
+  },
+  {
+    "module": "FQChem.Complexity.SparseParityPath",
+    "names": [
+      "hermitian",
+      "twoSparse"
+    ],
+    "papers": [
+      "https://doi.org/10.1007/s00220-006-0150-x"
+    ],
+    "relation": "supporting",
+    "scope": "The Hermiticity and row sparsity hypotheses in Berry et al., Theorem 3, hold for the weighted paths joined by bit-controlled crossings. Each row has at most two nonzero entries, including at the endpoints."
+  },
+  {
+    "module": "FQChem.Complexity.SparseParityPath",
+    "names": [
+      "row_from_adjacent_bits"
+    ],
+    "papers": [
+      "https://doi.org/10.1007/s00220-006-0150-x"
+    ],
+    "relation": "supporting",
+    "scope": "If two input strings agree on the bits incident to a given level, their entire Hamiltonian rows there coincide. Thus the crossing data for that row depends on at most two bit values."
+  },
+  {
+    "module": "FQChem.Complexity.SparseParityPath",
+    "names": [
+      "lift_entry",
+      "crossed_eq_lift"
+    ],
+    "papers": [
+      "https://doi.org/10.1007/s00220-006-0150-x"
+    ],
+    "relation": "supporting",
+    "scope": "Theorem 3’s two-track graph, expressed in coordinates labeled by accumulated input parity, has two identical copies of the bare spin chain. The Lean identities identify every matrix entry of this relabeling."
+  },
+  {
+    "module": "FQChem.Complexity.SparseParityPath",
+    "names": [
+      "evolution_lifts",
+      "endpoint_amplitude"
+    ],
+    "papers": [
+      "https://doi.org/10.1007/s00220-006-0150-x"
+    ],
+    "relation": "specialization",
+    "scope": "The parity-path step in the proof of Berry et al., Theorem 3. At every physical time the crossed propagator is exactly the lift of the uncrossed propagator. From the initial zero-track endpoint the far-end amplitude vanishes on the wrong parity track and equals the bare path amplitude on the correct one."
+  }
+]

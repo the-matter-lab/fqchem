@@ -1,12 +1,18 @@
 # Theorem dependencies
 
-Open [the theorem atlas](https://fqchem.matterlab.ca/) to see the complete directed graph. Each point is a declaration, including isolated results and imported prerequisites. Click a point or search by theorem or method to highlight its incoming and outgoing arrows. Zoom in to see names, select a chapter to see its results and their immediate neighbors in other chapters, or share the address of a selected theorem. For example, explore the [VMC variational bound](https://fqchem.matterlab.ca/#FQChem.StatePrep.VariationalOptimization.VariationalMonteCarlo.variationalBound).
+Open [the theorem atlas](https://fqchem.matterlab.ca/) to see the complete directed graph. Colored points include checked declarations, isolated results and imported prerequisites. Red points are sourced literature results awaiting a Lean proof. Click a point or search by theorem or method to highlight its incoming and outgoing arrows. Zoom in to see names, select a chapter to see its results and their immediate neighbors in other chapters, or share the address of a selected theorem. For example, explore the [VMC variational bound](https://fqchem.matterlab.ca/#FQChem.StatePrep.VariationalOptimization.VariationalMonteCarlo.variationalBound).
 
 For offline use, download the [standalone atlas](https://raw.githubusercontent.com/the-matter-lab/fqchem/atlas/docs/theorems/index.html) and open it in a browser.
 
 - [fqchem theorem graphs by module](https://github.com/the-matter-lab/fqchem/blob/atlas/docs/theorems/library.md)
 - [Kitaev integration theorem graphs by module](https://github.com/the-matter-lab/fqchem/blob/atlas/docs/theorems/kitaev.md)
 - [Scope and references for the complexity results](../../FQChem/Complexity/README.md)
+
+## Papers and outstanding proofs
+
+The [paper index](https://github.com/the-matter-lab/fqchem/blob/atlas/docs/theorems/papers.md) lists each original reference once. Select any result to read its scope, see its source, and follow the paper link. The inspector distinguishes an original result, a specialization, a derived consequence and a supporting lemma. A supporting lemma can have been written specifically for the Lean proof. Its citation identifies the construction it supports.
+
+Select [Needs proof](https://fqchem.matterlab.ca/#needs-proof) for the red nodes. Each identifies either a result proved in the cited paper or a hypothesis proposed there, with the paper locator and assumptions. The page keeps red targets outside the Lean library, so each axiom audit still ranges only over actual Lean declarations. A related checked step has its own inspector link. Dependency arrows are reserved for references that Lean extracted from checked declarations. The [review survey](Surveys.md) records how the literature was selected.
 
 ## Reading the graph
 
@@ -23,14 +29,15 @@ After building the main library and the [Kitaev integration](../../integrations/
 ```sh
 python3 scripts/theorem_graph/generate.py
 python3 scripts/theorem_graph/generate.py --project kitaev
+python3 scripts/theorem_graph/literature.py
 ```
 
-Pass `--check` to either command to check previously generated files against the compiled proofs. The extractor obtains names, source ranges, and constant references from Lean and checks that each written theorem and lemma has a node. Its counts differ from an environment-wide axiom audit, which also sees compiler-generated theorem declarations.
+Pass `--check` to either extraction command to check previously generated files against the compiled proofs. The extractor obtains names, source ranges, and constant references from Lean and checks that each written theorem and lemma has a node. Its counts differ from an environment-wide axiom audit, which also sees compiler-generated theorem declarations.
 
 Open `docs/theorems/index.html` after extraction to browse locally. To export a single HTML file, run `python3 scripts/theorem_graph/export_site.py > /tmp/fqchem-index.html` in a clean source checkout after generating both graphs. Source links are pinned to the checkout’s revision.
 
 ## Publication
 
-Every push to `main` triggers both Lean builds, axiom audits and dependency extractions. After both pass, the [Lean workflow](../../.github/workflows/lean.yml) publishes the generated module diagrams, graph data and standalone HTML to the [atlas branch](https://github.com/the-matter-lab/fqchem/tree/atlas/docs/theorems). Its first parent is the exact source revision. Authors can add a theorem and push its Lean source without generating or committing graph files.
+Every push to `main` triggers both Lean builds, axiom audits and dependency extractions. After both pass, the [Lean workflow](../../.github/workflows/lean.yml) publishes the generated module diagrams, graph data and standalone HTML to the [atlas branch](https://github.com/the-matter-lab/fqchem/tree/atlas/docs/theorems). Its first parent is the exact source revision. Paper attribution is validated against the compiled graph. For a new theorem, an original DOI or arXiv citation of the form `[paper title](https://doi.org/...)` in its Lean docstring supplies a source on that same push. Until the scope is reviewed the inspector labels it “Source cited in Lean · comparison pending.” Reviewed mappings live in [the statement audits](catalog/reviews/) and publication references and open claims live in [the bibliography](catalog/). Authors can add a theorem and push its Lean source without generating or committing graph files.
 
 The Clawderon launch agent checks the publication branch every minute and on login. It sends each new verified site to the Clawtilde Mac Mini over SSH, checks its checksum at the origin and over public HTTPS, and records the deployed revision. If the laptop is offline, it catches up to the latest published graph when it reconnects. A failed proof build leaves the last published graph online. See the [deployment worker](../../scripts/theorem_graph/deploy.sh).

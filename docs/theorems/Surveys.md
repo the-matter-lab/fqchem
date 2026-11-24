@@ -1,0 +1,25 @@
+# Reviews behind the theorem catalog
+
+The selection covers quantum speedups, electronic ground-state algorithms and real-time simulation. Five widely cited reviews below supplied the initial reading list. Counts are OpenAlex cited-by counts retrieved on 24 November 2026, a measure of use within that index. The newer end-to-end survey adds resource assumptions and comparisons with classical baselines.
+
+| Review | Citations | Topics followed into the original literature |
+| --- | ---: | --- |
+| [Montanaro, *Quantum algorithms: an overview*](https://doi.org/10.1038/npjqi.2015.23) | [1,582](https://api.openalex.org/works/https://doi.org/10.1038/npjqi.2015.23?select=cited_by_count) | Query access, Grover amplification and optimality, and Hamiltonian simulation |
+| [Childs & van Dam, *Quantum algorithms for algebraic problems*](https://doi.org/10.1103/RevModPhys.82.1) | [501](https://api.openalex.org/works/https://doi.org/10.1103/RevModPhys.82.1?select=cited_by_count) | Phase estimation, Fourier sampling, and what an eigenphase measurement returns |
+| [Cao et al., *Quantum Chemistry in the Age of Quantum Computing*](https://doi.org/10.1021/acs.chemrev.8b00803) | [2,439](https://api.openalex.org/works/https://doi.org/10.1021/acs.chemrev.8b00803?select=cited_by_count) | State preparation, QPE and VQE, simulation, fermion encoding and electronic-structure complexity |
+| [McArdle et al., *Quantum computational chemistry*](https://doi.org/10.1103/RevModPhys.92.015003) | [2,309](https://api.openalex.org/works/https://doi.org/10.1103/RevModPhys.92.015003?select=cited_by_count) | Overlap and precision in eigenvalue estimation, fault-tolerant simulation and variational measurement |
+| [Bauer et al., *Quantum Algorithms for Quantum Chemistry and Quantum Materials Science*](https://doi.org/10.1021/acs.chemrev.9b00829) | [1,315](https://api.openalex.org/works/https://doi.org/10.1021/acs.chemrev.9b00829?select=cited_by_count) | Algorithms for eigenstates and dynamics, and classical electronic-structure methods used for comparison |
+| [Dalzell et al., *Quantum algorithms: A survey of applications and end-to-end complexities*](https://arxiv.org/abs/2310.03011) | — | Access costs, amplitude estimation, singular-value transformation, ground-state problems and observable readout |
+
+## From a review topic to a result
+
+| Question | Checked example | Original result awaiting a Lean proof |
+| --- | --- | --- |
+| How many queries does unstructured search need? | [Amplitude-amplification success law](https://fqchem.matterlab.ca/#FQChem.StatePrep.CircuitPreparation.AmplitudeAmplification.success_law) | [Zalka’s optimal success bound](https://fqchem.matterlab.ca/#paper/zalka-search) |
+| When can a Hamiltonian be fast-forwarded? | [Atia–Aharonov concatenation](https://fqchem.matterlab.ca/#FQChem.Complexity.FastForwarding.byConcatenation), [Berry’s path endpoint](https://fqchem.matterlab.ca/#FQChem.Complexity.SparseParityPath.endpoint_amplitude) and the [orbital-term query lower bound](https://fqchem.matterlab.ca/#FQChem.Complexity.OrbitalSimulation.simulation_query_lower_bound) | [Berry et al.’s sparse-oracle bound](https://fqchem.matterlab.ca/#paper/berry-sparse-no-fast-forwarding) and [Atia–Aharonov’s complexity-class implication](https://fqchem.matterlab.ca/#paper/atia-aharonov-no-fast-forwarding) |
+| Which part of phase or amplitude estimation is implemented? | [Exact-grid QPE](https://fqchem.matterlab.ca/#FQChem.Algorithms.exactGridQPE) | [Brassard et al.’s finite-precision amplitude estimate](https://fqchem.matterlab.ca/#paper/brassard-amplitude-estimation) |
+| What does a block encoding allow? | [Qubitization’s Chebyshev block](https://fqchem.matterlab.ca/#FQChem.Dynamics.DigitalAlgorithms.Qubitization.Encoding.chebyshev_block) | [Gilyén et al.’s polynomial singular-value transformation](https://fqchem.matterlab.ca/#paper/gilyen-singular-transformation) |
+| Which fixed-basis electronic energy problems are hard? | [Library of fixed-particle encodings and circuit reductions](../../FQChem/Complexity/README.md) | [O’Gorman et al.’s QMA-completeness theorem](https://fqchem.matterlab.ca/#paper/ogorman-fixed-basis-energy) and [their NP-completeness result for Slater determinants](https://fqchem.matterlab.ca/#paper/ogorman-slater-energy) |
+| Which statements about practical chemistry remain hypotheses? | [Coupled-cluster amplitude equations](../../FQChem/StatePrep/PerturbationTheory/CoupledCluster.lean) | [Lee et al.’s single-reference cost conjecture](https://fqchem.matterlab.ca/#paper/lee-coupled-cluster-scaling) |
+
+The specialist extension covers Huang, Kueng & Preskill on classical shadows, Huang et al. on coherent access to two copies of a state, and Lewis et al. on one-dimensional first-order OTOCs. Their graph entries specify measurement access, circuit ensembles and error criteria. The paper index groups checked steps and remaining full theorems under each primary source. [Paper index](https://github.com/the-matter-lab/fqchem/blob/atlas/docs/theorems/papers.md)

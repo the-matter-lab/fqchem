@@ -11,6 +11,8 @@ Import this chapter with `import FQChem.Properties`.
 - [Independent finite-shot VQE measurements give an unbiased energy estimator with a coefficient-dependent variance bound](ResponseAndEstimation/VQEMeasurement.lean#L118). [Peruzzo et al. (2014)](https://doi.org/10.1038/ncomms5213)
 - **Classical property evaluation**. [Hellmann–Feynman derivative of a bounded-Hamiltonian eigenvalue](ResponseAndEstimation/HellmannFeynman.lean#L39). [Feynman (1939)](https://doi.org/10.1103/PhysRev.56.340)
 - **Imaginary-time spectral reconstruction**. [Exact discrete Laplace identification at known energies](ResponseAndEstimation/SpectralReconstruction.lean#L21). [Silver, Sivia & Gubernatis (1990)](https://doi.org/10.1103/PhysRevB.41.2380)
+- **Classical shadows**. Local Pauli measurements give an unbiased estimate with second moment 3ᵏ for a weight-k Pauli string. Independent blocks of the same measurement records yield simultaneous predictions at prescribed confidence. [Single-shot moments](ResponseAndEstimation/ClassicalShadows.lean) · [Prediction guarantee](ResponseAndEstimation/ShadowPrediction.lean) · [Huang, Kueng & Preskill (2020)](https://doi.org/10.1038/s41567-020-0932-7)
+- **Learning with two copies**. The product of signs from local Bell measurements estimates the squared magnitude of a Pauli expectation. [Bell estimator](ResponseAndEstimation/BellSampling.lean) · [Huang et al. (2022)](https://doi.org/10.1126/science.abn7293)
 
 ## [Quantum phase estimation](PhaseEstimation.lean)
 

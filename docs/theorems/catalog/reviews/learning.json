@@ -1,0 +1,146 @@
+[
+  {
+    "module": "FQChem.Properties.ResponseAndEstimation.BellSampling",
+    "names": [
+      "bellResolution"
+    ],
+    "papers": [
+      "https://doi.org/10.1126/science.abn7293"
+    ],
+    "relation": "supporting",
+    "scope": "Appendix D.2.b, Eqs. (D2)–(D4). Each one-qubit Pauli tensor its own copy is diagonal in the Bell basis. The identity reconstructs its matrix entries by summing Bell projectors times their measured signs, including the sign for Y⊗Y."
+  },
+  {
+    "module": "FQChem.Properties.ResponseAndEstimation.BellSampling",
+    "names": [
+      "squaredPauliExpectation"
+    ],
+    "papers": [
+      "https://doi.org/10.1126/science.abn7293"
+    ],
+    "relation": "derived",
+    "scope": "The algebra underlying Appendix D.2.b, Eq. (D6), extends to any complex matrix ρ. Contracting the Bell readouts against ρ⊗ρ gives Tr(ρP)². This extension uses a complex square."
+  },
+  {
+    "module": "FQChem.Properties.ResponseAndEstimation.BellSampling",
+    "names": [
+      "magnitudeSquaredPauliExpectation"
+    ],
+    "papers": [
+      "https://doi.org/10.1126/science.abn7293"
+    ],
+    "relation": "paper-result",
+    "scope": "Appendix D.2.b, Eq. (D6). For Hermitian ρ and any Pauli word P, the product of local Bell signs on two copies has Born-weighted sum |Tr(ρP)|². For a density operator this is the expectation under the Bell measurement. The measurement is independent of P."
+  },
+  {
+    "module": "FQChem.Properties.ResponseAndEstimation.ClassicalShadows",
+    "names": [
+      "projector_sum",
+      "signed_projector_sum"
+    ],
+    "papers": [
+      "https://doi.org/10.1038/s41567-020-0932-7"
+    ],
+    "relation": "supporting",
+    "scope": "For each local X, Y or Z measurement, adding its two eigenprojectors gives the identity. Weighting them by their signs recovers the measured Pauli operator."
+  },
+  {
+    "module": "FQChem.Properties.ResponseAndEstimation.ClassicalShadows",
+    "names": [
+      "weighted_sum"
+    ],
+    "papers": [
+      "https://doi.org/10.1038/s41567-020-0932-7"
+    ],
+    "relation": "supporting",
+    "scope": "For a fixed choice of local axes and an arbitrary matrix on the k-qubit support, finite summation factors a product statistic over outcomes into local signed-projector sums inside the Born trace."
+  },
+  {
+    "module": "FQChem.Properties.ResponseAndEstimation.ClassicalShadows",
+    "names": [
+      "unbiased"
+    ],
+    "papers": [
+      "https://doi.org/10.1038/s41567-020-0932-7"
+    ],
+    "relation": "specialization",
+    "scope": "For a weight-k Pauli string on its support, the single-shot local Pauli shadow equals zero unless all k axes match. Multiplying the matched outcome sign by 3ᵏ gives Born mean Tr(ρP). The trace identity extends linearly to arbitrary complex matrices."
+  },
+  {
+    "module": "FQChem.Properties.ResponseAndEstimation.ClassicalShadows",
+    "names": [
+      "secondMoment"
+    ],
+    "papers": [
+      "https://doi.org/10.1038/s41567-020-0932-7"
+    ],
+    "relation": "specialization",
+    "scope": "Supplementary Lemma 3, Eq. (S50). For every trace-one matrix on the k-qubit support, the single-shot Pauli estimator has second moment exactly 3ᵏ. On reduced density matrices this is the state-independent moment underlying the paper’s squared shadow norm."
+  },
+  {
+    "module": "FQChem.Properties.ResponseAndEstimation.ShadowPrediction",
+    "names": [
+      "estimate_real"
+    ],
+    "papers": [
+      "https://doi.org/10.1038/s41567-020-0932-7"
+    ],
+    "relation": "supporting",
+    "scope": "The single-shot Pauli readout is real because it is a real scale times a product of measured signs. This relates its real-valued random variable to the Born trace identities."
+  },
+  {
+    "module": "FQChem.Properties.ResponseAndEstimation.ShadowPrediction",
+    "names": [
+      "blockPrediction"
+    ],
+    "papers": [
+      "https://doi.org/10.1038/s41567-020-0932-7"
+    ],
+    "relation": "specialization",
+    "scope": "For N independent uniformly chosen local Pauli shots with the Born marginal on a weight-k support, Chebyshev’s inequality gives probability at most 3ᵏ/(Nε²) that the block mean misses its target by ε or more. The proof uses unbiasedness and the exact second moment in Supplementary Lemma 3."
+  },
+  {
+    "module": "FQChem.Properties.ResponseAndEstimation.ShadowPrediction",
+    "names": [
+      "median_witness"
+    ],
+    "papers": [
+      "https://doi.org/10.1038/s41567-020-0932-7"
+    ],
+    "relation": "supporting",
+    "scope": "The median is the middle order statistic. If an odd sample of 2r+1 values has median error at least ε, at least r+1 distinct values also have error at least ε."
+  },
+  {
+    "module": "FQChem.Properties.ResponseAndEstimation.ShadowPrediction",
+    "names": [
+      "median_failure"
+    ],
+    "papers": [
+      "https://doi.org/10.1038/s41567-020-0932-7"
+    ],
+    "relation": "supporting",
+    "scope": "With mutually independent block estimates, each failing with probability at most 1/8, a union bound over subsets of r+1 bad blocks bounds the median’s failure probability by 1/(4·2ʳ)."
+  },
+  {
+    "module": "FQChem.Properties.ResponseAndEstimation.ShadowPrediction",
+    "names": [
+      "simultaneousPrediction"
+    ],
+    "papers": [
+      "https://doi.org/10.1038/s41567-020-0932-7"
+    ],
+    "relation": "specialization",
+    "scope": "Supplementary Theorem 1 for finite families of Pauli words and uniform local Pauli measurements. Reusing N shots per block across M targets of possibly different supports, Nε²≥8·3ᵏ for every target of weight k gives simultaneous failure probability at most M/(4·2ʳ) with 2r+1 independent blocks."
+  },
+  {
+    "module": "FQChem.Properties.ResponseAndEstimation.ShadowPrediction",
+    "names": [
+      "predictionAtConfidence"
+    ],
+    "papers": [
+      "https://doi.org/10.1038/s41567-020-0932-7"
+    ],
+    "relation": "specialization",
+    "scope": "Supplementary Theorem 1 specialized to local Pauli shadows, with a different explicit constant choice. For δ,ε>0 use 2r+1 blocks where r is the ceiling binary logarithm of ⌈M/(4δ)⌉. The Pauli Born marginals, independent draws and Nε²≥8·3ᵏ on each target imply simultaneous failure probability at most δ."
+  }
+]

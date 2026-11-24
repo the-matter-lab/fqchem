@@ -1,0 +1,410 @@
+{
+  "https://arxiv.org/abs/1806.01838": {
+    "authors": "Gilyén et al. (2019)",
+    "title": "Quantum singular value transformation and beyond: exponential improvements for quantum matrix arithmetics"
+  },
+  "https://arxiv.org/abs/1808.10816": {
+    "authors": "Pichler et al. (2018)",
+    "title": "Quantum Optimization for Maximum Independent Set Using Rydberg Atom Arrays"
+  },
+  "https://arxiv.org/abs/2611.09773": {
+    "authors": "Turturean (2026)",
+    "title": "A proof of the Aaronson-Ambainis conjecture"
+  },
+  "https://arxiv.org/abs/2611.24640": {
+    "authors": "Lewis et al. (2026)",
+    "title": "A provably efficient classical algorithm for simulating OTOC⁽¹⁾ in 1D",
+    "keywords": [
+      "Laura Lewis",
+      "Antonio A. Mele",
+      "Ronald de Wolf",
+      "Jarrod McClean",
+      "Amira Abbas",
+      "OTOC(1)"
+    ]
+  },
+  "https://arxiv.org/abs/cond-mat/0502553": {
+    "authors": "Sorella (2005)",
+    "title": "Wave function optimization in the variational Monte Carlo method"
+  },
+  "https://arxiv.org/abs/physics/0310035": {
+    "authors": "Assaraf & Caffarel (2003)",
+    "title": "Zero-Variance Zero-Bias Principle for Observables in Quantum Monte Carlo: Application to Forces"
+  },
+  "https://arxiv.org/abs/quant-ph/0407010": {
+    "authors": "Möttönen et al. (2005)",
+    "title": "Transformation of quantum states using uniformly controlled rotations"
+  },
+  "https://arxiv.org/abs/quant-ph/9701001": {
+    "authors": "Bennett et al. (1997)",
+    "title": "Strengths and Weaknesses of Quantum Computing"
+  },
+  "https://arxiv.org/abs/quant-ph/9802049": {
+    "authors": "Beals et al. (2001)",
+    "title": "Quantum Lower Bounds by Polynomials"
+  },
+  "https://doi.org/10.1002/andp.19263851302": {
+    "authors": "Schrödinger (1926)",
+    "title": "Quantisierung als Eigenwertproblem"
+  },
+  "https://doi.org/10.1002/andp.19273892002": {
+    "authors": "Born & Oppenheimer (1927)",
+    "title": "Zur Quantentheorie der Molekeln"
+  },
+  "https://doi.org/10.1002/andp.19504430510": {
+    "authors": "Lüders (1951)",
+    "title": "Über die Zustandsänderung durch den Meßprozeß"
+  },
+  "https://doi.org/10.1002/qua.560240302": {
+    "authors": "Lieb (1983)",
+    "title": "Density functionals for coulomb systems"
+  },
+  "https://doi.org/10.1007/BF01340294": {
+    "authors": "Fock (1930)",
+    "title": "Näherungsmethode zur Lösung des quantenmechanischen Mehrkörperproblems"
+  },
+  "https://doi.org/10.1007/BF01397477": {
+    "authors": "Born (1926)",
+    "title": "Zur Quantenmechanik der Stoßvorgänge"
+  },
+  "https://doi.org/10.1007/BF01608499": {
+    "authors": "Lindblad (1976)",
+    "title": "On the generators of quantum dynamical semigroups"
+  },
+  "https://doi.org/10.1007/s00220-006-0150-x": {
+    "authors": "Berry et al. (2006)",
+    "title": "Efficient Quantum Algorithms for Simulating Sparse Hamiltonians"
+  },
+  "https://doi.org/10.1007/s002200050620": {
+    "authors": "Avron & Elgart (1999)",
+    "title": "Adiabatic Theorem without a Gap Condition"
+  },
+  "https://doi.org/10.1016/0003-4916%2886%2990107-7": {
+    "authors": "Sugiyama & Koonin (1986)",
+    "title": "Auxiliary field Monte-Carlo for quantum many-body ground states"
+  },
+  "https://doi.org/10.1016/0003-4916(58)90007-1": {
+    "authors": "Feshbach (1958)",
+    "title": "Unified theory of nuclear reactions"
+  },
+  "https://doi.org/10.1016/0003-4916(71)90108-4": {
+    "authors": "Kraus (1971)",
+    "title": "General state changes in quantum theory"
+  },
+  "https://doi.org/10.1016/0021-9991(82)90091-2": {
+    "authors": "Feit, Fleck & Steiger (1982)",
+    "title": "Solution of the Schrödinger equation by a spectral method"
+  },
+  "https://doi.org/10.1016/0024-3795(75)90075-0": {
+    "authors": "Choi (1975)",
+    "title": "Completely positive linear maps on complex matrices"
+  },
+  "https://doi.org/10.1016/S0009-2614(99)00874-X": {
+    "authors": "Kitaura et al. (1999)",
+    "title": "Fragment molecular orbital method: an approximate computational method for large molecules"
+  },
+  "https://doi.org/10.1017/CBO9780511976667": {
+    "authors": "Nielsen & Chuang (2012)",
+    "title": "Quantum Computation and Quantum Information: 10th Anniversary Edition"
+  },
+  "https://doi.org/10.1021/acs.jctc.5b00099": {
+    "authors": "Ramakrishnan et al. (2015)",
+    "title": "Big Data Meets Quantum Chemistry Approximations: The Δ-Machine Learning Approach"
+  },
+  "https://doi.org/10.1021/acs.jctc.9b01125": {
+    "authors": "Stair, Huang & Evangelista (2020)",
+    "title": "A Multireference Quantum Krylov Algorithm for Strongly Correlated Electrons"
+  },
+  "https://doi.org/10.1021/j100132a040": {
+    "authors": "Wesołowski & Warshel (1993)",
+    "title": "Frozen density functional approach for ab initio calculations of solvated molecules"
+  },
+  "https://doi.org/10.1021/jp962071j": {
+    "authors": "Svensson et al. (1996)",
+    "title": "ONIOM: A Multilayered Integrated MO + MM Method for Geometry Optimizations and Single Point Energy Predictions. A Test for Diels−Alder Reactions and Pt(P(t-Bu)3)2 + H2 Oxidative Addition"
+  },
+  "https://doi.org/10.1038/ncomms1147": {
+    "authors": "Cramer et al. (2010)",
+    "title": "Efficient quantum state tomography"
+  },
+  "https://doi.org/10.1038/ncomms5213": {
+    "authors": "Peruzzo et al. (2014)",
+    "title": "A variational eigenvalue solver on a photonic quantum processor"
+  },
+  "https://doi.org/10.1038/s41467-017-01637-7": {
+    "authors": "Atia & Aharonov (2017)",
+    "title": "Fast-forwarding of Hamiltonians and exponentially precise measurements",
+    "keywords": [
+      "Yosi Atia",
+      "Dorit Aharonov",
+      "no fast forwarding"
+    ]
+  },
+  "https://doi.org/10.1038/s41467-023-37587-6": {
+    "authors": "Lee et al. (2023)",
+    "title": "Evaluating the evidence for exponential quantum advantage in ground-state quantum chemistry"
+  },
+  "https://doi.org/10.1038/s41567-019-0704-4": {
+    "authors": "Motta et al. (2020)",
+    "title": "Determining eigenstates and thermal states on a quantum computer using quantum imaginary time evolution"
+  },
+  "https://doi.org/10.1038/s41567-020-0932-7": {
+    "authors": "Huang, Kueng & Preskill (2020)",
+    "title": "Predicting many properties of a quantum system from very few measurements",
+    "keywords": [
+      "Hsin-Yuan (Robert) Huang",
+      "John Preskill",
+      "Richard Kueng"
+    ]
+  },
+  "https://doi.org/10.1038/srep00243": {
+    "authors": "Carleo et al. (2012)",
+    "title": "Localization and Glassy Dynamics Of Many-Body Quantum Systems"
+  },
+  "https://doi.org/10.1063/1.1699114": {
+    "authors": "Metropolis et al. (1953)",
+    "title": "Equation of State Calculations by Fast Computing Machines"
+  },
+  "https://doi.org/10.1063/1.1727484": {
+    "authors": "Čížek (1966)",
+    "title": "On the Correlation Problem in Atomic and Molecular Systems. Calculation of Wavefunction Components in Ursell-Type Expansion Using Quantum-Field Theoretical Methods"
+  },
+  "https://doi.org/10.1063/1.1740409": {
+    "authors": "Zwanzig (1954)",
+    "title": "High-Temperature Equation of State by a Perturbation Method. I. Nonpolar Gases"
+  },
+  "https://doi.org/10.1063/1.1749604": {
+    "authors": "Eyring (1935)",
+    "title": "The Activated Complex in Chemical Reactions"
+  },
+  "https://doi.org/10.1063/1.1777575": {
+    "authors": "Craig & Manolopoulos (2004)",
+    "title": "Quantum statistics and classical mechanics: Real time correlation functions from ring polymer molecular dynamics"
+  },
+  "https://doi.org/10.1063/1.1999636": {
+    "authors": "Krause, Klamroth & Saalfrank (2005)",
+    "title": "Time-dependent configuration-interaction calculations of laser-pulse-driven many-electron dynamics: Controlled dipole switching in lithium cyanide"
+  },
+  "https://doi.org/10.1063/1.3193710": {
+    "authors": "Booth, Thom & Alavi (2009)",
+    "title": "Fermion Monte Carlo without fixed nodes: A game of life, death, and annihilation in Slater determinant space"
+  },
+  "https://doi.org/10.1063/1.431514": {
+    "authors": "Anderson (1975)",
+    "title": "A random-walk simulation of the Schrödinger equation: H₃⁺"
+  },
+  "https://doi.org/10.1063/1.451548": {
+    "authors": "Park & Light (1986)",
+    "title": "Unitary quantum time evolution by iterative Lanczos reduction"
+  },
+  "https://doi.org/10.1063/1.462209": {
+    "authors": "Andersson, Malmqvist & Roos (1992)",
+    "title": "Second-order perturbation theory with a complete active space self-consistent field reference function"
+  },
+  "https://doi.org/10.1063/1.465195": {
+    "authors": "Umrigar et al. (1993)",
+    "title": "A diffusion Monte Carlo algorithm with very small time-step errors"
+  },
+  "https://doi.org/10.1063/1.4742816": {
+    "authors": "Richard & Herbert (2012)",
+    "title": "A generalized many-body expansion and a unified view of fragment-based methods in electronic structure theory"
+  },
+  "https://doi.org/10.1073/pnas.76.12.6062": {
+    "authors": "Levy (1979)",
+    "title": "Universal variational functionals of electron densities, first-order density matrices, and natural spin-orbitals and solution of the v-representability problem"
+  },
+  "https://doi.org/10.1080/00268976400100041": {
+    "authors": "McLachlan (1964)",
+    "title": "A variational solution of the time-dependent Schrodinger equation"
+  },
+  "https://doi.org/10.1088/1367-2630/15/1/013021": {
+    "authors": "Cao et al. (2013)",
+    "title": "Quantum algorithm and circuit design solving the Poisson equation"
+  },
+  "https://doi.org/10.1088/2058-9565/2/1/015004": {
+    "authors": "Hangleiter et al. (2017)",
+    "title": "Direct certification of a class of quantum simulations"
+  },
+  "https://doi.org/10.1090/S0002-9939-1959-0108732-6": {
+    "authors": "Trotter (1959)",
+    "title": "On the product of semi-groups of operators"
+  },
+  "https://doi.org/10.1090/conm/305/05215": {
+    "authors": "Brassard et al. (2002)",
+    "title": "Quantum amplitude amplification and estimation"
+  },
+  "https://doi.org/10.1090/gsm/047": {
+    "authors": "Kitaev, Shen & Vyalyi (2002)",
+    "title": "Classical and Quantum Computation"
+  },
+  "https://doi.org/10.1098/rspa.1950.0036": {
+    "authors": "Boys (1950)",
+    "title": "Electronic wave functions - I. A general method of calculation for the stationary states of any molecular system"
+  },
+  "https://doi.org/10.1103/PRXQuantum.3.020322": {
+    "authors": "O’Gorman et al. (2022)",
+    "title": "Intractability of Electronic Structure in a Fixed Basis"
+  },
+  "https://doi.org/10.1103/PRXQuantum.6.020302": {
+    "authors": "Begušić & Chan (2025)",
+    "title": "Real-Time Operator Evolution in Two and Three Dimensions via Sparse Pauli Dynamics"
+  },
+  "https://doi.org/10.1103/PhysRev.136.B864": {
+    "authors": "Hohenberg & Kohn (1964)",
+    "title": "Inhomogeneous Electron Gas"
+  },
+  "https://doi.org/10.1103/PhysRev.138.A442": {
+    "authors": "McMillan (1965)",
+    "title": "Ground State of Liquid He⁴"
+  },
+  "https://doi.org/10.1103/PhysRev.43.830": {
+    "authors": "MacDonald (1933)",
+    "title": "Successive Approximations by the Rayleigh-Ritz Variation Method"
+  },
+  "https://doi.org/10.1103/PhysRev.56.340": {
+    "authors": "Feynman (1939)",
+    "title": "Forces in Molecules"
+  },
+  "https://doi.org/10.1103/PhysRevA.60.2746": {
+    "authors": "Zalka (1999)",
+    "title": "Grover’s quantum searching algorithm is optimal"
+  },
+  "https://doi.org/10.1103/PhysRevApplied.9.044036": {
+    "authors": "Jiang et al. (2018)",
+    "title": "Quantum Algorithms to Simulate Many-Body Physics of Correlated Fermions"
+  },
+  "https://doi.org/10.1103/PhysRevB.28.4059": {
+    "authors": "Hirsch (1983)",
+    "title": "Discrete Hubbard-Stratonovich transformation for fermion lattice models"
+  },
+  "https://doi.org/10.1103/PhysRevB.41.2380": {
+    "authors": "Silver, Sivia & Gubernatis (1990)",
+    "title": "Maximum-entropy method for analytic continuation of quantum Monte Carlo data"
+  },
+  "https://doi.org/10.1103/PhysRevB.51.13039": {
+    "authors": "ten Haaf et al. (1995)",
+    "title": "Proof for an upper bound in fixed-node Monte Carlo for lattice fermions"
+  },
+  "https://doi.org/10.1103/PhysRevB.72.180403": {
+    "authors": "White (2005)",
+    "title": "Density matrix renormalization group algorithms with a single center site"
+  },
+  "https://doi.org/10.1103/PhysRevB.79.035320": {
+    "authors": "Werner, Oka & Millis (2009)",
+    "title": "Diagrammatic Monte Carlo simulation of nonequilibrium systems"
+  },
+  "https://doi.org/10.1103/PhysRevLett.103.150502": {
+    "authors": "Harrow, Hassidim & Lloyd (2009)",
+    "title": "Quantum Algorithm for Linear Systems of Equations"
+  },
+  "https://doi.org/10.1103/PhysRevLett.114.090502": {
+    "authors": "Berry et al. (2015)",
+    "title": "Simulating Hamiltonian Dynamics with a Truncated Taylor Series"
+  },
+  "https://doi.org/10.1103/PhysRevLett.120.110501": {
+    "authors": "Kivlichan et al. (2018)",
+    "title": "Quantum Simulation of Electronic Structure with Linear Depth and Connectivity"
+  },
+  "https://doi.org/10.1103/PhysRevLett.3.77": {
+    "authors": "Hubbard (1959)",
+    "title": "Calculation of Partition Functions"
+  },
+  "https://doi.org/10.1103/PhysRevLett.69.2863": {
+    "authors": "White (1992)",
+    "title": "Density matrix formulation for quantum renormalization groups"
+  },
+  "https://doi.org/10.1103/PhysRevLett.81.5442": {
+    "authors": "Farhi et al. (1998)",
+    "title": "Limit on the Speed of Quantum Computation in Determining Parity"
+  },
+  "https://doi.org/10.1103/PhysRevLett.83.5162": {
+    "authors": "Abrams & Lloyd (1999)",
+    "title": "Quantum Algorithm Providing Exponential Speed Increase for Finding Eigenvalues and Eigenvectors"
+  },
+  "https://doi.org/10.1103/PhysRevLett.90.136401": {
+    "authors": "Zhang & Krakauer (2003)",
+    "title": "Quantum Monte Carlo Method using Phase-Free Random Walks with Slater Determinants"
+  },
+  "https://doi.org/10.1103/PhysRevLett.91.147902": {
+    "authors": "Vidal (2003)",
+    "title": "Efficient Classical Simulation of Slightly Entangled Quantum Computations"
+  },
+  "https://doi.org/10.1103/PhysRevLett.94.170201": {
+    "authors": "Troyer and Wiese (2005)",
+    "title": "Computational Complexity and Fundamental Limitations to Fermionic Quantum Monte Carlo Simulations"
+  },
+  "https://doi.org/10.1103/PhysRevLett.95.110409": {
+    "authors": "Oreshkov & Brun (2005)",
+    "title": "Weak Measurements Are Universal"
+  },
+  "https://doi.org/10.1103/PhysRevLett.97.187202": {
+    "authors": "Rigol, Bryant & Singh (2006)",
+    "title": "Numerical Linked-Cluster Approach to Quantum Lattice Models"
+  },
+  "https://doi.org/10.1103/PhysRevLett.98.110503": {
+    "authors": "Liu, Christandl & Verstraete (2007)",
+    "title": "Quantum Computational Complexity of the N-Representability Problem: QMA Complete"
+  },
+  "https://doi.org/10.1103/PhysRevResearch.2.033429": {
+    "authors": "Pfau et al. (2020)",
+    "title": "Ab initio solution of the many-electron Schrödinger equation with deep neural networks"
+  },
+  "https://doi.org/10.1126/sciadv.1603015": {
+    "authors": "Chmiela et al. (2017)",
+    "title": "Machine learning of accurate energy-conserving molecular force fields"
+  },
+  "https://doi.org/10.1126/sciadv.adu9991": {
+    "authors": "Robledo-Moreno et al. (2025)",
+    "title": "Chemistry beyond the scale of exact diagonalization on a quantum-centric supercomputer"
+  },
+  "https://doi.org/10.1126/science.273.5278.1073": {
+    "authors": "Lloyd (1996)",
+    "title": "Universal Quantum Simulators"
+  },
+  "https://doi.org/10.1126/science.abn7293": {
+    "authors": "Huang et al. (2022)",
+    "title": "Quantum advantage in learning from experiments",
+    "keywords": [
+      "Hsin-Yuan (Robert) Huang",
+      "John Preskill",
+      "Bell sampling",
+      "quantum memory"
+    ]
+  },
+  "https://doi.org/10.1143/JPSJ.5.435": {
+    "authors": "Kato (1950)",
+    "title": "On the Adiabatic Theorem of Quantum Mechanics"
+  },
+  "https://doi.org/10.1515/crll.1909.135.1": {
+    "authors": "Ritz (1909)",
+    "title": "Über eine neue Methode zur Lösung gewisser Variationsprobleme der mathematischen Physik"
+  },
+  "https://doi.org/10.22331/q-2019-07-01-156": {
+    "authors": "Higgott, Wang & Brierley (2019)",
+    "title": "Variational Quantum Computation of Excited States"
+  },
+  "https://doi.org/10.22331/q-2019-07-12-163": {
+    "authors": "Low & Chuang (2019)",
+    "title": "Hamiltonian Simulation by Qubitization"
+  },
+  "https://doi.org/10.22331/q-2020-11-11-361": {
+    "authors": "Lin & Tong (2020)",
+    "title": "Optimal polynomial based quantum eigenstate filtering with application to solving quantum linear systems"
+  },
+  "https://doi.org/10.2307/1968538": {
+    "authors": "Stone (1932)",
+    "title": "On One-Parameter Unitary Groups in Hilbert Space"
+  },
+  "https://doi.org/10.4086/toc.2014.v010a006": {
+    "authors": "Aaronson & Ambainis (2014)",
+    "title": "The Need for Structure in Quantum Speedups"
+  },
+  "https://doi.org/10.6028/jres.045.026": {
+    "authors": "Lanczos (1950)",
+    "title": "An iteration method for the solution of the eigenvalue problem of linear differential and integral operators"
+  },
+  "https://www.unige.ch/~gander/HistoricalReferences/GALERKIN.pdf": {
+    "authors": "Galerkin (1915)",
+    "title": "Rods and plates: series expansions for problems of elastic equilibrium"
+  }
+}

@@ -155,3 +155,15 @@ footer { display: flex; align-items: center; gap: 7px; font-size: 11px; color: v
   footer { flex-wrap: wrap }
   .gesture { display: none }
 }
+
+.key.pending i, .swatch.pending { background: #ad3244 }
+button.key.pending { color: #8e2839; font-family: inherit; cursor: pointer; border: 0; padding: 0; background: none }
+button.key.pending:hover { text-decoration: underline }
+.review-status, .locator { font-size: .8rem; line-height: 1.4; margin: .45rem 0; color: #515d54 }
+.review-status { font-weight: 650 }
+.review-scope { font-size: .88rem; line-height: 1.55; margin: .8rem 0 }
+.original-paper { display: grid; grid-template-columns: 1fr auto; gap: .15rem .5rem; padding: .45rem 0; color: inherit; text-decoration: none }
+.original-paper strong, .original-paper span { grid-column: 1; font-size: .81rem; line-height: 1.35 }
+.original-paper .icon { grid-column: 2; grid-row: 1/3; align-self: center }
+.original-paper:hover span { text-decoration: underline }
+.dot.pending { stroke: #781c2c; stroke-width: 1.2; stroke-dasharray: 2 .9 }
