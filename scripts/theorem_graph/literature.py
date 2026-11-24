@@ -70,6 +70,11 @@ def assemble():
             raise ValueError(f"Missing or duplicate bibliography reference: {urls}")
         return refs
 
+    def validate_related(names, subject):
+        for name in names:
+            if sum(decl == name for _, decl in nodes) != 1:
+                raise ValueError(f"Unknown or ambiguous checked result in {subject}: {name}")
+
     groups, assigned, aliases = [], {}, {}
     for path in sorted(REVIEWS.glob("*.json")):
         for entry in read_json(path):
@@ -78,6 +83,9 @@ def assemble():
             if not group["scope"].strip() or group["relation"] not in RELATIONS:
                 raise ValueError(f"Invalid review for {module} in {path}")
             group["papers"] = paper_ids(entry["papers"])
+            if entry.get("related"):
+                validate_related(entry["related"], module)
+                group["related"] = entry["related"]
             for short in entry["names"]:
                 hits = [key for key in nodes if key[0] == module and
                         (key[1] == short or key[1].rsplit(".", 1)[-1] == short)]
@@ -115,9 +123,7 @@ def assemble():
                 or target["chapter"] not in CHAPTERS or not target["scope"] or not target["locator"]):
             raise ValueError(f"Invalid literature target: {identifier}")
         target["papers"] = paper_ids(target["papers"])
-        for name in target["related"]:
-            if sum(decl == name for _, decl in nodes) != 1:
-                raise ValueError(f"Unknown or ambiguous checked result in {identifier}: {name}")
+        validate_related(target["related"], identifier)
         for ref in target.get("upstream", []):
             if not ref["label"].strip() or not re.fullmatch(
                     r"https://github\.com/[\w.-]+/[\w.-]+/blob/[0-9a-f]{40}/[^\s]+\.lean#L\d+(?:-L\d+)?", ref["url"]):
@@ -153,6 +159,9 @@ def markdown(data):
                         name = key.split("/", 1)[1].rsplit(".", 1)[-1]
                         links.append(f"[{name}]({SITE}#{quote(key, safe='./')})")
                 lines.append(f"- **{RELATIONS[group['relation']]}**. {group['scope']} {' · '.join(links)}")
+                if group.get("related"):
+                    related = [f"[{name.rsplit('.', 1)[-1]}]({SITE}#{quote(name)})" for name in group["related"]]
+                    lines.append(f"  - **Related checked results**. {' · '.join(related)}")
         for target in data["targets"]:
             if pid in target["papers"]:
                 status = "Proof in the literature" if target["status"] == "published" else "Literature hypothesis"

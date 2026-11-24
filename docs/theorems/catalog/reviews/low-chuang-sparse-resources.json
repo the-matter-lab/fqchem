@@ -1,0 +1,551 @@
+[
+  {
+    "module": "FQChemQatlib.Dynamics.LowChuangSparseAccuracy",
+    "names": [
+      "successfulOutput"
+    ],
+    "papers": [
+      "https://doi.org/10.1103/PhysRevLett.118.010501"
+    ],
+    "relation": "derived",
+    "scope": "For any successful block C within δ<1 of a unitary U in operator norm, a normalized input has unnormalized amplitude error ≤δ. The normalized successful pure state has Euclidean error and actual density-matrix trace distance at most 2δ."
+  },
+  {
+    "module": "FQChemQatlib.Dynamics.LowChuangSparseAccuracy",
+    "names": [
+      "normalize_error"
+    ],
+    "papers": [
+      "https://doi.org/10.1103/PhysRevLett.118.010501"
+    ],
+    "relation": "supporting",
+    "scope": "Renormalizing a nonzero vector within δ<1 of a unit vector costs at most a factor of two in Euclidean error."
+  },
+  {
+    "module": "FQChemQatlib.Dynamics.LowChuangSparseAccuracy",
+    "names": [
+      "zeroAccess"
+    ],
+    "papers": [
+      "https://doi.org/10.1103/PhysRevLett.118.010501"
+    ],
+    "relation": "specialization",
+    "scope": "A matrix whose every entry has norm zero, or whose every row contains zero nonzeros, is zero. The empty sparse-query program implements the exact evolution at all times."
+  },
+  {
+    "module": "FQChemQatlib.Dynamics.LowChuangSparseAccuracy",
+    "names": [
+      "roundedHamiltonian",
+      "entryRoundoff",
+      "roundedSparseEvolution"
+    ],
+    "papers": [
+      "https://doi.org/10.1103/PhysRevLett.118.010501"
+    ],
+    "relation": "derived",
+    "scope": "For an external Hermitian target, a Hermitian table rounding error with at most d affected entries per row and maximum complex-entry error η contributes at most |t|dη to the final spectral error, in addition to simulation error for the stored matrix."
+  },
+  {
+    "module": "FQChemQatlib.Dynamics.LowChuangSparseAccess",
+    "names": [
+      "body_spec"
+    ],
+    "papers": [
+      "https://doi.org/10.1103/PhysRevLett.118.010501",
+      "https://doi.org/10.22331/q-2019-07-12-163"
+    ],
+    "relation": "supporting",
+    "scope": "A controlled sparse block uses two ordinary in-place position queries and two ordinary binary XOR queries. Reversible lookup and its inverse run with both signal flags untouched."
+  },
+  {
+    "module": "FQChemQatlib.Dynamics.LowChuangSparseAssembly",
+    "names": [
+      "compile_cost",
+      "compile_fixed",
+      "compile_gates",
+      "compile_run",
+      "inverse_fixed",
+      "push_adj",
+      "push_mul",
+      "push_one",
+      "rename_cost",
+      "rename_fixed",
+      "rename_run",
+      "undo"
+    ],
+    "papers": [
+      "https://doi.org/10.1103/PhysRevLett.118.010501"
+    ],
+    "relation": "supporting",
+    "scope": "Circuit bookkeeping for substitution into the standard-form simulation. Grouping coordinates preserves products, adjoints, identities and evaluation. Replacing the preparation oracle by identity and the block oracle by its sparse circuit preserves forward and inverse execution, counts and membership in the elementary gate vocabulary."
+  },
+  {
+    "module": "FQChemQatlib.Dynamics.LowChuangSparseBlock",
+    "names": [
+      "compression"
+    ],
+    "papers": [
+      "https://doi.org/10.1103/PhysRevLett.118.010501",
+      "https://doi.org/10.22331/q-2019-07-12-163"
+    ],
+    "relation": "supporting",
+    "scope": "A standard-form block with a reversible value table and a uniform public decoder only reads the diagonal amplitude of that decoder on the clean loaded word. The block matrix element is the product of its two slot amplitudes and this decoder amplitude."
+  },
+  {
+    "module": "FQChemQatlib.Dynamics.LowChuangSparseBlock",
+    "names": [
+      "frame_iso",
+      "left_col",
+      "loaded_col",
+      "oracle_unit",
+      "permutation_action",
+      "prep_col",
+      "right_col"
+    ],
+    "papers": [
+      "https://doi.org/10.1103/PhysRevLett.118.010501",
+      "https://doi.org/10.22331/q-2019-07-12-163"
+    ],
+    "relation": "supporting",
+    "scope": "Matrix-column identities and unitarity for the prepared sparse block, the position permutation, the register exchange and the reversible entry lookup. These are local ingredients of the sparse-access construction."
+  },
+  {
+    "module": "FQChemQatlib.Dynamics.LowChuangSparseCartesian",
+    "names": [
+      "cartesianEncoding"
+    ],
+    "papers": [
+      "https://doi.org/10.1103/PhysRevLett.118.010501",
+      "https://doi.org/10.22331/q-2019-07-12-163"
+    ],
+    "relation": "specialization",
+    "scope": "Every Hermitian input with nonzero positions covered by k address bits and exact centered Cartesian p-bit entries has an explicit block encoding scaled by 2·2^k. The decoder is a single input-independent circuit with at most 190p+4 gates."
+  },
+  {
+    "module": "FQChemQatlib.Dynamics.LowChuangSparseCartesian",
+    "names": [
+      "padded_slot_bound",
+      "slot_supported",
+      "slots_column",
+      "table_blank"
+    ],
+    "papers": [
+      "https://doi.org/10.1103/PhysRevLett.118.010501"
+    ],
+    "relation": "supporting",
+    "scope": "Padded slots use Hadamards on k selected wires. The binary label lies in the resulting support, the loaded zero word contains the two data components, and d≤2^ceil(log₂ d)<2d for every positive d."
+  },
+  {
+    "module": "FQChemQatlib.Dynamics.LowChuangSparseControl",
+    "names": [
+      "decoder"
+    ],
+    "papers": [
+      "https://doi.org/10.1103/PhysRevLett.118.010501",
+      "https://doi.org/10.1103/PhysRevA.52.3457"
+    ],
+    "relation": "supporting",
+    "scope": "For the coherent outer control required by QSP, an arbitrary q-instruction binary decoder circuit expands to at most 415440q one- and two-qubit gates on the addressed data and signal registers. The bound is independent of all input entries."
+  },
+  {
+    "module": "FQChemQatlib.Dynamics.LowChuangSparseControl",
+    "names": [
+      "controlledCnot",
+      "phase"
+    ],
+    "papers": [
+      "https://doi.org/10.1103/PhysRevLett.118.010501",
+      "https://doi.org/10.1103/PhysRevA.52.3457"
+    ],
+    "relation": "supporting",
+    "scope": "On the fixed physical register, each controlled CNOT and each controlled two-bit diagonal can be placed on at most three specified bits. Three-wire exact synthesis gives a constant number of elementary gates; repeated phase indices require only two bits."
+  },
+  {
+    "module": "FQChemQatlib.Dynamics.LowChuangSparseControl",
+    "names": [
+      "adj",
+      "code",
+      "concat",
+      "ctrl_mul",
+      "ctrl_one",
+      "ctrl_star",
+      "empty",
+      "localGate",
+      "phase_unit",
+      "placed",
+      "single",
+      "toff_invol",
+      "weaken"
+    ],
+    "papers": [
+      "https://doi.org/10.1103/PhysRevLett.118.010501",
+      "https://doi.org/10.1103/PhysRevA.52.3457"
+    ],
+    "relation": "supporting",
+    "scope": "Gate-word certificates for placing, composing and taking adjoints of the sparse decoder instructions and for embedding each of its legal gates. These lemmas implement the local resource account."
+  },
+  {
+    "module": "FQChemQatlib.Dynamics.LowChuangSparseCutoff",
+    "names": [
+      "cartesianCutoff",
+      "cutoff_dilation",
+      "factorial_block",
+      "factorial_dilation"
+    ],
+    "papers": [
+      "https://doi.org/10.1103/PhysRevLett.118.010501",
+      "https://doi.org/10.22331/q-2019-07-12-163"
+    ],
+    "relation": "supporting",
+    "scope": "Factorial block inequalities prove that rescaling simulation time by a constant changes the least factorial cutoff by at most a constant in the joint time-and-precision regime. A fourfold dilation costs at most nine times the original cutoff."
+  },
+  {
+    "module": "FQChemQatlib.Dynamics.LowChuangSparsePacking",
+    "names": [
+      "packed_compression",
+      "push_lifted",
+      "push_unit",
+      "scaledEvolution"
+    ],
+    "papers": [
+      "https://doi.org/10.1103/PhysRevLett.118.010501",
+      "https://doi.org/10.22331/q-2019-07-12-163"
+    ],
+    "relation": "supporting",
+    "scope": "Regrouping the slot and binary-data registers into the QSP ancilla preserves unitarity, ordinary controlled access and the clean compressed block. Rescaling Hamiltonian and time by reciprocal factors preserves evolution."
+  },
+  {
+    "module": "FQChemQatlib.Dynamics.LowChuangSparsePhysicalBlock",
+    "names": [
+      "physicalBody"
+    ],
+    "papers": [
+      "https://doi.org/10.1103/PhysRevLett.118.010501",
+      "https://doi.org/10.22331/q-2019-07-12-163"
+    ],
+    "relation": "specialization",
+    "scope": "The actual controlled sparse block uses exactly two position and two entry queries with at most 2k+415440(n+q) additional elementary gates for a q-gate decoder. Its fixed circuit is chosen before the row and value tables."
+  },
+  {
+    "module": "FQChemQatlib.Dynamics.LowChuangSparsePhysicalBlock",
+    "names": [
+      "compileFixed",
+      "from_raw",
+      "raw_from",
+      "slot_gates",
+      "slot_mul",
+      "slot_one",
+      "slot_word"
+    ],
+    "papers": [
+      "https://doi.org/10.1103/PhysRevLett.118.010501"
+    ],
+    "relation": "supporting",
+    "scope": "Expands the k addressed slot Hadamards and fixed circuits, carries the exact product through the wire packing, and counts the resulting physical instructions."
+  },
+  {
+    "module": "FQChemQatlib.Dynamics.LowChuangSparsePlacement",
+    "names": [
+      "place_diag",
+      "place_perm",
+      "raw_control_diag",
+      "raw_control_perm",
+      "raw_mul",
+      "raw_star",
+      "triple_range"
+    ],
+    "papers": [
+      "https://doi.org/10.1103/PhysRevLett.118.010501",
+      "https://doi.org/10.1103/PhysRevA.52.3457"
+    ],
+    "relation": "supporting",
+    "scope": "Explicit diagonal and permutation formulas for operations on selected wires. The two signal flags, the row, the column and every data bit have distinct physical addresses. Untouched wires retain their bit values."
+  },
+  {
+    "module": "FQChemQatlib.Dynamics.LowChuangSparseResources",
+    "names": [
+      "sparseResourceBound"
+    ],
+    "papers": [
+      "https://doi.org/10.1103/PhysRevLett.118.010501"
+    ],
+    "relation": "specialization",
+    "scope": "For an n≥1 qubit Hermitian matrix with d≤2^n designated slots and p-bit centered Cartesian components in known units b≤2c, the least factorial cutoff at |t|dc gives an explicit O(Q) bound on each ordinary query count and O((n+p+1)Q) additional one- or two-qubit gates. The same circuit attains spectral error ≤ε²/2 and success ≥1−ε²."
+  },
+  {
+    "module": "FQChemQatlib.Dynamics.LowChuangSparseResources",
+    "names": [
+      "budget",
+      "time_scale"
+    ],
+    "papers": [
+      "https://doi.org/10.1103/PhysRevLett.118.010501"
+    ],
+    "relation": "supporting",
+    "scope": "Converts ceiling-logarithmic slot padding and the known entry scale into the unpadded physical-time budget, and bounds the physical word length in n, p and the least cutoff."
+  },
+  {
+    "module": "FQChemQatlib.Dynamics.LowChuangSparseSimulation",
+    "names": [
+      "elementarySparseSimulation"
+    ],
+    "papers": [
+      "https://doi.org/10.1103/PhysRevLett.118.010501"
+    ],
+    "relation": "specialization",
+    "scope": "One sparse QSP circuit jointly realizes all resource and accuracy guarantees at padded scaled time 2·2^k·b·t, with k address bits, a nonempty system, and p-bit Cartesian entries supplied by ordinary value and position oracles."
+  },
+  {
+    "module": "FQChemQatlib.Dynamics.LowChuangSparseSimulation",
+    "names": [
+      "instantiate",
+      "logical_eq",
+      "run_physical"
+    ],
+    "papers": [
+      "https://doi.org/10.1103/PhysRevLett.118.010501"
+    ],
+    "relation": "supporting",
+    "scope": "Confirms that physical sparse-oracle substitution in the QSP circuit preserves the elementary-gate classification, the clean preparation and the simulated operator."
+  },
+  {
+    "module": "FQChemQatlib.Dynamics.LowChuangSparseSwap",
+    "names": [
+      "fredkin_inv",
+      "insert_swap",
+      "perm_comp",
+      "swapGate",
+      "swapOne",
+      "swapSubset"
+    ],
+    "papers": [
+      "https://doi.org/10.1103/PhysRevLett.118.010501",
+      "https://doi.org/10.1103/PhysRevA.52.3457"
+    ],
+    "relation": "supporting",
+    "scope": "A controlled exchange of two n-bit address registers factors into n Fredkin gates. The proof traces every control, data and spectator wire and compiles each three-wire factor via exact elementary synthesis."
+  },
+  {
+    "module": "FQChemQatlib.Dynamics.LowChuangSparseWires",
+    "names": [
+      "three"
+    ],
+    "papers": [
+      "https://doi.org/10.1103/PhysRevA.52.3457"
+    ],
+    "relation": "specialization",
+    "scope": "Every unitary on three specified bits admits an exact decomposition with at most 415440 elementary gates, acting identically on all other bit values. The proof applies the pinned Barenco-style Gray-code synthesis bound at n=3."
+  },
+  {
+    "module": "FQChemQatlib.Dynamics.LowChuangSparseWires",
+    "names": [
+      "built_adj",
+      "built_mul",
+      "built_weaken",
+      "place_adjoint",
+      "place_apply",
+      "place_mul",
+      "place_one",
+      "reflection_built"
+    ],
+    "papers": [
+      "https://doi.org/10.1103/PhysRevLett.118.010501",
+      "https://doi.org/10.1103/PhysRevA.52.3457"
+    ],
+    "relation": "supporting",
+    "scope": "Explicit restriction to selected physical bits and identity on complementary wires respects products, identity and adjoints. Lifting an exact word preserves its gate count."
+  },
+  {
+    "module": "FQChemQatlib.Dynamics.LowChuangSparseScalar",
+    "names": [
+      "scalarEvolution"
+    ],
+    "papers": [
+      "https://doi.org/10.1103/PhysRevLett.118.010501"
+    ],
+    "relation": "specialization",
+    "scope": "In dimension one a uniform circuit performs two ordinary XOR entry lookups, zero position calls and p+1 one-qubit phases. It restores all workspace and multiplies every complex input amplitude by exp(−ith) exactly for the encoded real scalar h."
+  },
+  {
+    "module": "FQChemQatlib.Dynamics.LowChuangSparseScalar",
+    "names": [
+      "conjugate",
+      "counts",
+      "oneWire_unit",
+      "pulses_eval",
+      "rotor_add"
+    ],
+    "papers": [
+      "https://doi.org/10.1103/PhysRevLett.118.010501"
+    ],
+    "relation": "supporting",
+    "scope": "Binary phase words multiply to the phase of the represented integer. Phase gates are unitary and reversible lookup conjugates their diagonal action into the clean scalar signal."
+  },
+  {
+    "module": "FQChemQatlib.Dynamics.LowChuangSparseReadout",
+    "names": [
+      "sparseCoordinateSimulation"
+    ],
+    "papers": [
+      "https://doi.org/10.1103/PhysRevLett.118.010501"
+    ],
+    "relation": "paper-result",
+    "scope": "Theorem 3 upper resource and success guarantees for a nonempty qubit register with ordinary in-place position and XOR value oracles, any 1≤d≤2^n, and exact centered p-bit Cartesian coordinates in public units b≤2c. Setting c to the supplied positive maximum entry norm gives the unpadded |t|dc cutoff. All workspace starts in computational zero. The two gates to prepare and read the signal flags are included.",
+    "aliases": {
+      "paper/low-chuang-sparse-simulation": "FQChemQatlib.Dynamics.LowChuang.SparseAssembly.sparseCoordinateSimulation"
+    },
+    "related": [
+      "FQChem.Complexity.SparseSimulationPrecision.worstCaseCutoff",
+      "FQChemQatlib.Dynamics.LowChuang.SparseScalar.scalarEvolution",
+      "FQChemQatlib.Dynamics.LowChuang.SparseAssembly.successfulOutput",
+      "FQChemQatlib.Dynamics.LowChuang.SparseAssembly.zeroAccess",
+      "FQChemQatlib.Dynamics.LowChuang.SparseAssembly.roundedSparseEvolution"
+    ]
+  },
+  {
+    "module": "FQChemQatlib.Dynamics.LowChuangSparseReadout",
+    "names": [
+      "representable",
+      "binaryRange"
+    ],
+    "papers": [
+      "https://doi.org/10.1103/PhysRevLett.118.010501"
+    ],
+    "relation": "supporting",
+    "scope": "A power of two strictly above a positive supplied maximum lies within twice that maximum. Every signed lattice value x/2^p with −2^p≤x<2^p has exactly the binary representation used by the physical decoder."
+  },
+  {
+    "module": "FQChemQatlib.Dynamics.LowChuangSparseReadout",
+    "names": [
+      "zeroHamiltonian"
+    ],
+    "papers": [
+      "https://doi.org/10.1103/PhysRevLett.118.010501"
+    ],
+    "relation": "specialization",
+    "scope": "A supplied zero maximum entry norm gives a zero Hamiltonian and exact identity evolution for every simulation time. The empty circuit has zero queries and zero additional gates."
+  },
+  {
+    "module": "Qatlib.Concepts.GateTables.GrayUniversal.Section8GrayUniversalityElem",
+    "names": [
+      "section8GrayUniversality"
+    ],
+    "papers": [
+      "https://doi.org/10.1103/PhysRevA.52.3457"
+    ],
+    "relation": "paper-result",
+    "scope": "Pinned exact Gray-code synthesis of any k≥1 qubit unitary by single-qubit operations and CNOT gates, with no oracle calls and an explicit bound on word length. The sparse construction applies the bound for exactly three qubits."
+  },
+  {
+    "module": "Qatlib.Concepts.GateVocabulary.LocalReflectionGates",
+    "names": [
+      "run_reflectionCompile",
+      "tGateAdj_mem_unitary",
+      "tGate_mem_unitary"
+    ],
+    "papers": [
+      "https://doi.org/10.1103/PhysRevA.52.3457"
+    ],
+    "relation": "supporting",
+    "scope": "Pinned local-gate semantics. The T and inverse T gates are unitary, and the compiled reflection word applies its matrix product to every input state."
+  },
+  {
+    "module": "Qatlib.Concepts.LchsSimulation.StaticLchs.StaticNoncommutingLCHS",
+    "names": [
+      "static_lchs_hamiltonian_evolution_stability"
+    ],
+    "papers": [
+      "https://doi.org/10.1103/PhysRevLett.118.010501"
+    ],
+    "relation": "supporting",
+    "scope": "The pinned Hermitian evolution stability inequality bounds the spectral perturbation by absolute time times Hamiltonian operator error. It supplies the last step of the source-rounding estimate."
+  },
+  {
+    "module": "Qatlib.Concepts.MixedFidelity.FidelityMetric.MixedFidelity",
+    "names": [
+      "pure_trace_distance_le_re_inner"
+    ],
+    "papers": [
+      "https://doi.org/10.1103/PhysRevLett.118.010501"
+    ],
+    "relation": "supporting",
+    "scope": "The pinned pure-state trace-distance inequality relates half trace norm to the real inner product of two normalized vectors. It converts the successful-output vector estimate into trace distance."
+  },
+  {
+    "module": "Qatlib.Concepts.ReferenceError.RefTraceError.TensorOperatorNorm",
+    "names": [
+      "l2_norm_mulVec_fromVec_le"
+    ],
+    "papers": [
+      "https://doi.org/10.1103/PhysRevLett.118.010501"
+    ],
+    "relation": "supporting",
+    "scope": "An arbitrary rectangular matrix acting on a Euclidean vector enlarges its norm by at most the operator norm. It specializes spectral simulation error to each normalized input."
+  },
+  {
+    "module": "Qatlib.Concepts.UniformBqp.FiniteGateWord.FiniteThermal.FiniteThermalUniformH",
+    "names": [
+      "thermalBitValue_ofFn"
+    ],
+    "papers": [
+      "https://doi.org/10.1103/PhysRevLett.118.010501"
+    ],
+    "relation": "supporting",
+    "scope": "The most-significant-bit-first thermal binary numeral agrees with the finite qubit basis enumeration, giving exact representability on the signed lattice."
+  },
+  {
+    "module": "Qatlib.Foundations.PureStateMath.BornBridge.RelabelOperatorNorm",
+    "names": [
+      "l2_norm_relabelGate"
+    ],
+    "papers": [
+      "https://doi.org/10.1103/PhysRevLett.118.010501"
+    ],
+    "relation": "supporting",
+    "scope": "An invertible reindexing of the finite basis preserves Euclidean operator norm. It transports the row/column inequality to the actual qubit register."
+  },
+  {
+    "module": "Qatlib.Foundations.PureStateMath.BornBridge.RepresentationBridge",
+    "names": [
+      "inner_euclidean_fromVec"
+    ],
+    "papers": [
+      "https://doi.org/10.1103/PhysRevLett.118.010501"
+    ],
+    "relation": "supporting",
+    "scope": "The Euclidean inner product of two state vectors agrees with their finite coordinate inner product."
+  },
+  {
+    "module": "Qatlib.Foundations.PureStateMath.BornBridge.RepresentationBridge",
+    "names": [
+      "normalized_iff_norm_toEuclidean_fromVec"
+    ],
+    "papers": [
+      "https://doi.org/10.1103/PhysRevLett.118.010501"
+    ],
+    "relation": "supporting",
+    "scope": "The raw normalized-state predicate is equivalent to Euclidean norm one."
+  },
+  {
+    "module": "Qatlib.Foundations.PureStateMath.Qubit",
+    "names": [
+      "diagonal_mem_unitaryGroup"
+    ],
+    "papers": [
+      "https://doi.org/10.1103/PhysRevLett.118.010501"
+    ],
+    "relation": "supporting",
+    "scope": "A diagonal matrix with unit-modulus entries is unitary. This verifies the explicit scalar binary phase circuit."
+  },
+  {
+    "module": "Qatlib.Papers.ResolventQPE24.MainResults.SpectralTheory.SourceSpectralBounds",
+    "names": [
+      "spectral_norm_le_rowCol_sums"
+    ],
+    "papers": [
+      "https://doi.org/10.1103/PhysRevLett.118.010501"
+    ],
+    "relation": "supporting",
+    "scope": "The pinned complex-matrix row/column sum bound gives a spectral norm estimate via Cauchy–Schwarz. Applied to Hermitian sparse rounding errors, both sums are bounded by dη."
+  }
+]

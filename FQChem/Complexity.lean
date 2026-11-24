@@ -26,6 +26,8 @@ public import FQChem.Complexity.OrderFindingPostprocessing
 public import FQChem.Complexity.SearchOptimality
 public import FQChem.Complexity.SlaterEnergy
 public import FQChem.Complexity.SlaterEnergyHamiltonian
+public import FQChem.Complexity.SlaterIntegralPrecision
+public import FQChem.Complexity.SlaterVerifierWork
 public import FQChem.Complexity.SlaterEnergyThreeSAT
 public import FQChem.Complexity.SparseNoFastForwarding
 public import FQChem.Complexity.SparseParityPath

@@ -18,14 +18,14 @@ const classicalModules = new Set((
   "AFQMC AmplifierCost ClassicalEnvironments ClusterExpansions Compiler ConfigurationInteraction " +
   "CoupledCluster DMRG DiffusionMonteCarlo DyadicCoefficients FCIQMC Fragments GaussianAuxiliaryField " +
   "OutOfTimeOrder HubbardProjection KrylovPropagation LearnedEnvironments LearnedSurrogates MatrixProductStates " +
-  "SpinGlassSatisfiability SpinGlassThreeSAT SpinGlassLatticeGadgets SpinGlassLatticeEncoding SpinGlassLatticeDecision SpinGlassFrustration FactoringRecursion FactoringReduction FactoringPreprocessing CubicSpinGlass FerromagneticComparison IsingSign OrderFindingPostprocessing RankRevealing CircuitUpdate CircuitSimulation MinimalBonds PhysicalCuts SchmidtSimulation GateRouting RoutedSimulation SingleSiteGates CircuitMeasurement CircuitReadout VidalSimulation Storage OrderFindingDecoder OrderFindingBitCost Multireference PathSampling RingPolymer SignProblem SpectralReconstruction SplitOperator " +
+  "SlaterCertificate SlaterIntegerVerifier SlaterVerifierWork SlaterIntegralPrecision SpinGlassSatisfiability SpinGlassThreeSAT SpinGlassLatticeGadgets SpinGlassLatticeEncoding SpinGlassLatticeDecision SpinGlassFrustration FactoringRecursion FactoringReduction FactoringPreprocessing CubicSpinGlass FerromagneticComparison IsingSign OrderFindingPostprocessing RankRevealing CircuitUpdate CircuitSimulation MinimalBonds PhysicalCuts SchmidtSimulation GateRouting RoutedSimulation SingleSiteGates CircuitMeasurement CircuitReadout VidalSimulation Storage OrderFindingDecoder OrderFindingBitCost Multireference PathSampling RingPolymer SignProblem SpectralReconstruction SplitOperator " +
   "TimeDependentCI VariationalMonteCarlo"
 ).split(" "));
 const quantumModules = new Set((
   "CompiledSampling FactoringLaw FactoringResources OrderFinding OrderFindingTrials VerifiedOrderFinding FourierOrbit QuantumFactoring SearchOptimality SparseNoFastForwarding SparseParityPath QuantumMemorySeparation SimonTuringSeparation SimonOracleMachines ShadowMeasurement ShadowConfidence BellConfidence AdaptivePauliPrediction PauliPrediction BellSampling ClassicalShadows FastForwarding AaronsonAmbainis AaronsonAmbainisOrbitals AaronsonAmbainisQuery Amplify AmplitudeAmplification " +
   "BoundedErrorReduction ControlledRotations ElectronicStructure ElectronicStructureOperators " +
   "ElectronicStructurePauli GroundStateSearch HHL HistoryHamiltonian LinearCombinationOfUnitaries " +
-  "LowChuangCutoff LowChuangSimulation LowChuangSparseOracle SparseSimulationPrecision BlockSimulationPrecision BorrowedControls WitnessMajority Majority OrbitalSimulation PhaseEstimation PhaseEstimationFilter Qubitization RydbergBlockade " +
+  "LowChuangCutoff LowChuangSimulation LowChuangSparseOracle SparseSimulationPrecision BlockSimulationPrecision AncillaFreeNot AncillaFreePhase BorrowedRipple DirtyIncrement HalvedIncrement SingletonPhaseGradient BorrowedControls WitnessMajority Majority OrbitalSimulation PhaseEstimation PhaseEstimationFilter Qubitization RydbergBlockade " +
   "SlaterDeterminants UniformCircuits VQE VQEMeasurement Wiring"
 ).split(" "));
 const mixedResults = new Map(Object.entries({
@@ -319,11 +319,12 @@ function showPanel(resetScroll=true) {
       a.href=p.url; a.append(html("strong","",p.authors || "Cited in Lean"),html("span","",p.title),icon("ext")); return a;
     });
     panel.append(sub(sources.length===1?"Original reference":"Original references",sources));
+    const related = active.pending ? active.related : review.related;
+    if (related?.length) panel.append(sub("Related checked results",related.map(id=>theoremRow(byName.get(id),true))));
     if(active.pending) {
       if(active.upstream?.length) panel.append(sub("Existing Lean work",active.upstream.map(ref=>{
         const link=html("a","original-paper",ref.label); link.href=ref.url; link.append(icon("ext")); return link;
       })));
-      if(active.related.length) panel.append(sub("Related checked results",active.related.map(id=>theoremRow(byName.get(id),true))));
     } else {
       for(const [name,list] of [["Prerequisites",active.before],["Used by",active.after]]) {
         panel.append(sub(name+" · "+list.length,list.length?list.map(n=>theoremRow(n,true)):

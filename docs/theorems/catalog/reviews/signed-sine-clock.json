@@ -108,5 +108,170 @@
     ],
     "relation": "supporting",
     "scope": "The direct sum of unitary eigenphase-clock blocks is unitary on the combined register."
+  },
+  {
+    "module": "FQChemQatlib.Properties.SignedSineAmplification",
+    "names": [
+      "solverUnitary",
+      "blockSlice",
+      "tensorSlice",
+      "solverOutput",
+      "solverMass"
+    ],
+    "papers": [
+      "https://doi.org/10.1103/PhysRevLett.103.150502"
+    ],
+    "relation": "supporting",
+    "scope": "The unitary composes the preparation, forward clock, signed reciprocal rotation and inverse clock. Its selected amplitudes and Born mass agree with the analyzed solution branch."
+  },
+  {
+    "module": "FQChemQatlib.Properties.SignedSineAmplification",
+    "names": [
+      "amplifiedSignedSolution"
+    ],
+    "papers": [
+      "https://doi.org/10.1103/PhysRevLett.103.150502",
+      "https://doi.org/10.1090/conm/305/05215"
+    ],
+    "relation": "derived",
+    "scope": "Unknown-success amplitude amplification of this signed solver succeeds with probability at least 1/8 averaged over the chosen depths. Its conditional solution is preserved up to global phase, and the solver and inverse calls are counted."
+  },
+  {
+    "module": "FQChemQatlib.Properties.SignedSineQueries",
+    "names": [
+      "clockUndo",
+      "powers",
+      "unitaryOracle",
+      "forwardQueries",
+      "inverseQueries"
+    ],
+    "papers": [
+      "https://doi.org/10.1103/PhysRevLett.103.150502"
+    ],
+    "relation": "supporting",
+    "scope": "The fixed forward and adjoint clock words use controlled evolutions and return their work bit on arbitrary input clock states."
+  },
+  {
+    "module": "FQChemQatlib.Properties.SignedSineQueries",
+    "names": [
+      "signedOracleResources"
+    ],
+    "papers": [
+      "https://doi.org/10.1103/PhysRevLett.103.150502",
+      "https://doi.org/10.1090/conm/305/05215"
+    ],
+    "relation": "derived",
+    "scope": "For 4d ≤ |λ| ≤ 1/4, the signed solver attains vector error ε and constant success with at most 2/d input-preparation or inverse calls and 640/(d²ε) exact controlled evolutions. Elementary sparse runtime requires additional synthesis."
+  },
+  {
+    "module": "FQChemQatlib.Properties.SignedSineHermitian",
+    "names": [
+      "clockAction",
+      "mixClock",
+      "mixPowers",
+      "oracleConjugation",
+      "physicalForward",
+      "physicalInverse"
+    ],
+    "papers": [
+      "https://doi.org/10.1103/PhysRevLett.103.150502"
+    ],
+    "relation": "supporting",
+    "scope": "The uniform forward and adjoint words query the evolution in the original Hermitian matrix basis. The eigenvector transformation is used to prove their action on every clock state."
+  },
+  {
+    "module": "FQChemQatlib.Properties.SignedSineHermitian",
+    "names": [
+      "inverseInBasis",
+      "cleanInverse",
+      "physicalSolution"
+    ],
+    "papers": [
+      "https://doi.org/10.1103/PhysRevLett.103.150502"
+    ],
+    "relation": "derived",
+    "scope": "For an invertible finite Hermitian matrix of either spectral sign in the stated bands, the clean-clock target is the ordinary inverse applied to the input in its original basis. At clock length M the normalized successful state has vector error at most 160/(dM) and unamplified probability at least 4d²."
+  },
+  {
+    "module": "Qatlib.Concepts.CoherentSim.CoherentOAA.AdjointWord",
+    "names": [
+      "adjointQueryCount_adjointCircuit"
+    ],
+    "papers": [
+      "https://doi.org/10.1103/PhysRevLett.103.150502"
+    ],
+    "relation": "supporting",
+    "scope": "Taking an adjoint preserves the evolution query count."
+  },
+  {
+    "module": "Qatlib.Concepts.HhlAlgorithms.Postselection.RationalHHLNoiseConsumers",
+    "names": [
+      "amplified_postMeasure_phase",
+      "mixed_window_avg"
+    ],
+    "papers": [
+      "https://doi.org/10.1103/PhysRevLett.103.150502",
+      "https://doi.org/10.1090/conm/305/05215"
+    ],
+    "relation": "supporting",
+    "scope": "A randomized window of Grover depths bounds the mean success probability and preserves the selected output up to global phase."
+  },
+  {
+    "module": "Qatlib.Concepts.HhlAlgorithms.SinEnvProgram.NearGridHHLOutput",
+    "names": [
+      "continuous_hhl_oracle_unitary"
+    ],
+    "papers": [
+      "https://doi.org/10.1103/PhysRevLett.103.150502"
+    ],
+    "relation": "supporting",
+    "scope": "Conjugating the diagonal eigenphase evolution gives a unitary input oracle."
+  },
+  {
+    "module": "Qatlib.Concepts.HhlAlgorithms.SinEnvProgram.SinEnvelopeHHLConsumers",
+    "names": [
+      "sin_envelope_forward_word_counts",
+      "sin_envelope_phase_circuit_unitary"
+    ],
+    "papers": [
+      "https://doi.org/10.1103/PhysRevLett.103.150502"
+    ],
+    "relation": "supporting",
+    "scope": "The sine-clock word is unitary and makes exactly M−1 controlled-evolution calls."
+  },
+  {
+    "module": "Qatlib.Concepts.LchsSimulation.StaticLchs.PreparedAmplitudeAmplification",
+    "names": [
+      "prepared_aa_separate_access_word"
+    ],
+    "papers": [
+      "https://doi.org/10.1090/conm/305/05215"
+    ],
+    "relation": "supporting",
+    "scope": "The amplification word separately counts its preparation and adjoint uses."
+  },
+  {
+    "module": "Qatlib.Concepts.NativeNumerics.LayeredMean.CountedHHLProgram",
+    "names": [
+      "run_eq_evaluate",
+      "wellFormedAdjointCircuit_stepToAdjoint_reverse"
+    ],
+    "papers": [
+      "https://doi.org/10.1103/PhysRevLett.103.150502"
+    ],
+    "relation": "supporting",
+    "scope": "Operational execution and matrix evaluation agree for the forward word and its unitary adjoint."
+  },
+  {
+    "module": "Qatlib.Concepts.SpectralReadout.OffGridPhaseReadout",
+    "names": [
+      "phaseFlagEmbed_phaseGate",
+      "phaseThresholdLoop_action"
+    ],
+    "papers": [
+      "https://doi.org/10.1103/PhysRevLett.103.150502"
+    ],
+    "relation": "supporting",
+    "scope": "The clock threshold loop applies each bin’s controlled power and restores the work bit."
   }
 ]

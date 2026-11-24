@@ -1,4 +1,8 @@
 {
+  "https://arxiv.org/abs/1706.07884": {
+    "authors": "Gidney (2017)",
+    "title": "Factoring with n+2 clean qubits and n−1 dirty qubits"
+  },
   "https://arxiv.org/abs/1805.10549": {
     "authors": "Subaşı, Somma & Orsucci (2019)",
     "title": "Quantum algorithms for systems of linear equations inspired by adiabatic quantum computing"
@@ -46,6 +50,10 @@
   "https://arxiv.org/abs/quant-ph/0407010": {
     "authors": "Möttönen et al. (2005)",
     "title": "Transformation of quantum states using uniformly controlled rotations"
+  },
+  "https://arxiv.org/abs/quant-ph/0410184": {
+    "authors": "Cuccaro et al. (2004)",
+    "title": "A new quantum ripple-carry addition circuit"
   },
   "https://arxiv.org/abs/quant-ph/9701001": {
     "authors": "Bennett et al. (1997)",
@@ -185,6 +193,10 @@
     "authors": "Zwanzig (1954)",
     "title": "High-Temperature Equation of State by a Perturbation Method. I. Nonpolar Gases"
   },
+  "https://doi.org/10.1063/1.1747632": {
+    "title": "On the Non-Orthogonality Problem Connected with the Use of Atomic Wave Functions in the Theory of Molecules and Crystals",
+    "authors": "Per-Olov Löwdin (1950)"
+  },
   "https://doi.org/10.1063/1.1749604": {
     "authors": "Eyring (1935)",
     "title": "The Activated Complex in Chemical Reactions"
@@ -269,6 +281,14 @@
     "authors": "McMillan (1965)",
     "title": "Ground State of Liquid He⁴"
   },
+  "https://doi.org/10.1103/PhysRev.34.1293": {
+    "authors": "Slater (1929)",
+    "title": "The Theory of Complex Spectra"
+  },
+  "https://doi.org/10.1103/PhysRev.36.1121": {
+    "authors": "Condon (1930)",
+    "title": "The Theory of Complex Spectra"
+  },
   "https://doi.org/10.1103/PhysRev.43.830": {
     "authors": "MacDonald (1933)",
     "title": "Successive Approximations by the Rayleigh-Ritz Variation Method"
@@ -276,6 +296,10 @@
   "https://doi.org/10.1103/PhysRev.56.340": {
     "authors": "Feynman (1939)",
     "title": "Forces in Molecules"
+  },
+  "https://doi.org/10.1103/PhysRev.80.268": {
+    "authors": "Wick (1950)",
+    "title": "The Evaluation of the Collision Matrix"
   },
   "https://doi.org/10.1103/PhysRevA.52.3457": {
     "authors": "Barenco et al. (1995)",
@@ -407,6 +431,10 @@
     "authors": "Kato (1950)",
     "title": "On the Adiabatic Theorem of Quantum Mechanics"
   },
+  "https://doi.org/10.1145/3656436": {
+    "authors": "Huang & Palsberg (2024)",
+    "title": "Compiling Conditional Quantum Gates without Using Helper Qubits"
+  },
   "https://doi.org/10.1515/crll.1909.135.1": {
     "authors": "Ritz (1909)",
     "title": "Über eine neue Methode zur Lösung gewisser Variationsprobleme der mathematischen Physik"
@@ -438,9 +466,5 @@
   "https://www.unige.ch/~gander/HistoricalReferences/GALERKIN.pdf": {
     "authors": "Galerkin (1915)",
     "title": "Rods and plates: series expansions for problems of elastic equilibrium"
-  },
-  "https://doi.org/10.1063/1.1747632": {
-    "title": "On the Non-Orthogonality Problem Connected with the Use of Atomic Wave Functions in the Theory of Molecules and Crystals",
-    "authors": "Per-Olov Löwdin (1950)"
   }
 }

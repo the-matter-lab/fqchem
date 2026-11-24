@@ -1,0 +1,299 @@
+[
+  {
+    "module": "FQChem.Complexity.SlaterContraction",
+    "names": [
+      "normalized",
+      "braCoefficient",
+      "physicalBra"
+    ],
+    "papers": [
+      "https://doi.org/10.1103/PhysRev.34.1293",
+      "https://doi.org/10.1103/PRXQuantum.3.020322"
+    ],
+    "relation": "supporting",
+    "scope": "For a finite mode space, conjugating the occupation-basis amplitudes of an exterior determinant gives its physical bra on every state. Orthonormal occupied orbitals give norm one, as in O’Gorman et al., Eq. (14)."
+  },
+  {
+    "module": "FQChem.Complexity.SlaterContraction",
+    "names": [
+      "overlap"
+    ],
+    "papers": [
+      "https://doi.org/10.1103/PhysRev.34.1293"
+    ],
+    "relation": "derived",
+    "scope": "The overlap with the exterior power of an identity plus m coordinate moves equals an m-by-m determinant of shifted one-particle density entries. The finite-rank identity supplies the one- and two-body contractions."
+  },
+  {
+    "module": "FQChem.Complexity.SlaterContraction",
+    "names": [
+      "oneBody",
+      "twoBody"
+    ],
+    "papers": [
+      "https://doi.org/10.1103/PhysRev.80.268",
+      "https://doi.org/10.1103/PhysRev.34.1293"
+    ],
+    "relation": "specialization",
+    "scope": "For an orthonormal complex occupied frame, the one-body expectation is the density entry and the two-body expectation is its antisymmetrized two-by-two minor. These are number-conserving two- and four-operator cases of Wick contraction on a single determinant."
+  },
+  {
+    "module": "FQChem.Complexity.SlaterContraction",
+    "names": [
+      "rankOneBasis",
+      "ket_update_pair",
+      "absent_move",
+      "twoSymm"
+    ],
+    "papers": [
+      "https://doi.org/10.1103/PhysRev.36.1121"
+    ],
+    "relation": "supporting",
+    "scope": "A coordinate move has support on its source mode. Multilinearity expands a pair of occupied-slot replacements, and permuting the two moves preserves their joint two-body operator."
+  },
+  {
+    "module": "FQChem.Complexity.SlaterContraction",
+    "names": [
+      "oneAction",
+      "twoAction",
+      "oneAbsent",
+      "twoAbsent",
+      "twoRepeated"
+    ],
+    "papers": [
+      "https://doi.org/10.1103/PhysRev.36.1121"
+    ],
+    "relation": "derived",
+    "scope": "Condon, §4. Acting on an ordered occupation determinant replaces one occupied source or two distinct occupied sources. Attempting to annihilate an absent source or a repeated source gives zero. Exterior antisymmetry supplies the signs upon reordering."
+  },
+  {
+    "module": "FQChem.Complexity.SlaterContraction",
+    "names": [
+      "energy"
+    ],
+    "papers": [
+      "https://doi.org/10.1103/PhysRev.34.1293",
+      "https://doi.org/10.1103/PRXQuantum.3.020322"
+    ],
+    "relation": "derived",
+    "scope": "Slater, Part 2, and O’Gorman et al., Eqs. (3)–(5) and (14). For arbitrary finite complex one- and two-body coefficients, a normalized determinant has energy given by contracting its one-particle density and its direct-minus-exchange minor. The two-body coefficient includes the Hamiltonian’s double-counting factor."
+  },
+  {
+    "module": "FQChem.Complexity.SlaterCertificate",
+    "names": [
+      "gram_iff",
+      "sumBound",
+      "vectorBound",
+      "matrixNorm",
+      "entryNorm",
+      "entry_of_unit"
+    ],
+    "papers": [
+      "https://doi.org/10.1103/PRXQuantum.3.020322"
+    ],
+    "relation": "supporting",
+    "scope": "Finite-dimensional estimates relate the entrywise orbital and Gram checks to the Hilbert-space norm and operator norm. The orbital-frame columns satisfy the orthonormality condition of Eq. (14) exactly when their Gram matrix is the identity."
+  },
+  {
+    "module": "FQChem.Complexity.SlaterCertificate",
+    "names": [
+      "productError",
+      "score_error",
+      "constant_cast"
+    ],
+    "papers": [
+      "https://doi.org/10.1103/PRXQuantum.3.020322"
+    ],
+    "relation": "derived",
+    "scope": "For two frames with entry moduli bounded by two and one- and two-body integral moduli bounded by M, an entrywise perturbation ε changes the complex score by at most (4d²Mk + 64d⁴Mk²)ε. Here d counts modes and k counts occupied orbitals."
+  },
+  {
+    "module": "FQChem.Complexity.SlaterCertificate",
+    "names": [
+      "corrected"
+    ],
+    "papers": [
+      "https://doi.org/10.1063/1.1747632",
+      "https://doi.org/10.1103/PRXQuantum.3.020322"
+    ],
+    "relation": "derived",
+    "scope": "Löwdin symmetric orthonormalization corrects an approximately orthonormal complex d-by-k orbital matrix to an exact occupied frame. If every input entry has modulus at most two and each Gram residual is at most z with k²z ≤ 1/2, the change per entry is at most 4k³z."
+  },
+  {
+    "module": "FQChem.Complexity.SlaterCertificate",
+    "names": [
+      "floor_bound",
+      "floor_error",
+      "finiteWitness",
+      "digits_norm",
+      "gram_error"
+    ],
+    "papers": [
+      "https://doi.org/10.1103/PRXQuantum.3.020322"
+    ],
+    "relation": "derived",
+    "scope": "For the certificate in §IV A, rounding each real and imaginary component on the 1/D grid takes two signed integers per orbital coefficient. It introduces at most 2/D entrywise error and at most 8d/D error per Gram entry."
+  },
+  {
+    "module": "FQChem.Complexity.SlaterCertificate",
+    "names": [
+      "completeness",
+      "soundness"
+    ],
+    "papers": [
+      "https://doi.org/10.1103/PRXQuantum.3.020322"
+    ],
+    "relation": "derived",
+    "scope": "For bounded integrals and a positive inverse promise gap, rounding a low-energy determinant supplies a passing finite grid certificate. Every accepted certificate yields an exactly normalized Slater determinant below the NO threshold after Gram correction. This proves the numerical witness implications used in the membership part of Theorem 3."
+  },
+  {
+    "module": "FQChem.Complexity.SlaterIntegerVerifier",
+    "names": [
+      "decode_raw",
+      "proj_spec",
+      "residual_spec",
+      "gram_test"
+    ],
+    "papers": [
+      "https://doi.org/10.1103/PRXQuantum.3.020322"
+    ],
+    "relation": "supporting",
+    "scope": "Exact integer scaling recovers each decoded orbital, its one-particle density, and its Gram residual. Comparing a Gaussian integer’s squared norm with (8dD)² implements the Gram test in §IV A’s finite witness model."
+  },
+  {
+    "module": "FQChem.Complexity.SlaterIntegerVerifier",
+    "names": [
+      "score_spec",
+      "energy_test",
+      "accept_iff"
+    ],
+    "papers": [
+      "https://doi.org/10.1103/PRXQuantum.3.020322"
+    ],
+    "relation": "supporting",
+    "scope": "With integral numerators over a common positive denominator C and orbital coordinates on a 1/D grid, the exact integer score has denominator CD⁴. The Boolean acceptance test agrees with the real Gram, component, and energy conditions."
+  },
+  {
+    "module": "FQChem.Complexity.SlaterIntegerVerifier",
+    "names": [
+      "pack",
+      "witnessWidth"
+    ],
+    "papers": [
+      "https://doi.org/10.1103/PRXQuantum.3.020322"
+    ],
+    "relation": "derived",
+    "scope": "Two offset-encoded bit words represent each occupied orbital coefficient. If d, k, the magnitude bound M, and the inverse gap t are each at most 2ᵇ, every word has at most 13 + 12b bits. This quantifies §IV A’s polynomial-length Slater witness."
+  },
+  {
+    "module": "FQChem.Complexity.SlaterIntegerVerifier",
+    "names": [
+      "verifies"
+    ],
+    "papers": [
+      "https://doi.org/10.1103/PRXQuantum.3.020322"
+    ],
+    "relation": "derived",
+    "scope": "The finite-bit Boolean verifier accepts some witness in every YES instance and rejects every witness in every NO instance for general complex one- and two-body integrals with Gaussian integer numerators over one positive denominator. The promise concerns the exact expectation on orthonormal exterior determinants."
+  },
+  {
+    "module": "FQChem.Complexity.SlaterIntegralPrecision",
+    "names": [
+      "sumBound",
+      "integralError"
+    ],
+    "papers": [
+      "https://doi.org/10.1103/PRXQuantum.3.020322"
+    ],
+    "relation": "derived",
+    "scope": "An entrywise coefficient error of ε in the one- and two-body terms changes any normalized determinant’s expectation by at most (d²k + 2d⁴k²)ε. This transfers the precision of the coefficients in Eqs. (6)–(8) to the energy decision."
+  },
+  {
+    "module": "FQChem.Complexity.SlaterIntegralPrecision",
+    "names": [
+      "verifiesApproximations"
+    ],
+    "papers": [
+      "https://doi.org/10.1103/PRXQuantum.3.020322"
+    ],
+    "relation": "derived",
+    "scope": "For physical coefficients approximated by the verifier’s rational input within a quarter of the promised energy gap after error propagation, the verifier preserves both decisions. It doubles the inverse-gap parameter and shifts the rational acceptance threshold. The input supplies certified coefficient approximations, as motivated by §II A’s efficient-integral assumption."
+  },
+  {
+    "module": "FQChem.Complexity.SlaterVerifierWork",
+    "names": [
+      "mag_add",
+      "mag_sub",
+      "mag_mul",
+      "smallValue",
+      "smallMono",
+      "binaryCap",
+      "operandWidth"
+    ],
+    "papers": [
+      "https://doi.org/10.1103/PRXQuantum.3.020322"
+    ],
+    "relation": "supporting",
+    "scope": "A Gaussian integer’s component magnitudes obey sum and product bounds. Each operand throughout an arithmetic expression with s input and operation nodes has at most bs magnitude bits when its inputs satisfy the b-bit bound."
+  },
+  {
+    "module": "FQChem.Complexity.SlaterVerifierWork",
+    "names": [
+      "total_eval",
+      "total_work",
+      "density_eval",
+      "gram_eval",
+      "score_eval",
+      "density_work",
+      "gram_work",
+      "score_work"
+    ],
+    "papers": [
+      "https://doi.org/10.1103/PRXQuantum.3.020322"
+    ],
+    "relation": "supporting",
+    "scope": "Recursive finite sums compile the density, Gram residual, and full direct-minus-exchange score into division-free Gaussian integer arithmetic. Expanding all sums gives polynomial operation bounds in d and k, including recomputation of density entries."
+  },
+  {
+    "module": "FQChem.Complexity.SlaterVerifierWork",
+    "names": [
+      "scalar_square",
+      "digit_check",
+      "gram_check",
+      "energy_check",
+      "run_eq"
+    ],
+    "papers": [
+      "https://doi.org/10.1103/PRXQuantum.3.020322"
+    ],
+    "relation": "supporting",
+    "scope": "The compiled integer comparisons implement the component, Gram, and threshold tests of the executable verifier. Cross-multiplication uses the positive grid and common denominators. Boolean conjunction gives exactly the same answer."
+  },
+  {
+    "module": "FQChem.Complexity.SlaterVerifierWork",
+    "names": [
+      "verifierWork"
+    ],
+    "papers": [
+      "https://doi.org/10.1103/PRXQuantum.3.020322"
+    ],
+    "relation": "derived",
+    "scope": "The entire family of 2dk + k² + 1 comparisons uses a polynomial number of input reads, Gaussian integer arithmetic operations, and scalar comparisons. Both the bound and the expression evaluator are explicit. This count begins with the integer input words and precomputed grid and Lipschitz parameters."
+  },
+  {
+    "module": "FQChem.Complexity.SlaterVerifierWork",
+    "names": [
+      "sum_inputs",
+      "density_inputs",
+      "within",
+      "allInputs",
+      "cmpSmall",
+      "verifierWidth"
+    ],
+    "papers": [
+      "https://doi.org/10.1103/PRXQuantum.3.020322"
+    ],
+    "relation": "derived",
+    "scope": "For a b-bit bound on the encoded inputs and two precomputed integer parameters, every signed Gaussian-integer component in every comparison has polynomially many magnitude bits. This includes all intermediate products. The verified work model counts bounded-width arithmetic operations."
+  }
+]

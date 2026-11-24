@@ -523,5 +523,100 @@
     ],
     "relation": "derived",
     "scope": "On the actual nearest-neighbour ±1/0 open cubic spin-glass inputs of Eq. (10), there are at most 3N occupied bonds. The checked single-chain sign-free energy estimator has relative RMS error at most ε with at most 764414784 N¹³/ε² ideal edge proposals, for every β>0 and every 0<ε≤1. Zero-bond or β=0 instances have exact zero energy."
+  },
+  {
+    "module": "FQChem.StatePrep.ImaginaryTimeProjection.FerromagneticRandomBits",
+    "names": [
+      "cutoffLe",
+      "acceptedStrings",
+      "acceptanceError",
+      "wordAverage",
+      "choiceSum",
+      "integerWeightSpec",
+      "integerRatio",
+      "finiteAcceptance"
+    ],
+    "papers": [
+      "https://doi.org/10.1137/0222066",
+      "https://doi.org/10.1103/PhysRevLett.94.170201"
+    ],
+    "relation": "supporting",
+    "scope": "Integer division counts accepted bit strings for lazy Metropolis. For positive rational proposal and boost, integer weights with a common denominator give the physical acceptance probability to within one unit of the random-word precision."
+  },
+  {
+    "module": "FQChem.StatePrep.ImaginaryTimeProjection.FerromagneticRandomBits",
+    "names": [
+      "finiteStepError",
+      "pairReadout",
+      "pairProbability",
+      "kernelReadout",
+      "graphReadout"
+    ],
+    "papers": [
+      "https://doi.org/10.1137/0222066",
+      "https://doi.org/10.1103/PhysRevLett.94.170201"
+    ],
+    "relation": "derived",
+    "scope": "Two finite uniform words select the proposed bond and its acceptance. Every readout in [0,1] incurs at most (m+1)/2ᵇ one-step error for m bonds, including non-power-of-two bond counts."
+  },
+  {
+    "module": "FQChem.StatePrep.ImaginaryTimeProjection.FerromagneticRandomBits",
+    "names": [
+      "trajectoryError",
+      "rowL1",
+      "finiteTrajectory"
+    ],
+    "papers": [
+      "https://doi.org/10.1137/0222066",
+      "https://doi.org/10.1103/PhysRevLett.94.170201"
+    ],
+    "relation": "derived",
+    "scope": "Row-law errors control arbitrary bounded readouts of an entire correlated trajectory. For rational weights the two-word sampler gives an explicit bound linear in the trajectory length."
+  },
+  {
+    "module": "FQChem.StatePrep.ImaginaryTimeProjection.FerromagneticThermalBits",
+    "names": [
+      "weightRatio",
+      "boundedRatio",
+      "powerError",
+      "proposalAcceptance",
+      "scaleSpec",
+      "thermalRow",
+      "scaleBudget"
+    ],
+    "papers": [
+      "https://doi.org/10.1137/0222066",
+      "https://doi.org/10.1103/PhysRevLett.94.170201"
+    ],
+    "relation": "supporting",
+    "scope": "Perturbing the thermal proposal changes the Metropolis acceptance ratio by a controlled amount. A polynomial number of precision bits pays for the change over the full graph."
+  },
+  {
+    "module": "FQChem.StatePrep.ImaginaryTimeProjection.FerromagneticThermalBits",
+    "names": [
+      "trajectoryWithProposal",
+      "thermalTrajectory"
+    ],
+    "papers": [
+      "https://doi.org/10.1137/0222066",
+      "https://doi.org/10.1103/PhysRevLett.94.170201"
+    ],
+    "relation": "derived",
+    "scope": "For any positive temperature parameter β, use a rounded dyadic proposal and two words of (m+2)²+2+r bits per update. For a k-step trajectory and readout in [0,L] the expected readout changes by at most kL/2ʳ compared with the real-temperature chain. The dyadic numerator here is specified mathematically by a ceiling."
+  },
+  {
+    "module": "FQChem.StatePrep.ImaginaryTimeProjection.FerromagneticThermalParameter",
+    "names": [
+      "tailBound",
+      "tanhForm",
+      "thermalUpperSpec",
+      "computedThermalTrajectory"
+    ],
+    "papers": [
+      "https://doi.org/10.1137/0222066",
+      "https://doi.org/10.1103/PhysRevLett.94.170201"
+    ],
+    "relation": "derived",
+    "scope": "From an encoded positive rational inverse temperature, rational arithmetic computes an upper enclosure of tanh β and the boosted proposal. A k-step trajectory driven by two finite words per update differs from the ideal chain by at most kL/2ʳ for any path observable in [0,L]. The direct branch uses 12(s+2) Taylor terms for s-bit accuracy."
   }
 ]

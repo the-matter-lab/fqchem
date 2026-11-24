@@ -1,0 +1,28 @@
+[
+  {
+    "module": "FQChemQatlib.Dynamics.AncillaFreeNot",
+    "names": [
+      "hadamardColumn",
+      "readControls",
+      "conjugate"
+    ],
+    "papers": [
+      "https://arxiv.org/abs/1706.07884",
+      "https://doi.org/10.1145/3656436"
+    ],
+    "relation": "supporting",
+    "scope": "Columnwise Hadamard conjugation changes the phase on the all-ones control and target sector into a phase-free XOR of the target. Updating the target leaves its disjoint control predicate unchanged."
+  },
+  {
+    "module": "FQChemQatlib.Dynamics.AncillaFreeNot",
+    "names": [
+      "multiControlledNot"
+    ],
+    "papers": [
+      "https://arxiv.org/abs/1706.07884",
+      "https://doi.org/10.1145/3656436"
+    ],
+    "relation": "derived",
+    "scope": "An exact, clean- and dirty-ancilla-free k-controlled NOT on the given physical register costs at most 1442k+4323 arbitrary one-/two-qubit gates. The word uses a Hadamard on the target on each side of the already compiled phase of angle π. Equality of full matrices eliminates residual global and relative phases."
+  }
+]

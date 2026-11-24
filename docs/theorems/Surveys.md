@@ -1,6 +1,6 @@
 # Reviews behind the theorem catalog
 
-The open proof list covers electronic energies and density matrices, fermionic Monte Carlo, Hamiltonian simulation, molecular response, and the complexity results used to analyze these tasks. The paper index also credits earlier checked work on general quantum algorithms. Five widely cited reviews below supplied the initial reading list. Counts are OpenAlex cited-by counts retrieved on 24 November 2026, a measure of use within that index. The newer end-to-end survey adds resource assumptions and comparisons with classical baselines.
+The atlas covers electronic energies and density matrices, fermionic Monte Carlo, Hamiltonian simulation, molecular response, and the complexity results used to analyze these tasks. The paper index also credits earlier checked work on general quantum algorithms. Five widely cited reviews below supplied the initial reading list. Counts are OpenAlex cited-by counts retrieved on 24 November 2026, a measure of use within that index. The newer end-to-end survey adds resource assumptions and comparisons with classical baselines.
 
 | Review | Citations | Topics followed into the original literature |
 | --- | ---: | --- |

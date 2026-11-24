@@ -26,7 +26,9 @@ private theorem coordinate_iso (z : J) : IsIsometry (flagsZero (I:=I) z) := by
     exact h
   exact lift (lift (encodingFiber_isIsometry z))
 
-private theorem coordinate_acts (z : J) (M : Matrix (Signals J I) (Signals J I) ℂ) :
+/-- Hadamards on both flags turn average-frame compression and postselection
+into computational-coordinate initialization and readout. -/
+theorem coordinate_acts (z : J) (M : Matrix (Signals J I) (Signals J I) ℂ) :
     let R := hamiltonianFrame (encodingFiber (I:=I) z)
     let F := flagsZero (I:=I) z
     let U := flagsHadamardᴴ * M * flagsHadamard

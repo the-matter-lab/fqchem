@@ -1,0 +1,296 @@
+[
+  {
+    "module": "FQChemQatlib.Dynamics.SingletonPhaseGradient",
+    "names": [
+      "decrement_increment",
+      "value_lt",
+      "incrementValue",
+      "maximal"
+    ],
+    "papers": [
+      "https://arxiv.org/abs/1706.07884"
+    ],
+    "relation": "supporting",
+    "scope": "Little-endian increment wraps precisely at the all-ones word. Decrement undoes it for every bit width and every bit pattern."
+  },
+  {
+    "module": "FQChemQatlib.Dynamics.SingletonPhaseGradient",
+    "names": [
+      "phase_add",
+      "run_append",
+      "digitValue_full",
+      "runGradient"
+    ],
+    "papers": [
+      "https://arxiv.org/abs/1706.07884",
+      "https://doi.org/10.1145/3656436"
+    ],
+    "relation": "supporting",
+    "scope": "A list of phase gates addressed from least to most significant control contributes its binary numerical value times the angle step when the target is on. Composition adds the phases in execution order."
+  },
+  {
+    "module": "FQChemQatlib.Dynamics.SingletonPhaseGradient",
+    "names": [
+      "runWord",
+      "matrixWord"
+    ],
+    "papers": [
+      "https://arxiv.org/abs/1706.07884",
+      "https://doi.org/10.1145/3656436"
+    ],
+    "relation": "derived",
+    "scope": "Exact matrix of the phase-gradient and increment/decrement construction, on all basis columns. A separate target phase supplies the constant increment on ordinary inputs; wrapping the control value activates the desired angle. The modular permutations are still named instructions at this intermediate level."
+  },
+  {
+    "module": "FQChemQatlib.Dynamics.SingletonPhaseGradient",
+    "names": [
+      "gradientCost",
+      "wordCost"
+    ],
+    "papers": [
+      "https://arxiv.org/abs/1706.07884",
+      "https://doi.org/10.1145/3656436"
+    ],
+    "relation": "supporting",
+    "scope": "Each gradient costs one two-qubit phase per control. The full word has 2k+1 one-/two-qubit phases and one forward and one backward modular increment, whose physical cost is proved separately."
+  },
+  {
+    "module": "FQChemQatlib.Dynamics.BorrowedRipple",
+    "names": [
+      "prepare_action",
+      "finish_action",
+      "circuit"
+    ],
+    "papers": [
+      "https://arxiv.org/abs/quant-ph/0410184",
+      "https://doi.org/10.1103/PhysRevA.52.3457"
+    ],
+    "relation": "derived",
+    "scope": "Cuccaro majority/unmajority ripple carry lowered to actual Qatlib legal one-/two-qubit words, counting each Toffoli as 15. The k paired low bits plus outgoing carry cost at most 34k+1 primitive instructions."
+  },
+  {
+    "module": "FQChemQatlib.Dynamics.BorrowedRipple",
+    "names": [
+      "read_congr",
+      "member",
+      "innerWires"
+    ],
+    "papers": [
+      "https://arxiv.org/abs/quant-ph/0410184"
+    ],
+    "relation": "supporting",
+    "scope": "Disjoint wire addressing allows the unknown addend, carry, and outer wires of the recursive majority ladder to be tracked individually."
+  },
+  {
+    "module": "FQChemQatlib.Dynamics.BorrowedRipple",
+    "names": [
+      "restored",
+      "arithmetic"
+    ],
+    "papers": [
+      "https://arxiv.org/abs/quant-ph/0410184"
+    ],
+    "relation": "specialization",
+    "scope": "Cuccaro addition with an arbitrary borrowed carry and high target. The low target plus weighted carry-out equals the two input low words plus the initial carry. The high target is XORed with the carry-out and all spectator bits are restored."
+  },
+  {
+    "module": "FQChemQatlib.Dynamics.DirtyIncrement",
+    "names": [
+      "inverseWord",
+      "controlledNotWord",
+      "read_append",
+      "read_eq",
+      "read_complement",
+      "modulus"
+    ],
+    "papers": [
+      "https://arxiv.org/abs/quant-ph/0410184",
+      "https://arxiv.org/abs/1706.07884"
+    ],
+    "relation": "supporting",
+    "scope": "A legal phase-free Boolean gate word has an equal-length inverse. Local CNOTs implement a controlled bitwise complement, and little-endian concatenation and complementation have their ordinary modular arithmetic meanings."
+  },
+  {
+    "module": "FQChemQatlib.Dynamics.DirtyIncrement",
+    "names": [
+      "adds",
+      "complement_value",
+      "tickCircuit",
+      "projections",
+      "reflectedCarry"
+    ],
+    "papers": [
+      "https://arxiv.org/abs/quant-ph/0410184",
+      "https://arxiv.org/abs/1706.07884"
+    ],
+    "relation": "supporting",
+    "scope": "The compiled ripple adds the preserved garbage addend and incoming carry modulo 2ᵏ. Conjugation by a conditional bitwise complement changes the sign of an increment without changing its magnitude."
+  },
+  {
+    "module": "FQChemQatlib.Dynamics.DirtyIncrement",
+    "names": [
+      "manyDirty"
+    ],
+    "papers": [
+      "https://arxiv.org/abs/quant-ph/0410184",
+      "https://arxiv.org/abs/1706.07884"
+    ],
+    "relation": "derived",
+    "scope": "Controlled or unconditional addition of one on k target wires using k borrowed wires, restoring their arbitrary contents. In the proved variant the inverse ripple and forward ripple see opposite input carries when enabled, so the unknown addend cancels. Counting actual one-/two-qubit gates gives ≤70k+2."
+  },
+  {
+    "module": "FQChemQatlib.Dynamics.HalvedIncrement",
+    "names": [
+      "splitValid",
+      "target_snoc",
+      "manyOn",
+      "transferredControl"
+    ],
+    "papers": [
+      "https://arxiv.org/abs/1706.07884"
+    ],
+    "relation": "derived",
+    "scope": "Paired views of two equal-size disjoint registers yield a controlled increment. Toggling one borrowed selector twice transfers any predicate stable outside the target and selector to that increment, with full restoration."
+  },
+  {
+    "module": "FQChemQatlib.Dynamics.HalvedIncrement",
+    "names": [
+      "readRange",
+      "all_max",
+      "modular_read",
+      "join",
+      "relax",
+      "emptyInc",
+      "all_congr"
+    ],
+    "papers": [
+      "https://arxiv.org/abs/1706.07884"
+    ],
+    "relation": "supporting",
+    "scope": "A low register and a high register can be joined when the high increment fires on the original low carry. The proof includes the all-ones wrap and the empty-word case."
+  },
+  {
+    "module": "FQChemQatlib.Dynamics.HalvedIncrement",
+    "names": [
+      "evenHalves",
+      "evenWidth",
+      "oneDirty"
+    ],
+    "papers": [
+      "https://arxiv.org/abs/1706.07884",
+      "https://arxiv.org/abs/quant-ph/0410184",
+      "https://doi.org/10.1103/PhysRevA.52.3457"
+    ],
+    "relation": "derived",
+    "scope": "Gidney §2.10, implemented with a borrowed-carry ripple variant. Equal register halves exchange workspace and an odd width peels its high-order controlled flip. Any k distinct addressed wires can be incremented modulo 2ᵏ with one borrowed wire in ≤720(k+3) legal one-/two-qubit Clifford+T instructions."
+  },
+  {
+    "module": "FQChemQatlib.Dynamics.AncillaFreePhase",
+    "names": [
+      "chain",
+      "monoIdentity",
+      "single",
+      "compose",
+      "followed",
+      "finiteCertificate",
+      "reverseProduct",
+      "classicalWord"
+    ],
+    "papers": [
+      "https://arxiv.org/abs/1706.07884"
+    ],
+    "relation": "supporting",
+    "scope": "Products of computational-basis permutations with column phases compose on arbitrary states. A verified reversible finite circuit supplies its actual list of legal addressed primitive matrices in the product order."
+  },
+  {
+    "module": "FQChemQatlib.Dynamics.AncillaFreePhase",
+    "names": [
+      "grad",
+      "multiControlledPhase"
+    ],
+    "papers": [
+      "https://arxiv.org/abs/1706.07884",
+      "https://doi.org/10.1145/3656436"
+    ],
+    "relation": "derived",
+    "scope": "Gidney Fig. 21 and the phase-gradient method also studied by Huang–Palsberg. For k controls and an arbitrary angle, an exact phase on the marked basis sector needs ≤1442k+4321 one-/two-qubit gates and zero extra qubits. The proved increment uses the target as dirty workspace; arbitrary exact controlled phase rotations are allowed."
+  },
+  {
+    "module": "FQChemQatlib.Dynamics.LowChuangSingleton",
+    "names": [
+      "onlyGate",
+      "merge",
+      "relax",
+      "classicalEmits",
+      "swapWord",
+      "diagonalFlags",
+      "phaseUnit",
+      "flagsPhase"
+    ],
+    "papers": [
+      "https://arxiv.org/abs/1706.07884",
+      "https://doi.org/10.22331/q-2019-07-12-163"
+    ],
+    "relation": "supporting",
+    "scope": "Physical gate words compose and admit wire reindexing. Three ordinary CNOTs give a SWAP and the appropriate diagonal on the two signal flags is unitary for any real angle."
+  },
+  {
+    "module": "FQChemQatlib.Dynamics.LowChuangSingleton",
+    "names": [
+      "routedPhase",
+      "physicalPhase",
+      "flagWires",
+      "phasePi",
+      "coordinateMark"
+    ],
+    "papers": [
+      "https://arxiv.org/abs/1706.07884",
+      "https://doi.org/10.22331/q-2019-07-12-163"
+    ],
+    "relation": "derived",
+    "scope": "A phase addressed to an arbitrary control and the outer flag is routed with at most seven gates in the existing physical vocabulary. Applied to the entire encoding register and both flags, the circuit implements the cubic amplification coordinate reflection for every system size, including zero system wires."
+  },
+  {
+    "module": "FQChemQatlib.Dynamics.LowChuangAllDimensions",
+    "names": [
+      "allFrameGates",
+      "allQubitRegisters",
+      "allFiniteRegisters"
+    ],
+    "papers": [
+      "https://doi.org/10.22331/q-2019-07-12-163",
+      "https://arxiv.org/abs/1706.07884"
+    ],
+    "relation": "derived",
+    "scope": "Source Theorem 1 compilation after replacing the cubic reflection by the ancilla-free synthesis. There is no lower-system-dimension restriction. Binary padding preserves the block and the evolution; each fixed signal-processing instruction contributes at most 11000(a+4) one-/two-qubit gates for a encoding qubits."
+  },
+  {
+    "module": "FQChemQatlib.Dynamics.LowChuangAllDimensions",
+    "names": [
+      "allFiniteCoordinateSimulation"
+    ],
+    "papers": [
+      "https://doi.org/10.22331/q-2019-07-12-163"
+    ],
+    "relation": "paper-result",
+    "scope": "Theorem 1 standard-form simulation for arbitrary finite dimensions, including a one-dimensional system. With a=⌈log₂ d⌉, r=⌈log₂ N⌉, and the least positive Q of Eq. (1), the same oracle-independent word uses a+r+2 wires, 54(64Q+1) controlled preparation/adjoint calls, 27(64Q+1) controlled block/adjoint calls, and ≤11000(a+4)[27(64Q+8)−2]+2 elementary gates. Its compressed coordinate block has error ≤ε²/2 and success ≥1−ε² for 0<ε<1. The linked parity lower bound shows the worst-case query count is optimal up to a constant factor.",
+    "aliases": {
+      "paper/low-chuang-qubitization": "FQChemQatlib.Dynamics.LowChuang.Singleton.allFiniteCoordinateSimulation"
+    },
+    "related": [
+      "FQChem.Complexity.BlockSimulationPrecision.worstCaseBlockCutoff",
+      "FQChemQatlib.Dynamics.LowChuang.finiteCoordinateSimulation"
+    ]
+  },
+  {
+    "module": "Qatlib.Concepts.GateVocabulary.FiniteGateDescription",
+    "names": [
+      "finite_gate_word_paid_adjoint_semantics"
+    ],
+    "papers": [
+      "https://arxiv.org/abs/1706.07884"
+    ],
+    "relation": "supporting",
+    "scope": "Reversing and taking the adjoints of the addressed gates uncomputes the borrowed-register arithmetic. The forward and inverse words have the stated combined gate count."
+  }
+]

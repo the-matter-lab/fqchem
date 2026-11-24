@@ -12,6 +12,8 @@
     "related": [
       "FQChem.StatePrep.ImaginaryTimeProjection.SpinGlassSAT.Lattice.signedEnergyDecidesThreeSAT",
       "FQChem.StatePrep.ImaginaryTimeProjection.FerromagneticSubgraphs.cubicPolynomialComparison",
+      "FQChem.StatePrep.ImaginaryTimeProjection.FerromagneticSubgraphs.RandomBits.computedThermalTrajectory",
+      "FQChem.StatePrep.ImaginaryTimeProjection.FerromagneticSubgraphs.RandomBits.thermalTrajectory",
       "FQChem.StatePrep.ImaginaryTimeProjection.FerromagneticSubgraphs.allTemperatureEnergy",
       "FQChem.StatePrep.ImaginaryTimeProjection.FerromagneticSubgraphs.energySamplingRMS",
       "FQChem.StatePrep.ImaginaryTimeProjection.SpinGlassSAT.Lattice.decisionInstanceFrustrated",
@@ -22,7 +24,7 @@
       "FQChem.StatePrep.ImaginaryTimeProjection.IsingSign.bosonicDecisionEstimate",
       "FQChem.StatePrep.ImaginaryTimeProjection.SignProblem.productSampleCost"
     ],
-    "remaining": "The empty-start sign-free chain has a proved polynomial mixing time and all-temperature relative RMS error. A machine-level result still needs a bounded-bit implementation of its acceptance probabilities and composition of the randomized decision procedure with the encoded 3-SAT reduction.",
+    "remaining": "For positive rational inverse temperature the library now computes the thermal proposal and bounds the finite-bit trajectory error for all bounded observables. The machine-level claim still needs the finite-precision energy readout and total bit-operation count, and a uniform composition of the signed decision procedure with encoded 3-SAT.",
     "upstream": [
       {
         "label": "Cook–Levin in Lean · NP-completeness of encoded 3-SAT",
@@ -60,13 +62,16 @@
     "scope": "For the same fixed-basis electronic Hamiltonians and electron-number sector, decide whether some single Slater determinant has expected energy ≤ a or every such determinant has energy ≥ b, at inverse-polynomial promise gap. This problem is NP-complete.",
     "related": [
       "FQChem.Complexity.SlaterEnergyThreeSAT.formulaEnergyGap",
+      "FQChem.Complexity.SlaterIntegralPrecision.verifiesApproximations",
+      "FQChem.Complexity.SlaterVerifierWork.verifierWork",
+      "FQChem.Complexity.SlaterVerifierWork.verifierWidth",
       "FQChem.Complexity.FixedBasisArithmetic.polynomialBudget",
       "FQChem.Complexity.FixedBasisIntegrals.evaluate_correct",
       "FQChem.Complexity.SlaterEnergyHamiltonian.physicalReduction",
       "FQChem.Complexity.SlaterEnergyReduction.coulombDecisionGap",
       "FQChem.Complexity.SlaterEnergy.robustSlaterReduction"
     ],
-    "remaining": "The checked 3-SAT reduction constructs physical orbitals and separates yes and no energies. Polynomial-size Boolean circuits compute their two-electron integrals exactly. Full NP-completeness still requires a polynomial-time machine reduction on encoded inputs and a finite-precision certificate verifier for arbitrary allowed Slater instances.",
+    "remaining": "The physical 3-SAT energy gap and the finite-precision determinant certificate are checked. The verifier has polynomial witness size, integer operation count and intermediate bit width. Full NP-completeness still requires uniformly encoding and costing the reduction on bit strings, decoding the promised integral description, and compiling the verifier arithmetic and comparisons into the same machine model.",
     "upstream": [
       {
         "label": "Cook–Levin in Lean · NP-completeness of encoded 3-SAT",
@@ -137,6 +142,9 @@
     "locator": "§II and supplementary Appendix A.1–A.2 · Theorem 1(3), Eq. (A6)",
     "scope": "Let A be an N-by-N s-sparse, efficiently row-computable Hermitian matrix with ‖A‖ ≤ 1 and ‖A⁻¹‖ ≤ κ, and let a unitary of cost Tᵦ prepare normalized |b⟩. With constant success HHL prepares a state within vector-norm error ε of A⁻¹|b⟩/‖A⁻¹|b⟩‖ in time Õ(κTᵦ + κ²s² log(N)/ε), suppressing the slowly growing simulation factors as in the paper. The output is a quantum state.",
     "related": [
+      "FQChemQatlib.Properties.SignedSineClock.signedOracleResources",
+      "FQChemQatlib.Properties.SignedSineClock.physicalSolution",
+      "FQChemQatlib.Properties.SignedSineClock.amplifiedSignedSolution",
       "FQChemQatlib.Properties.SignedSineClock.signedSolution",
       "FQChemQatlib.Properties.SignedSineClock.normalizedBranch",
       "FQChem.Algorithms.hhlSpectralInversion",
@@ -151,60 +159,6 @@
         "url": "https://github.com/quantum-atlas-ai/qatlib/blob/f76f71a7c5cd19a31c251d0feeab09c75a758d69/Qatlib/Papers/LinearSystems09/Runtime.lean#L63"
       }
     ],
-    "remaining": "After uncomputation, the signed sine-clock branch approximates the normalized inverse-state target with inverse-linear precision scaling and a single-run success bound. The remaining runtime proof must compile and amplify that branch with state-preparation and sparse simulation costs at the paper’s total complexity."
-  },
-  {
-    "id": "low-chuang-qubitization",
-    "title": "Optimal Hamiltonian simulation by qubitization",
-    "chapter": "Dynamics",
-    "status": "published",
-    "papers": [
-      "https://doi.org/10.22331/q-2019-07-12-163"
-    ],
-    "locator": "Theorem 1, Eq. (1) · §6 and p. 2, note 3",
-    "scope": "Let G prepare |g⟩ on a d-dimensional ancilla and let the |g⟩ block of unitary U be Hermitian H on dimension N. For 0 < ε < 1, evolution for time t has spectral-norm error ≤ ε and failure O(ε) with Θ(Q) queries to controlled G, U and their inverses, O(Q log d) extra two-qubit gates and at most ⌈log₂ N⌉+⌈log₂ d⌉+2 qubits. Q is the least positive q with 4(|t|/2)ᑫ/q! ≤ ε. This trade-off is optimal up to constants in the oracle model.",
-    "related": [
-      "FQChemQatlib.Dynamics.LowChuang.finiteCoordinateSimulation",
-      "FQChemQatlib.Dynamics.LowChuang.Padding.finiteSimulation",
-      "FQChemQatlib.Dynamics.LowChuang.Physical.qubitRegisterSimulation",
-      "FQChemQatlib.Dynamics.LowChuang.optimalCutoffEvolution",
-      "FQChem.Complexity.BlockSimulationPrecision.worstCaseBlockCutoff",
-      "FQChem.Dynamics.DigitalAlgorithms.Qubitization.Encoding.chebyshev_block",
-      "FQChem.Dynamics.DigitalAlgorithms.Qubitization.Encoding.quadratic_simulation_bound",
-      "FQChemQatlib.Dynamics.SparseHamiltonianSimulation.segmentedSparseEvolution"
-    ],
-    "upstream": [
-      {
-        "label": "Qatlib · operator approximation by two finite oracle words",
-        "url": "https://github.com/quantum-atlas-ai/qatlib/blob/f76f71a7c5cd19a31c251d0feeab09c75a758d69/Qatlib/Papers/Qubitization19/MainResults/SourceTheorem1.lean#L60"
-      }
-    ],
-    "remaining": "The elementary-gate and qubit budgets are checked for systems of dimension at least two, including non-power-of-two dimensions with padded oracles. The scalar system still needs an elementary implementation using the exact two extra qubits in the statement."
-  },
-  {
-    "id": "low-chuang-sparse-simulation",
-    "title": "Optimal sparse simulation by quantum signal processing",
-    "chapter": "Dynamics",
-    "status": "published",
-    "papers": [
-      "https://doi.org/10.1103/PhysRevLett.118.010501",
-      "https://doi.org/10.22331/q-2019-07-12-163"
-    ],
-    "locator": "Theorems 2–3, Eqs. (8), (14)–(18) · distinct time and precision limits clarified in Low–Chuang (2019), p. 2, note 3",
-    "scope": "Given position and m-bit entry oracles for d-sparse H on n qubits, put τ = |t|d maxᵢⱼ|Hᵢⱼ|. For 0 < ε < 1/2, choose q ≥ τ+1 with 4(τ/2)ᑫ/q! ≤ ε/8. Quantum signal processing simulates evolution with error ≤ ε and success at least 1−2ε using O(q) queries and O(n + m polylog m) additional elementary gates per query. At fixed nonzero τ the optimal query scaling is Θ(log(1/ε)/log log(1/ε)); at fixed ε it is Θ(τ) for large τ.",
-    "related": [
-      "FQChemQatlib.Dynamics.LowChuang.Sparse.sparseQuerySimulation",
-      "FQChemQatlib.Dynamics.LowChuang.Binary.cartesianDecoder",
-      "FQChem.Complexity.SparseSimulationPrecision.worstCaseCutoff",
-      "FQChem.Dynamics.DigitalAlgorithms.Qubitization.Encoding.simulation_error",
-      "FQChemQatlib.Dynamics.SparseHamiltonianSimulation.segmentedSparseEvolution"
-    ],
-    "upstream": [
-      {
-        "label": "Qatlib · counted block-encoding circuit for an already encoded Hermitian matrix",
-        "url": "https://github.com/quantum-atlas-ai/qatlib/blob/f76f71a7c5cd19a31c251d0feeab09c75a758d69/Qatlib/Papers/HamSimQSP17/EndToEnd/CountedSingleOutput.lean#L78"
-      }
-    ],
-    "remaining": "The query upper and lower bounds and a linear-size decoder for complex binary entries are checked. The remaining proof must wire this decoder, row-slot preparation and their inverses into the same sparse simulator and count all elementary gates per query."
+    "remaining": "The signed, uncomputed solution and constant-success amplification have checked state-preparation and exact controlled-evolution query counts. Full sparse runtime still requires finite-precision simulation of those evolutions and elementary-gate costs for preparing the sine clock and applying the signed reciprocal filter."
   }
 ]
