@@ -1,0 +1,83 @@
+[
+  {
+    "module": "FQChem.Properties.ResponseAndEstimation.BellConfidence",
+    "names": [
+      "projector_gram",
+      "weight_nonneg",
+      "weight_sum"
+    ],
+    "papers": [
+      "https://doi.org/10.1126/science.abn7293"
+    ],
+    "relation": "supporting",
+    "scope": "Supplement D.2.a, Eqs. (D1)–(D3). Each local Bell projector is an amplitude outer product. For every positive trace-one n-qubit density matrix the Born weights of the full product Bell measurement on two copies are nonnegative and sum to one."
+  },
+  {
+    "module": "FQChem.Properties.ResponseAndEstimation.BellConfidence",
+    "names": [
+      "score_sign",
+      "score_mean"
+    ],
+    "papers": [
+      "https://doi.org/10.1126/science.abn7293"
+    ],
+    "relation": "paper-result",
+    "scope": "Supplement D.2.b, Eqs. (D5)–(D6). The shared Bell measurement record gives a sign in {−1,1} with expectation |Tr(Pρ)|² for every subsequently specified Pauli P."
+  },
+  {
+    "module": "FQChem.Properties.ResponseAndEstimation.BellConfidence",
+    "names": [
+      "meanFailure"
+    ],
+    "papers": [
+      "https://doi.org/10.1126/science.abn7293"
+    ],
+    "relation": "paper-result",
+    "scope": "Supplement D.2.b, Lemma 1, Eq. (D8). For N>0 independent two-copy Bell rounds on any density operator and each u>0, the chance of a squared-expectation error at least u is at most 2 exp(−Nu²/2)."
+  },
+  {
+    "module": "FQChem.Properties.ResponseAndEstimation.BellConfidence",
+    "names": [
+      "clipped_error"
+    ],
+    "papers": [
+      "https://doi.org/10.1126/science.abn7293"
+    ],
+    "relation": "supporting",
+    "scope": "Supplement D.2.b, Eqs. (D9)–(D10). The squared error of the clipped square-root estimator for y≥0 is bounded by the absolute error in estimating y²."
+  },
+  {
+    "module": "FQChem.Properties.ResponseAndEstimation.BellConfidence",
+    "names": [
+      "predictMagnitude"
+    ],
+    "papers": [
+      "https://doi.org/10.1126/science.abn7293"
+    ],
+    "relation": "paper-result",
+    "scope": "Supplement D.2.b, Corollary 1, Eq. (D11), the quantum upper half of Theorem 6. For every n-qubit state and each Pauli revealed after collection, 2,048 Bell rounds on 4,096 copies give additive magnitude error at most 1/4 with success probability at least 4/5."
+  },
+  {
+    "module": "FQChem.Properties.ResponseAndEstimation.BellConfidence",
+    "names": [
+      "traceDifferent",
+      "hiddenMagnitude"
+    ],
+    "papers": [
+      "https://doi.org/10.1126/science.abn7293"
+    ],
+    "relation": "supporting",
+    "scope": "Supplement D.4, Task 1. Distinct Pauli words are Hilbert–Schmidt orthogonal. For the normalized state (I+aP)/2ⁿ, |a|≤1, the nonidentity query Q has expectation of magnitude |a| if Q=P and zero otherwise."
+  },
+  {
+    "module": "FQChem.Properties.ResponseAndEstimation.BellConfidence",
+    "names": [
+      "selectHiddenWord"
+    ],
+    "papers": [
+      "https://doi.org/10.1126/science.abn7293"
+    ],
+    "relation": "specialization",
+    "scope": "Supplement D.4, Task 1, Eq. (D39), quantum upper bound at failure probability 1/5. For every hidden sign and distinct nonidentity pair P,Q, 256 Bell rounds (512 copies) select the larger magnitude in both label orderings using the same record. Theorem 7 concerns the conventional lower bound."
+  }
+]

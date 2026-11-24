@@ -49,6 +49,7 @@ Import this chapter with `import FQChem.StatePrep`.
 ## [Adiabatic preparation and analog simulation](AdiabaticPreparation)
 
 - [Kato transport intertwines the moving spectral projectors](AdiabaticPreparation/AdiabaticTheorem.lean#L186). [A bounded differentiable reduced resolvent correction gives an inverse-runtime leakage bound for an isolated level](AdiabaticPreparation/AdiabaticTheorem.lean#L264). [For a smooth moving two-band model with fixed nonzero splitting, leakage tends to zero as runtime grows](AdiabaticPreparation/AdiabaticTheorem.lean#L311). [Kato (1950)](https://doi.org/10.1143/JPSJ.5.435), [Avron & Elgart (1999)](https://doi.org/10.1007/s002200050620)
+- [Gapless adiabatic transport for a finite-rank spectral band](AdiabaticPreparation/GaplessAdiabatic.lean). [Avron & Elgart (1999)](https://doi.org/10.1007/s002200050620)
 - **Analog quantum simulators**. [Ideal blockade ground configurations and maximum independent sets](AdiabaticPreparation/RydbergBlockade.lean#L28). [Pichler et al. (2018)](https://arxiv.org/abs/1808.10816)
 
 ## [Quantum circuit preparation](CircuitPreparation)

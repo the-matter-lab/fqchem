@@ -1,0 +1,231 @@
+[
+  {
+    "module": "FQChemQatlib.Complexity.SimonOracleMachines",
+    "names": [
+      "restrictBound",
+      "restrictOutput"
+    ],
+    "papers": [
+      "https://doi.org/10.1137/S0097539796298637"
+    ],
+    "relation": "supporting",
+    "scope": "Fix all widths except n in a function oracle. Hardwiring the off-width answers gives a width-n adaptive decision tree with the same Boolean output and at most the original number of queries. State labels are inaccessible to the algorithm."
+  },
+  {
+    "module": "FQChemQatlib.Complexity.SimonOracleMachines",
+    "names": [
+      "outputCongr",
+      "successCongr"
+    ],
+    "papers": [
+      "https://doi.org/10.1137/S0097539796298637"
+    ],
+    "relation": "supporting",
+    "scope": "Execution depends only on the oracle at widths the tree can reach. Success probability additionally uses the target width's correct label. These statements preserve earlier diagonal requirements while later widths are set."
+  },
+  {
+    "module": "FQChemQatlib.Complexity.SimonOracleMachines",
+    "names": [
+      "existsHardAt"
+    ],
+    "papers": [
+      "https://doi.org/10.1137/S0097539796298637"
+    ],
+    "relation": "derived",
+    "scope": "Simon, Theorem 3.3, applied to the restriction of a randomized adaptive tree: for n ≥ 64 and at most 2^(n/4) queries, some promised replacement at width n reduces success below 2/3, even with arbitrary fixed values at other widths."
+  },
+  {
+    "module": "FQChemQatlib.Complexity.SimonOracleMachines",
+    "names": [
+      "oracleSeparation"
+    ],
+    "papers": [
+      "https://doi.org/10.1137/S0097539796298637"
+    ],
+    "relation": "derived",
+    "scope": "Simon, §3.2. One function oracle defeats every member of a countable collection of randomized adaptive query algorithms infinitely often. Each program may query across lengths, with any given finite width budget and at most 2^(n/4) calls. The amplified quantum procedure succeeds with probability at least 7/8 at all n ≥ 64."
+  },
+  {
+    "module": "FQChemQatlib.Complexity.SimonTuringSeparation",
+    "names": [
+      "cellsStep",
+      "wordLength",
+      "replyCells"
+    ],
+    "papers": [
+      "https://doi.org/10.1137/S0097539796298637"
+    ],
+    "relation": "supporting",
+    "scope": "The finite segment of the physical query tape grows by at most one cell per local machine step. Its binary query ends at the first blank, and a length-preserving oracle reply occupies exactly that many cells."
+  },
+  {
+    "module": "FQChemQatlib.Complexity.SimonTuringSeparation",
+    "names": [
+      "padOutput",
+      "unrollOutput"
+    ],
+    "papers": [
+      "https://doi.org/10.1137/S0097539796298637"
+    ],
+    "relation": "supporting",
+    "scope": "Fix the random tape of the two-tape probabilistic oracle machine. Its finite adaptive query tree returns the machine's direct operational result for every fixed oracle, including cross-width queries. Local steps pass the clock without consuming a query."
+  },
+  {
+    "module": "FQChemQatlib.Complexity.SimonTuringSeparation",
+    "names": [
+      "turingSeparation"
+    ],
+    "papers": [
+      "https://doi.org/10.1137/S0097539796298637"
+    ],
+    "relation": "derived",
+    "scope": "Simon, §3.2. A single fixed promised oracle gives amplified quantum success ≥ 7/8 from width 64 and defeats each finite two-tape probabilistic oracle machine with probability > 1/3 on arbitrarily large unary inputs under the floor(2^(n/4)) step clock. The paper schedule uses 3n² sampling queries and 6n³ local gates."
+  },
+  {
+    "module": "FQChemQatlib.Complexity.SimonTuringSeparation",
+    "names": [
+      "unaryLabel",
+      "amplifiedCorrect"
+    ],
+    "papers": [
+      "https://doi.org/10.1137/S0097539796298637"
+    ],
+    "relation": "supporting",
+    "scope": "On unary strings the target bit is the oracle's permutation-versus-hidden-period label. The amplified Born law evaluated at that bit equals Qatlib's two-sided success quantity by normalization of the Boolean output."
+  },
+  {
+    "module": "FQChemQatlib.Complexity.SimonTuringSeparation",
+    "names": [
+      "polynomialWork"
+    ],
+    "papers": [
+      "https://doi.org/10.1137/S0097539796298637"
+    ],
+    "relation": "derived",
+    "scope": "A uniform schedule of n independent blocks of 3n samples uses polynomially many operations: the actual Hadamard lists, oracle calls, measurements, bit conversion, counted binary Gaussian elimination on arbitrary sample rows, and final candidate scan fit in 100(n+1)⁴ operations."
+  },
+  {
+    "module": "FQChemQatlib.Complexity.SimonTuringSeparation",
+    "names": [
+      "clockDominates"
+    ],
+    "papers": [
+      "https://doi.org/10.1137/S0097539796298637"
+    ],
+    "relation": "derived",
+    "scope": "For each real constant C, any integer time bound at most C 2^(n/8) eventually fits in the diagonalization clock floor(2^(n/4))."
+  },
+  {
+    "module": "FQChemQatlib.Complexity.SimonTuringSeparation",
+    "names": [
+      "unaryLanguageSeparation"
+    ],
+    "papers": [
+      "https://doi.org/10.1137/S0097539796298637"
+    ],
+    "relation": "paper-result",
+    "scope": "Simon, Theorem 3.4, for a length-preserving function oracle. One oracle and unary language admit ≥ 7/8 quantum success on every binary input via the uniform Simon circuit and a fixed 64-entry small-input table. Quantum work is polynomial. Every finite-table two-tape fair-coin oracle Turing machine under the floor(2^(n/4)) clock has success < 2/3 on arbitrarily large unary inputs, even with adaptive queries at other widths.",
+    "aliases": {
+      "paper/simon-oracle-separation": "FQChem.Complexity.SimonOracleMachines.unaryLanguageSeparation"
+    }
+  },
+  {
+    "module": "Qatlib.Concepts.AEMeanReadout.LocalAEBackend.FiniteStoppingTail",
+    "names": [
+      "expectation_congr"
+    ],
+    "papers": [
+      "https://doi.org/10.1137/S0097539796298637"
+    ],
+    "relation": "supporting",
+    "scope": "Probability helper: pointwise equal score functions have equal expectation under a discrete law. It transfers machine execution equivalences through random choices."
+  },
+  {
+    "module": "Qatlib.Concepts.LinearLearning.ConcisePipeline.RandomizedCost",
+    "names": [
+      "expectation_map"
+    ],
+    "papers": [
+      "https://doi.org/10.1137/S0097539796298637"
+    ],
+    "relation": "supporting",
+    "scope": "Probability helper: the expectation of a score under a pushed-forward discrete law equals its expectation after composition. It transfers Simon success probabilities through transcript compilation."
+  },
+  {
+    "module": "Qatlib.Concepts.HspRecovery.Reduction.BooleanGaussianDecoder",
+    "names": [
+      "boolean_gaussian_actual_operation_bound"
+    ],
+    "papers": [
+      "https://doi.org/10.1137/S0097539796298637"
+    ],
+    "relation": "supporting",
+    "scope": "The counted binary Gaussian decoder returns the specified Simon-secret decoder’s answer and uses at most 10(mn²+n³+mn+n²+n+1) bit operations on m input rows of width n."
+  },
+  {
+    "module": "Qatlib.Papers.QPowerSimon97.StandardModel.InfiniteOracle",
+    "names": [
+      "exists_good_low"
+    ],
+    "papers": [
+      "https://doi.org/10.1137/S0097539796298637"
+    ],
+    "relation": "supporting",
+    "scope": "Simon, §3.2. At width n ≥ 64 every randomized classical width-n tree of at most 2^(n/4) queries has success below 2/3 on some promised labeled oracle."
+  },
+  {
+    "module": "Qatlib.Papers.QPowerSimon97.StandardModel.InfiniteOracle",
+    "names": [
+      "exists_length_of_index"
+    ],
+    "papers": [
+      "https://doi.org/10.1137/S0097539796298637"
+    ],
+    "relation": "supporting",
+    "scope": "Enumeration helper: the first component of the natural-number pairing bijection takes each machine index at arbitrarily large integers. The diagonal proof tests every machine infinitely often."
+  },
+  {
+    "module": "Qatlib.Papers.QPowerSimon97.StandardModel.InfiniteOracle",
+    "names": [
+      "simonQuantumSuccess_good"
+    ],
+    "papers": [
+      "https://doi.org/10.1137/S0097539796298637"
+    ],
+    "relation": "supporting",
+    "scope": "On every injective or strict nonzero-period oracle of width n ≥ 64 the amplified Simon schedule has success at least 7/8. This is the quantum upper bound used after diagonalization."
+  },
+  {
+    "module": "Qatlib.Papers.QPowerSimon97.StandardModel.JointSeparation",
+    "names": [
+      "simonReject_total"
+    ],
+    "papers": [
+      "https://doi.org/10.1137/S0097539796298637"
+    ],
+    "relation": "supporting",
+    "scope": "Normalization of the two Boolean probabilities of the amplified Simon decision law lets success be read directly at the correct label."
+  },
+  {
+    "module": "Qatlib.Papers.QPowerSimon97.StandardModel.SimonRetry",
+    "names": [
+      "simonExactLedger_eq"
+    ],
+    "papers": [
+      "https://doi.org/10.1137/S0097539796298637"
+    ],
+    "relation": "supporting",
+    "scope": "The explicit concatenated local gate program has the gate count in the ledger. The other entries count sampled queries, measurements and conversion steps for r blocks of n+k samples."
+  },
+  {
+    "module": "Qatlib.Papers.QPowerSimon97.StandardModel.Theorem34Separation",
+    "names": [
+      "simonPaperScheduleLedger"
+    ],
+    "papers": [
+      "https://doi.org/10.1137/S0097539796298637"
+    ],
+    "relation": "supporting",
+    "scope": "At the fixed schedule k = 2n and r = n, the local Simon experiment ledger has 3n² queries, 3n² measurements, 6n³ local gates and 3n³ bit conversion steps."
+  }
+]

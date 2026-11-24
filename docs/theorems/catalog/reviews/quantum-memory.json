@@ -1,0 +1,172 @@
+[
+  {
+    "module": "FQChem.Properties.ResponseAndEstimation.PauliPrediction",
+    "names": [
+      "identityMatrix",
+      "pauliHermitian",
+      "pauliSquare",
+      "pauliTrace"
+    ],
+    "papers": [
+      "https://doi.org/10.1126/science.abn7293"
+    ],
+    "relation": "supporting",
+    "scope": "The identity word is I. Each Pauli word is Hermitian and squares to I, and each nonidentity Pauli has zero trace. These facts justify the hard density matrices of Supplementary Definition 2."
+  },
+  {
+    "module": "FQChem.Properties.ResponseAndEstimation.PauliPrediction",
+    "names": [
+      "purityBound",
+      "parseval"
+    ],
+    "papers": [
+      "https://doi.org/10.1126/science.abn7293"
+    ],
+    "relation": "supporting",
+    "scope": "The squared Pauli trace correlations of a Hermitian E sum to 2ⁿ Tr(E²). For a positive measurement effect E, its purity is bounded by Tr(E)²."
+  },
+  {
+    "module": "FQChem.Properties.ResponseAndEstimation.PauliPrediction",
+    "names": [
+      "nonidentityCount"
+    ],
+    "papers": [
+      "https://doi.org/10.1126/science.abn7293"
+    ],
+    "relation": "supporting",
+    "scope": "There are (2ⁿ−1)(2ⁿ+1) nonidentity Pauli words on n qubits."
+  },
+  {
+    "module": "FQChem.Properties.ResponseAndEstimation.PauliPrediction",
+    "names": [
+      "nonidentitySecondMoment"
+    ],
+    "papers": [
+      "https://doi.org/10.1126/science.abn7293"
+    ],
+    "relation": "derived",
+    "scope": "Eq. (D35) implies a uniform mean square of 1/(2ⁿ+1) for pure measurement effects. This proof by Pauli Parseval gives an upper bound of 1/(2ⁿ+1) for the normalized trace responses of effects of arbitrary rank when n>0. Zero effects have zero responses."
+  },
+  {
+    "module": "FQChem.Properties.ResponseAndEstimation.PauliPrediction",
+    "names": [
+      "responseAbs"
+    ],
+    "papers": [
+      "https://doi.org/10.1126/science.abn7293"
+    ],
+    "relation": "supporting",
+    "scope": "Every normalized trace response of a positive measurement effect to a Pauli word lies in [−1,1]."
+  },
+  {
+    "module": "FQChem.Properties.ResponseAndEstimation.PauliPrediction",
+    "names": [
+      "hardStateTrace",
+      "hardStateTracePairing",
+      "hardStatePositive"
+    ],
+    "papers": [
+      "https://doi.org/10.1126/science.abn7293"
+    ],
+    "relation": "supporting",
+    "scope": "Supplementary Definition 2. For nonidentity P and a real bias |a|≤1, ρ=(I+aP)/2ⁿ is a positive trace-one matrix with Tr(ρP)=a. The null, plus and minus hypotheses take a=0, +0.9, −0.9."
+  },
+  {
+    "module": "FQChem.Properties.ResponseAndEstimation.AdaptivePauliPrediction",
+    "names": [
+      "pathPositive",
+      "bornSum",
+      "leafNormalization"
+    ],
+    "papers": [
+      "https://doi.org/10.1126/science.abn7293"
+    ],
+    "relation": "supporting",
+    "scope": "Each node chooses a finite POVM. Its Born weights sum to one on any trace-one input and the products of the successive Born weights form a normalized law over complete adaptive transcripts."
+  },
+  {
+    "module": "FQChem.Properties.ResponseAndEstimation.AdaptivePauliPrediction",
+    "names": [
+      "bornHard",
+      "massRatio"
+    ],
+    "papers": [
+      "https://doi.org/10.1126/science.abn7293"
+    ],
+    "relation": "supporting",
+    "scope": "Eqs. (D14)–(D20). A hard-state outcome weight is its maximally mixed weight times 1+a·Tr(EP)/Tr(E), with the zero effect handled explicitly. Multiplication along the observed path gives the leaf likelihood."
+  },
+  {
+    "module": "FQChem.Properties.ResponseAndEstimation.AdaptivePauliPrediction",
+    "names": [
+      "nullNonnegative",
+      "nullIndependent",
+      "alternativeNonneg"
+    ],
+    "papers": [
+      "https://doi.org/10.1126/science.abn7293"
+    ],
+    "relation": "supporting",
+    "scope": "All null and alternative leaf masses are nonnegative. The null law is independent of the Pauli revealed after acquisition."
+  },
+  {
+    "module": "FQChem.Properties.ResponseAndEstimation.AdaptivePauliPrediction",
+    "names": [
+      "productLoss",
+      "signMixture",
+      "mixtureLower"
+    ],
+    "papers": [
+      "https://doi.org/10.1126/science.abn7293"
+    ],
+    "relation": "derived",
+    "scope": "A direct inequality for the fair-sign mixture replaces the logarithmic estimate in Eqs. (D21)–(D34). Its likelihood relative to the null law is at least one minus the sum of squared local biased responses along the leaf."
+  },
+  {
+    "module": "FQChem.Properties.ResponseAndEstimation.AdaptivePauliPrediction",
+    "names": [
+      "leafError"
+    ],
+    "papers": [
+      "https://doi.org/10.1126/science.abn7293"
+    ],
+    "relation": "supporting",
+    "scope": "At additive tolerance 1/4 the intervals around 0 and 0.9 are disjoint. For every prediction, the sum of the two hypothesis error masses is bounded below using the sign mixture."
+  },
+  {
+    "module": "FQChem.Properties.ResponseAndEstimation.AdaptivePauliPrediction",
+    "names": [
+      "copyLowerBound"
+    ],
+    "papers": [
+      "https://doi.org/10.1126/science.abn7293"
+    ],
+    "relation": "paper-result",
+    "scope": "Supplementary Theorem 6, conventional lower bound. Every finite-outcome adaptive single-copy POVM tree with a post-reveal prediction rule and error probability ≤1/5 under Definition 2 must use T≥20(2ⁿ+1)/27 copies, for n≥1. The proof gives its own constant."
+  },
+  {
+    "module": "FQChem.Properties.ResponseAndEstimation.AdaptivePauliPrediction",
+    "names": [
+      "randomizedCopyLowerBound"
+    ],
+    "papers": [
+      "https://doi.org/10.1126/science.abn7293"
+    ],
+    "relation": "paper-result",
+    "scope": "The same exponential lower bound holds for randomized adaptive strategies, averaging over any independent probability law on classical seeds. Each seed may select both the entire POVM tree and the post-reveal rule. The averaged failure probability must be at most 1/5."
+  },
+  {
+    "module": "FQChem.Properties.ResponseAndEstimation.QuantumMemorySeparation",
+    "names": [
+      "separation"
+    ],
+    "papers": [
+      "https://doi.org/10.1126/science.abn7293"
+    ],
+    "relation": "paper-result",
+    "scope": "Theorem 1 and Supplementary Theorem 6. On the hard prior the two-copy Bell estimator uses 2048 pairs for error at most 1/4 with failure probability ≤1/5, uniformly in n. At the same accuracy, every randomized adaptive single-copy POVM learner needs at least 20(2ⁿ+1)/27 copies. The finite-outcome measurement and post-reveal access models match Supplementary Definitions 1–2.",
+    "aliases": {
+      "paper/huang-learning-separation": "FQChem.Properties.QuantumMemorySeparation.separation"
+    }
+  }
+]

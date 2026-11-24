@@ -2,6 +2,8 @@ module
 
 import all FQChemQatlib
 import all FQChemQatlib.Complexity.QueryAlgorithms
+import all FQChemQatlib.Complexity.SimonOracleMachines
+import all FQChemQatlib.Complexity.SimonTuringSeparation
 import all FQChemQatlib.Dynamics.SingularValueTransformation
 import all FQChemQatlib.Dynamics.SparseHamiltonianSimulation
 import all FQChemQatlib.Properties.AmplitudeEstimation

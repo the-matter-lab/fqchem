@@ -14,26 +14,6 @@
     ]
   },
   {
-    "id": "huang-learning-separation",
-    "title": "Quantum memory advantage for predicting observables",
-    "chapter": "Properties",
-    "status": "published",
-    "papers": [
-      "https://doi.org/10.1126/science.abn7293"
-    ],
-    "locator": "Theorem 1 · Supplementary Definition 2 and Theorem 6, Appendix D.1–D.3",
-    "scope": "Draw a uniform nonidentity Pauli P. With equal probability prepare ρ = I/2ⁿ or ρ = (I + 0.9sP)/2ⁿ for a hidden uniform sign s. P is revealed after acquisition. Estimating |Tr(Pρ)| within 0.25 with success at least 0.8 requires Ω(2ⁿ) copies under adaptive single-copy measurements with classical memory. Joint Bell measurements on pairs of copies suffice with O(1) copies.",
-    "related": [
-      "FQChem.Properties.BellSampling.magnitudeSquaredPauliExpectation"
-    ],
-    "upstream": [
-      {
-        "label": "Qatlib · entrywise Pauli completeness used in the second-moment identity of Eq. (D35)",
-        "url": "https://github.com/quantum-atlas-ai/qatlib/blob/f76f71a7c5cd19a31c251d0feeab09c75a758d69/Qatlib/Concepts/ShadowModels/ProductPOVM/TensorPauliTwirl.lean#L55-L82"
-      }
-    ]
-  },
-  {
     "id": "lewis-window-propagation",
     "title": "Window propagation for first-order OTOCs",
     "chapter": "Dynamics",
@@ -147,22 +127,6 @@
     "scope": "Lee et al. propose poly(L)·poly(1/ε) effort for coupled cluster to reach energy error ε on single-reference problems, with L measuring system size. The argument uses empirical excitation-rank convergence for N₂ and extensivity for noninteracting replicas. Uniform input-class, convergence and iteration guarantees remain to be established.",
     "related": [
       "FQChem.VariationalMethods.coupledCluster"
-    ]
-  },
-  {
-    "id": "simon-oracle-separation",
-    "title": "Simon’s relativized exponential separation",
-    "chapter": "Complexity",
-    "status": "published",
-    "papers": [
-      "https://doi.org/10.1137/S0097539796298637"
-    ],
-    "locator": "§3.2, Theorem 3.4 · finite random-oracle bound in Theorem 3.3",
-    "scope": "There exist a single oracle O, a unary language in BQP relative to O and a constant c > 0 such that bounded-error classical oracle machines running in time 2^(cn) fail to decide the language. The finite query-tree bounds and a separation for length-indexed tree families are checked. The remaining statement connects these to the standard relativized machine classes.",
-    "related": [
-      "FQChem.Complexity.QueryAlgorithms.simonMaskRecovery",
-      "FQChem.Complexity.QueryAlgorithms.simonClassicalQueryBound",
-      "FQChem.Complexity.QueryAlgorithms.simonOracleFamilySeparation"
     ]
   },
   {
