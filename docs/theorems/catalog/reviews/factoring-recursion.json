@@ -1,0 +1,97 @@
+[
+  {
+    "module": "FQChem.Complexity.FactoringRecursion",
+    "names": [
+      "certify_some",
+      "certify_isSome_iff"
+    ],
+    "papers": [
+      "https://doi.org/10.1137/S0097539795293172"
+    ],
+    "relation": "supporting",
+    "scope": "Classical certificate check used after a trial: an optional candidate is accepted exactly when it is an integer d with 1 < d < m and d divides m."
+  },
+  {
+    "module": "FQChem.Complexity.FactoringRecursion",
+    "names": [
+      "FQChem.Complexity.FactoringRecursion.Divisor.pair"
+    ],
+    "papers": [
+      "https://doi.org/10.1137/S0097539795293172"
+    ],
+    "relation": "supporting",
+    "scope": "A checked proper divisor and its exact cofactor multiply to the current input, and both recursive arguments are strictly smaller and at least two."
+  },
+  {
+    "module": "FQChem.Complexity.FactoringRecursion",
+    "names": [
+      "first_none",
+      "row_failure"
+    ],
+    "papers": [
+      "https://doi.org/10.1137/S0097539795293172"
+    ],
+    "relation": "derived",
+    "scope": "Independent repetitions of Shor’s factor attempt. A row misses exactly when every checked proposal fails; its probability under the explicit product of one-shot laws is the one-shot miss probability raised to the number of draws."
+  },
+  {
+    "module": "FQChem.Complexity.FactoringRecursion",
+    "names": [
+      "factor_tree",
+      "product_always"
+    ],
+    "papers": [
+      "https://doi.org/10.1137/S0097539795293172"
+    ],
+    "relation": "derived",
+    "scope": "The recursively produced factors multiply to N on every tape, even after unsuccessful trials. For N ≥ 2 all leaves are at least two, and the binary splitting tree visits exactly twice its leaf count minus one nodes."
+  },
+  {
+    "module": "FQChem.Complexity.FactoringRecursion",
+    "names": [
+      "two_pow_length",
+      "visit_bound",
+      "trial_budget"
+    ],
+    "papers": [
+      "https://doi.org/10.1137/S0097539795293172"
+    ],
+    "relation": "derived",
+    "scope": "Counting multiplicities, the splitting tree visits at most 2 floor(log₂ N) nodes, including the leaves. Allowing a full batch at each visited node bounds total charged shots by 256 floor(log₂ N)(floor(log₂ N)+1)(floor(log₂ N)+3)."
+  },
+  {
+    "module": "FQChem.Complexity.FactoringRecursion",
+    "names": [
+      "prime_leaves",
+      "prime_stops"
+    ],
+    "papers": [
+      "https://doi.org/10.1137/S0097539795293172"
+    ],
+    "relation": "supporting",
+    "scope": "Prime leaves and repeated factors are handled by the same recursion. If every candidate composite that could be reached has a successful row, all terminal labels are prime; no primality test is run."
+  },
+  {
+    "module": "FQChem.Complexity.FactoringRecursion",
+    "names": [
+      "block_failure",
+      "aggregate_failure"
+    ],
+    "papers": [
+      "https://doi.org/10.1137/S0097539795293172"
+    ],
+    "relation": "supporting",
+    "scope": "Amplification constants for the recursive factoring reduction. D shots with individual success ≥ 1/D cut miss probability to at most 1/2. Repeating this block floor(log₂ N)+3 times bounds the union of failures over at most N+1 possible moduli by 1/4."
+  },
+  {
+    "module": "FQChem.Complexity.FactoringRecursion",
+    "names": [
+      "recursiveFactorization"
+    ],
+    "papers": [
+      "https://doi.org/10.1137/S0097539795293172"
+    ],
+    "relation": "derived",
+    "scope": "Bounded-error completion of Shor’s Section 5 splitting reduction. For N ≥ 1, each composite m ≤ N has a certified single-shot factor probability ≥ 1/[128(floor(log₂ N)+1)]. The adaptive routine returns a product equal to N always, and a list of primes with multiplicities with probability ≥ 2/3. Its cubic-in-bitlength trial bound holds on every run; exhausted batches leave m unsplit."
+  }
+]

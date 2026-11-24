@@ -1,0 +1,184 @@
+[
+  {
+    "module": "FQChem.StatePrep.VariationalOptimization.TensorNetworks.GateRouting",
+    "names": [
+      "FQChem.Algorithms.MPSCircuit.Routing.swap_inverse",
+      "FQChem.Algorithms.MPSCircuit.Routing.Bond.exchange_twice",
+      "FQChem.Algorithms.MPSCircuit.Routing.Bond.swap_act"
+    ],
+    "papers": [
+      "https://doi.org/10.1103/PhysRevLett.91.147902"
+    ],
+    "relation": "supporting",
+    "scope": "For neighboring wires the two-qubit SWAP matrix maps the dense amplitude to the amplitude with the input bits exchanged. Applying it twice restores the state."
+  },
+  {
+    "module": "FQChem.StatePrep.VariationalOptimization.TensorNetworks.GateRouting",
+    "names": [
+      "FQChem.Algorithms.MPSCircuit.Routing.Bond.invertible",
+      "FQChem.Algorithms.MPSCircuit.Routing.Route.invertible"
+    ],
+    "papers": [
+      "https://doi.org/10.1103/PhysRevLett.91.147902"
+    ],
+    "relation": "supporting",
+    "scope": "An addressed invertible two-qubit gate retains its left inverse; inserting SWAPs before and after it preserves invertibility throughout the circuit."
+  },
+  {
+    "module": "FQChem.StatePrep.VariationalOptimization.TensorNetworks.GateRouting",
+    "names": [
+      "FQChem.Algorithms.MPSCircuit.Routing.Bond.input_eq",
+      "FQChem.Algorithms.MPSCircuit.Routing.Route.lift_window",
+      "FQChem.Algorithms.MPSCircuit.Routing.Distance.exact_window",
+      "FQChem.Algorithms.MPSCircuit.Routing.Address.exact_window"
+    ],
+    "papers": [
+      "https://doi.org/10.1103/PhysRevLett.91.147902"
+    ],
+    "relation": "supporting",
+    "scope": "Routing bookkeeping identifies both physical target bits and the basis input after replacing only those bits. Adding a spectator preserves its value throughout the route."
+  },
+  {
+    "module": "FQChem.StatePrep.VariationalOptimization.TensorNetworks.GateRouting",
+    "names": [
+      "FQChem.Algorithms.MPSCircuit.Routing.Route.lift_hops",
+      "FQChem.Algorithms.MPSCircuit.Routing.Route.gate_count",
+      "FQChem.Algorithms.MPSCircuit.Routing.Distance.hops_le",
+      "FQChem.Algorithms.MPSCircuit.Routing.Address.gate_count"
+    ],
+    "papers": [
+      "https://doi.org/10.1103/PhysRevLett.91.147902"
+    ],
+    "relation": "derived",
+    "scope": "Routing inserts one outward and one return SWAP per skipped site and one central gate. A single arbitrary-pair operation compiles to at most 2n adjacent operations on n qubits."
+  },
+  {
+    "module": "FQChem.StatePrep.VariationalOptimization.TensorNetworks.GateRouting",
+    "names": [
+      "FQChem.Algorithms.MPSCircuit.Routing.dense_append",
+      "FQChem.Algorithms.MPSCircuit.Routing.Route.exact",
+      "FQChem.Algorithms.MPSCircuit.Routing.Address.exact"
+    ],
+    "papers": [
+      "https://doi.org/10.1103/PhysRevLett.91.147902"
+    ],
+    "relation": "derived",
+    "scope": "Vidal’s nonconsecutive-gate routing step before Theorem 1. The dense action of the compiled SWAP sequence is exactly the intended matrix action on the selected original pair."
+  },
+  {
+    "module": "FQChem.StatePrep.VariationalOptimization.TensorNetworks.GateRouting",
+    "names": [
+      "FQChem.Algorithms.MPSCircuit.Routing.Distance.at_gap",
+      "FQChem.Algorithms.MPSCircuit.Routing.Address.coverage"
+    ],
+    "papers": [
+      "https://doi.org/10.1103/PhysRevLett.91.147902"
+    ],
+    "relation": "supporting",
+    "scope": "Every pair of numerical positions i < j < n occurs among the simulator’s addresses, including the two ends of the chain."
+  },
+  {
+    "module": "FQChem.StatePrep.VariationalOptimization.TensorNetworks.RoutedSimulation",
+    "names": [
+      "FQChem.Algorithms.MPSCircuit.Routing.digit_tabulate",
+      "FQChem.Algorithms.MPSCircuit.Routing.tabulate_digit",
+      "FQChem.Algorithms.MPSCircuit.Routing.Bond.index_involutive",
+      "FQChem.Algorithms.MPSCircuit.Routing.Bond.exchange_digit"
+    ],
+    "papers": [
+      "https://doi.org/10.1103/PhysRevLett.91.147902"
+    ],
+    "relation": "supporting",
+    "scope": "Coordinates of computational-basis strings agree with the explicit wire permutation of a nearest-neighbor SWAP. The indexing permutation is its own inverse."
+  },
+  {
+    "module": "FQChem.StatePrep.VariationalOptimization.TensorNetworks.RoutedSimulation",
+    "names": [
+      "FQChem.Algorithms.MPSCircuit.Routing.AllCuts.physical",
+      "FQChem.Algorithms.MPSCircuit.Routing.AllCuts.swap"
+    ],
+    "papers": [
+      "https://doi.org/10.1103/PhysRevLett.91.147902"
+    ],
+    "relation": "derived",
+    "scope": "Vidal Eq. (2) bounds Schmidt rank over every bipartition. Prefix/suffix coefficient matrices over every permutation express this bound, so each SWAP inherits it on every cut."
+  },
+  {
+    "module": "FQChem.StatePrep.VariationalOptimization.TensorNetworks.RoutedSimulation",
+    "names": [
+      "FQChem.Algorithms.MPSCircuit.Routing.trajectory_append",
+      "FQChem.Algorithms.MPSCircuit.Routing.Route.trajectory",
+      "FQChem.Algorithms.MPSCircuit.Routing.promised_first",
+      "FQChem.Algorithms.MPSCircuit.Routing.compile_trajectory"
+    ],
+    "papers": [
+      "https://doi.org/10.1103/PhysRevLett.91.147902"
+    ],
+    "relation": "derived",
+    "scope": "All intermediate states introduced by routing are wire permutations of the pre- or post-gate logical state. A physical rank bound on the original circuit suffices throughout the adjacent simulation."
+  },
+  {
+    "module": "FQChem.StatePrep.VariationalOptimization.TensorNetworks.RoutedSimulation",
+    "names": [
+      "FQChem.Algorithms.MPSCircuit.Routing.compile_exact",
+      "FQChem.Algorithms.MPSCircuit.Routing.compile_length",
+      "FQChem.Algorithms.MPSCircuit.Routing.compile_invertible"
+    ],
+    "papers": [
+      "https://doi.org/10.1103/PhysRevLett.91.147902"
+    ],
+    "relation": "derived",
+    "scope": "An entire program on arbitrary qubit pairs compiles to an exactly equivalent adjacent circuit of invertible gates of length at most 2nG for G original operations."
+  },
+  {
+    "module": "FQChem.StatePrep.VariationalOptimization.TensorNetworks.VidalSimulation",
+    "names": [
+      "FQChem.Algorithms.MPSCircuit.Routing.Local.encode_exact",
+      "FQChem.Algorithms.MPSCircuit.Routing.Local.encode_invertible",
+      "FQChem.Algorithms.MPSCircuit.Routing.encode_reference",
+      "FQChem.Algorithms.MPSCircuit.Routing.encode_promise"
+    ],
+    "papers": [
+      "https://doi.org/10.1103/PhysRevLett.91.147902"
+    ],
+    "relation": "supporting",
+    "scope": "A one-wire operation acts with an identity on its unused neighbor. Encoding mixed circuits this way preserves dense evolution, invertibility and the rank promises at the original gate boundaries."
+  },
+  {
+    "module": "FQChem.StatePrep.VariationalOptimization.TensorNetworks.VidalSimulation",
+    "names": [
+      "FQChem.Algorithms.MPSCircuit.Routing.chainMeasurement_spec"
+    ],
+    "papers": [
+      "https://doi.org/10.1103/PhysRevLett.91.147902"
+    ],
+    "relation": "derived",
+    "scope": "From a nonzero product input and physical all-bipartition rank bound χ, the actual routed simulation on n ≥ 2 wires gives the dense final product expectation. Work including readout is ≤ 2nG(24χ³ + 40χ²) + n(20χ³ + 8χ²); peak scalar storage is ≤ 2nχ² + 36χ² + 4χ."
+  },
+  {
+    "module": "FQChem.StatePrep.VariationalOptimization.TensorNetworks.VidalSimulation",
+    "names": [
+      "FQChem.Algorithms.MPSCircuit.Routing.oneMatrix_act",
+      "FQChem.Algorithms.MPSCircuit.Routing.oneState_spec"
+    ],
+    "papers": [
+      "https://doi.org/10.1103/PhysRevLett.91.147902"
+    ],
+    "relation": "supporting",
+    "scope": "Singleton-register base case: arbitrary sequences reduce to ordinary matrix–vector products in two amplitudes, with eight scalar operations per gate."
+  },
+  {
+    "module": "FQChem.StatePrep.VariationalOptimization.TensorNetworks.VidalSimulation",
+    "names": [
+      "FQChem.Algorithms.MPSCircuit.Routing.vidal_simulation"
+    ],
+    "papers": [
+      "https://doi.org/10.1103/PhysRevLett.91.147902"
+    ],
+    "relation": "paper-result",
+    "scope": "Theorem 1, all widths in the scalar-arithmetic model. Given nonzero product input and G arbitrary one- or two-qubit invertible gates, χ bounds the physical Schmidt ranks across all bipartitions at the original steps. An explicit classical algorithm returns the exact product-observable expectation in ≤ 200(G+1)(n+1)(χ+1)³ operations and ≤ 100(n+1)(χ+1)² scalar slots. This includes local Born projectors on normalized states and all unitary circuits. The paper’s separate finite-precision discussion is in note [10].",
+    "aliases": {
+      "paper/vidal-circuit-simulation": "FQChem.Algorithms.MPSCircuit.Routing.vidal_simulation"
+    }
+  }
+]

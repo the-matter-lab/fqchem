@@ -15,6 +15,10 @@
     "authors": "Turturean (2026)",
     "title": "A proof of the Aaronson-Ambainis conjecture"
   },
+  "https://arxiv.org/abs/2611.20342": {
+    "authors": "Suresh, Courtney, Tao & Cao (2026)",
+    "title": "Formally verified harness for Shor’s order finding algorithm with O(n²⁺ᵋ) gate cost"
+  },
   "https://arxiv.org/abs/2611.24640": {
     "authors": "Lewis et al. (2026)",
     "title": "A provably efficient classical algorithm for simulating OTOC⁽¹⁾ in 1D",

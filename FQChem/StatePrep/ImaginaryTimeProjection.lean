@@ -1,6 +1,7 @@
 module
 
 public import FQChem.StatePrep.ImaginaryTimeProjection.AFQMC
+public import FQChem.StatePrep.ImaginaryTimeProjection.CubicSpinGlass
 public import FQChem.StatePrep.ImaginaryTimeProjection.DiffusionMonteCarlo
 public import FQChem.StatePrep.ImaginaryTimeProjection.FCIQMC
 public import FQChem.StatePrep.ImaginaryTimeProjection.GaussianAuxiliaryField

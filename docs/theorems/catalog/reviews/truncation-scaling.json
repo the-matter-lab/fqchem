@@ -1,0 +1,13 @@
+[
+  {
+    "module": "FQChem.StatePrep.PerturbationTheory.TruncationScaling",
+    "names": [
+      "fixedRankBoundsDoNotGiveJointPolynomial"
+    ],
+    "papers": [
+      "https://doi.org/10.1038/s41467-023-37587-6"
+    ],
+    "relation": "derived",
+    "scope": "A counterexample to an inference about uniform complexity. The abstract hierarchy has work L^k and inverse error 2^k. It escapes every C L^a (1/ε)^b bound along L = 1/ε. It does not construct a molecular coupled-cluster counterexample."
+  }
+]

@@ -1,0 +1,219 @@
+[
+  {
+    "module": "FQChem.StatePrep.ImaginaryTimeProjection.IsingSign",
+    "names": [
+      "ferro_coupling",
+      "abs_kernel",
+      "absolute_path"
+    ],
+    "papers": [
+      "https://doi.org/10.1103/PhysRevLett.94.170201"
+    ],
+    "relation": "paper-result",
+    "scope": "Eqs. (4), (8), (11). In the computational basis each two-site flip has a unique bond mask. Making all couplings nonnegative replaces every entry of −H and every spin-flip path weight by its exact absolute value."
+  },
+  {
+    "module": "FQChem.StatePrep.ImaginaryTimeProjection.IsingSign",
+    "names": [
+      "abs_character",
+      "character_pair",
+      "energy_bound"
+    ],
+    "papers": [
+      "https://doi.org/10.1103/PhysRevLett.94.170201"
+    ],
+    "relation": "supporting",
+    "scope": "Eq. (10). Walsh characters are signs. On a two-site mask the character is the product of the two classical Ising spins, so the absolute integer energy is bounded by the number of occupied bonds."
+  },
+  {
+    "module": "FQChem.StatePrep.ImaginaryTimeProjection.IsingSign",
+    "names": [
+      "pauliExpansion"
+    ],
+    "papers": [
+      "https://doi.org/10.1103/PhysRevLett.94.170201"
+    ],
+    "relation": "paper-result",
+    "scope": "Eq. (11). The signed quantum Hamiltonian is exactly the sum of the two-site Pauli X flip matrices multiplied by −Jₑ, with couplings 0, ±1 in units of J."
+  },
+  {
+    "module": "FQChem.StatePrep.ImaginaryTimeProjection.IsingSign",
+    "names": [
+      "path_cast",
+      "frustratedSquare"
+    ],
+    "papers": [
+      "https://doi.org/10.1103/PhysRevLett.94.170201"
+    ],
+    "relation": "specialization",
+    "scope": "Eq. (4) and Fig. 2. A four-site square with one negative bond has a concrete length-four closed spin-flip path of unscaled weight −1. The same bosonic path has weight +1."
+  },
+  {
+    "module": "FQChem.StatePrep.ImaginaryTimeProjection.IsingSign",
+    "names": [
+      "character_exchange",
+      "walsh_square",
+      "walsh_eigen",
+      "hamiltonian_conjugate"
+    ],
+    "papers": [
+      "https://doi.org/10.1103/PhysRevLett.94.170201"
+    ],
+    "relation": "supporting",
+    "scope": "Eqs. (10)–(11). The Walsh basis gives an invertible change of basis from the matrix of signed two-site flips to the diagonal matrix of classical energies. This retains all eigenvalue multiplicities."
+  },
+  {
+    "module": "FQChem.StatePrep.ImaginaryTimeProjection.IsingSign",
+    "names": [
+      "thermal_identity"
+    ],
+    "papers": [
+      "https://doi.org/10.1103/PhysRevLett.94.170201"
+    ],
+    "relation": "paper-result",
+    "scope": "Eqs. (3), (10)–(11). The quantum mean Tr[H exp(−βH)]/Tr[exp(−βH)] computed with the matrix exponential equals the Gibbs-weighted mean of the classical spin-glass energies for every real β."
+  },
+  {
+    "module": "FQChem.StatePrep.ImaginaryTimeProjection.SpinGlassDecision",
+    "names": [
+      "minimum",
+      "weightSum",
+      "shiftedThermal",
+      "energyRange"
+    ],
+    "papers": [
+      "https://doi.org/10.1103/PhysRevLett.94.170201"
+    ],
+    "relation": "supporting",
+    "scope": "Paragraph after Eq. (10). The finite energy minimum exists. Shifting to one ground configuration keeps the Gibbs mean, yields a partition sum at least one, and bounds all integer excitation energies by twice the bond count."
+  },
+  {
+    "module": "FQChem.StatePrep.ImaginaryTimeProjection.SpinGlassDecision",
+    "names": [
+      "excitationEstimate"
+    ],
+    "papers": [
+      "https://doi.org/10.1103/PhysRevLett.94.170201"
+    ],
+    "relation": "derived",
+    "scope": "Paragraph after Eq. (10). For N spins with integer excitation energies in [0,D], D>0 and β≥0, the finite-temperature energy exceeds the minimum by less than 2ᴺ D exp(−β)."
+  },
+  {
+    "module": "FQChem.StatePrep.ImaginaryTimeProjection.SpinGlassDecision",
+    "names": [
+      "coldEnergy",
+      "thermalSeparation",
+      "physicalScaling",
+      "physicalSeparation"
+    ],
+    "papers": [
+      "https://doi.org/10.1103/PhysRevLett.94.170201"
+    ],
+    "relation": "paper-result",
+    "scope": "Paragraph after Eq. (10), energy unit J=1. For N>0, at most 3N occupied bonds and β≥N log 2+log(12N), a ground energy ≤t implies thermal mean <t+1/2. Otherwise the thermal mean is ≥t+1. The non-strict NO endpoint includes flat spectra and gives the required decision gap. For physical coupling J>0, the proof scales the temperature as βJ and the energy window as J/2."
+  },
+  {
+    "module": "FQChem.StatePrep.ImaginaryTimeProjection.SpinGlassDecision",
+    "names": [
+      "polynomialTemperature"
+    ],
+    "papers": [
+      "https://doi.org/10.1103/PhysRevLett.94.170201"
+    ],
+    "relation": "derived",
+    "scope": "Paragraph after Eq. (10). An inverse temperature β=13N in units J=1 satisfies the published logarithmic lower bound for every positive spin count."
+  },
+  {
+    "module": "FQChem.StatePrep.ImaginaryTimeProjection.SignDecisionEstimator",
+    "names": [
+      "thermalBound"
+    ],
+    "papers": [
+      "https://doi.org/10.1103/PhysRevLett.94.170201"
+    ],
+    "relation": "supporting",
+    "scope": "Eq. (9) and the reduction after Eq. (10). The absolute thermal energy is bounded by the number of occupied bonds, converting an inverse-linear relative error target into constant absolute error."
+  },
+  {
+    "module": "FQChem.StatePrep.ImaginaryTimeProjection.SignDecisionEstimator",
+    "names": [
+      "statisticalDecision"
+    ],
+    "papers": [
+      "https://doi.org/10.1103/PhysRevLett.94.170201"
+    ],
+    "relation": "paper-result",
+    "scope": "Eq. (9) and note [9]. A single signed-energy estimate at β=13N with relative root mean squared error ≤1/(24N) decides the integer threshold with failure probability ≤1/4 over any probability space. This implication concerns the spin-glass decision problem; an NP-class reduction is additional."
+  },
+  {
+    "module": "FQChem.StatePrep.ImaginaryTimeProjection.FerromagneticComparison",
+    "names": [
+      "aligned_energy",
+      "ferromagneticGround"
+    ],
+    "papers": [
+      "https://doi.org/10.1103/PhysRevLett.94.170201"
+    ],
+    "relation": "supporting",
+    "scope": "After Eq. (11). All-aligned spins attain energy −m for m nonzero ferromagnetic bonds, and this is a ground configuration."
+  },
+  {
+    "module": "FQChem.StatePrep.ImaginaryTimeProjection.FerromagneticComparison",
+    "names": [
+      "exponentBudget",
+      "bosonicDecisionEstimate"
+    ],
+    "papers": [
+      "https://doi.org/10.1103/PhysRevLett.94.170201"
+    ],
+    "relation": "derived",
+    "scope": "Sign-free comparison after Eq. (11), restricted to the thermal decision query. At β=13N, returning the negative number of occupied bonds deterministically estimates the bosonic mean to relative error ≤1/(24N). The zero-bond case is exact. No mixing-time hypothesis is needed for this query."
+  },
+  {
+    "module": "FQChem.StatePrep.ImaginaryTimeProjection.CubicSpinGlass",
+    "names": [
+      "cubicBondCount"
+    ],
+    "papers": [
+      "https://doi.org/10.1103/PhysRevLett.94.170201"
+    ],
+    "relation": "supporting",
+    "scope": "Eq. (10). In an open three-dimensional box of size a×b×c there are at most three positive-direction nearest-neighbour bonds per vertex, with boundary self-edges excluded."
+  },
+  {
+    "module": "FQChem.StatePrep.ImaginaryTimeProjection.CubicSpinGlass",
+    "names": [
+      "cubicDecision"
+    ],
+    "papers": [
+      "https://doi.org/10.1103/PhysRevLett.94.170201"
+    ],
+    "relation": "specialization",
+    "scope": "Eqs. (8)–(11), note [9]. For an explicit three-dimensional lattice with couplings 0, ±1, one signed thermal estimate gives a bounded-error ground-threshold decision. At exactly its temperature and tolerance the bosonic comparison is computed by the occupied-bond count. Barahona’s NP-hardness result, uniform machine complexity and all-temperature cluster mixing are separate claims."
+  },
+  {
+    "module": "FQChem.StatePrep.ImaginaryTimeProjection.SpinGlassPaths",
+    "names": [
+      "kernelPaths",
+      "taylorTrace",
+      "taylorPartition"
+    ],
+    "papers": [
+      "https://doi.org/10.1103/PhysRevLett.94.170201"
+    ],
+    "relation": "paper-result",
+    "scope": "Eq. (4). For each integer k≥0 the closed paths with k+1 transitions sum to the signed trace Taylor coefficient β^(k+1) Tr[(−H)^(k+1)]/(k+1)!. Including the trace of the identity at order zero, the complete series converges to Tr[exp(−βH)]."
+  },
+  {
+    "module": "FQChem.StatePrep.ImaginaryTimeProjection.SpinGlassPaths",
+    "names": [
+      "taylorAbsolute",
+      "taylorReweighting"
+    ],
+    "papers": [
+      "https://doi.org/10.1103/PhysRevLett.94.170201"
+    ],
+    "relation": "paper-result",
+    "scope": "Eqs. (6)–(8). At nonnegative β the ferromagnetic Taylor weights are exactly the absolute signed weights. At any order of nonzero signed mass the signed observable mean is recovered by the ratio of two bosonic expectations."
+  }
+]

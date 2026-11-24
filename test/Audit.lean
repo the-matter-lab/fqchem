@@ -1,4 +1,5 @@
 import FQChem
+import FQChemForShor
 import Lean.Util.CollectAxioms
 import Lean.Elab.Command
 
@@ -13,6 +14,13 @@ run_cmd do
       let modName := (file.withExtension "").components.foldl Name.str Name.anonymous
       unless env.header.moduleNames.contains modName do
         throwError "The library root does not import {modName}"
+      sourceModules := sourceModules + 1
+  for file in ← ("integrations/forshor" : System.FilePath).walkDir do
+    if file.extension == some "lean" then
+      let parts := (file.withExtension "").components.drop 2
+      let modName := parts.foldl Name.str Name.anonymous
+      unless env.header.moduleNames.contains modName do
+        throwError "The ForShor integration root does not import {modName}"
       sourceModules := sourceModules + 1
   let allowed := #[``propext, ``Classical.choice, ``Quot.sound]
   let mut count : Nat := 0

@@ -1,0 +1,649 @@
+[
+  {
+    "module": "FQChem.Complexity.OrderFindingPostprocessing",
+    "names": [
+      "two_steps_halve",
+      "divisions_bound"
+    ],
+    "papers": [
+      "https://doi.org/10.1137/S0097539795293172"
+    ],
+    "relation": "supporting",
+    "scope": "Two Euclidean remainder steps halve the denominator. Starting below 2^k, the algorithm performs at most 2k divisions."
+  },
+  {
+    "module": "FQChem.Complexity.OrderFindingPostprocessing",
+    "names": [
+      "stream_terminates",
+      "logarithmic_scan"
+    ],
+    "papers": [
+      "https://doi.org/10.1137/S0097539795293172",
+      "https://arxiv.org/abs/2611.20342"
+    ],
+    "relation": "derived",
+    "scope": "Identifies termination of the real continued fraction for a measured rational o/Q with an explicit Euclidean division count. The scan over the first 2(log₂ Q + 1) + 1 indices suffices for every o < Q, with the logarithm rounded down."
+  },
+  {
+    "module": "FQChemForShor.OrderFinding",
+    "names": [
+      "complete"
+    ],
+    "papers": [
+      "https://doi.org/10.1137/S0097539795293172",
+      "https://arxiv.org/abs/2611.20342"
+    ],
+    "relation": "supporting",
+    "scope": "The explicit logarithmic scan satisfies ForShor’s continued-fraction completeness specification for every clock width."
+  },
+  {
+    "module": "FQChemForShor.OrderFinding",
+    "names": [
+      "fourierRecovery",
+      "oneRun"
+    ],
+    "papers": [
+      "https://doi.org/10.1137/S0097539795293172",
+      "https://arxiv.org/abs/2611.20342"
+    ],
+    "relation": "paper-result",
+    "scope": "The ideal initialized Fourier circuit and the bounded order decoder together return the exact order with Born probability at least 4φ(r)/(π²r), hence at least φ(r)/(3r). ForShor chooses N² < Q ≤ 2N². This includes the paper’s clock for moduli which are not powers of two."
+  },
+  {
+    "module": "FQChemForShor.OrderFinding",
+    "names": [
+      "independentTrialBound"
+    ],
+    "papers": [
+      "https://doi.org/10.1137/S0097539795293172",
+      "https://arxiv.org/abs/2611.20342"
+    ],
+    "relation": "derived",
+    "scope": "After ceil(12 ln(1+floor(log₂(r+1)))) independent trials, the failure bound obtained from the φ(r)/(3r) certificate is at most exp(−1)."
+  },
+  {
+    "module": "FQChemForShor.OrderFinding",
+    "names": [
+      "compiledRecovery"
+    ],
+    "papers": [
+      "https://doi.org/10.1137/S0097539795293172",
+      "https://arxiv.org/abs/2611.20342"
+    ],
+    "relation": "derived",
+    "scope": "Finite matrix semantics of the reference two-limb Toom–Cook implementation. On the all-zero input, at precision chosen for the modulus and with fqchem’s bounded decoder, its one-run success probability is at least a strictly positive certified bound."
+  },
+  {
+    "module": "ForShor.ShorVerification.Framework.Policy",
+    "names": [
+      "constPolicy_admissible",
+      "table_admissible"
+    ],
+    "papers": [
+      "https://arxiv.org/abs/2611.20342"
+    ],
+    "relation": "supporting",
+    "scope": "The checked interpolation table gives an admissible constant lowering policy for the modular arithmetic circuit."
+  },
+  {
+    "module": "ForShor.ShorVerification.Implementation.Reference.Standard.Main",
+    "names": [
+      "referenceSubmittedProgram_correct"
+    ],
+    "papers": [
+      "https://arxiv.org/abs/2611.20342"
+    ],
+    "relation": "paper-result",
+    "scope": "The submitted low-level circuit achieves the reference bound using its allocated layout, selected precision, all-zero input, and any complete continued-fraction scan."
+  },
+  {
+    "module": "ForShor.ShorVerification.Implementation.Reference.Standard.Proofs.Success",
+    "names": [
+      "referenceSuccessProbability_pos"
+    ],
+    "papers": [
+      "https://arxiv.org/abs/2611.20342"
+    ],
+    "relation": "supporting",
+    "scope": "There is enough precision for the reference circuit to receive a positive probability certificate at every modulus."
+  },
+  {
+    "module": "ForShor.ShorVerification.Implementation.Shor.Proofs.Math.TotientBoundsLarge",
+    "names": [
+      "shor_totient_ratio"
+    ],
+    "papers": [
+      "https://doi.org/10.1137/S0097539795293172",
+      "https://arxiv.org/abs/2611.20342"
+    ],
+    "relation": "supporting",
+    "scope": "An explicit lower bound for the unit fraction φ(r)/r, logarithmic in the bit width, supplies the independent-retry estimate."
+  },
+  {
+    "module": "ForShor.ShorVerification.Implementation.Shor.Proofs.NaiveShor.GoodOutcomeMassLowerBound",
+    "names": [
+      "eval_orderFindingIdeal_prefix"
+    ],
+    "papers": [
+      "https://doi.org/10.1137/S0097539795293172",
+      "https://arxiv.org/abs/2611.20342"
+    ],
+    "relation": "supporting",
+    "scope": "Preparing the zero registers and applying Hadamards and modular exponentiation yields the pre-inverse-QFT state used in Section 5."
+  },
+  {
+    "module": "ForShor.ShorVerification.Implementation.Shor.Proofs.NaiveShor.OrderFindingAnalysis",
+    "names": [
+      "goodOutcome_card_ge_totient",
+      "goodOutcome_mass_lower_bound_from_card_and_pointwise",
+      "shor_paper_goodOutcome_lower_bound"
+    ],
+    "papers": [
+      "https://doi.org/10.1137/S0097539795293172",
+      "https://arxiv.org/abs/2611.20342"
+    ],
+    "relation": "supporting",
+    "scope": "There are at least φ(r) distinct good clock outcomes and each has probability at least 4/(π²r). Summation gives the order-recovery mass."
+  },
+  {
+    "module": "ForShor.ShorVerification.Implementation.Shor.Proofs.NaiveShor.PhaseEstimation",
+    "names": [
+      "measProbAfter_orderFindingIdeal_eq_paper_formula"
+    ],
+    "papers": [
+      "https://doi.org/10.1137/S0097539795293172",
+      "https://arxiv.org/abs/2611.20342"
+    ],
+    "relation": "supporting",
+    "scope": "For the initialized ideal circuit the Born distribution agrees with the finite exponential sums of Section 5."
+  },
+  {
+    "module": "ForShor.ShorVerification.Implementation.Shor.Proofs.NaiveShor.Preliminaries",
+    "names": [
+      "goodOutcome_mass_le_probability_of_success",
+      "shor_order_parameter_bounds"
+    ],
+    "papers": [
+      "https://doi.org/10.1137/S0097539795293172",
+      "https://arxiv.org/abs/2611.20342"
+    ],
+    "relation": "supporting",
+    "scope": "The register bounds imply r² < Q and every good outcome passes the order check within a complete scan."
+  },
+  {
+    "module": "ForShor.ShorVerification.Model.QuantumLib.Measure",
+    "names": [
+      "probability_of_success_eq"
+    ],
+    "papers": [
+      "https://arxiv.org/abs/2611.20342"
+    ],
+    "relation": "supporting",
+    "scope": "For a circuit within its qubit ceiling, the abstract Born probability on zero input equals the finite-dimensional circuit matrix probability."
+  },
+  {
+    "module": "FQChemForShor.OrderFinding",
+    "names": [
+      "executableDecoder"
+    ],
+    "papers": [
+      "https://doi.org/10.1137/S0097539795293172",
+      "https://arxiv.org/abs/2611.20342"
+    ],
+    "relation": "derived",
+    "scope": "An executable positive-denominator scan using binary modular multiplication returns exactly the same natural number as ForShor’s specification."
+  },
+  {
+    "module": "FQChemForShor.OrderFinding",
+    "names": [
+      "extraBits_linear"
+    ],
+    "papers": [
+      "https://doi.org/10.1137/S0097539795293172",
+      "https://arxiv.org/abs/2611.20342"
+    ],
+    "relation": "derived",
+    "scope": "At the explicit integer precision schedule the number of extra modular work bits is bounded by 70 times the data width."
+  },
+  {
+    "module": "FQChemForShor.OrderFinding",
+    "names": [
+      "programGateCount"
+    ],
+    "papers": [
+      "https://doi.org/10.1137/S0097539795293172",
+      "https://arxiv.org/abs/2611.20342"
+    ],
+    "relation": "derived",
+    "scope": "For the two-limb reference multiplication table and explicit precision level, the same circuit evaluated by programRecovery uses O(n³) logical gates at data width n, in the ForShor elementary-gate model."
+  },
+  {
+    "module": "FQChemForShor.OrderFinding",
+    "names": [
+      "programRecovery"
+    ],
+    "papers": [
+      "https://doi.org/10.1137/S0097539795293172",
+      "https://arxiv.org/abs/2611.20342"
+    ],
+    "relation": "derived",
+    "scope": "The explicit two-limb circuit on the zero vector, measured in its finite matrix semantics, has success at least 1/(2π² ln(1+floor(log₂ N))). Its executable decoder and precision schedule are fixed."
+  },
+  {
+    "module": "FQChemForShor.OrderFinding",
+    "names": [
+      "referencePrecision_le"
+    ],
+    "papers": [
+      "https://doi.org/10.1137/S0097539795293172",
+      "https://arxiv.org/abs/2611.20342"
+    ],
+    "relation": "derived",
+    "scope": "The executable precision level 2²⁶n⁴ gives enough accuracy for the lowered circuit to keep half the ideal success certificate."
+  },
+  {
+    "module": "FQChemForShor.QuantumFactoring",
+    "names": [
+      "factorProbability_nonneg"
+    ],
+    "papers": [
+      "https://doi.org/10.1137/S0097539795293172",
+      "https://arxiv.org/abs/2611.20342"
+    ],
+    "relation": "derived",
+    "scope": "Summation of Born weights over clock outcomes returning a verified factor gives a nonnegative result."
+  },
+  {
+    "module": "FQChemForShor.QuantumFactoring",
+    "names": [
+      "goodBaseRecovery"
+    ],
+    "papers": [
+      "https://doi.org/10.1137/S0097539795293172",
+      "https://arxiv.org/abs/2611.20342"
+    ],
+    "relation": "derived",
+    "scope": "For each good unit the circuit’s exact-order outcomes yield genuine factors after the executable gcd check. Thus the one-shot factor probability is at least the quantum recovery certificate."
+  },
+  {
+    "module": "FQChemForShor.QuantumFactoring",
+    "names": [
+      "mass_nonneg"
+    ],
+    "papers": [
+      "https://doi.org/10.1137/S0097539795293172",
+      "https://arxiv.org/abs/2611.20342"
+    ],
+    "relation": "derived",
+    "scope": "Every clock outcome of the physical low-level matrix circuit has nonnegative Born weight."
+  },
+  {
+    "module": "FQChemForShor.QuantumFactoring",
+    "names": [
+      "uniformFactorProbability"
+    ],
+    "papers": [
+      "https://doi.org/10.1137/S0097539795293172",
+      "https://arxiv.org/abs/2611.20342"
+    ],
+    "relation": "derived",
+    "scope": "Averaging the physical matrix Born probability over a uniformly chosen unit proves an unconditional one-run lower bound (1−2^(1−k))/(2π² ln(1+floor(log₂ N))) for odd N>1 with k distinct primes."
+  },
+  {
+    "module": "FQChemForShor.QuantumFactoring",
+    "names": [
+      "unitOrder"
+    ],
+    "papers": [
+      "https://doi.org/10.1137/S0097539795293172",
+      "https://arxiv.org/abs/2611.20342"
+    ],
+    "relation": "derived",
+    "scope": "Converting the chosen unit to the input structure preserves the multiplicative order used by the quantum circuit."
+  },
+  {
+    "module": "ForShor.ShorVerification.Implementation.Reference.Standard.Proofs.Layout",
+    "names": [
+      "algorithm1ExtraBits_referencePrecision"
+    ],
+    "papers": [
+      "https://arxiv.org/abs/2611.20342"
+    ],
+    "relation": "supporting",
+    "scope": "Computes the extra register bits at an integer reference precision in terms of the natural ceiling logarithm."
+  },
+  {
+    "module": "ForShor.ShorVerification.Implementation.Reference.Standard.Proofs.Layout",
+    "names": [
+      "allocateReferenceLayout_data_width"
+    ],
+    "papers": [
+      "https://arxiv.org/abs/2611.20342"
+    ],
+    "relation": "supporting",
+    "scope": "The reference allocator sets the data register width to floor(log₂(2N))."
+  },
+  {
+    "module": "ForShor.ShorVerification.Implementation.Reference.Standard.Proofs.Layout",
+    "names": [
+      "allocateReferenceLayout_x_width"
+    ],
+    "papers": [
+      "https://arxiv.org/abs/2611.20342"
+    ],
+    "relation": "supporting",
+    "scope": "The reference allocator sets the clock width to floor(log₂(2N²))."
+  },
+  {
+    "module": "ForShor.ShorVerification.Implementation.Shor.Main",
+    "names": [
+      "Shor_correct_approx_lowered"
+    ],
+    "papers": [
+      "https://arxiv.org/abs/2611.20342"
+    ],
+    "relation": "supporting",
+    "scope": "At sufficiently fine approximation precision the complete lowered circuit keeps half the reference success bound."
+  },
+  {
+    "module": "ForShor.ShorVerification.Implementation.Shor.Main",
+    "names": [
+      "shorGateCountBound_of_setup"
+    ],
+    "papers": [
+      "https://arxiv.org/abs/2611.20342"
+    ],
+    "relation": "supporting",
+    "scope": "An admissible Toom–Cook interpolation table with bounded exponent gives the logical gate-count bound for all ready layouts and linearly many extra work bits."
+  },
+  {
+    "module": "ForShor.ShorVerification.Implementation.Shor.Proofs.Correctness",
+    "names": [
+      "κ_pos"
+    ],
+    "papers": [
+      "https://arxiv.org/abs/2611.20342"
+    ],
+    "relation": "supporting",
+    "scope": "The constant 1/π² in the compiled success bound is positive."
+  },
+  {
+    "module": "ForShor.ShorVerification.Implementation.Shor.Proofs.GateCount",
+    "names": [
+      "shorPrecision_inv_le"
+    ],
+    "papers": [
+      "https://arxiv.org/abs/2611.20342"
+    ],
+    "relation": "supporting",
+    "scope": "The reciprocal precision needed for a valid order-finding layout grows at most quartically with data width."
+  },
+  {
+    "module": "ForShor.ShorVerification.Implementation.Shor.Proofs.Workspace",
+    "names": [
+      "workspace"
+    ],
+    "papers": [
+      "https://arxiv.org/abs/2611.20342"
+    ],
+    "relation": "supporting",
+    "scope": "An initialized ready layout supplies the workspace required by the compiler."
+  },
+  {
+    "module": "FQChemForShor.OrderFindingTrials",
+    "names": [
+      "selected_if_hit"
+    ],
+    "papers": [
+      "https://doi.org/10.1137/S0097539795293172",
+      "https://arxiv.org/abs/2611.20342"
+    ],
+    "relation": "supporting",
+    "scope": "Taking the least nonzero executable candidate returns the true order whenever at least one trial recovers it. Every positive candidate passes modular verification and hence is at least the order."
+  },
+  {
+    "module": "FQChemForShor.OrderFindingTrials",
+    "names": [
+      "boundedErrorOrderFinding"
+    ],
+    "papers": [
+      "https://doi.org/10.1137/S0097539795293172",
+      "https://arxiv.org/abs/2611.20342"
+    ],
+    "relation": "paper-result",
+    "scope": "At Shor’s binary clock, the wrong-answer probability of the independent Fourier experiments and bounded decoder is ≤1/e in ceil(12 ln(1+floor(log₂(r+1)))) trials. The joint law is the product of the normalized matrix Born distributions."
+  },
+  {
+    "module": "FQChemForShor.CompiledSampling",
+    "names": [
+      "mass_pos"
+    ],
+    "papers": [
+      "https://doi.org/10.1137/S0097539795293172",
+      "https://arxiv.org/abs/2611.20342"
+    ],
+    "relation": "derived",
+    "scope": "Each clock outcome has nonnegative weight in the explicit projected matrix column."
+  },
+  {
+    "module": "FQChemForShor.CompiledSampling",
+    "names": [
+      "normalized"
+    ],
+    "papers": [
+      "https://doi.org/10.1137/S0097539795293172",
+      "https://arxiv.org/abs/2611.20342"
+    ],
+    "relation": "derived",
+    "scope": "Summing over the complete clock register gives probability one. The circuit matrix is unitary, the input is the zero basis vector, and the register projectors partition the final amplitudes."
+  },
+  {
+    "module": "FQChemForShor.FactoringLaw",
+    "names": [
+      "baseLaw_certified"
+    ],
+    "papers": [
+      "https://doi.org/10.1137/S0097539795293172",
+      "https://arxiv.org/abs/2611.20342"
+    ],
+    "relation": "derived",
+    "scope": "For an arbitrary positive base, the stochastic output measure counts exactly the verified factor probability, including the immediate gcd branch."
+  },
+  {
+    "module": "FQChemForShor.FactoringLaw",
+    "names": [
+      "compositeShot"
+    ],
+    "papers": [
+      "https://doi.org/10.1137/S0097539795293172",
+      "https://arxiv.org/abs/2611.20342"
+    ],
+    "relation": "derived",
+    "scope": "For any composite m ≤ N, preprocessing and one fair-word trial return a checked proper divisor with probability at least 1/[128(1+floor(log₂ N))]."
+  },
+  {
+    "module": "FQChemForShor.FactoringLaw",
+    "names": [
+      "drawLaw_certified"
+    ],
+    "papers": [
+      "https://doi.org/10.1137/S0097539795293172",
+      "https://arxiv.org/abs/2611.20342"
+    ],
+    "relation": "derived",
+    "scope": "Summation over uniformly sampled fair words accounts for rejected draws; one physical trial keeps at least half the mean accepted-base factor probability."
+  },
+  {
+    "module": "FQChemForShor.FactoringLaw",
+    "names": [
+      "input_ext"
+    ],
+    "papers": [
+      "https://doi.org/10.1137/S0097539795293172",
+      "https://arxiv.org/abs/2611.20342"
+    ],
+    "relation": "derived",
+    "scope": "Two order-finding inputs with the same base and modulus describe the same quantum experiment."
+  },
+  {
+    "module": "FQChemForShor.FactoringLaw",
+    "names": [
+      "primeFactorization"
+    ],
+    "papers": [
+      "https://doi.org/10.1137/S0097539795293172",
+      "https://arxiv.org/abs/2611.20342"
+    ],
+    "relation": "derived",
+    "scope": "The finite-matrix circuit, bit decoder, classical gcd check and recursive splitter return primes multiplying to N with probability at least 2/3. The product is exact on every tape and the bound on trial count is cubic in the input bit length."
+  },
+  {
+    "module": "FQChemForShor.FactoringLaw",
+    "names": [
+      "unitLaw_certified"
+    ],
+    "papers": [
+      "https://doi.org/10.1137/S0097539795293172",
+      "https://arxiv.org/abs/2611.20342"
+    ],
+    "relation": "derived",
+    "scope": "Every accepted factor in the pushed-forward clock distribution satisfies both strict bounds and divides the modulus."
+  },
+  {
+    "module": "FQChemForShor.FactoringLaw",
+    "names": [
+      "unitLaw_success"
+    ],
+    "papers": [
+      "https://doi.org/10.1137/S0097539795293172",
+      "https://arxiv.org/abs/2611.20342"
+    ],
+    "relation": "derived",
+    "scope": "Pushing the normalized clock measure through the executable decoder and factor extractor recovers its explicit finite Born sum."
+  },
+  {
+    "module": "FQChemForShor.FactoringLaw",
+    "names": [
+      "wordBounds"
+    ],
+    "papers": [
+      "https://doi.org/10.1137/S0097539795293172",
+      "https://arxiv.org/abs/2611.20342"
+    ],
+    "relation": "derived",
+    "scope": "The fair-word sample space has between N−1 and 2(N−1) elements, so at least half the words encode usable positive bases."
+  },
+  {
+    "module": "FQChemForShor.QuantumFactoring",
+    "names": [
+      "acceptedOrder"
+    ],
+    "papers": [
+      "https://doi.org/10.1137/S0097539795293172",
+      "https://arxiv.org/abs/2611.20342"
+    ],
+    "relation": "derived",
+    "scope": "Whenever the verified extractor accepts the true order, every circuit outcome decoding that order returns the certified divisor."
+  },
+  {
+    "module": "FQChemForShor.QuantumFactoring",
+    "names": [
+      "positiveBaseFactorProbability"
+    ],
+    "papers": [
+      "https://doi.org/10.1137/S0097539795293172",
+      "https://arxiv.org/abs/2611.20342"
+    ],
+    "relation": "derived",
+    "scope": "A uniform draw from all integers 1,…,N−1 and one compiled experiment yield a factor with probability at least (1−2^(1−k))/(2π² ln(1+floor(log₂ N))). This includes nonunits, for which the first gcd already splits N."
+  },
+  {
+    "module": "FQChemForShor.QuantumFactoring",
+    "names": [
+      "representative"
+    ],
+    "papers": [
+      "https://doi.org/10.1137/S0097539795293172",
+      "https://arxiv.org/abs/2611.20342"
+    ],
+    "relation": "derived",
+    "scope": "Converting a positive coprime base less than N to a modular unit preserves its natural representative."
+  },
+  {
+    "module": "ForShor.ShorVerification.Implementation.QFT.Proofs.QftPhase",
+    "names": [
+      "norm_qftPhase_one_shor"
+    ],
+    "papers": [
+      "https://arxiv.org/abs/2611.20342"
+    ],
+    "relation": "supporting",
+    "scope": "Every Fourier phase has unit modulus, as needed for normalization of the clock transform."
+  },
+  {
+    "module": "ForShor.ShorVerification.Implementation.Reference.Standard.Proofs.Layout",
+    "names": [
+      "regSize_interval"
+    ],
+    "papers": [
+      "https://arxiv.org/abs/2611.20342"
+    ],
+    "relation": "supporting",
+    "scope": "An interval-allocated register has exactly its declared binary width."
+  },
+  {
+    "module": "ForShor.ShorVerification.Implementation.Shor.Proofs.NaiveShor.OrderFindingAnalysis",
+    "names": [
+      "ord_le_of_pow_mod_eq_one"
+    ],
+    "papers": [
+      "https://arxiv.org/abs/2611.20342"
+    ],
+    "relation": "supporting",
+    "scope": "Every positive exponent passing modular verification is at least the multiplicative order."
+  },
+  {
+    "module": "ForShor.ShorVerification.Implementation.Shor.Proofs.NaiveShor.Preliminaries",
+    "names": [
+      "goodOutcome_r_found_one"
+    ],
+    "papers": [
+      "https://arxiv.org/abs/2611.20342"
+    ],
+    "relation": "supporting",
+    "scope": "A near-peak outcome for an index coprime to the order passes the complete continued-fraction decoder."
+  },
+  {
+    "module": "ForShor.ShorVerification.Model.QuantumLib.Denote",
+    "names": [
+      "denote_unitary"
+    ],
+    "papers": [
+      "https://arxiv.org/abs/2611.20342"
+    ],
+    "relation": "supporting",
+    "scope": "The finite matrix of the lowered circuit is unitary at every qubit dimension large enough for its gates."
+  },
+  {
+    "module": "ForShor.ShorVerification.Model.QuantumLib.Measure",
+    "names": [
+      "proj_mul_apply"
+    ],
+    "papers": [
+      "https://arxiv.org/abs/2611.20342"
+    ],
+    "relation": "supporting",
+    "scope": "The register projector keeps exactly the amplitudes whose measured bits encode the requested outcome."
+  },
+  {
+    "module": "ForShor.ShorVerification.Model.Standard.Basis",
+    "names": [
+      "mToNat_lt"
+    ],
+    "papers": [
+      "https://arxiv.org/abs/2611.20342"
+    ],
+    "relation": "supporting",
+    "scope": "The integer obtained by reading the register bits is smaller than the register basis size."
+  }
+]

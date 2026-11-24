@@ -1,10 +1,15 @@
 name = "fqchem"
 version = "0.1.0"
-defaultTargets = ["FQChem"]
+defaultTargets = ["FQChem", "FQChemForShor"]
 
 [[require]]
 name = "aaronsonAmbainisPort"
 path = "integrations/aaronson-ambainis"
+
+[[require]]
+name = "ForShor"
+git = "https://github.com/VerifiedQC/ForShor.git"
+rev = "a4628e560f4082df75491b9490b0585013bf99ac"
 
 [[require]]
 name = "mathlib"
@@ -22,3 +27,7 @@ globs = [
   "FQChem.Properties.*",
   "FQChem.Multiscale.*",
 ]
+
+[[lean_lib]]
+name = "FQChemForShor"
+srcDir = "integrations/forshor"

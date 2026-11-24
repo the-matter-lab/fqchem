@@ -1,0 +1,87 @@
+[
+  {
+    "module": "FQChem.Complexity.OrderFindingBitCost",
+    "names": [
+      "low_split",
+      "cell",
+      "ripple_spec",
+      "add_word"
+    ],
+    "papers": [
+      "https://doi.org/10.1137/S0097539795293172"
+    ],
+    "relation": "supporting",
+    "scope": "Elementary Boolean arithmetic for Section 5 postprocessing. The six-gate conditional-complement ripple cell handles one bit of addition or subtraction. A width-w chain has 6w gates, an exact carry/borrow specification and a bounded result."
+  },
+  {
+    "module": "FQChem.Complexity.OrderFindingBitCost",
+    "names": [
+      "select_spec",
+      "equal_spec",
+      "update_spec"
+    ],
+    "papers": [
+      "https://doi.org/10.1137/S0097539795293172"
+    ],
+    "relation": "supporting",
+    "scope": "Executable candidate selection and comparison. Word equality uses 3w gates, a selector uses 4w, and checking the returned residue and updating the least positive candidate costs 24w gates."
+  },
+  {
+    "module": "FQChem.Complexity.OrderFindingBitCost",
+    "names": [
+      "multiply_spec"
+    ],
+    "papers": [
+      "https://doi.org/10.1137/S0097539795293172"
+    ],
+    "relation": "supporting",
+    "scope": "The explicit shift-add multiplier with per-bit selection computes x·y when it fits in the w-bit result word and uses exactly 10wn Boolean gates for n multiplier bits."
+  },
+  {
+    "module": "FQChem.Complexity.OrderFindingBitCost",
+    "names": [
+      "divide_spec"
+    ],
+    "papers": [
+      "https://doi.org/10.1137/S0097539795293172"
+    ],
+    "relation": "supporting",
+    "scope": "The restoring divider computes quotient and remainder together in exactly 10wn Boolean gates for an n-bit dividend, positive divisor y and padded remainder width satisfying 2y ≤ 2^w."
+  },
+  {
+    "module": "FQChem.Complexity.OrderFindingBitCost",
+    "names": [
+      "fraction_spec"
+    ],
+    "papers": [
+      "https://doi.org/10.1137/S0097539795293172"
+    ],
+    "relation": "derived",
+    "scope": "The binary Euclidean recurrence returns precisely the Section 5 decoder’s numerator and denominator at index t, with at most 30(t+1)(w+1)² Boolean data-path operations on w-bit inputs."
+  },
+  {
+    "module": "FQChem.Complexity.OrderFindingBitCost",
+    "names": [
+      "productMod_spec",
+      "power_spec"
+    ],
+    "papers": [
+      "https://doi.org/10.1137/S0097539795293172"
+    ],
+    "relation": "supporting",
+    "scope": "Double-width schoolbook multiplication followed by restoring division gives modular reduction. Evaluating both possible square-and-multiply products at every exponent bit implements modular powering in at most 150n(w+1)² Boolean data-path operations."
+  },
+  {
+    "module": "FQChem.Complexity.OrderFindingBitCost",
+    "names": [
+      "scan_spec",
+      "decoder_bit_bound",
+      "decode_input_bound"
+    ],
+    "papers": [
+      "https://doi.org/10.1137/S0097539795293172"
+    ],
+    "relation": "derived",
+    "scope": "Executable Boolean refinement of the continued-fraction and modular-verification decoder after Eq. (5.13). Its result exactly equals the natural-arithmetic decoder, with at most 1000(w+1)⁴ Boolean operations at w=1+floor(log₂ max(N,Q)). The branching computation treats shifts, indexing, wiring and fan-out as free. Gate counts come from explicit ripple, selection, multiplication and division routines."
+  }
+]

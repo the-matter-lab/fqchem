@@ -1,0 +1,94 @@
+[
+  {
+    "module": "FQChemForShor.VerifiedOrderFinding",
+    "names": [
+      "trial_inverse",
+      "oneShot"
+    ],
+    "papers": [
+      "https://doi.org/10.1137/S0097539795293172",
+      "https://arxiv.org/abs/2611.20342"
+    ],
+    "relation": "derived",
+    "scope": "A schedule using only the modulus gives at least 2/t success per run of the chosen ForShor circuit, using t = 64(1+floor(log₂(1+floor(log₂N)))). The bound comes from its matrix recovery theorem with κ=1/π²."
+  },
+  {
+    "module": "FQChemForShor.VerifiedOrderFinding",
+    "names": [
+      "physicalClock"
+    ],
+    "papers": [
+      "https://doi.org/10.1137/S0097539795293172",
+      "https://arxiv.org/abs/2611.20342"
+    ],
+    "relation": "supporting",
+    "scope": "The allocated compiled circuit measures a clock of size 2^floor(log₂(2N²)). This specifies the physical input to the decoder; the ideal paper-clock theorem separately uses N²≤Q<2N²."
+  },
+  {
+    "module": "FQChemForShor.VerifiedOrderFinding",
+    "names": [
+      "compiledError",
+      "expNegTwo_lt_third",
+      "joint_born_mass"
+    ],
+    "papers": [
+      "https://doi.org/10.1137/S0097539795293172",
+      "https://arxiv.org/abs/2611.20342"
+    ],
+    "relation": "derived",
+    "scope": "The known-N schedule has failure at most exp(−2) < 1/3 under the actual product of independent compiled-circuit Born laws. Those tuple weights sum to one."
+  },
+  {
+    "module": "FQChemForShor.VerifiedOrderFinding",
+    "names": [
+      "decoded_le_clock",
+      "select_cons",
+      "records_spec"
+    ],
+    "papers": [
+      "https://doi.org/10.1137/S0097539795293172",
+      "https://arxiv.org/abs/2611.20342"
+    ],
+    "relation": "supporting",
+    "scope": "Every decoded denominator fits the clock. Streaming the records through bit-level decoding, a zero check, and a minimum selector agrees exactly with the reference minimum of the nonzero verified estimates, with all those data-path operations counted."
+  },
+  {
+    "module": "FQChemForShor.VerifiedOrderFinding",
+    "names": [
+      "physical_bounded_error"
+    ],
+    "papers": [
+      "https://doi.org/10.1137/S0097539795293172",
+      "https://arxiv.org/abs/2611.20342"
+    ],
+    "relation": "derived",
+    "scope": "The physical bounded-error statement uses the executable Boolean decoder and streaming minimum on fresh zero-state preparations of the same compiled order-finding circuit. The number of preparations is determined from the known modulus."
+  },
+  {
+    "module": "FQChemForShor.VerifiedOrderFinding",
+    "names": [
+      "polynomialWork"
+    ],
+    "papers": [
+      "https://doi.org/10.1137/S0097539795293172",
+      "https://arxiv.org/abs/2611.20342"
+    ],
+    "relation": "derived",
+    "scope": "Across the complete known-modulus repetition schedule for a valid unit input, the allocated circuit uses O(L⁴) logical gate operations and the decoder plus aggregation use ≤40,000,000 L⁵ Boolean data-path operations at sufficiently large input width L. These are loose upper bounds in the stated cost models."
+  },
+  {
+    "module": "FQChemForShor.VerifiedOrderFinding",
+    "names": [
+      "shorOrderFinding"
+    ],
+    "papers": [
+      "https://doi.org/10.1137/S0097539795293172",
+      "https://arxiv.org/abs/2611.20342"
+    ],
+    "relation": "paper-result",
+    "scope": "Shor §§3–5. The normalized ideal paper-clock experiment has one-shot success ≥(4/π²)φ(r)/r and constant error after O(log log r) independent shots. A concrete compiled circuit, run for a count computed solely from N, yields the exact order with error <1/3 after Boolean decoding and aggregation. Total logical gates and classical data-path operations are polynomial in the bit length of N, with the distinct ideal and compiled clocks explicit.",
+    "aliases": {
+      "paper/shor-order-finding": "FQChem.Complexity.VerifiedOrderFinding.shorOrderFinding"
+    }
+  }
+]

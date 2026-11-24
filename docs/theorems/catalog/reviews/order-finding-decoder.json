@@ -1,0 +1,72 @@
+[
+  {
+    "module": "FQChem.Complexity.OrderFindingDecoder",
+    "names": [
+      "convergent_invariants",
+      "convergent_bounds"
+    ],
+    "papers": [
+      "https://doi.org/10.1137/S0097539795293172"
+    ],
+    "relation": "supporting",
+    "scope": "For the Section 5 continued-fraction decoder, the integer recurrence maintains coprimality, a positive denominator and bounded numerator/denominator. Computing index t takes at most t+1 quotient levels."
+  },
+  {
+    "module": "FQChem.Complexity.OrderFindingDecoder",
+    "names": [
+      "convergent_eq_real",
+      "denominator_eq_real"
+    ],
+    "papers": [
+      "https://doi.org/10.1137/S0097539795293172"
+    ],
+    "relation": "supporting",
+    "scope": "At every index, including after an exact rational terminates, the Euclidean recurrence agrees with Mathlib’s Real.convergent. It already produces the reduced denominator, as needed for the order test after Eq. (5.13)."
+  },
+  {
+    "module": "FQChem.Complexity.OrderFindingDecoder",
+    "names": [
+      "least_insert"
+    ],
+    "papers": [
+      "https://doi.org/10.1137/S0097539795293172"
+    ],
+    "relation": "supporting",
+    "scope": "Invariant for the Section 5 implementation that keeps the least positive passing denominator. It updates the minimum when another candidate is inserted, using zero for the empty set."
+  },
+  {
+    "module": "FQChem.Complexity.OrderFindingDecoder",
+    "names": [
+      "scan_eq_reference"
+    ],
+    "papers": [
+      "https://doi.org/10.1137/S0097539795293172"
+    ],
+    "relation": "derived",
+    "scope": "Exact algorithmic refinement of Section 5 continued-fraction postprocessing. Scanning t integer convergents and testing denominators by binary modular exponentiation yields the reference minimum over verified real convergent denominators, or zero if there are none."
+  },
+  {
+    "module": "FQChem.Complexity.OrderFindingDecoder",
+    "names": [
+      "scan_work",
+      "decode_work"
+    ],
+    "papers": [
+      "https://doi.org/10.1137/S0097539795293172"
+    ],
+    "relation": "derived",
+    "scope": "The actual scan counts its Euclidean frames and modular multiplications. For clock width L and budget 2L+1, their bounds are (2L+1)(2L+2) and 2L(2L+1), respectively. This supplies an explicit arithmetic-work bound for Section 5 postprocessing."
+  },
+  {
+    "module": "FQChem.Complexity.OrderFindingDecoder",
+    "names": [
+      "euclidean_width",
+      "modular_product_width"
+    ],
+    "papers": [
+      "https://doi.org/10.1137/S0097539795293172"
+    ],
+    "relation": "supporting",
+    "scope": "At each visited Euclidean frame the operands and intermediate numerator products and sums are at most the clock size Q, and both unreduced products in each modular multiplication frame are below N². These width bounds complement the polynomial arithmetic counts."
+  }
+]

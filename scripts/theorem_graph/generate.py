@@ -26,12 +26,14 @@ def module_file(module):
     return Path(*module.split(".")).with_suffix(".lean")
 
 
-def extract(project, modules):
-    imports = "".join(f"import all {name}\n" for name in modules)
+def extract(project, modules, *, legacy=False):
+    header = "" if legacy else "module\n"
+    visibility = "" if legacy else "all "
+    imports = "".join(f"import {visibility}{name}\n" for name in modules)
     extractor = Path(__file__).with_name("Extract.lean").read_text()
     with tempfile.TemporaryDirectory() as temp:
         source = Path(temp) / "ExtractGraph.lean"
-        source.write_text("module\n" + imports + extractor)
+        source.write_text(header + imports + extractor)
         output = subprocess.run(
             ["lake", "env", "lean", str(source)], cwd=project, text=True,
             stdout=subprocess.PIPE, stderr=subprocess.STDOUT, check=False,
@@ -58,7 +60,7 @@ def upstream_link(project, row):
     # Check the pinned source. Public .olean facets can expose a theorem as an
     # axiom, generated equation lemmas have no source, and port headers shift lines.
     candidates = [i for i, line in enumerate(origin.read_text().splitlines(), 1)
-                  if (m := DECLARATION.match(line)) and row["name"].endswith("." + m[1])]
+                  if (m := DECLARATION.match(line)) and (row["name"] == m[1] or row["name"].endswith("." + m[1]))]
     if not candidates:
         return None
     number = row["line"] if row["line"] in candidates else candidates[0] if len(candidates) == 1 else None
@@ -199,6 +201,15 @@ def main():
         imports.extend(m for m in json.loads(deps) if m.startswith("FQChem."))
     imports = sorted(set(imports))
     rows = extract(project, imports)
+    if project == ROOT:
+        # ForShor uses the legacy Lean import system on the same toolchain.
+        bridge = ROOT / "integrations/forshor"
+        legacy_sources = {".".join(p.relative_to(bridge).with_suffix("").parts): p
+                          for p in sorted(bridge.rglob("*.lean"))}
+        sources.update(legacy_sources)
+        legacy_rows = extract(project, legacy_sources, legacy=True)
+        # The modern pass keeps private declaration ranges for the native modules.
+        rows.update({key: value for key, value in legacy_rows.items() if key not in rows})
     nodes = graph(rows, select_theorems(rows, sources, project))
     data = json.dumps(nodes, ensure_ascii=False, sort_keys=True, separators=(",", ":"))
     outputs = {

@@ -1,0 +1,188 @@
+[
+  {
+    "module": "FQChem.Complexity.FactoringReduction",
+    "names": [
+      "modPower_spec",
+      "modPower_multiplications"
+    ],
+    "papers": [
+      "https://doi.org/10.1137/S0097539795293172"
+    ],
+    "relation": "supporting",
+    "scope": "Sections 3 and 5 use modular exponentiation. The executable binary run agrees with natural powering modulo N and performs at most two modular multiplications per exponent bit."
+  },
+  {
+    "module": "FQChem.Complexity.FactoringReduction",
+    "names": [
+      "extractFactor_sound",
+      "extractFactor_nonunit"
+    ],
+    "papers": [
+      "https://doi.org/10.1137/S0097539795293172"
+    ],
+    "relation": "supporting",
+    "scope": "For the Section 5 classical reduction, every reported divisor is proper, even when the order candidate is incorrect. A positive nonunit below N yields its gcd with N before order finding."
+  },
+  {
+    "module": "FQChem.Complexity.FactoringReduction",
+    "names": [
+      "odd_quotient",
+      "bad_projection"
+    ],
+    "papers": [
+      "https://doi.org/10.1137/S0097539795293172"
+    ],
+    "relation": "supporting",
+    "scope": "Section 5 compares the 2-adic valuations of component orders. An unsuccessful unit projects to an element with the full global order valuation under any residue-ring homomorphism to a modulus larger than two."
+  },
+  {
+    "module": "FQChem.Complexity.FactoringReduction",
+    "names": [
+      "generator_shift"
+    ],
+    "papers": [
+      "https://doi.org/10.1137/S0097539795293172"
+    ],
+    "relation": "supporting",
+    "scope": "In a finite cyclic group of even size, multiplication by a generator changes the 2-adic valuation of the order. This supplies the local half bound for the Section 5 CRT argument."
+  },
+  {
+    "module": "FQChem.Complexity.FactoringReduction",
+    "names": [
+      "constant_label_count"
+    ],
+    "papers": [
+      "https://doi.org/10.1137/S0097539795293172"
+    ],
+    "relation": "supporting",
+    "scope": "Counting injection for the Section 5 CRT proof. Once one coordinate of a k-fold product is fixed, a generator shift that changes labels independently in every other coordinate bounds agreement by a fraction 2^(1−k)."
+  },
+  {
+    "module": "FQChem.Complexity.FactoringReduction",
+    "names": [
+      "badUnitCount",
+      "goodUnitFraction"
+    ],
+    "papers": [
+      "https://doi.org/10.1137/S0097539795293172"
+    ],
+    "relation": "paper-result",
+    "scope": "Section 5, before Eq. (5.1). Among uniformly random units modulo every odd N > 1 with k distinct prime factors, an even order whose half-power differs from −1 occurs with probability at least 1−2^(1−k). Lean constructs the prime-power CRT decomposition from N."
+  },
+  {
+    "module": "FQChem.Complexity.FactoringReduction",
+    "names": [
+      "extractFactor_of_good"
+    ],
+    "papers": [
+      "https://doi.org/10.1137/S0097539795293172"
+    ],
+    "relation": "paper-result",
+    "scope": "Section 5, classical reduction. A good unit and its true order yield a proper divisor using the single minus-sign gcd of the modular half-power."
+  },
+  {
+    "module": "FQChem.Complexity.FactoringReduction",
+    "names": [
+      "failedRetryCount"
+    ],
+    "papers": [
+      "https://doi.org/10.1137/S0097539795293172"
+    ],
+    "relation": "derived",
+    "scope": "With t independent uniformly random units and exact orders, at most a fraction 2^(−(k−1)t) of the sample tuples produce no factor. This augments the single-trial bound before Eq. (5.1)."
+  },
+  {
+    "module": "FQChem.Complexity.FactoringReduction",
+    "names": [
+      "randomBaseFailure"
+    ],
+    "papers": [
+      "https://doi.org/10.1137/S0097539795293172"
+    ],
+    "relation": "paper-result",
+    "scope": "Section 5, random-base reduction. Uniform sampling from all 1,…,N−1 has failure fraction at most 2^(1−k), since every nonunit gives a factor immediately and the candidate is the exact order on units."
+  },
+  {
+    "module": "FQChem.Complexity.FactoringPreprocessing",
+    "names": [
+      "rootBits_tests",
+      "rootBits_exact"
+    ],
+    "papers": [
+      "https://doi.org/10.1137/S0097539795293172"
+    ],
+    "relation": "supporting",
+    "scope": "For the optional classical perfect-power step in Section 5, binary search makes exactly one power comparison per root bit and recovers any exact integer root in its initial interval."
+  },
+  {
+    "module": "FQChem.Complexity.FactoringPreprocessing",
+    "names": [
+      "scanPowers_sound",
+      "scanPowers_complete",
+      "scanPowers_tests"
+    ],
+    "papers": [
+      "https://doi.org/10.1137/S0097539795293172"
+    ],
+    "relation": "supporting",
+    "scope": "The implementation checks candidate exponents in descending order. Its power scan returns only proper divisors, finds every exact power with exponent in its search range, and counts the worst-case number of comparisons."
+  },
+  {
+    "module": "FQChem.Complexity.FactoringPreprocessing",
+    "names": [
+      "preprocess_sound",
+      "preprocess_even",
+      "preprocess_power"
+    ],
+    "papers": [
+      "https://doi.org/10.1137/S0097539795293172"
+    ],
+    "relation": "derived",
+    "scope": "Implements the Section 5 classical treatment of easy inputs. The routine returns a proper factor of every even N > 2 and every perfect power a^e with a,e ≥ 2."
+  },
+  {
+    "module": "FQChem.Complexity.FactoringPreprocessing",
+    "names": [
+      "preprocess_tests"
+    ],
+    "papers": [
+      "https://doi.org/10.1137/S0097539795293172"
+    ],
+    "relation": "derived",
+    "scope": "The Section 5 preprocessing implementation uses at most (L−2)(L+1) power comparisons at positive input width L, with natural subtraction. This is an arithmetic operation count."
+  },
+  {
+    "module": "FQChem.Complexity.FactoringPreprocessing",
+    "names": [
+      "preprocess_miss"
+    ],
+    "papers": [
+      "https://doi.org/10.1137/S0097539795293172"
+    ],
+    "relation": "supporting",
+    "scope": "If a composite number above one survives classical preprocessing, it is odd and has at least two distinct prime factors. These are the hypotheses of Shor’s order-to-factoring reduction."
+  },
+  {
+    "module": "FQChem.Complexity.FactoringPreprocessing",
+    "names": [
+      "rootTestsFit_width",
+      "preprocessingPowerWidth"
+    ],
+    "papers": [
+      "https://doi.org/10.1137/S0097539795293172"
+    ],
+    "relation": "supporting",
+    "scope": "For each exponent e ≤ floor(log₂ N), all candidate powers along the binary root search fit in L·e ≤ L² bits. This certifies polynomial operand widths for the classical preprocessing comparisons."
+  },
+  {
+    "module": "FQChem.Complexity.FactoringReduction",
+    "names": [
+      "fairBitBaseSampler"
+    ],
+    "papers": [
+      "https://doi.org/10.1137/S0097539795293172"
+    ],
+    "relation": "supporting",
+    "scope": "An explicit fair-bit implementation of the random positive base draw in Section 5. Every target base has a unique accepted word of length 1+floor(log₂(N−1)) and at least half the words are accepted."
+  }
+]

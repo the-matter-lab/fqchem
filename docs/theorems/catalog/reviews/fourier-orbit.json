@@ -1,0 +1,98 @@
+[
+  {
+    "module": "FQChemForShor.FourierOrbit",
+    "names": [
+      "scale_sq",
+      "powerRegister_normalized"
+    ],
+    "papers": [
+      "https://doi.org/10.1137/S0097539795293172"
+    ],
+    "relation": "supporting",
+    "scope": "Section 5 Eqs. (5.2)–(5.4). The explicit joint state has amplitude 1/√Q on each of the Q numerically distinct clock labels paired with its modular power. Its squared norm is one."
+  },
+  {
+    "module": "FQChemForShor.FourierOrbit",
+    "names": [
+      "power_residue",
+      "label_injective"
+    ],
+    "papers": [
+      "https://doi.org/10.1137/S0097539795293172"
+    ],
+    "relation": "supporting",
+    "scope": "Section 5 uses the modular-power orbit. The natural modular data label depends only on t mod r; distinct residues below the exact order give distinct data basis labels."
+  },
+  {
+    "module": "FQChemForShor.FourierOrbit",
+    "names": [
+      "amplitude_expand",
+      "amplitude_label",
+      "born_eq_period_formula"
+    ],
+    "papers": [
+      "https://doi.org/10.1137/S0097539795293172"
+    ],
+    "relation": "paper-result",
+    "scope": "Section 5 Eqs. (5.4)–(5.7). Multiplying the normalized inverse Fourier matrix by the modular-power state and summing over every data label gives the sum of squared period-class amplitudes. No register-outcome probability formula is assumed."
+  },
+  {
+    "module": "FQChemForShor.FourierOrbit",
+    "names": [
+      "omega_norm",
+      "phase_cross",
+      "inverseFourier_unitary"
+    ],
+    "papers": [
+      "https://doi.org/10.1137/S0097539795293172"
+    ],
+    "relation": "supporting",
+    "scope": "Sections 3 and 5. The primitive Q-th root gives orthogonal Fourier columns, and the explicitly normalized inverse Fourier matrix satisfies FᴴF=I for every positive Q."
+  },
+  {
+    "module": "FQChemForShor.FourierOrbit",
+    "names": [
+      "total_trace",
+      "born_normalized"
+    ],
+    "papers": [
+      "https://doi.org/10.1137/S0097539795293172"
+    ],
+    "relation": "supporting",
+    "scope": "Matrix trace and inverse Fourier unitarity imply that the actual clock marginal of the modular-power superposition has total probability one."
+  },
+  {
+    "module": "FQChemForShor.FourierOrbit",
+    "names": [
+      "good_decodes"
+    ],
+    "papers": [
+      "https://doi.org/10.1137/S0097539795293172"
+    ],
+    "relation": "supporting",
+    "scope": "Section 5 after Eq. (5.13). ForShor’s good-outcome recovery statement transfers to the integer implementation of the bounded continued-fraction scan."
+  },
+  {
+    "module": "FQChemForShor.FourierOrbit",
+    "names": [
+      "idealRecovery",
+      "publishedClockRecovery"
+    ],
+    "papers": [
+      "https://doi.org/10.1137/S0097539795293172"
+    ],
+    "relation": "paper-result",
+    "scope": "Section 5 Fourier order recovery. The ideal matrix experiment and executable decoder yield the true order r with probability at least (4/π²)φ(r)/r. The proof covers every integer Q>r² and specializes to the power-of-two clock N²≤Q<2N² for every valid modulus, including powers of two."
+  },
+  {
+    "module": "FQChemForShor.FourierOrbit",
+    "names": [
+      "paperClock_bounds"
+    ],
+    "papers": [
+      "https://doi.org/10.1137/S0097539795293172"
+    ],
+    "relation": "supporting",
+    "scope": "Section 5 selects a binary clock in the half-open interval N²≤Q<2N². The construction and its inequalities apply even when N² is already a power of two."
+  }
+]

@@ -36,21 +36,6 @@
     ]
   },
   {
-    "id": "vidal-circuit-simulation",
-    "title": "Classical simulation at bounded Schmidt rank",
-    "chapter": "StatePrep",
-    "status": "published",
-    "papers": [
-      "https://doi.org/10.1103/PhysRevLett.91.147902"
-    ],
-    "locator": "Theorem 1 · Eq. (2), Lemmas 1–2",
-    "scope": "In a polynomial-size pure-state computation with one- and two-qubit gates, suppose χ, the maximum Schmidt rank over bipartitions, stays polynomial in n at all steps. Vidal’s tensor representation and gate updates then simulate the computation with polynomial classical time and memory.",
-    "related": [
-      "FQChem.Algorithms.mpsCutBound",
-      "FQChem.Algorithms.exactCutFactorization"
-    ]
-  },
-  {
     "id": "troyer-wiese-sign-problem",
     "title": "Complexity of a generic sign-problem solution",
     "chapter": "StatePrep",
@@ -61,6 +46,10 @@
     "locator": "Sign-free comparison and complexity definition, Eqs. (8)–(9) · spin-glass reduction and note [9]",
     "scope": "For the constructed quantum spin model, the related sign-free bosonic system has a polynomial-time Monte Carlo method. A generic polynomial-complexity cure for estimating the signed thermal average would decide an NP-complete spin-glass instance in polynomial time with bounded error. Monte Carlo sampling gives the randomized implication NP ⊆ BPP.",
     "related": [
+      "FQChem.StatePrep.ImaginaryTimeProjection.IsingSign.cubicDecision",
+      "FQChem.StatePrep.ImaginaryTimeProjection.IsingSign.thermal_identity",
+      "FQChem.StatePrep.ImaginaryTimeProjection.IsingSign.absolute_path",
+      "FQChem.StatePrep.ImaginaryTimeProjection.IsingSign.bosonicDecisionEstimate",
       "FQChem.StatePrep.ImaginaryTimeProjection.SignProblem.productSampleCost"
     ]
   },
@@ -126,23 +115,8 @@
     "locator": "Single-reference coupled-cluster discussion at Fig. 3A · Supplementary §§S2.7, S5",
     "scope": "Lee et al. propose poly(L)·poly(1/ε) effort for coupled cluster to reach energy error ε on single-reference problems, with L measuring system size. The argument uses empirical excitation-rank convergence for N₂ and extensivity for noninteracting replicas. Uniform input-class, convergence and iteration guarantees remain to be established.",
     "related": [
-      "FQChem.VariationalMethods.coupledCluster"
-    ]
-  },
-  {
-    "id": "shor-order-finding",
-    "title": "Polynomial-time modular order finding",
-    "chapter": "Complexity",
-    "status": "published",
-    "papers": [
-      "https://doi.org/10.1137/S0097539795293172"
-    ],
-    "locator": "§§3–5 · Fourier sampling and reconstruction in Eqs. (5.7)–(5.13)",
-    "scope": "For a unit a modulo N, let r be its multiplicative order. With N² ≤ q < 2N² a power of two, Fourier sampling and continued fractions recover r in a single run with probability at least φ(r)/(3r) for sufficiently large N. O(log log r) independent repetitions suffice asymptotically for constant success. The full algorithm uses polynomially many gates and classical bit operations in log N.",
-    "related": [
-      "FQChem.Complexity.QueryAlgorithms.shorWindowRecovery",
-      "FQChem.Complexity.QueryAlgorithms.shorTwoSampleOrder",
-      "FQChem.Algorithms.exactGridQPE"
+      "FQChem.VariationalMethods.coupledCluster",
+      "FQChem.StatePrep.TruncationScaling.fixedRankBoundsDoNotGiveJointPolynomial"
     ]
   },
   {
@@ -156,6 +130,13 @@
     "locator": "§3 modular exponentiation · §5 prime factorization, reduction before Eq. (5.1)",
     "scope": "A randomized quantum algorithm factors integers in time polynomial in their bit length. For odd N with k ≥ 2 distinct prime factors, a uniformly random unit and its exact order give a nontrivial factor with probability at least 1−2^(1−k). Classical preprocessing handles even inputs and prime powers. Whether a classical randomized polynomial-time factoring algorithm exists remains open.",
     "related": [
+      "FQChem.Complexity.FactoringLaw.primeFactorization",
+      "FQChem.Complexity.VerifiedOrderFinding.shorOrderFinding",
+      "FQChem.Complexity.QuantumFactoring.uniformFactorProbability",
+      "FQChem.Complexity.FactoringReduction.goodUnitFraction",
+      "FQChem.Complexity.FactoringReduction.randomBaseFailure",
+      "FQChem.Complexity.FactoringReduction.failedRetryCount",
+      "FQChem.Complexity.FactoringReduction.preprocess_miss",
       "FQChem.Complexity.QueryAlgorithms.shorFactoringSuccess",
       "FQChem.Complexity.QueryAlgorithms.shorTwoSampleOrder"
     ]

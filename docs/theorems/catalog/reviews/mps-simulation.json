@@ -1,0 +1,315 @@
+[
+  {
+    "module": "FQChem.StatePrep.VariationalOptimization.TensorNetworks.RankRevealing",
+    "names": [
+      "expand_zero",
+      "expand_succ",
+      "table_apply",
+      "pivot_nonzero",
+      "pivot_none"
+    ],
+    "papers": [
+      "https://doi.org/10.1103/PhysRevLett.91.147902"
+    ],
+    "relation": "supporting",
+    "scope": "Elimination backend used for Lemma 2. Padding with a zero preserves the old factor entries. Materialized tables preserve values, and the deterministic first nonzero pivot scan detects exactly the nonzero rows."
+  },
+  {
+    "module": "FQChem.StatePrep.VariationalOptimization.TensorNetworks.RankRevealing",
+    "names": [
+      "factor_exact",
+      "factor_matrix"
+    ],
+    "papers": [
+      "https://doi.org/10.1103/PhysRevLett.91.147902"
+    ],
+    "relation": "derived",
+    "scope": "Lemma 2 uses diagonalization to split the two-site tensor. This implementation instead constructs an exact rectangular rank factorization by pivot elimination over a field with exact zero tests."
+  },
+  {
+    "module": "FQChem.StatePrep.VariationalOptimization.TensorNetworks.RankRevealing",
+    "names": [
+      "residual_rank",
+      "factor_rank",
+      "factor_minimal"
+    ],
+    "papers": [
+      "https://doi.org/10.1103/PhysRevLett.91.147902"
+    ],
+    "relation": "derived",
+    "scope": "Eliminating a nonzero pivot strictly reduces the row-space dimension. The number of returned rank-one components equals the input rank, including for singular and zero matrices."
+  },
+  {
+    "module": "FQChem.StatePrep.VariationalOptimization.TensorNetworks.RankRevealing",
+    "names": [
+      "factor_work"
+    ],
+    "papers": [
+      "https://doi.org/10.1103/PhysRevLett.91.147902"
+    ],
+    "relation": "derived",
+    "scope": "For an r by c dense matrix, pivot scans and the cached residual updates charge at most rc+r²+2r²c field operations and equality tests. This supplies the cubic refactorization cost used in the two-site update."
+  },
+  {
+    "module": "FQChem.StatePrep.VariationalOptimization.TensorNetworks.CircuitUpdate",
+    "names": [
+      "oneSite_amplitude"
+    ],
+    "papers": [
+      "https://doi.org/10.1103/PhysRevLett.91.147902"
+    ],
+    "relation": "paper-result",
+    "scope": "Lemma 1, Eq. (16). Replacing the addressed site by the one-qubit matrix applied to its physical index implements the gate for arbitrary left and right environments."
+  },
+  {
+    "module": "FQChem.StatePrep.VariationalOptimization.TensorNetworks.CircuitUpdate",
+    "names": [
+      "theta_entry"
+    ],
+    "papers": [
+      "https://doi.org/10.1103/PhysRevLett.91.147902"
+    ],
+    "relation": "paper-result",
+    "scope": "Lemma 2, Eq. (22). Contracting the two current sites and then applying the two-qubit gate gives every coefficient of the updated two-site tensor. Intervening bond weights are absorbed into the input sites."
+  },
+  {
+    "module": "FQChem.StatePrep.VariationalOptimization.TensorNetworks.CircuitUpdate",
+    "names": [
+      "newBond",
+      "pair_entry",
+      "physicalBond"
+    ],
+    "papers": [
+      "https://doi.org/10.1103/PhysRevLett.91.147902"
+    ],
+    "relation": "derived",
+    "scope": "Lemma 2, Eqs. (21)–(27). A pivot-based split reconstructs every gate-transformed coefficient. Its minimal bond is exactly the updated coefficient-matrix rank; in independent outer frames this is the full physical cut rank."
+  },
+  {
+    "module": "FQChem.StatePrep.VariationalOptimization.TensorNetworks.CircuitUpdate",
+    "names": [
+      "pair_work"
+    ],
+    "papers": [
+      "https://doi.org/10.1103/PhysRevLett.91.147902"
+    ],
+    "relation": "derived",
+    "scope": "Lemma 2. With all three input bonds at most χ, contraction, gate application and exact pivot refactorization charge at most 24χ³+40χ² scalar operations and exact zero probes."
+  },
+  {
+    "module": "FQChem.StatePrep.VariationalOptimization.TensorNetworks.CircuitSimulation",
+    "names": [
+      "left_le_width",
+      "stored_le"
+    ],
+    "papers": [
+      "https://doi.org/10.1103/PhysRevLett.91.147902"
+    ],
+    "relation": "supporting",
+    "scope": "Eq. (4). An open n-site qubit chain of peak bond χ stores at most 2nχ² scalar tensor entries."
+  },
+  {
+    "module": "FQChem.StatePrep.VariationalOptimization.TensorNetworks.CircuitSimulation",
+    "names": [
+      "advance_exact",
+      "simulate_exact"
+    ],
+    "papers": [
+      "https://doi.org/10.1103/PhysRevLett.91.147902"
+    ],
+    "relation": "derived",
+    "scope": "Theorem 1, adjacent-gate execution. Updating any addressed pair and repeating for a finite sequence gives on every bit string exactly the amplitude obtained by dense evolution."
+  },
+  {
+    "module": "FQChem.StatePrep.VariationalOptimization.TensorNetworks.CircuitSimulation",
+    "names": [
+      "advance_work",
+      "simulate_work"
+    ],
+    "papers": [
+      "https://doi.org/10.1103/PhysRevLett.91.147902"
+    ],
+    "relation": "derived",
+    "scope": "Lemmas 1–2 and Theorem 1. A G-gate adjacent sequence with actual peak virtual bond χ charges at most G(24χ³+40χ²) scalar operations. The physical Schmidt-rank justification is proved separately."
+  },
+  {
+    "module": "FQChem.StatePrep.VariationalOptimization.TensorNetworks.CircuitReadout",
+    "names": [
+      "pattern_bits",
+      "mulTable_eq",
+      "localTransfer_eq"
+    ],
+    "papers": [
+      "https://doi.org/10.1103/PhysRevLett.91.147902"
+    ],
+    "relation": "supporting",
+    "scope": "Paragraph preceding Theorem 1. Interleaved physical labels enumerate the bra/ket pairs. Cached matrix products and the one-site transfer implement the dense contraction for each local observable."
+  },
+  {
+    "module": "FQChem.StatePrep.VariationalOptimization.TensorNetworks.CircuitReadout",
+    "names": [
+      "readout_exact",
+      "readout_work"
+    ],
+    "papers": [
+      "https://doi.org/10.1103/PhysRevLett.91.147902"
+    ],
+    "relation": "paper-result",
+    "scope": "Paragraph preceding Theorem 1. Right-to-left contraction of any product of local qubit operators is equal to the full sum over pairs of physical basis strings. At maximum bond χ it uses at most n(20χ³+8χ²) scalar operations including conjugations."
+  },
+  {
+    "module": "FQChem.StatePrep.VariationalOptimization.TensorNetworks.MinimalBonds",
+    "names": [
+      "injective_of_rank",
+      "left_of_rank",
+      "right_of_rank"
+    ],
+    "papers": [
+      "https://doi.org/10.1103/PhysRevLett.91.147902"
+    ],
+    "relation": "supporting",
+    "scope": "Lemma 2. Full rank gives injectivity of the linear maps from the virtual bond labels into a physical-site unfolding."
+  },
+  {
+    "module": "FQChem.StatePrep.VariationalOptimization.TensorNetworks.MinimalBonds",
+    "names": [
+      "slice_update"
+    ],
+    "papers": [
+      "https://doi.org/10.1103/PhysRevLett.91.147902"
+    ],
+    "relation": "paper-result",
+    "scope": "Lemma 2, Eq. (22). Every two-site physical slice after the update is the prescribed linear combination of the pre-gate slices."
+  },
+  {
+    "module": "FQChem.StatePrep.VariationalOptimization.TensorNetworks.MinimalBonds",
+    "names": [
+      "innerFull",
+      "recover_slices",
+      "fullPair",
+      "advance_full"
+    ],
+    "papers": [
+      "https://doi.org/10.1103/PhysRevLett.91.147902"
+    ],
+    "relation": "derived",
+    "scope": "Lemma 2. The rank-revealing split has full rank on both sides of the updated bond. For an invertible physical gate, the old slices can be recovered, which preserves the other two full-rank conditions. These facts maintain minimal reachable bond spaces under arbitrary gate order."
+  },
+  {
+    "module": "FQChem.StatePrep.VariationalOptimization.TensorNetworks.SchmidtSimulation",
+    "names": [
+      "rank_of_kernel",
+      "suffix_injective",
+      "suffix_rank",
+      "frame_injective",
+      "current_cut",
+      "front_dim"
+    ],
+    "papers": [
+      "https://doi.org/10.1103/PhysRevLett.91.147902"
+    ],
+    "relation": "supporting",
+    "scope": "Eq. (2) and Lemma 2. The full-rank suffix and accumulated prefix frame recover the bond dimension from the physical flattening rank of the state at the current split."
+  },
+  {
+    "module": "FQChem.StatePrep.VariationalOptimization.TensorNetworks.SchmidtSimulation",
+    "names": [
+      "width_of_cuts",
+      "initialWidth",
+      "trajectory_width",
+      "product_full",
+      "product_amplitude"
+    ],
+    "papers": [
+      "https://doi.org/10.1103/PhysRevLett.91.147902"
+    ],
+    "relation": "derived",
+    "scope": "Eq. (2) and Theorem 1. For a nonzero product input, invertible adjacent gates preserve full bond spaces. An intrinsic bound on all contiguous physical flattenings then bounds each computed bond throughout the trajectory."
+  },
+  {
+    "module": "FQChem.StatePrep.VariationalOptimization.TensorNetworks.SchmidtSimulation",
+    "names": [
+      "schmidtCircuit"
+    ],
+    "papers": [
+      "https://doi.org/10.1103/PhysRevLett.91.147902"
+    ],
+    "relation": "specialization",
+    "scope": "Theorem 1 for nearest-neighbour circuits. Starting with any product of nonzero local vectors and χ bounding the physical ranks at every dense circuit prefix, the explicit simulator reproduces all amplitudes and charges at most G(24χ³+40χ²) exact scalar operations and zero tests for G gates."
+  },
+  {
+    "module": "FQChem.StatePrep.VariationalOptimization.TensorNetworks.Storage",
+    "names": [
+      "elimination_space",
+      "pair_space",
+      "gate_space"
+    ],
+    "papers": [
+      "https://doi.org/10.1103/PhysRevLett.91.147902"
+    ],
+    "relation": "supporting",
+    "scope": "Lemma 2. The dense elimination schedule retains one pivot row and column per completed stage and recycles the residual matrix. Temporary tables for an addressed pair require at most 36χ²+4χ scalar slots."
+  },
+  {
+    "module": "FQChem.StatePrep.VariationalOptimization.TensorNetworks.Storage",
+    "names": [
+      "simulate_space"
+    ],
+    "papers": [
+      "https://doi.org/10.1103/PhysRevLett.91.147902"
+    ],
+    "relation": "derived",
+    "scope": "Theorem 1. The complete adjacent-gate simulation schedule, including the stored chain and temporary update tables, uses at most 2nχ²+36χ²+4χ scalar slots. The unit is a field coefficient; binary precision is outside this arithmetic model."
+  },
+  {
+    "module": "FQChem.StatePrep.VariationalOptimization.TensorNetworks.CircuitMeasurement",
+    "names": [
+      "final_measurement"
+    ],
+    "papers": [
+      "https://doi.org/10.1103/PhysRevLett.91.147902"
+    ],
+    "relation": "paper-result",
+    "scope": "Paragraph preceding Theorem 1. Transfer contraction on the computed chain equals the product-observable expectation of the original dense circuit. Taking a local projector and identity on all other qubits gives its Born probability on a normalized input."
+  },
+  {
+    "module": "FQChem.StatePrep.VariationalOptimization.TensorNetworks.CircuitMeasurement",
+    "names": [
+      "final_width",
+      "measurement_work"
+    ],
+    "papers": [
+      "https://doi.org/10.1103/PhysRevLett.91.147902"
+    ],
+    "relation": "derived",
+    "scope": "Theorem 1. Simulation followed by a product-observable measurement costs at most G(24χ³+40χ²)+n(20χ³+8χ²) scalar operations, with G the number of adjacent gates and χ the computed peak width."
+  },
+  {
+    "module": "FQChem.StatePrep.VariationalOptimization.TensorNetworks.CircuitMeasurement",
+    "names": [
+      "readout_scratch",
+      "total_space"
+    ],
+    "papers": [
+      "https://doi.org/10.1103/PhysRevLett.91.147902"
+    ],
+    "relation": "derived",
+    "scope": "Paragraph preceding Theorem 1. The measurement sweep retains at most 7χ² temporary coefficient slots. Including the stored chain, the update temporaries, and the final observable contraction, the peak is at most 2nχ²+36χ²+4χ scalar slots, excluding read-only gate and observable inputs."
+  },
+  {
+    "module": "FQChem.StatePrep.VariationalOptimization.TensorNetworks.SingleSiteGates",
+    "names": [
+      "oneWire",
+      "embedLeft_act",
+      "embedRight_act",
+      "encoded_exact",
+      "encoded_inverse",
+      "oneWireCircuit"
+    ],
+    "papers": [
+      "https://doi.org/10.1103/PhysRevLett.91.147902"
+    ],
+    "relation": "supporting",
+    "scope": "Lemma 1 and Theorem 1. A one-qubit register uses its ordinary matrix-vector product with eight scalar operations per gate. In a larger register, each one-site gate embeds exactly on adjacent wires as U⊗I or I⊗U; an inverse of U gives an inverse for the embedding."
+  }
+]

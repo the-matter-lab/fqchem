@@ -18,11 +18,11 @@ const classicalModules = new Set((
   "AFQMC AmplifierCost ClassicalEnvironments ClusterExpansions Compiler ConfigurationInteraction " +
   "CoupledCluster DMRG DiffusionMonteCarlo DyadicCoefficients FCIQMC Fragments GaussianAuxiliaryField " +
   "OutOfTimeOrder HubbardProjection KrylovPropagation LearnedEnvironments LearnedSurrogates MatrixProductStates " +
-  "Multireference PathSampling RingPolymer SignProblem SpectralReconstruction SplitOperator " +
+  "FactoringRecursion FactoringReduction FactoringPreprocessing CubicSpinGlass FerromagneticComparison IsingSign OrderFindingPostprocessing RankRevealing CircuitUpdate CircuitSimulation MinimalBonds PhysicalCuts SchmidtSimulation GateRouting RoutedSimulation SingleSiteGates CircuitMeasurement CircuitReadout VidalSimulation Storage OrderFindingDecoder OrderFindingBitCost Multireference PathSampling RingPolymer SignProblem SpectralReconstruction SplitOperator " +
   "TimeDependentCI VariationalMonteCarlo"
 ).split(" "));
 const quantumModules = new Set((
-  "BellSampling ClassicalShadows FastForwarding AaronsonAmbainis AaronsonAmbainisOrbitals AaronsonAmbainisQuery Amplify AmplitudeAmplification " +
+  "CompiledSampling FactoringLaw FactoringResources OrderFinding OrderFindingTrials VerifiedOrderFinding FourierOrbit QuantumFactoring SearchOptimality SparseNoFastForwarding SparseParityPath QuantumMemorySeparation SimonTuringSeparation SimonOracleMachines ShadowMeasurement ShadowConfidence BellConfidence AdaptivePauliPrediction PauliPrediction BellSampling ClassicalShadows FastForwarding AaronsonAmbainis AaronsonAmbainisOrbitals AaronsonAmbainisQuery Amplify AmplitudeAmplification " +
   "BoundedErrorReduction ControlledRotations ElectronicStructure ElectronicStructureOperators " +
   "ElectronicStructurePauli GroundStateSearch HHL HistoryHamiltonian LinearCombinationOfUnitaries " +
   "Majority OrbitalSimulation PhaseEstimation PhaseEstimationFilter Qubitization RydbergBlockade " +
@@ -35,6 +35,7 @@ const mixedResults = new Map(Object.entries({
 }));
 function methodType(n) {
   if (mixedResults.has(n.short)) return mixedResults.get(n.short);
+  if (n.module.startsWith("ForShor.")) return n.module.includes(".Proofs.Math.") ? "classical" : "quantum";
   if (n.module.startsWith("Qatlib.")) {
     if (n.module.includes(".Foundations.PureStateMath.") || n.module.includes(".BornMetrics.")) return "general";
     return "quantum";
@@ -58,7 +59,7 @@ for (const entries of [...graphParts,targets]) {
     const existing = byDeclaration.get(identity);
     if (existing) return existing;
     const node = {...n, id: nodes.length, short: n.pending ? n.title : n.name.split(".").at(-1), topic: n.module.split(".").at(-1),
-      chapter: n.external ? "Upstream" : n.module.startsWith("FQChemKitaev") ? "Complexity" : n.module.split(".")[1],
+      chapter: n.external ? "Upstream" : (n.module.startsWith("FQChemForShor.") || n.module.startsWith("FQChemKitaev")) ? "Complexity" : n.module.split(".")[1],
       before: [], after: []};
     node.kind = n.pending ? "pending" : methodType(node);
     node.review = n.pending ? n : atlasLiterature.groups[atlasLiterature.byNode[identity]];
