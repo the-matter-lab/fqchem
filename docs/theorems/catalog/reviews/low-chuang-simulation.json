@@ -1,0 +1,763 @@
+[
+  {
+    "module": "FQChemQatlib.Dynamics.LowChuangCutoff",
+    "names": [
+      "leastCutoff"
+    ],
+    "papers": [
+      "https://doi.org/10.22331/q-2019-07-12-163"
+    ],
+    "relation": "supporting",
+    "scope": "The positive-integer minimum in Eq. (1) exists for every real time and positive tolerance."
+  },
+  {
+    "module": "FQChemQatlib.Dynamics.LowChuangCutoff",
+    "names": [
+      "timeBound",
+      "doubleTerm",
+      "geometricTail",
+      "amplifiedTaylorCutoff"
+    ],
+    "papers": [
+      "https://doi.org/10.22331/q-2019-07-12-163"
+    ],
+    "relation": "supporting",
+    "scope": "Factorial and geometric inequalities convert any qualifying positive cutoff Q at tolerance at most one into a degree 16Q Taylor truncation with remainder at most ε²/6750. These constants serve the cubic amplification proof."
+  },
+  {
+    "module": "FQChemQatlib.Dynamics.LowChuangSimulation",
+    "names": [
+      "attenuatedBody",
+      "amplifiedLevels"
+    ],
+    "papers": [
+      "https://doi.org/10.22331/q-2019-07-12-163"
+    ],
+    "relation": "supporting",
+    "scope": "The local construction encodes the sine and cosine Taylor polynomials with common attenuation sin(π/54). Repeated cubic amplification preserves the two signal flags, multiplies the ideal angle by three and increases the compression error by at most 15 per level."
+  },
+  {
+    "module": "FQChemQatlib.Dynamics.LowChuangSimulation",
+    "names": [
+      "uniformCutoffWord",
+      "optimalCutoffEvolution"
+    ],
+    "papers": [
+      "https://doi.org/10.22331/q-2019-07-12-163"
+    ],
+    "relation": "derived",
+    "scope": "For a Hermitian contraction given by a same-frame projected unitary encoding, the finite two-flag circuit makes 27(64Q+1) controlled encoding queries at the least Eq. (1) cutoff. It attains spectral compression error ε²/2, clean state-vector error ε and postselection probability at least 1−ε². The fixed-gate ledger counts matrix instructions."
+  },
+  {
+    "module": "FQChemQatlib.Dynamics.LowChuangQueries",
+    "names": [
+      "run_append",
+      "cost_append",
+      "run_inverse",
+      "cost_inverse",
+      "lift_mul",
+      "lift_adjoint",
+      "broadcast_mul",
+      "broadcast_adjoint",
+      "run_controlled",
+      "cost_controlled",
+      "covers_substitute",
+      "run_substitute",
+      "cost_substitute",
+      "fixed_append",
+      "fixed_inverse",
+      "fixed_substitute",
+      "controlledSubstitution"
+    ],
+    "papers": [
+      "https://doi.org/10.22331/q-2019-07-12-163",
+      "https://doi.org/10.1103/PhysRevLett.118.010501"
+    ],
+    "relation": "supporting",
+    "scope": "The local word calculus tracks products, inverses, oracle-free gates and substitution. A separate counter records each physical query label. These are implementation lemmas for the compiled circuit."
+  },
+  {
+    "module": "FQChemQatlib.Dynamics.LowChuangQueries",
+    "names": [
+      "lift_conjugate"
+    ],
+    "papers": [
+      "https://doi.org/10.22331/q-2019-07-12-163",
+      "https://doi.org/10.1103/PhysRevLett.118.010501"
+    ],
+    "relation": "supporting",
+    "scope": "Controlling a unitary compute–act–uncompute sandwich needs only the middle operation controlled. The computation and its inverse act on the original register, with both signal flags untouched."
+  },
+  {
+    "module": "FQChemQatlib.Dynamics.LowChuangGateWord",
+    "names": [
+      "swapped_gates",
+      "parallel_phase_gates",
+      "controlled_gates",
+      "body_gates",
+      "adjoint_gates",
+      "amplification_gates"
+    ],
+    "papers": [
+      "https://doi.org/10.22331/q-2019-07-12-163"
+    ],
+    "relation": "supporting",
+    "scope": "The fixed instructions in the compiled signal polynomial and its amplified word are conjugate-paired fiber phases, flag operations, cubic phases ±i about the signal frame, or adjoints of those instructions."
+  },
+  {
+    "module": "FQChemQatlib.Dynamics.LowChuangStandardForm",
+    "names": [
+      "standardFormProgram"
+    ],
+    "papers": [
+      "https://doi.org/10.22331/q-2019-07-12-163"
+    ],
+    "relation": "derived",
+    "scope": "For every finite standard-form input H=⟨0|G†UG|0⟩ at 0<ε<1, a single oracle-independent word attains spectral error ε²/2 and success probability at least 1−ε². Its two signal flags suffice. The exact ledgers are 54(64Q+1) ordinary G queries and 27(64Q+1) controlled U queries including inverses. The fixed-gate count is at the level of matrix instructions."
+  },
+  {
+    "module": "FQChemQatlib.Dynamics.LowChuangSparseOracle",
+    "names": [
+      "frame_iso",
+      "slot_norm",
+      "permutation_action",
+      "rot_unit",
+      "uniform_unit",
+      "prepared_column",
+      "rotation_action",
+      "value_action",
+      "right_column"
+    ],
+    "papers": [
+      "https://doi.org/10.22331/q-2019-07-12-163",
+      "https://doi.org/10.1103/PhysRevLett.118.010501"
+    ],
+    "relation": "supporting",
+    "scope": "Finite-register calculations for Lemma 6 verify the clean coordinate frame, uniform slot amplitudes, reversible permutations, norm-bounded decoder rotations and the encoded matrix entries."
+  },
+  {
+    "module": "FQChemQatlib.Dynamics.LowChuangSparseOracle",
+    "names": [
+      "sparseOracleEncoding",
+      "blockProgram_spec"
+    ],
+    "papers": [
+      "https://doi.org/10.22331/q-2019-07-12-163",
+      "https://doi.org/10.1103/PhysRevLett.118.010501"
+    ],
+    "relation": "derived",
+    "scope": "The row-slot permutation, XOR lookup, public decoder rotation and swap give a projected unitary encoding of the normalized sparse Hermitian matrix. Its controlled implementation makes exactly two ordinary row-position queries and two ordinary binary-value queries."
+  },
+  {
+    "module": "FQChemQatlib.Dynamics.LowChuangSparseOracle",
+    "names": [
+      "sparseStandardForm"
+    ],
+    "papers": [
+      "https://doi.org/10.22331/q-2019-07-12-163"
+    ],
+    "relation": "paper-result",
+    "scope": "Lemma 6 for exact finite binary encodings. For any positive entry scale b, the two sparse oracles of Eq. (11) yield a clean-coordinate encoding of H/(db) using two queries to each oracle. A row permutation extends each position map beyond its d designated slots. Taking b to be the maximum entry norm gives the published normalization for every nonzero input."
+  },
+  {
+    "module": "FQChemQatlib.Dynamics.LowChuangSparseOracle",
+    "names": [
+      "sparseQuerySimulation"
+    ],
+    "papers": [
+      "https://doi.org/10.22331/q-2019-07-12-163",
+      "https://doi.org/10.1103/PhysRevLett.118.010501"
+    ],
+    "relation": "derived",
+    "scope": "For an exact m-bit normalized entry code, a fixed decoder and d row slots, the simulation at physical time t uses 54(64Q+1) ordinary calls to each of the position and value oracles, with Q evaluated at tdb. Its compressed operator error is at most ε²/2 and its Born success probability is at least 1−ε². The theorem counts oracle calls."
+  },
+  {
+    "module": "FQChemQatlib.Dynamics.LowChuangReflections",
+    "names": [
+      "coordinate_parallel",
+      "coordinate_smul",
+      "hamiltonianFrame_coordinates",
+      "H_unit",
+      "zero_projector"
+    ],
+    "papers": [
+      "https://doi.org/10.22331/q-2019-07-12-163"
+    ],
+    "relation": "supporting",
+    "scope": "The two averaging flags can be prepared by single-qubit Hadamards up to a common unit phase. The designated coordinate projector and the unitary change of frame are explicit."
+  },
+  {
+    "module": "FQChemQatlib.Dynamics.LowChuangReflections",
+    "names": [
+      "fiberPhase_sandwich",
+      "cubic_coordinate"
+    ],
+    "papers": [
+      "https://doi.org/10.22331/q-2019-07-12-163"
+    ],
+    "relation": "supporting",
+    "scope": "A conjugate-paired fiber phase is an ancilla test, a two-flag phase and the inverse test. The two cubic phases are globally phased coordinate reflections conjugated by Hadamards."
+  },
+  {
+    "module": "FQChemQatlib.Dynamics.LowChuangFlagGates",
+    "names": [
+      "onBlocks_apply",
+      "blocks_mul",
+      "blocks_star",
+      "onFlags_unit",
+      "flags_conjugate",
+      "cnotBasis_unit",
+      "cnot_basis_marker",
+      "conditionalCnot",
+      "cubic_mark",
+      "diagonal_flags",
+      "localPhase",
+      "flagsTensor",
+      "parallel_tensor",
+      "localHadamards",
+      "localFlip",
+      "localScalar"
+    ],
+    "papers": [
+      "https://doi.org/10.22331/q-2019-07-12-163"
+    ],
+    "relation": "supporting",
+    "scope": "These coordinate identities realize the fixed unitaries on the two signal flags. A CNOT has a single negative eigenvector, allowing a fixed two-flag basis change to produce the selective sign in cubic amplification."
+  },
+  {
+    "module": "FQChemQatlib.Dynamics.LowChuangPhysical",
+    "names": [
+      "positive_controls",
+      "distinct_anc",
+      "compileToggle",
+      "succ_ne_inner",
+      "testAncilla_compiles",
+      "testBoth_compiles"
+    ],
+    "papers": [
+      "https://doi.org/10.22331/q-2019-07-12-163"
+    ],
+    "relation": "supporting",
+    "scope": "The emitted, addressed Clifford+T words perform the exact ancilla-coordinate toggles on every basis input. The single-flag test borrows the other flag, and the two-flag test borrows one physical system wire. Reversible bit complements select the desired ancilla coordinate."
+  },
+  {
+    "module": "FQChemQatlib.Dynamics.LowChuangElementary",
+    "names": [
+      "single",
+      "mul_emits",
+      "adj_emits",
+      "weaken",
+      "compiles_emits",
+      "scalar_pair",
+      "scalar_flags",
+      "frameGate_emits",
+      "fixed_program",
+      "expand"
+    ],
+    "papers": [
+      "https://doi.org/10.22331/q-2019-07-12-163"
+    ],
+    "relation": "supporting",
+    "scope": "These word-construction lemmas compile the fixed operators into legal one- or two-wire gates, compose and invert the expansions and preserve the per-oracle ledger and execution semantics through substitution."
+  },
+  {
+    "module": "FQChemQatlib.Dynamics.LowChuangElementary",
+    "names": [
+      "qubitRegisterSimulation"
+    ],
+    "papers": [
+      "https://doi.org/10.22331/q-2019-07-12-163"
+    ],
+    "relation": "specialization",
+    "scope": "Theorem 1 specialized to an a-qubit ancilla and an r-qubit system with r ≥ 1. The uniform simulation uses a+r+2 wires, 54(64Q+1) preparation-oracle calls, 27(64Q+1) controlled block queries and at most 250(a+4)(27(64Q+8)−2) additional one- or two-qubit gates. Spectral error is at most ε²/2 and success is at least 1−ε² at the least Eq. (1) cutoff."
+  },
+  {
+    "module": "FQChemQatlib.Dynamics.LowChuangPadding",
+    "names": [
+      "coord_iso",
+      "pad_action",
+      "pad_star",
+      "pad_mul",
+      "pad_unit",
+      "pad_hermitian",
+      "exp_action",
+      "evolved_action",
+      "mul_coord",
+      "star_coord_mul",
+      "frame_entry",
+      "prepared_restrict",
+      "prep_iso",
+      "padded_signal"
+    ],
+    "papers": [
+      "https://doi.org/10.22331/q-2019-07-12-163"
+    ],
+    "relation": "supporting",
+    "scope": "Binary coordinate inclusion preserves inner products. Extending a matrix by identity on unused basis coordinates preserves unitarity and Hermiticity, respects products, and intertwines the matrix exponential. Padding the preparation and block oracles produces the padded logical Hamiltonian."
+  },
+  {
+    "module": "FQChemQatlib.Dynamics.LowChuangPadding",
+    "names": [
+      "finiteSimulation"
+    ],
+    "papers": [
+      "https://doi.org/10.22331/q-2019-07-12-163"
+    ],
+    "relation": "specialization",
+    "scope": "For any d-dimensional ancilla and any finite logical system of dimension N ≥ 2, including non-powers of two, the padded physical oracle simulation uses ⌈log₂ d⌉ + ⌈log₂ N⌉ + 2 qubits and a counted one- and two-wire gate list. Spectral error and success are proved for the original encoded inputs."
+  },
+  {
+    "module": "FQChemQatlib.Dynamics.LowChuangReadout",
+    "names": [
+      "coordinate_iso",
+      "coordinate_acts"
+    ],
+    "papers": [
+      "https://doi.org/10.22331/q-2019-07-12-163"
+    ],
+    "relation": "supporting",
+    "scope": "The computational coordinate frame is isometric. Conjugating the word by the two-flag Hadamard changes its preparation and postselection basis while preserving the compressed matrix and every Born success probability."
+  },
+  {
+    "module": "FQChemQatlib.Dynamics.LowChuangReadout",
+    "names": [
+      "finiteCoordinateSimulation"
+    ],
+    "papers": [
+      "https://doi.org/10.22331/q-2019-07-12-163"
+    ],
+    "relation": "specialization",
+    "scope": "Theorem 1 for any finite d ≥ 1 and N ≥ 2. The least Eq. (1) cutoff controls the preparation and block query counts. There are at most 250(⌈log₂ d⌉+4)(27(64Q+8)−2)+2 individually verified one- and two-qubit gates, including flag preparation and computational-basis readout, on the exact ceiling-log register widths. Spectral error is at most ε²/2 and success at least 1−ε²."
+  },
+  {
+    "module": "FQChemQatlib.Dynamics.LowChuangBinaryCompare",
+    "names": [
+      "carry_order",
+      "step_exact",
+      "address_mem",
+      "result_address",
+      "tail_valid",
+      "step_valid",
+      "unchanged",
+      "output_address"
+    ],
+    "papers": [
+      "https://doi.org/10.1103/PhysRevLett.118.010501"
+    ],
+    "relation": "supporting",
+    "scope": "Three Toffoli gates and two single-qubit flips implement one full-adder carry for a strict comparison. Fresh wire addresses keep the inputs and other carries intact."
+  },
+  {
+    "module": "FQChemQatlib.Dynamics.LowChuangBinaryCompare",
+    "names": [
+      "ripple_word",
+      "ripple_result"
+    ],
+    "papers": [
+      "https://doi.org/10.1103/PhysRevLett.118.010501"
+    ],
+    "relation": "derived",
+    "scope": "A most-significant-first pair of p-bit quantum inputs can be compared by a reversible circuit of at most 47p addressed one- and two-qubit gates. A clean seed and clean carries yield the numerical strict less-than bit. The emitted word also has an exact action on initially dirty carries."
+  },
+  {
+    "module": "FQChemQatlib.Dynamics.LowChuangBinaryPhase",
+    "names": [
+      "averaged_sign",
+      "encoded_diagonal",
+      "ripple_phase"
+    ],
+    "papers": [
+      "https://doi.org/10.1103/PhysRevLett.118.010501"
+    ],
+    "relation": "derived",
+    "scope": "The mean of the ±1 less-than phase over a uniform p-bit word is the offset-binary fixed-point input value. The forward reversible threshold comparator, a one-wire phase and the inverse comparator realize this phase coherently."
+  },
+  {
+    "module": "FQChemQatlib.Dynamics.LowChuangUniformBits",
+    "names": [
+      "fill_at",
+      "fill_out",
+      "hWord_cost",
+      "mean_diagonal"
+    ],
+    "papers": [
+      "https://doi.org/10.1103/PhysRevLett.118.010501"
+    ],
+    "relation": "supporting",
+    "scope": "Replacing selected wire values gives a bijection to a Boolean register while keeping all other wires fixed. A p-gate addressed Hadamard word gives the exact uniform mean of a diagonal phase in a clean diagonal matrix element."
+  },
+  {
+    "module": "FQChemQatlib.Dynamics.LowChuangDecoderLayout",
+    "names": [
+      "digits_valid",
+      "digits_read",
+      "protect_branch"
+    ],
+    "papers": [
+      "https://doi.org/10.1103/PhysRevLett.118.010501"
+    ],
+    "relation": "supporting",
+    "scope": "The sparse-entry decoder routes its two numerical comparators across distinct data, carry, seed and component-selector wires. The comparators preserve the real/imaginary selector."
+  },
+  {
+    "module": "FQChemQatlib.Dynamics.LowChuangBinaryDecoder",
+    "names": [
+      "built_word",
+      "built_mul",
+      "built_adj",
+      "built_weaken",
+      "local_unit",
+      "built_unit",
+      "gated_phase",
+      "pulse_word",
+      "outside_col",
+      "outside_seed",
+      "filled_pulse",
+      "packed_clean"
+    ],
+    "papers": [
+      "https://doi.org/10.1103/PhysRevLett.118.010501"
+    ],
+    "relation": "supporting",
+    "scope": "These implementation lemmas check unitarity and primitive-gate counts, preserve the untouched threshold and carry inputs under the random-bit preparation, and establish the selected comparison phase for both Cartesian components."
+  },
+  {
+    "module": "FQChemQatlib.Dynamics.LowChuangBinaryDecoder",
+    "names": [
+      "decoder",
+      "cartesianDecoder"
+    ],
+    "papers": [
+      "https://doi.org/10.1103/PhysRevLett.118.010501"
+    ],
+    "relation": "derived",
+    "scope": "One fixed unitary reads two p-bit offset-binary Cartesian coordinates and encodes (x+iy)/2 exactly as its diagonal amplitude with workspace initialized to zero. The circuit uses at most 190p+4 addressed one- or two-qubit gates on 5p+3 wires. This is the binary-value decoder layer for the sparse simulation proof."
+  },
+  {
+    "module": "Qatlib.Concepts.BlockEncoding.Basic",
+    "names": [
+      "compress_norm_le",
+      "unitary_norm_le_one"
+    ],
+    "papers": [
+      "https://doi.org/10.22331/q-2019-07-12-163"
+    ],
+    "relation": "supporting",
+    "scope": "Unitary operator norms and compression by isometries bound the norm of the projected signal."
+  },
+  {
+    "module": "Qatlib.Concepts.BlockEncoding.EncodingCore.CoordinateFiber",
+    "names": [
+      "encodingFiber_isIsometry"
+    ],
+    "papers": [
+      "https://doi.org/10.22331/q-2019-07-12-163"
+    ],
+    "relation": "supporting",
+    "scope": "Embedding each input vector at a fixed computational ancilla value preserves its norm."
+  },
+  {
+    "module": "Qatlib.Concepts.BlockEncoding.EncodingCore.PrepareUnitary",
+    "names": [
+      "nonnegativePrepare_column",
+      "nonnegativePrepare_unitary"
+    ],
+    "papers": [
+      "https://doi.org/10.22331/q-2019-07-12-163"
+    ],
+    "relation": "supporting",
+    "scope": "A finite normalized nonnegative amplitude table extends to a unitary with that table as its designated column. This is an existence and matrix identity used for uniform slot preparation."
+  },
+  {
+    "module": "Qatlib.Concepts.BlockEncoding.LCU",
+    "names": [
+      "select_unitary"
+    ],
+    "papers": [
+      "https://doi.org/10.22331/q-2019-07-12-163"
+    ],
+    "relation": "supporting",
+    "scope": "A selector made of unitary diagonal blocks is unitary."
+  },
+  {
+    "module": "Qatlib.Concepts.BlockEncoding.Postselection",
+    "names": [
+      "postselection_probability_lower",
+      "normalized_mulVec",
+      "postselectionProbability_eq_norm_sq",
+      "normalized_iff_stateVector_norm"
+    ],
+    "papers": [
+      "https://doi.org/10.22331/q-2019-07-12-163"
+    ],
+    "relation": "supporting",
+    "scope": "The block-encoding compression error supplies a squared-amplitude lower bound on successful postselection of a normalized input."
+  },
+  {
+    "module": "Qatlib.Concepts.BlockEncoding.StateBlockEncoding.FiberBridge",
+    "names": [
+      "rangeProjector_encodingFiber"
+    ],
+    "papers": [
+      "https://doi.org/10.22331/q-2019-07-12-163"
+    ],
+    "relation": "supporting",
+    "scope": "The range of a coordinate-fiber isometry is exactly its computational-basis projector."
+  },
+  {
+    "module": "Qatlib.Concepts.CoherentSim.CoherentOAA.RobustCoherentImplementation",
+    "names": [
+      "coherent_oaa_expanded_subroutine",
+      "coherent_oaa_word_correct"
+    ],
+    "papers": [
+      "https://doi.org/10.22331/q-2019-07-12-163"
+    ],
+    "relation": "supporting",
+    "scope": "Cubic coherent amplification is implemented by an expanded query word with an explicit compressed-matrix identity and resource ledger."
+  },
+  {
+    "module": "Qatlib.Concepts.CoherentSim.CoherentOAA.ScaleEightCoherentAmplification",
+    "names": [
+      "scaleEightCubic_lipschitz",
+      "scaleEightCubic_sin",
+      "scaleEight_clean_from_compression",
+      "scaleEight_parameter_bounds"
+    ],
+    "papers": [
+      "https://doi.org/10.22331/q-2019-07-12-163"
+    ],
+    "relation": "supporting",
+    "scope": "Cubic signal amplification triples the ideal angle, obeys a perturbation estimate, and converts compressed operator approximation to a clean-frame vector guarantee."
+  },
+  {
+    "module": "Qatlib.Concepts.CopyEvolution.Discriminate.ParallelQSVT",
+    "names": [
+      "parallelOracle_adjoint",
+      "parallelOracle_unitary",
+      "parallel_select_adjoint",
+      "parallel_select_mul",
+      "parallel_select_one"
+    ],
+    "papers": [
+      "https://doi.org/10.22331/q-2019-07-12-163"
+    ],
+    "relation": "supporting",
+    "scope": "Parallel direct sums of oracle matrices preserve products, identity, adjoints and unitarity."
+  },
+  {
+    "module": "Qatlib.Concepts.GateVocabulary.FiniteGateDescription",
+    "names": [
+      "finiteCodeMatrix_unitary"
+    ],
+    "papers": [
+      "https://doi.org/10.1103/PhysRevLett.118.010501"
+    ],
+    "relation": "supporting",
+    "scope": "The addressed primitive codes denote unitary operations when their wire indices pass the legality test."
+  },
+  {
+    "module": "Qatlib.Concepts.HspRecovery.RecordExtract.ExecutionSemantics",
+    "names": [
+      "permMatrix_unitary_of_injective"
+    ],
+    "papers": [
+      "https://doi.org/10.22331/q-2019-07-12-163"
+    ],
+    "relation": "supporting",
+    "scope": "An injective endomorphism of a finite basis gives a unitary permutation matrix."
+  },
+  {
+    "module": "Qatlib.Concepts.LocalMachine.LocalTransport.ControlledQueryCircuit",
+    "names": [
+      "controlOracle_adjoint",
+      "controlOracle_mul",
+      "controlOracle_one",
+      "controlOracle_unitary"
+    ],
+    "papers": [
+      "https://doi.org/10.22331/q-2019-07-12-163"
+    ],
+    "relation": "supporting",
+    "scope": "Adding a Boolean control preserves products, identity, adjoints and unitarity."
+  },
+  {
+    "module": "Qatlib.Concepts.QmaCompleteness.HistoryHam.QmaCompletenessDefs",
+    "names": [
+      "finiteWordMatrix_unitary"
+    ],
+    "papers": [
+      "https://doi.org/10.1103/PhysRevLett.118.010501"
+    ],
+    "relation": "supporting",
+    "scope": "Evaluating a word of legal addressed Clifford+T gates gives a unitary matrix on the complete register."
+  },
+  {
+    "module": "Qatlib.Concepts.QspSimulation.Achievability.CircuitWellFormed",
+    "names": [
+      "evaluate_unitary"
+    ],
+    "papers": [
+      "https://doi.org/10.22331/q-2019-07-12-163"
+    ],
+    "relation": "supporting",
+    "scope": "Evaluating a well-formed query circuit on a unitary input gives a unitary operator."
+  },
+  {
+    "module": "Qatlib.Concepts.QspSimulation.Achievability.CountedHamiltonian",
+    "names": [
+      "compileHamiltonian_wellFormed",
+      "counts_compileHamiltonian",
+      "evaluate_compileHamiltonian"
+    ],
+    "papers": [
+      "https://doi.org/10.22331/q-2019-07-12-163"
+    ],
+    "relation": "supporting",
+    "scope": "Compiling the two sine/cosine phase lists yields the intended Hamiltonian circuit, with checked well-formedness and instruction counts."
+  },
+  {
+    "module": "Qatlib.Concepts.QspSimulation.Achievability.ExponentialPolynomial",
+    "names": [
+      "exponentialTaylorError_nonneg",
+      "exponentialTaylorPolynomial_error_le",
+      "exponentialTaylor_eventually_error_lt"
+    ],
+    "papers": [
+      "https://doi.org/10.22331/q-2019-07-12-163"
+    ],
+    "relation": "supporting",
+    "scope": "Taylor exponential truncations on a bounded interval have an explicit nonnegative remainder bound that eventually falls below any positive tolerance."
+  },
+  {
+    "module": "Qatlib.Concepts.QspSimulation.Achievability.HamiltonianSimulation",
+    "names": [
+      "exponentialTaylorPolynomial_eq_trig",
+      "hamiltonian_phase_projectedEncoding",
+      "hamiltonian_realPart_of_completion",
+      "hermitian_realPart_projectedEncoding"
+    ],
+    "papers": [
+      "https://doi.org/10.22331/q-2019-07-12-163"
+    ],
+    "relation": "supporting",
+    "scope": "Hermitian projected encodings implement the real polynomial response, accept a scalar phase and combine the sine/cosine Taylor polynomials to form the complex exponential truncation."
+  },
+  {
+    "module": "Qatlib.Concepts.QspSimulation.Achievability.RealPartQSVT",
+    "names": [
+      "averageFrame_isIsometry",
+      "average_projectedEncoding"
+    ],
+    "papers": [
+      "https://doi.org/10.22331/q-2019-07-12-163"
+    ],
+    "relation": "supporting",
+    "scope": "Averaging two compatible block encodings preserves isometric frames and yields their mean as the encoded operator."
+  },
+  {
+    "module": "Qatlib.Concepts.QspSimulation.Achievability.RealPolynomial",
+    "names": [
+      "exists_phases_of_strict"
+    ],
+    "papers": [
+      "https://doi.org/10.22331/q-2019-07-12-163"
+    ],
+    "relation": "supporting",
+    "scope": "Phase sequences exist for real polynomials of the required parity and degree strictly bounded by one on the signal interval."
+  },
+  {
+    "module": "Qatlib.Concepts.QspSimulation.Achievability.TrigApproximation",
+    "names": [
+      "cosineTaylorPolynomial_abs_lt_two",
+      "cosineTaylorPolynomial_comp_neg_X",
+      "cosineTaylorPolynomial_natDegree_le",
+      "sineTaylorPolynomial_abs_lt_two",
+      "sineTaylorPolynomial_comp_neg_X",
+      "sineTaylorPolynomial_natDegree_le"
+    ],
+    "papers": [
+      "https://doi.org/10.22331/q-2019-07-12-163"
+    ],
+    "relation": "supporting",
+    "scope": "Finite Taylor sine and cosine polynomials obey degree, parity and uniform magnitude estimates on the signal interval."
+  },
+  {
+    "module": "Qatlib.Concepts.QspSimulation.JacobiAnger.ComputedSignalSimulation",
+    "names": [
+      "computed_signal_hermitian_polynomial_error"
+    ],
+    "papers": [
+      "https://doi.org/10.22331/q-2019-07-12-163"
+    ],
+    "relation": "supporting",
+    "scope": "A scalar polynomial approximation over the spectrum gives the corresponding Hermitian operator-norm error bound."
+  },
+  {
+    "module": "Qatlib.Concepts.QsvtCore.LinearSystems.FiniteInversePhaseProgram",
+    "names": [
+      "averageFrame_labelH",
+      "coordinatePhaseFrame_apply",
+      "inverseLabelPhase_unit"
+    ],
+    "papers": [
+      "https://doi.org/10.22331/q-2019-07-12-163"
+    ],
+    "relation": "supporting",
+    "scope": "A single-qubit Hadamard sends the coordinate fiber to the averaged frame up to a verified unit scalar."
+  },
+  {
+    "module": "Qatlib.Concepts.UniformBqp.FiniteGateWord.FiniteThermal.FiniteThermalComparator",
+    "names": [
+      "thermalBitValue_bound",
+      "thermalLexLess_numeric"
+    ],
+    "papers": [
+      "https://doi.org/10.1103/PhysRevLett.118.010501"
+    ],
+    "relation": "supporting",
+    "scope": "A most-significant-first binary word represents an integer below 2 to its length. Lexicographic comparison computes strict numerical order for equal widths."
+  },
+  {
+    "module": "Qatlib.Concepts.UniformBqp.FiniteGateWord.FiniteThermal.FiniteThermalUniformH",
+    "names": [
+      "thermalUniformBits_less_complex",
+      "thermalUniformHWord_legal",
+      "thermalUniformHWord_zero_column"
+    ],
+    "papers": [
+      "https://doi.org/10.1103/PhysRevLett.118.010501"
+    ],
+    "relation": "supporting",
+    "scope": "An addressed Hadamard word on zero bits has the exact uniform column on those coordinates. Counting words below a threshold gives the threshold as a complex-valued sum."
+  },
+  {
+    "module": "Qatlib.Foundations.PureStateMath.Qubit",
+    "names": [
+      "hadamard_unitary",
+      "hamiltonianEvolution_unitary",
+      "normalized_applyGate",
+      "pauliX_unitary",
+      "permMatrix_conjTranspose",
+      "permMatrix_unitary"
+    ],
+    "papers": [
+      "https://doi.org/10.22331/q-2019-07-12-163"
+    ],
+    "relation": "supporting",
+    "scope": "Unitary Hamiltonian evolution preserves normalization. Hadamard and Pauli X are unitary, and involutive basis permutations are unitary and self-adjoint."
+  },
+  {
+    "module": "Qatlib.Foundations.PureStateMath.Tensor",
+    "names": [
+      "tensorGate_mul",
+      "tensorGate_one",
+      "tensorGate_unitary"
+    ],
+    "papers": [
+      "https://doi.org/10.22331/q-2019-07-12-163"
+    ],
+    "relation": "supporting",
+    "scope": "Tensor gates multiply componentwise, preserve identities and act unitarily for unitary factors."
+  }
+]

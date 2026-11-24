@@ -1,0 +1,341 @@
+[
+  {
+    "module": "FQChem.StatePrep.ImaginaryTimeProjection.SpinGlassSatisfiability",
+    "names": [
+      "distinctEnds",
+      "maskUnordered",
+      "maskInjective"
+    ],
+    "papers": [
+      "https://doi.org/10.1103/PhysRevLett.94.170201"
+    ],
+    "relation": "supporting",
+    "scope": "Each sparse Ising bond is determined by an unordered pair of different sites. Three signed literal-copy bonds and three triangle bonds have distinct masks even when source variables or signed literals repeat."
+  },
+  {
+    "module": "FQChem.StatePrep.ImaginaryTimeProjection.SpinGlassSatisfiability",
+    "names": [
+      "edgeCount",
+      "coupling"
+    ],
+    "papers": [
+      "https://doi.org/10.1103/PhysRevLett.94.170201"
+    ],
+    "relation": "supporting",
+    "scope": "In the unrestricted two-body gadget each NAE clause gives exactly six occupied spin pairs; the Hamiltonian coefficients reproduce the signs in the executable edge table."
+  },
+  {
+    "module": "FQChem.StatePrep.ImaginaryTimeProjection.SpinGlassSatisfiability",
+    "names": [
+      "bondCharacter",
+      "literalBond"
+    ],
+    "papers": [
+      "https://doi.org/10.1103/PhysRevLett.94.170201"
+    ],
+    "relation": "supporting",
+    "scope": "For the classical energy in Eq. (10), a signed two-site Walsh character contributes −1 exactly when the endpoint spins obey the sign on that bond. A negated literal may be handled by a spin flip."
+  },
+  {
+    "module": "FQChem.StatePrep.ImaginaryTimeProjection.SpinGlassSatisfiability",
+    "names": [
+      "clauseMinimum"
+    ],
+    "papers": [
+      "https://doi.org/10.1103/PhysRevLett.94.170201"
+    ],
+    "relation": "derived",
+    "scope": "Direct truth-table verification for a new signed Ising gadget. Three copy edges and an antiferromagnetic triangle have joint energy at least −4. Equality requires exact literal copies and a not-all-equal clause."
+  },
+  {
+    "module": "FQChem.StatePrep.ImaginaryTimeProjection.SpinGlassSatisfiability",
+    "names": [
+      "energyDecomposition",
+      "thresholdEquivalence"
+    ],
+    "papers": [
+      "https://doi.org/10.1103/PhysRevLett.94.170201"
+    ],
+    "relation": "derived",
+    "scope": "For m not-all-equal clauses, the unrestricted signed two-body glass energy is the sum of the explicit clause scores; the threshold −4m is attainable exactly for satisfiable formulas. This supplies a direct satisfiability source for the energy decision in Eqs. (10)–(11)."
+  },
+  {
+    "module": "FQChem.StatePrep.ImaginaryTimeProjection.SpinGlassThreeSAT",
+    "names": [
+      "splitTest",
+      "splitWitness",
+      "switchLiteral",
+      "splitEquivalence"
+    ],
+    "papers": [
+      "https://doi.org/10.1103/PhysRevLett.94.170201"
+    ],
+    "relation": "supporting",
+    "scope": "Each ordinary 3-CNF clause becomes two not-all-equal clauses sharing an auxiliary bit. A common anchor permits simultaneous spin inversion. Truth-table soundness and completeness give equivalence for empty formulas, repeated variables and negated literals."
+  },
+  {
+    "module": "FQChem.StatePrep.ImaginaryTimeProjection.SpinGlassThreeSAT",
+    "names": [
+      "threeSATThreshold"
+    ],
+    "papers": [
+      "https://doi.org/10.1103/PhysRevLett.94.170201"
+    ],
+    "relation": "derived",
+    "scope": "For an ordinary 3-CNF on n variables with m clauses the unrestricted signed spin model has n+7m+1 sites and exactly 12m unit-strength bonds. Satisfiability is equivalent to attaining energy −8m."
+  },
+  {
+    "module": "FQChem.StatePrep.ImaginaryTimeProjection.SpinGlassThreeSAT",
+    "names": [
+      "threeSATEnergyDecision"
+    ],
+    "papers": [
+      "https://doi.org/10.1103/PhysRevLett.94.170201"
+    ],
+    "relation": "derived",
+    "scope": "A single signed quantum thermal-energy estimate at β=13N and relative root-mean-square precision 1/(24N) decides ordinary 3-SAT with failure probability at most 1/4 on the linear-size unrestricted two-body gadget. Its sign-free counterpart at this query is estimated by −12m."
+  },
+  {
+    "module": "FQChem.StatePrep.ImaginaryTimeProjection.SpinGlassLatticeGadgets",
+    "names": [
+      "rimFormula",
+      "cycleMinimum",
+      "wireMinimum"
+    ],
+    "papers": [
+      "https://doi.org/10.1103/PhysRevLett.94.170201"
+    ],
+    "relation": "supporting",
+    "scope": "A nearest-neighbour six-cycle with three negative bonds has minimum energy −4. At this energy the three terminals are not all equal; setting all three return spins to the third terminal realizes −4 for each legal terminal triple. A single copy bond has minimum −1."
+  },
+  {
+    "module": "FQChem.StatePrep.ImaginaryTimeProjection.SpinGlassLatticeGadgets",
+    "names": [
+      "optimal"
+    ],
+    "papers": [
+      "https://doi.org/10.1103/PhysRevLett.94.170201"
+    ],
+    "relation": "supporting",
+    "scope": "The sum of all nonnegative wire and cycle energy defects vanishes exactly when every wire is satisfied and every clause cycle is at its local minimum."
+  },
+  {
+    "module": "FQChem.StatePrep.ImaginaryTimeProjection.SpinGlassLatticeGadgets",
+    "names": [
+      "rowAgreement",
+      "columnAgreement",
+      "decodedLiteral"
+    ],
+    "papers": [
+      "https://doi.org/10.1103/PhysRevLett.94.170201"
+    ],
+    "relation": "supporting",
+    "scope": "At the compiled threshold each variable row and each private occurrence column carries a constant assignment. Its signed vertical contact makes the front terminal equal to the corresponding signed literal."
+  },
+  {
+    "module": "FQChem.StatePrep.ImaginaryTimeProjection.SpinGlassLatticeGadgets",
+    "names": [
+      "liftedBase",
+      "liftedOccurrence",
+      "liftedReturn"
+    ],
+    "papers": [
+      "https://doi.org/10.1103/PhysRevLett.94.170201"
+    ],
+    "relation": "supporting",
+    "scope": "A source assignment prescribes the base row spins, the occurrence-column spins and the three return spins of each clause. These formulas construct a lattice witness for every satisfying assignment."
+  },
+  {
+    "module": "FQChem.StatePrep.ImaginaryTimeProjection.SpinGlassLatticeGadgets",
+    "names": [
+      "latticeThreshold"
+    ],
+    "papers": [
+      "https://doi.org/10.1103/PhysRevLett.94.170201"
+    ],
+    "relation": "derived",
+    "scope": "A new routing proof supplies the three-dimensional nearest-neighbour spin-glass decision premise of Troyer–Wiese Eq. (10). An NAE formula is satisfiable exactly when its three-layer copy rows, occurrence columns and frustrated six-cycles reach the compiled energy threshold."
+  },
+  {
+    "module": "FQChem.StatePrep.ImaginaryTimeProjection.SpinGlassLatticeEncoding",
+    "names": [
+      "colInjective",
+      "wireInjective",
+      "rimInjective",
+      "positionInjective"
+    ],
+    "papers": [
+      "https://doi.org/10.1103/PhysRevLett.94.170201"
+    ],
+    "relation": "supporting",
+    "scope": "Occurrence column numbers are unique. Copy rows, vertical contacts, column segments and the six rim slots at each clause occupy distinct positively oriented lattice positions."
+  },
+  {
+    "module": "FQChem.StatePrep.ImaginaryTimeProjection.SpinGlassLatticeEncoding",
+    "names": [
+      "wireBounds",
+      "rimBounds",
+      "bounds",
+      "asSite_asGrid",
+      "forwardStep"
+    ],
+    "papers": [
+      "https://doi.org/10.1103/PhysRevLett.94.170201"
+    ],
+    "relation": "supporting",
+    "scope": "Every generated endpoint belongs to the finite box of dimensions (3m+1) by (n+1) by 3. The existing cubicGlass forward-coordinate operation takes the unit axis step to that encoded endpoint."
+  },
+  {
+    "module": "FQChem.StatePrep.ImaginaryTimeProjection.SpinGlassLatticeEncoding",
+    "names": [
+      "stepNe",
+      "orderedEdge",
+      "neverReverse",
+      "indexedNe",
+      "maskUnique",
+      "permitted"
+    ],
+    "papers": [
+      "https://doi.org/10.1103/PhysRevLett.94.170201"
+    ],
+    "relation": "supporting",
+    "scope": "Strictly positive axis steps have different endpoints and cannot reverse one another. Their unordered spin-flip masks uniquely identify the physical bond and satisfy the open-boundary cubic model’s self-edge test."
+  },
+  {
+    "module": "FQChem.StatePrep.ImaginaryTimeProjection.SpinGlassLatticeEncoding",
+    "names": [
+      "sparseBonds",
+      "compiledBondCount",
+      "signedCoupling"
+    ],
+    "papers": [
+      "https://doi.org/10.1103/PhysRevLett.94.170201"
+    ],
+    "relation": "supporting",
+    "scope": "The occupied masks of the existing cubicGlass representation equal the emitted edge masks, including their signs. Each compiled edge contributes exactly once to the occupied bond count."
+  },
+  {
+    "module": "FQChem.StatePrep.ImaginaryTimeProjection.SpinGlassLatticeEncoding",
+    "names": [
+      "finiteEnergy",
+      "restrictExtend",
+      "cubicThreshold"
+    ],
+    "papers": [
+      "https://doi.org/10.1103/PhysRevLett.94.170201"
+    ],
+    "relation": "derived",
+    "scope": "Term-by-term agreement between finite cubicGlass energy and the routed lattice energy proves the bidirectional reduction from NAE satisfiability to the threshold for an actual three-layer nearest-neighbour Hamiltonian with couplings 0, ±1."
+  },
+  {
+    "module": "FQChem.StatePrep.ImaginaryTimeProjection.SpinGlassFrustration",
+    "names": [
+      "walkEnd",
+      "walkWeight"
+    ],
+    "papers": [
+      "https://doi.org/10.1103/PhysRevLett.94.170201"
+    ],
+    "relation": "supporting",
+    "scope": "Sequential XOR spin flips realize a configuration path whose endpoint is the cumulative flip and whose unscaled series-expansion weight is the product of the corresponding signed model couplings, as in Eqs. (4)–(6)."
+  },
+  {
+    "module": "FQChem.StatePrep.ImaginaryTimeProjection.SpinGlassFrustration",
+    "names": [
+      "pairParity",
+      "sixParity",
+      "rimCloses"
+    ],
+    "papers": [
+      "https://doi.org/10.1103/PhysRevLett.94.170201"
+    ],
+    "relation": "supporting",
+    "scope": "The mask on two distinct sites is their Boolean parity vector. Following six edges around a clause cycle flips each site twice and returns to the aligned configuration."
+  },
+  {
+    "module": "FQChem.StatePrep.ImaginaryTimeProjection.SpinGlassFrustration",
+    "names": [
+      "frustratedInstance"
+    ],
+    "papers": [
+      "https://doi.org/10.1103/PhysRevLett.94.170201"
+    ],
+    "relation": "derived",
+    "scope": "For every compiled NAE clause, its six-edge closed path has weight −1 in the signed quantum model and +1 in the comparison ferromagnet. This witnesses the actual sign problem on the constructed hardness instances."
+  },
+  {
+    "module": "FQChem.StatePrep.ImaginaryTimeProjection.SpinGlassLatticeDecision",
+    "names": [
+      "namePresent",
+      "firstOccurrenceSpec",
+      "compactEq"
+    ],
+    "papers": [
+      "https://doi.org/10.1103/PhysRevLett.94.170201"
+    ],
+    "relation": "supporting",
+    "scope": "Every source variable occurs in the finite name table. The executable first-match search returns its list index and counts at most the list length in equality comparisons. Array materialization preserves the literal table."
+  },
+  {
+    "module": "FQChem.StatePrep.ImaginaryTimeProjection.SpinGlassLatticeDecision",
+    "names": [
+      "renameEquivalence",
+      "renamingComparisons"
+    ],
+    "papers": [
+      "https://doi.org/10.1103/PhysRevLett.94.170201"
+    ],
+    "relation": "derived",
+    "scope": "Dense occurrence-based renaming preserves satisfiability for arbitrary natural variable labels, including duplicates and unused numeric ranges. Constructing the table uses at most (3m)² equality comparisons on variable labels. This counts label comparisons; binary labels may span multiple bits."
+  },
+  {
+    "module": "FQChem.StatePrep.ImaginaryTimeProjection.SpinGlassLatticeDecision",
+    "names": [
+      "pairMem",
+      "listComplete",
+      "compilerSpecification",
+      "compilerLength"
+    ],
+    "papers": [
+      "https://doi.org/10.1103/PhysRevLett.94.170201"
+    ],
+    "relation": "supporting",
+    "scope": "The executable sparse compiler enumerates all wire and rim edge identifiers, emits their signed nearest-neighbour positions and agrees with the cubic coupling table. Its output length is exactly the number of occupied bonds."
+  },
+  {
+    "module": "FQChem.StatePrep.ImaginaryTimeProjection.SpinGlassLatticeDecision",
+    "names": [
+      "compiledThreshold",
+      "compiledComparison"
+    ],
+    "papers": [
+      "https://doi.org/10.1103/PhysRevLett.94.170201"
+    ],
+    "relation": "derived",
+    "scope": "Counting the emitted sparse records gives both the classical threshold (minus the bond count plus twice the NAE clause count) and a deterministic sign-free thermal-energy estimate at β=13N with relative error ≤1/(24N). The emitted length is at most 3N."
+  },
+  {
+    "module": "FQChem.StatePrep.ImaginaryTimeProjection.SpinGlassLatticeDecision",
+    "names": [
+      "siteCount",
+      "oracleWork"
+    ],
+    "papers": [
+      "https://doi.org/10.1103/PhysRevLett.94.170201"
+    ],
+    "relation": "derived",
+    "scope": "For m source 3-CNF clauses, the three-layer box contains exactly 72m²+48m+6 spin sites. Substituting its size, β=13N and inverse precision 24N in Eq. (9) yields an explicit polynomial bound for the signed oracle call."
+  },
+  {
+    "module": "FQChem.StatePrep.ImaginaryTimeProjection.SpinGlassLatticeDecision",
+    "names": [
+      "signedEnergyDecidesThreeSAT",
+      "decisionInstanceFrustrated"
+    ],
+    "papers": [
+      "https://doi.org/10.1103/PhysRevLett.94.170201"
+    ],
+    "relation": "derived",
+    "scope": "End-to-end nearest-neighbour reduction from ordinary 3-SAT with arbitrary natural variable names. One integrable estimate having the stated relative mean-square bound decides satisfiability with error ≤1/4 using the emitted bond count as its threshold offset. At precisely that query the sign-free estimator is deterministic. Every nonempty instance also has a closed negative-weight path. An all-temperature sign-free sampling theorem and machine-level NP-to-BPP composition are outside this result."
+  }
+]

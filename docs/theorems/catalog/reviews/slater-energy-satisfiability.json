@@ -1,0 +1,25 @@
+[
+  {
+    "module": "FQChem.Complexity.SlaterEnergyThreeSAT",
+    "names": [
+      "clauseTrue",
+      "independentIff"
+    ],
+    "papers": [
+      "https://doi.org/10.1103/PRXQuantum.3.020322"
+    ],
+    "relation": "supporting",
+    "scope": "The explicit literal-conflict graph on three vertices per clause has an independent set of size equal to the number of clauses exactly when the input formula is satisfiable."
+  },
+  {
+    "module": "FQChem.Complexity.SlaterEnergyThreeSAT",
+    "names": [
+      "formulaEnergyGap"
+    ],
+    "papers": [
+      "https://doi.org/10.1103/PRXQuantum.3.020322"
+    ],
+    "relation": "derived",
+    "scope": "Starting with any nonempty 3-CNF, the compact-orbital Hamiltonian gives a low-energy Slater witness on yes instances and an inverse-polynomially separated bound for every normalized fixed-number state on no instances."
+  }
+]

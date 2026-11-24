@@ -1,0 +1,521 @@
+[
+  {
+    "module": "FQChem.Complexity.FixedBasisGaussians",
+    "names": [
+      "completeSquare",
+      "normalization"
+    ],
+    "papers": [
+      "https://doi.org/10.1103/PRXQuantum.3.020322"
+    ],
+    "relation": "supporting",
+    "scope": "Appendix C.1.a, Eqs. (C3) and (C6). Completing the square for two translated three-dimensional Gaussians and simplifying the normalization factor."
+  },
+  {
+    "module": "FQChem.Complexity.FixedBasisGaussians",
+    "names": [
+      "overlap",
+      "overlap_same",
+      "orbital_normalized"
+    ],
+    "papers": [
+      "https://doi.org/10.1103/PRXQuantum.3.020322"
+    ],
+    "relation": "paper-result",
+    "scope": "Appendix C.1.a, Eqs. (C3), (C6), (C8), (C9). Exact Lebesgue overlap of normalized three-dimensional positive-exponent primitive Gaussians with arbitrary centers and exponents. The unequal-exponent prefactor is expressed as a product of the two normalization factors and the Gaussian volume."
+  },
+  {
+    "module": "FQChem.Complexity.FixedBasisGaussians",
+    "names": [
+      "pairDensity",
+      "repulsion_reduction"
+    ],
+    "papers": [
+      "https://doi.org/10.1103/PRXQuantum.3.020322"
+    ],
+    "relation": "derived",
+    "scope": "Appendix C.1.a, Eqs. (C15)–(C16). Multiplication of equal-exponent Gaussian primitives shifts the density to their midpoint and introduces a distance-dependent exponential. Applying the two factors to the six-dimensional 1/‖r−s‖ integral recovers the exchange and three-center reductions as special cases."
+  },
+  {
+    "module": "FQChem.Complexity.FixedBasisCoulomb",
+    "names": [
+      "radialKernel",
+      "fourthMoment"
+    ],
+    "papers": [
+      "https://doi.org/10.1103/PRXQuantum.3.020322"
+    ],
+    "relation": "supporting",
+    "scope": "Appendix C.1.a, evaluating Eq. (C14) at coincident centers. Three-dimensional radial integration gives 2π/α for exp(−α‖y‖²)/‖y‖. The fourth moment of one normalized orbital is (α/π)^(3/2)."
+  },
+  {
+    "module": "FQChem.Complexity.FixedBasisCoulomb",
+    "names": [
+      "onsite"
+    ],
+    "papers": [
+      "https://doi.org/10.1103/PRXQuantum.3.020322"
+    ],
+    "relation": "paper-result",
+    "scope": "Eqs. (C14) and (F7). Exact six-dimensional Coulomb repulsion of a normalized Gaussian with itself is √(4α/π). A relative-coordinate transformation, absolute-integrability proof, and radial integration justify changing the order of integration at the Coulomb singularity."
+  },
+  {
+    "module": "FQChem.Complexity.FixedBasisHopping",
+    "names": [
+      "profile_eq_sqrt",
+      "profile_decay"
+    ],
+    "papers": [
+      "https://doi.org/10.1103/PRXQuantum.3.020322"
+    ],
+    "relation": "supporting",
+    "scope": "Eqs. (C32)–(C33). On nonnegative ω, the rounded hopping profile √(ω² exp(−ω)) equals ω exp(−ω/2), and it tends to zero at infinity."
+  },
+  {
+    "module": "FQChem.Complexity.FixedBasisHopping",
+    "names": [
+      "chooseDistance",
+      "matchCoefficients"
+    ],
+    "papers": [
+      "https://doi.org/10.1103/PRXQuantum.3.020322"
+    ],
+    "relation": "paper-result",
+    "scope": "Appendix C.4, Eqs. (C59), (C62), (C63), and the coefficient-range argument following Eq. (C69). Every strictly negative target in the stated range is reached by a positive real γ with α γ²≥ω₀. A single positive β and one separation per edge match the scaled onsite and hopping coefficients. Finite-precision encoding and control of other physical coefficients are additional steps."
+  },
+  {
+    "module": "FQChem.Complexity.SlaterEnergy",
+    "names": [
+      "polarized_zero",
+      "injective_sites",
+      "independent_sites",
+      "noInstance"
+    ],
+    "papers": [
+      "https://doi.org/10.1103/PRXQuantum.3.020322"
+    ],
+    "relation": "paper-result",
+    "scope": "Appendix F, Eqs. (F1)–(F4). In the k-electron sector, an independent k-set gives a zero-energy spin-polarized occupation. Without such a set every occupation has a doubly occupied site or a neighboring occupied pair and costs at least V, assuming U≥V≥0."
+  },
+  {
+    "module": "FQChem.Complexity.SlaterEnergy",
+    "names": [
+      "occupation_slater"
+    ],
+    "papers": [
+      "https://doi.org/10.1103/PRXQuantum.3.020322"
+    ],
+    "relation": "paper-result",
+    "scope": "Section IV, Eq. (14), and Appendix F after Eq. (F2). The coordinate state of every fixed-size spin-orbital occupation is exactly the exterior product of an orthonormal frame, with equality proved in the exterior-power occupation basis."
+  },
+  {
+    "module": "FQChem.Complexity.SlaterEnergy",
+    "names": [
+      "diagonal_energy"
+    ],
+    "papers": [
+      "https://doi.org/10.1103/PRXQuantum.3.020322"
+    ],
+    "relation": "supporting",
+    "scope": "Appendix F, Eqs. (F1)–(F3). The expectation of the diagonal spin-orbital Hamiltonian is the probability-weighted sum of onsite and edge costs, including all spin multiplicities on each edge."
+  },
+  {
+    "module": "FQChem.Complexity.SlaterEnergy",
+    "names": [
+      "slaterDecisionGap",
+      "expectationPerturbation",
+      "robustSlaterReduction"
+    ],
+    "papers": [
+      "https://doi.org/10.1103/PRXQuantum.3.020322"
+    ],
+    "relation": "derived",
+    "scope": "Appendix F, Eqs. (F1)–(F5). Sector operator-norm error ε<V/2, after a scalar shift, gives strictly separated thresholds shift+ε and shift+V−ε. A YES instance has a normalized single determinant; a NO instance has the lower bound for all normalized many-electron states. This reduction assumes the stated norm control for its input matrix."
+  },
+  {
+    "module": "FQChem.Complexity.FixedBasisGeometry",
+    "names": [
+      "sameBlock",
+      "lineDistance",
+      "offset_le",
+      "separateBlocks",
+      "partnerDistance"
+    ],
+    "papers": [
+      "https://doi.org/10.1103/PRXQuantum.3.020322"
+    ],
+    "relation": "supporting",
+    "scope": "Appendix C.1 describes separate groups of primitive centers for the graph edges. This construction uses an integer line embedded in three-space, a distinct block for each unordered partner pair, and one point for each ordered pair."
+  },
+  {
+    "module": "FQChem.Complexity.FixedBasisGeometry",
+    "names": [
+      "edgeDistance",
+      "separated",
+      "nonedgeDistance",
+      "coordinateBound"
+    ],
+    "papers": [
+      "https://doi.org/10.1103/PRXQuantum.3.020322"
+    ],
+    "relation": "derived",
+    "scope": "Explicit graph embedding for an alternative compact-support realization of the Appendix F independent-set reduction. The n² centers lie on an integer line with coordinates below 3Rn²+R. For R≥4, all distinct centers are at least 4 apart, designated edge centers are exactly 4 apart, and every cross-site component pair of different nonadjacent sites is at least R apart."
+  },
+  {
+    "module": "FQChem.Complexity.SlaterEnergyCoulomb",
+    "names": [
+      "weight_pos",
+      "density_value",
+      "density_normalized",
+      "wave_zero",
+      "wave_smooth",
+      "density_le"
+    ],
+    "papers": [
+      "https://doi.org/10.1103/PRXQuantum.3.020322"
+    ],
+    "relation": "supporting",
+    "scope": "Compact-support alternative to the Gaussian orbitals of Appendix C.1. Translating a twice continuously differentiable bump and rescaling its squared norm produces unit-mass nonnegative densities supported in unit balls."
+  },
+  {
+    "module": "FQChem.Complexity.SlaterEnergyCoulomb",
+    "names": [
+      "kernel_integrable",
+      "joint_normalized",
+      "joint_integrable"
+    ],
+    "papers": [
+      "https://doi.org/10.1103/PRXQuantum.3.020322"
+    ],
+    "relation": "supporting",
+    "scope": "For the compact-support alternative to Appendix F, the physical six-dimensional density product divided by distance is absolutely integrable at all centers, including coincident centers. The proof uses local integrability of the three-dimensional Coulomb kernel and a measure-preserving shear."
+  },
+  {
+    "module": "FQChem.Complexity.SlaterEnergyCoulomb",
+    "names": [
+      "lower",
+      "upper",
+      "nonnegative"
+    ],
+    "papers": [
+      "https://doi.org/10.1103/PRXQuantum.3.020322"
+    ],
+    "relation": "derived",
+    "scope": "For normalized C² orbital components in unit balls, their physical direct Coulomb integral is at least 1/(dist(A,B)+2). For centers separated by at least D>2 it is at most 1/(D−2). The lower bound includes the onsite case because the diagonal has zero product volume."
+  },
+  {
+    "module": "FQChem.Complexity.SlaterEnergyCoulomb",
+    "names": [
+      "bump_smooth",
+      "bump_bounds",
+      "bump_zero",
+      "bump_compact"
+    ],
+    "papers": [
+      "https://doi.org/10.1103/PRXQuantum.3.020322"
+    ],
+    "relation": "supporting",
+    "scope": "The alternative construction uses a fixed explicit radial C² profile of unit support, bounded between zero and one."
+  },
+  {
+    "module": "FQChem.Complexity.SlaterEnergyOrbitals",
+    "names": [
+      "disjoint_components",
+      "disjoint_sites",
+      "spatial_density",
+      "spatial_orthonormal"
+    ],
+    "papers": [
+      "https://doi.org/10.1103/PRXQuantum.3.020322"
+    ],
+    "relation": "derived",
+    "scope": "Section IV A and Appendix F, using an alternative three-dimensional compact-support construction. Each spatial orbital is a sum of n identical translates, normalized by √n. Disjoint supports give an exactly orthonormal frame and a pointwise formula for the density."
+  },
+  {
+    "module": "FQChem.Complexity.SlaterEnergyOrbitals",
+    "names": [
+      "coefficient_offdiag",
+      "direct_formula",
+      "direct_nonneg",
+      "component_le_sum"
+    ],
+    "papers": [
+      "https://doi.org/10.1103/PRXQuantum.3.020322"
+    ],
+    "relation": "derived",
+    "scope": "Section II, Eq. (8), and Appendix F. Off-diagonal Coulomb integrals vanish pointwise by disjoint supports. Direct coefficients are nonnegative and equal the average of n² absolutely integrable component interactions."
+  },
+  {
+    "module": "FQChem.Complexity.SlaterEnergyOrbitals",
+    "names": [
+      "direct_onsite",
+      "direct_edge",
+      "direct_nonedge"
+    ],
+    "papers": [
+      "https://doi.org/10.1103/PRXQuantum.3.020322"
+    ],
+    "relation": "derived",
+    "scope": "Appendix F, independent-set reduction. The actual continuum coefficients in this alternative construction satisfy onsite ≥1/(2n²), edge ≥1/(6n²), and nonedge ≤1/(R−2)."
+  },
+  {
+    "module": "FQChem.Complexity.SlaterEnergyReduction",
+    "names": [
+      "four_le_spacing",
+      "expectation"
+    ],
+    "papers": [
+      "https://doi.org/10.1103/PRXQuantum.3.020322"
+    ],
+    "relation": "supporting",
+    "scope": "Appendix F, Eqs. (F1)–(F4). The chosen center-spacing parameter is 12n⁴+2. The energy of each normalized occupation superposition in the diagonal fixed-particle matrix is the weighted average of its repulsions plus the common shift."
+  },
+  {
+    "module": "FQChem.Complexity.SlaterEnergyReduction",
+    "names": [
+      "independent_upper",
+      "dependent_lower",
+      "coulombDecisionGap"
+    ],
+    "papers": [
+      "https://doi.org/10.1103/PRXQuantum.3.020322"
+    ],
+    "relation": "derived",
+    "scope": "Appendix F, Eqs. (F1)–(F4), via a constructive alternative compact-support geometry. An independent k-set yields an exterior Slater state whose Coulomb energy is at most 1/(12n²); without one, every normalized k-electron state has Coulomb energy at least 1/(6n²)."
+  },
+  {
+    "module": "FQChem.Complexity.SlaterEnergyKinetic",
+    "names": [
+      "compact_wave",
+      "lap_continuous",
+      "translated",
+      "lap_zero",
+      "disjoint_kinetic",
+      "lap_sum",
+      "lap_spatial",
+      "primitive_integral"
+    ],
+    "papers": [
+      "https://doi.org/10.1103/PRXQuantum.3.020322"
+    ],
+    "relation": "supporting",
+    "scope": "Section II, Eq. (6). For the compact-support alternative, translation commutes with the three-dimensional Laplacian, its support lies in the closed component ball, and each primitive contributes the same finite kinetic integral."
+  },
+  {
+    "module": "FQChem.Complexity.SlaterEnergyKinetic",
+    "names": [
+      "primitive_value",
+      "kinetic_matrix",
+      "physicalSlaterGap"
+    ],
+    "papers": [
+      "https://doi.org/10.1103/PRXQuantum.3.020322"
+    ],
+    "relation": "derived",
+    "scope": "Section II, Eqs. (3), (6), and Appendix F. The physical −Δ/2 kinetic matrix is a common diagonal scalar for these exactly orthonormal spatial orbitals. Its value is exactly 195/32. In the k-electron sector both thresholds are shifted by 195k/32."
+  },
+  {
+    "module": "FQChem.Complexity.SlaterEnergyHamiltonian",
+    "names": [
+      "occupied_spec",
+      "occupied_iff",
+      "mode_ext",
+      "sign_sq",
+      "sameResidual"
+    ],
+    "papers": [
+      "https://doi.org/10.1103/PRXQuantum.3.020322"
+    ],
+    "relation": "supporting",
+    "scope": "Section II, Eq. (3), and Section IV, Eq. (14). Increasing pairs enumerate occupied two-mode annihilations exactly once. The occupation signs have squared modulus one, and deleting the same occupied subset preserves equality of sector labels."
+  },
+  {
+    "module": "FQChem.Complexity.SlaterEnergyHamiltonian",
+    "names": [
+      "kinetic_delta",
+      "coulomb_delta",
+      "pair_delta",
+      "singleSum",
+      "sum_direct",
+      "pairSum"
+    ],
+    "papers": [
+      "https://doi.org/10.1103/PRXQuantum.3.020322"
+    ],
+    "relation": "derived",
+    "scope": "Section II, Eqs. (3), (6), (8), and Appendix F. For the constructed physical orbitals the kinetic and ordered antisymmetrized Coulomb coefficients are diagonal. Summing their signed occupation matrix elements leaves the common kinetic offset, double-occupancy costs and all direct offsite terms."
+  },
+  {
+    "module": "FQChem.Complexity.SlaterEnergyHamiltonian",
+    "names": [
+      "electronic_eq",
+      "physicalReduction",
+      "rationalThresholds"
+    ],
+    "papers": [
+      "https://doi.org/10.1103/PRXQuantum.3.020322"
+    ],
+    "relation": "derived",
+    "scope": "Alternative physical realization of the reduction underlying Theorem 3, Section IV A and Appendix F. The assembled signed one- and two-body Hamiltonian, with actual three-dimensional orbitals, Laplacian and Coulomb integrals and V=0, has a determinant witness below kT+1/(12n²) for an independent k-set. Every normalized state lies above kT+1/(6n²) in a NO instance. T=195/32 is the fixed one-component kinetic energy. The rational threshold difference is 1/(12n²). The companion exact coefficient evaluator supplies a polynomial Boolean-gate bound. The published complexity-class claim also includes general Slater witness verification and NP-completeness of the source problem."
+  },
+  {
+    "module": "FQChem.Complexity.FixedBasisShell",
+    "names": [
+      "shellHeight",
+      "transverseArea",
+      "sliceArea",
+      "split_volume",
+      "split_sq",
+      "radialHeight",
+      "axisDist",
+      "shellHeight_lintegral"
+    ],
+    "papers": [
+      "https://doi.org/10.1103/PRXQuantum.3.020322"
+    ],
+    "relation": "supporting",
+    "scope": "Newton shell identity used to evaluate the alternative Section IV A compact-support integrals. Pushing planar area through squared radius gives a constant π density. In three axial dimensions the height integral on a sphere of radius r<d equals 2r/d in the unnormalized height coordinate."
+  },
+  {
+    "module": "FQChem.Complexity.FixedBasisShell",
+    "names": [
+      "exteriorAxis",
+      "exteriorPoint",
+      "exteriorReal",
+      "profile_density",
+      "mass_one",
+      "potential",
+      "separatedInteraction"
+    ],
+    "papers": [
+      "https://doi.org/10.1103/PRXQuantum.3.020322"
+    ],
+    "relation": "derived",
+    "scope": "Exact intercenter coefficient evaluator for the alternative fixed-basis reduction in Appendix F. In three spatial dimensions a compact radial charge of unit mass has potential 1/d outside its unit ball. Applying the shell identity twice evaluates the actual six-dimensional Coulomb interaction of two component translates as 1/dist(A,B) whenever their centers are more than two units apart."
+  },
+  {
+    "module": "FQChem.Complexity.FixedBasisRadial",
+    "names": [
+      "smooth",
+      "zero",
+      "bounds",
+      "squared",
+      "first",
+      "second",
+      "shape_laplacian"
+    ],
+    "papers": [
+      "https://doi.org/10.1103/PRXQuantum.3.020322"
+    ],
+    "relation": "derived",
+    "scope": "Explicit compact-support alternative to the Appendix F orbitals. The radial wave function is (1−r²)^(5/2) for r<1 and zero elsewhere. It is C² across the unit sphere; its squared density and the product with its three-dimensional Laplacian are polynomials inside the ball."
+  },
+  {
+    "module": "FQChem.Complexity.FixedBasisRadial",
+    "names": [
+      "radialBallOfRadius",
+      "radialBall",
+      "cumulative",
+      "volumeMass",
+      "kineticNumerator"
+    ],
+    "papers": [
+      "https://doi.org/10.1103/PRXQuantum.3.020322"
+    ],
+    "relation": "supporting",
+    "scope": "Three-dimensional radial integration evaluates the squared orbital mass as 4π·256/9009 and the unnormalized kinetic integral as that mass times 195/32. A rational polynomial gives the cumulative radial charge for smaller radii."
+  },
+  {
+    "module": "FQChem.Complexity.FixedBasisSelfEnergy",
+    "names": [
+      "density_sq",
+      "truncated",
+      "half_integrable",
+      "swapHalves",
+      "halfValue"
+    ],
+    "papers": [
+      "https://doi.org/10.1103/PRXQuantum.3.020322"
+    ],
+    "relation": "supporting",
+    "scope": "Alternative continuum construction for Theorem 3, Section IV A and Appendix F. Exchange symmetry allows integration over the region in which one electron has smaller radius. The equal-radius set has product volume zero. Applying the checked shell identity at the larger radius leaves a single radial polynomial integral."
+  },
+  {
+    "module": "FQChem.Complexity.FixedBasisSelfEnergy",
+    "names": [
+      "self_value"
+    ],
+    "papers": [
+      "https://doi.org/10.1103/PRXQuantum.3.020322"
+    ],
+    "relation": "derived",
+    "scope": "Exact six-dimensional self Coulomb repulsion of the alternative normalized compact orbital equals the rational 396396/185725. This value uses the actual positive-part (1−r²)^(5/2) orbital and the three-dimensional 1/|r−s| interaction."
+  },
+  {
+    "module": "FQChem.Complexity.FixedBasisIntegrals",
+    "names": [
+      "coordinate_eq",
+      "self_translation"
+    ],
+    "papers": [
+      "https://doi.org/10.1103/PRXQuantum.3.020322"
+    ],
+    "relation": "supporting",
+    "scope": "The finite Boolean-table evaluator produces the same integer component centers as the geometric proof, and translating both arguments of the six-dimensional self integral preserves it."
+  },
+  {
+    "module": "FQChem.Complexity.FixedBasisIntegrals",
+    "names": [
+      "directCode_correct",
+      "evaluate_correct"
+    ],
+    "papers": [
+      "https://doi.org/10.1103/PRXQuantum.3.020322"
+    ],
+    "relation": "derived",
+    "scope": "Section II electronic integrals and the alternative Appendix F construction. An executable rational algorithm takes the Boolean graph adjacency table and spacing. It returns every four-index Coulomb coefficient exactly using integer coordinate reciprocals and the known rational self energy, adding n² terms for a nonzero coefficient."
+  },
+  {
+    "module": "FQChem.Complexity.FixedBasisArithmetic",
+    "names": [
+      "merge_spec",
+      "product_lt",
+      "accumulate_spec"
+    ],
+    "papers": [
+      "https://doi.org/10.1103/PRXQuantum.3.020322"
+    ],
+    "relation": "supporting",
+    "scope": "Boolean arithmetic behind the alternative Section IV A reduction. Unreduced nonnegative rational addition uses three shift-and-add multipliers and one ripple-carry adder. A width of (m+1)(b+1) bits handles the accumulated sum of m input fractions whose numerator and positive denominator each fit b bits."
+  },
+  {
+    "module": "FQChem.Complexity.FixedBasisArithmetic",
+    "names": [
+      "separation_cast",
+      "atom_value",
+      "atom_bound",
+      "coordinate_bound",
+      "read_spec",
+      "difference_spec",
+      "readAtom_spec"
+    ],
+    "papers": [
+      "https://doi.org/10.1103/PRXQuantum.3.020322"
+    ],
+    "relation": "supporting",
+    "scope": "The finite coefficient circuit reads the two appropriate adjacency input bits, selects the corresponding polynomial-size integer centers, subtracts via two ripple-carry chains and chooses the absolute difference. The n² component pairs include the universal rational self energy when centers coincide."
+  },
+  {
+    "module": "FQChem.Complexity.FixedBasisArithmetic",
+    "names": [
+      "coefficient_spec",
+      "electronicIntegral_spec",
+      "polynomialBudget"
+    ],
+    "papers": [
+      "https://doi.org/10.1103/PRXQuantum.3.020322"
+    ],
+    "relation": "derived",
+    "scope": "Polynomial-size Boolean coefficient circuits for the physical compact-orbital construction underlying Theorem 3. The circuit takes the graph adjacency bits for fixed orbital indices and returns two nonnegative integers, a numerator and a positive denominator, representing the exact four-index continuum Coulomb integral. For b=size(396397+3Rn²+R+n²) and w=(n²+2)(b+1) it uses at most n²(24b+30w²+6w)+10w² gates. The reduction uses R=12n⁴+2. The count covers input-dependent selections, subtractions, products, additions and final normalization; indices and size-dependent integer constants specify the circuit."
+  }
+]

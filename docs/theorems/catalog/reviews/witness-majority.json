@@ -1,0 +1,28 @@
+[
+  {
+    "module": "FQChem.Complexity.WitnessMajority",
+    "names": [
+      "monotone",
+      "scalarMajority"
+    ],
+    "papers": [
+      "https://doi.org/10.1090/gsm/047"
+    ],
+    "relation": "supporting",
+    "scope": "The joint three-copy majority effect of binary witness measurements is monotone in the individual effects. Equal scalar effects give the cubic 3q²−2q³."
+  },
+  {
+    "module": "FQChem.Complexity.WitnessMajority",
+    "names": [
+      "soundness",
+      "entangledAcceptance",
+      "boundOfWitnesses",
+      "threeWitnessSoundness"
+    ],
+    "papers": [
+      "https://doi.org/10.1090/gsm/047"
+    ],
+    "relation": "specialization",
+    "scope": "The three-copy case of witness amplification (Lemma 14.1) gives acceptance at most 3q²−2q³ for every normalized, possibly entangled witness when the one-copy effect is bounded by qI."
+  }
+]

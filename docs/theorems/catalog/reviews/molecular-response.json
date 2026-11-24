@@ -1,0 +1,50 @@
+[
+  {
+    "module": "FQChem.Properties.LinearSystems.MolecularResponse",
+    "names": [
+      "dampingIdentity",
+      "residualError",
+      "uniqueResponse"
+    ],
+    "papers": [
+      "https://arxiv.org/abs/2001.03406"
+    ],
+    "relation": "derived",
+    "scope": "Positive damping gives a unique finite-basis response vector at every real frequency, including resonance. The residual norm divided by the damping bounds the error in the vector."
+  },
+  {
+    "module": "FQChem.Properties.LinearSystems.MolecularResponse",
+    "names": [
+      "hermitianResponseSystem"
+    ],
+    "papers": [
+      "https://arxiv.org/abs/2001.03406",
+      "https://doi.org/10.1103/PhysRevLett.103.150502"
+    ],
+    "relation": "paper-result",
+    "scope": "The doubled system in Eq. (12) is Hermitian. A vector supported on the second block solves it exactly when its nonzero component solves the original response equation."
+  },
+  {
+    "module": "FQChem.Properties.LinearSystems.MolecularResponse",
+    "names": [
+      "spectralResponse"
+    ],
+    "papers": [
+      "https://arxiv.org/abs/2001.03406",
+      "https://doi.org/10.1103/PhysRevLett.103.150502"
+    ],
+    "relation": "specialization",
+    "scope": "Reciprocal eigenvalue weighting solves the damped response equation in the supplied energy eigenbasis."
+  },
+  {
+    "module": "FQChem.Properties.LinearSystems.MolecularResponse",
+    "names": [
+      "polarizability"
+    ],
+    "papers": [
+      "https://arxiv.org/abs/2001.03406"
+    ],
+    "relation": "paper-result",
+    "scope": "Summing the two frequency branches gives the excited-state sum for dipole polarizability in Eq. (3). The permanent ground-state dipole cancels."
+  }
+]

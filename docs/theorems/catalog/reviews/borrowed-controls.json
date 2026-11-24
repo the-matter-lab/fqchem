@@ -1,0 +1,70 @@
+[
+  {
+    "module": "FQChemQatlib.Dynamics.BorrowedControls",
+    "names": [
+      "compose",
+      "weaken",
+      "toff",
+      "bit",
+      "controlledBit"
+    ],
+    "papers": [
+      "https://doi.org/10.1103/PhysRevA.52.3457"
+    ],
+    "relation": "supporting",
+    "scope": "Composition and primitive Clifford+T words preserve the exact basis action and resource bounds. A Toffoli is expanded into fifteen local gates."
+  },
+  {
+    "module": "FQChemQatlib.Dynamics.BorrowedControls",
+    "names": [
+      "carry_congr",
+      "carry_xor",
+      "readCarry",
+      "restore",
+      "toggleDifference",
+      "allFlip",
+      "carryFlip",
+      "zipNames"
+    ],
+    "papers": [
+      "https://doi.org/10.1103/PhysRevA.52.3457"
+    ],
+    "relation": "supporting",
+    "scope": "A toggle through borrowed binary registers has a computable change in its final control predicate. Running the chain in reverse restores every temporary register."
+  },
+  {
+    "module": "FQChemQatlib.Dynamics.BorrowedControls",
+    "names": [
+      "manyFromPath",
+      "many"
+    ],
+    "papers": [
+      "https://doi.org/10.1103/PhysRevA.52.3457"
+    ],
+    "relation": "derived",
+    "scope": "The borrowed-wire ladder realizes a many-controlled NOT using linear-size local gate words, following Lemma 7.2."
+  },
+  {
+    "module": "FQChemQatlib.Dynamics.BorrowedControls",
+    "names": [
+      "borrowedMCX",
+      "coherentMCX"
+    ],
+    "papers": [
+      "https://doi.org/10.1103/PhysRevA.52.3457"
+    ],
+    "relation": "paper-result",
+    "scope": "The balanced split of Barenco et al., Lemma 7.3 and Corollary 7.4, implements a k-controlled NOT with one borrowed qubit and at most 120(k+3) addressed one- and two-qubit gates. The matrix action includes arbitrary superpositions and restores the borrowed wire."
+  },
+  {
+    "module": "Qatlib.Concepts.GateVocabulary.LocalReflectionGates",
+    "names": [
+      "applyGate_cnotGate_ket"
+    ],
+    "papers": [
+      "https://doi.org/10.1103/PhysRevA.52.3457"
+    ],
+    "relation": "supporting",
+    "scope": "The two-qubit controlled NOT realizes its classical action on every computational basis ket."
+  }
+]

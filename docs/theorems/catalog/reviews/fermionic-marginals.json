@@ -1,0 +1,100 @@
+[
+  {
+    "module": "FQChem.Complexity.FermionicMarginals",
+    "names": [
+      "marginal_apply",
+      "marginal_positive",
+      "marginal_trace",
+      "representable_density"
+    ],
+    "papers": [
+      "https://doi.org/10.1103/PhysRevLett.98.110503"
+    ],
+    "relation": "supporting",
+    "scope": "Tracing out spectator coordinates produces a positive two-particle density operator of trace one from every physical N-fermion density operator."
+  },
+  {
+    "module": "FQChem.Complexity.FermionicMarginals",
+    "names": [
+      "convexRepresentable",
+      "representable_previous"
+    ],
+    "papers": [
+      "https://doi.org/10.1103/PhysRevLett.98.110503"
+    ],
+    "relation": "paper-result",
+    "scope": "The set of representable two-particle densities is convex, and tracing out one spectator proves the nesting of these sets with increasing particle number (note 27)."
+  },
+  {
+    "module": "FQChem.Complexity.FermionicMarginals",
+    "names": [
+      "snoc_relabel",
+      "traceLast_state",
+      "invariant"
+    ],
+    "papers": [
+      "https://doi.org/10.1103/PhysRevLett.98.110503"
+    ],
+    "relation": "supporting",
+    "scope": "Relabeling antisymmetric particle coordinates preserves the density when applied on both indices. The last-particle partial trace preserves antisymmetry of the remaining state."
+  },
+  {
+    "module": "FQChem.Complexity.FermionicMarginals",
+    "names": [
+      "trace_relabel",
+      "pairTrace",
+      "pairExpectation",
+      "anyPairExpectation"
+    ],
+    "papers": [
+      "https://doi.org/10.1103/PhysRevLett.98.110503"
+    ],
+    "relation": "supporting",
+    "scope": "A two-body observable on any chosen ordered particle pair has expectation equal to its trace against the normalized pair density."
+  },
+  {
+    "module": "FQChem.Complexity.FermionicMarginals",
+    "names": [
+      "energyRange"
+    ],
+    "papers": [
+      "https://doi.org/10.1103/PhysRevLett.98.110503"
+    ],
+    "relation": "paper-result",
+    "scope": "The attainable energies of a finite N-fermion Hamiltonian that sums two-body terms are exactly the attainable values of the linear energy functional on representable two-particle marginals. This is the variational identity used in the hardness reduction."
+  },
+  {
+    "module": "FQChem.Complexity.MarginalVerification",
+    "names": [
+      "traceNormBound",
+      "observableReadout"
+    ],
+    "papers": [
+      "https://doi.org/10.1103/PhysRevLett.98.110503"
+    ],
+    "relation": "supporting",
+    "scope": "Gershgorin bounds the Hermitian trace norm by dimension squared times the largest entry. Explicit Hermitian two-body observables read the real or imaginary entry."
+  },
+  {
+    "module": "FQChem.Complexity.MarginalVerification",
+    "names": [
+      "measurableDiscrepancy"
+    ],
+    "papers": [
+      "https://doi.org/10.1103/PhysRevLett.98.110503"
+    ],
+    "relation": "derived",
+    "scope": "For a candidate at trace-norm distance at least β from all representable pair densities, an explicit pair observable distinguishes it from every convex mixture of physical block marginals with signal exceeding β/(4d⁴)."
+  },
+  {
+    "module": "FQChem.Complexity.MarginalVerification",
+    "names": [
+      "rejectionProbability"
+    ],
+    "papers": [
+      "https://doi.org/10.1103/PhysRevLett.98.110503"
+    ],
+    "relation": "supporting",
+    "scope": "The expectation discrepancy of a bounded verifier statistic forces a rejection probability lower bound for arbitrary correlated finite measurement outcomes."
+  }
+]

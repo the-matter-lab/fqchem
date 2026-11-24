@@ -1,0 +1,43 @@
+[
+  {
+    "module": "FQChem.Complexity.FixedBasisOrthonormalization",
+    "names": [
+      "spectralDistance",
+      "squareRootBound",
+      "sandwichError"
+    ],
+    "papers": [
+      "https://doi.org/10.1063/1.1747632",
+      "https://doi.org/10.1103/PRXQuantum.3.020322"
+    ],
+    "relation": "supporting",
+    "scope": "The spectral theorem, a reciprocal-square-root estimate and a matrix-product bound control the change of coefficients."
+  },
+  {
+    "module": "FQChem.Complexity.FixedBasisOrthonormalization",
+    "names": [
+      "orthonormalColumns"
+    ],
+    "papers": [
+      "https://doi.org/10.1063/1.1747632",
+      "https://doi.org/10.1103/PRXQuantum.3.020322"
+    ],
+    "relation": "paper-result",
+    "scope": "Symmetric orthogonalization with the inverse square root of a positive overlap near the identity gives an exactly orthonormal orbital frame."
+  },
+  {
+    "module": "FQChem.Complexity.FixedBasisOrthonormalization",
+    "names": [
+      "globalTransform",
+      "oneBodyError",
+      "pairTransform",
+      "twoBodyError"
+    ],
+    "papers": [
+      "https://doi.org/10.1063/1.1747632",
+      "https://doi.org/10.1103/PRXQuantum.3.020322"
+    ],
+    "relation": "derived",
+    "scope": "The full overlap matrix determines the transformation. For spectral overlap error δ at most one half, the one- and two-electron integral perturbations cost at most (1+2δ)²−1 and (1+2δ)⁴−1 times their respective spectral norms."
+  }
+]

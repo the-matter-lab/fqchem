@@ -18,14 +18,14 @@ const classicalModules = new Set((
   "AFQMC AmplifierCost ClassicalEnvironments ClusterExpansions Compiler ConfigurationInteraction " +
   "CoupledCluster DMRG DiffusionMonteCarlo DyadicCoefficients FCIQMC Fragments GaussianAuxiliaryField " +
   "OutOfTimeOrder HubbardProjection KrylovPropagation LearnedEnvironments LearnedSurrogates MatrixProductStates " +
-  "FactoringRecursion FactoringReduction FactoringPreprocessing CubicSpinGlass FerromagneticComparison IsingSign OrderFindingPostprocessing RankRevealing CircuitUpdate CircuitSimulation MinimalBonds PhysicalCuts SchmidtSimulation GateRouting RoutedSimulation SingleSiteGates CircuitMeasurement CircuitReadout VidalSimulation Storage OrderFindingDecoder OrderFindingBitCost Multireference PathSampling RingPolymer SignProblem SpectralReconstruction SplitOperator " +
+  "SpinGlassSatisfiability SpinGlassThreeSAT SpinGlassLatticeGadgets SpinGlassLatticeEncoding SpinGlassLatticeDecision SpinGlassFrustration FactoringRecursion FactoringReduction FactoringPreprocessing CubicSpinGlass FerromagneticComparison IsingSign OrderFindingPostprocessing RankRevealing CircuitUpdate CircuitSimulation MinimalBonds PhysicalCuts SchmidtSimulation GateRouting RoutedSimulation SingleSiteGates CircuitMeasurement CircuitReadout VidalSimulation Storage OrderFindingDecoder OrderFindingBitCost Multireference PathSampling RingPolymer SignProblem SpectralReconstruction SplitOperator " +
   "TimeDependentCI VariationalMonteCarlo"
 ).split(" "));
 const quantumModules = new Set((
   "CompiledSampling FactoringLaw FactoringResources OrderFinding OrderFindingTrials VerifiedOrderFinding FourierOrbit QuantumFactoring SearchOptimality SparseNoFastForwarding SparseParityPath QuantumMemorySeparation SimonTuringSeparation SimonOracleMachines ShadowMeasurement ShadowConfidence BellConfidence AdaptivePauliPrediction PauliPrediction BellSampling ClassicalShadows FastForwarding AaronsonAmbainis AaronsonAmbainisOrbitals AaronsonAmbainisQuery Amplify AmplitudeAmplification " +
   "BoundedErrorReduction ControlledRotations ElectronicStructure ElectronicStructureOperators " +
   "ElectronicStructurePauli GroundStateSearch HHL HistoryHamiltonian LinearCombinationOfUnitaries " +
-  "Majority OrbitalSimulation PhaseEstimation PhaseEstimationFilter Qubitization RydbergBlockade " +
+  "LowChuangCutoff LowChuangSimulation LowChuangSparseOracle SparseSimulationPrecision BlockSimulationPrecision BorrowedControls WitnessMajority Majority OrbitalSimulation PhaseEstimation PhaseEstimationFilter Qubitization RydbergBlockade " +
   "SlaterDeterminants UniformCircuits VQE VQEMeasurement Wiring"
 ).split(" "));
 const mixedResults = new Map(Object.entries({
@@ -40,6 +40,8 @@ function methodType(n) {
     if (n.module.includes(".Foundations.PureStateMath.") || n.module.includes(".BornMetrics.")) return "general";
     return "quantum";
   }
+  if (n.module.startsWith("FQChem.StatePrep.ImaginaryTimeProjection.Ferromagnetic")) return "classical";
+  if (n.module.startsWith("FQChemQatlib.Dynamics.LowChuang") || n.module.startsWith("FQChemQatlib.Properties.SignedSine")) return "quantum";
   if (classicalModules.has(n.topic)) return "classical";
   return quantumModules.has(n.topic) ? "quantum" : "general";
 }
@@ -287,7 +289,8 @@ function sub(label,items) {
   const section=html("section","subsection"); section.append(html("h3","section-title",label),...items); return section;
 }
 function theoremRow(n,subtitle) {
-  const el=row(n.short,()=>select(n),{kind:n.kind,subtitle:subtitle?(n.pending?"Needs proof":n.topic):""});
+  const detail = n.pending ? (n.status === "published" ? "Published proof · partial Lean coverage" : "Literature hypothesis") : n.topic;
+  const el=row(n.short,()=>select(n),{kind:n.kind,subtitle:subtitle?detail:""});
   el.title=n.name; return el;
 }
 function back() {
@@ -310,6 +313,7 @@ function showPanel(resetScroll=true) {
       panel.append(html("p","detail-module",active.name),source);
     }
     panel.append(html("p","review-scope",review.scope));
+    if (active.remaining) panel.append(sub("Remaining Lean proof",[html("p","review-scope",active.remaining)]));
     const sources=review.papers.map(id=>{
       const p=atlasLiterature.papers[id], a=html("a","original-paper");
       a.href=p.url; a.append(html("strong","",p.authors || "Cited in Lean"),html("span","",p.title),icon("ext")); return a;

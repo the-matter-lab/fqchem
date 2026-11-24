@@ -7,6 +7,8 @@ In this Lean 4.35 project, `import FQChemQatlib` loads the results below and the
 | Arbitrary Hermitian observables under a finite, informationally complete unitary measurement ensemble. The shared-record median and variance-based sample bound are explicit. | [Classical shadows](FQChemQatlib/Properties/ClassicalShadows.lean) |
 | Finite counter Born probabilities in amplitude estimation, including the nearest-window and general-window guarantees. | [Amplitude estimation](FQChemQatlib/Properties/AmplitudeEstimation.lean) |
 | Exact odd and even projected-unitary singular-value transformations with constructive phase existence for admissible positive-degree polynomials. | [Singular-value transformation](FQChemQatlib/Dynamics/SingularValueTransformation.lean) |
+| Hamiltonian simulation from block encodings on finite registers and from sparse position and entry oracles. | [Block-encoding circuit and resources](FQChemQatlib/Dynamics/LowChuangReadout.lean) · [Sparse query simulation](FQChemQatlib/Dynamics/LowChuangSparseOracle.lean) |
+| Signed HHL inversion with finite off-grid phase precision and a bound on the normalized, uncomputed solution branch. | [Sine-clock solution](FQChemQatlib/Properties/SignedSineUncompute.lean) |
 | Simon mask recovery, the finite classical query bound, and order-recovery and factoring success guarantees under the stated sampling and cost models. | [Query algorithms](FQChemQatlib/Complexity/QueryAlgorithms.lean) |
 
 ## Kitaev's circuit-to-Hamiltonian construction

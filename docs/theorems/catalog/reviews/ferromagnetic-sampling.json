@@ -1,0 +1,527 @@
+[
+  {
+    "module": "FQChem.StatePrep.ImaginaryTimeProjection.FerromagneticSubgraphs",
+    "names": [
+      "boundary_empty",
+      "boundary_insert",
+      "characterProduct",
+      "orthogonal"
+    ],
+    "papers": [
+      "https://doi.org/10.1137/0222066"
+    ],
+    "relation": "supporting",
+    "scope": "The XOR of the two-site masks of an edge subset is its odd-degree boundary. Products of spin characters give the boundary character; Walsh orthogonality performs the sum over spin configurations."
+  },
+  {
+    "module": "FQChem.StatePrep.ImaginaryTimeProjection.FerromagneticSubgraphs",
+    "names": [
+      "edgeFactor",
+      "boltzmannExpansion",
+      "transform",
+      "partitionExpansion"
+    ],
+    "papers": [
+      "https://doi.org/10.1137/0222066"
+    ],
+    "relation": "specialization",
+    "scope": "Theorem 1, zero external field and homogeneous unit coupling. The physical Ising partition function is 2ⁿ cosh(β)ᵐ times the total weight tanh(β)^|A| of even subgraphs. Inserting a spin character selects the sector with its specified odd boundary."
+  },
+  {
+    "module": "FQChem.StatePrep.ImaginaryTimeProjection.FerromagneticSubgraphs",
+    "names": [
+      "sectorDomination",
+      "evenPositive",
+      "energySectors"
+    ],
+    "papers": [
+      "https://doi.org/10.1137/0222066"
+    ],
+    "relation": "derived",
+    "scope": "The Gibbs spin correlation is bounded above by one, so prescribed-boundary subgraph mass cannot exceed even mass. The negative ferromagnetic quantum mean energy is the sum of the two-site sector ratios; the even sector has positive mass."
+  },
+  {
+    "module": "FQChem.StatePrep.ImaginaryTimeProjection.FerromagneticReadout",
+    "names": [
+      "toggleBoundary",
+      "sectorInsert",
+      "occupancyInsert",
+      "edgeReadout"
+    ],
+    "papers": [
+      "https://doi.org/10.1137/0222066"
+    ],
+    "relation": "supporting",
+    "scope": "Insertion or deletion of a specified edge toggles its two-site boundary. A partition by edge occupancy expresses the two-point sector in terms of the even mass and its occupied-edge mass."
+  },
+  {
+    "module": "FQChem.StatePrep.ImaginaryTimeProjection.FerromagneticReadout",
+    "names": [
+      "totalOccupancy",
+      "sumReadout",
+      "tanhPositive",
+      "thermalReadout",
+      "readoutBounds"
+    ],
+    "papers": [
+      "https://doi.org/10.1137/0222066"
+    ],
+    "relation": "specialization",
+    "scope": "Theorem 12 for the zero-field unit-strength couplings used by Troyer and Wiese. For every β>0 the negative quantum mean energy is the even-subgraph expectation of m x + (x⁻¹−x)|A|, x=tanh β. Its pointwise range lies between m x and m/x."
+  },
+  {
+    "module": "FQChem.StatePrep.ImaginaryTimeProjection.FerromagneticRejection",
+    "names": [
+      "sumOddFactor",
+      "factorPositive",
+      "boostedWeightPositive",
+      "boostedExpansion",
+      "boostPositive"
+    ],
+    "papers": [
+      "https://doi.org/10.1137/0222066"
+    ],
+    "relation": "supporting",
+    "scope": "Products over odd sites introduce a positive fugacity u. Summing over all possible boundaries gives (1+u)ⁿ; sector expansion and positivity give a normalized positive boosted measure."
+  },
+  {
+    "module": "FQChem.StatePrep.ImaginaryTimeProjection.FerromagneticRejection",
+    "names": [
+      "evenAcceptance",
+      "rejectionLaw",
+      "acceptanceMass"
+    ],
+    "papers": [
+      "https://doi.org/10.1137/0222066"
+    ],
+    "relation": "specialization",
+    "scope": "Theorem 10, μ=0 conditioned from μ₀=1/n. Rejecting boosted configurations with an odd boundary gives the exact even law. The success probability for exact boosted draws is at least 1/3, uniformly over β>0 and finite nonempty site sets."
+  },
+  {
+    "module": "FQChem.StatePrep.ImaginaryTimeProjection.FerromagneticMetropolis",
+    "names": [
+      "flipTwice",
+      "flipDifferent",
+      "acceptanceBounds",
+      "edgeProbability",
+      "edgeBalance"
+    ],
+    "papers": [
+      "https://doi.org/10.1137/0222066"
+    ],
+    "relation": "supporting",
+    "scope": "Flipping an edge is a fixed-point-free involution. The single-edge lazy Metropolis acceptance is half the minimum weight ratio, lies in (0,1/2], and satisfies detailed balance."
+  },
+  {
+    "module": "FQChem.StatePrep.ImaginaryTimeProjection.FerromagneticMetropolis",
+    "names": [
+      "kernelProbability",
+      "kernelLazy",
+      "detailedBalance",
+      "stationary"
+    ],
+    "papers": [
+      "https://doi.org/10.1137/0222066"
+    ],
+    "relation": "specialization",
+    "scope": "Section 2 subgraphs-world chain. Choosing an edge uniformly and lazily toggling it with a Metropolis test gives a stochastic kernel reversible and stationary for the normalized boosted distribution. The empty-edge kernel is the identity."
+  },
+  {
+    "module": "FQChem.StatePrep.ImaginaryTimeProjection.FerromagneticImportance",
+    "names": [
+      "proposalRange",
+      "emptyLower",
+      "allSubsets",
+      "temperatureBoost",
+      "boostCorrection",
+      "evenAtLeastTwo"
+    ],
+    "papers": [
+      "https://doi.org/10.1137/0222066"
+    ],
+    "relation": "supporting",
+    "scope": "The importance proposal increases x to max(x,1/(m+1)). The even mass changes by at most a factor three. Every nonempty even subgraph of a genuine two-site model has at least two occupied edges, which controls the small-x correction."
+  },
+  {
+    "module": "FQChem.StatePrep.ImaginaryTimeProjection.FerromagneticImportance",
+    "names": [
+      "observationBounds",
+      "proposalMeans"
+    ],
+    "papers": [
+      "https://doi.org/10.1137/0222066"
+    ],
+    "relation": "derived",
+    "scope": "A variant of Theorem 12’s reweighting for unit positive bonds. Under the positive boosted proposal the denominator lies in [0,1] with mean ≥1/9; the dimensionless numerator is bounded by (m+1)² uniformly in β>0. The ratio of their means is exactly the negative energy divided by m tanh β."
+  },
+  {
+    "module": "FQChem.StatePrep.ImaginaryTimeProjection.FerromagneticSamples",
+    "names": [
+      "batchSucc",
+      "batchNormalized",
+      "expectationLinear",
+      "secondMoment"
+    ],
+    "papers": [
+      "https://doi.org/10.1137/0222066"
+    ],
+    "relation": "supporting",
+    "scope": "Independent finite draws have product mass and permit a one-coordinate recursion. Expanding the centered sum gives its exact second moment, linear in the batch size."
+  },
+  {
+    "module": "FQChem.StatePrep.ImaginaryTimeProjection.FerromagneticSamples",
+    "names": [
+      "expectedBounds",
+      "expectedDrift",
+      "empiricalVariance",
+      "batchError"
+    ],
+    "papers": [
+      "https://doi.org/10.1137/0222066"
+    ],
+    "relation": "derived",
+    "scope": "For a readout in [0,L], k independent approximate draws at unhalved L¹ error η yield mean-square error ≤2 L²(1/k+η²) about the target expectation. Sampling and distributional bias are both included."
+  },
+  {
+    "module": "FQChem.StatePrep.ImaginaryTimeProjection.FerromagneticEnergySampling",
+    "names": [
+      "lawMean",
+      "fromEmptyProbability",
+      "ratioError"
+    ],
+    "papers": [
+      "https://doi.org/10.1137/0222066"
+    ],
+    "relation": "supporting",
+    "scope": "The normalized boosted law realizes the subgraph expectations, and finite Metropolis runs initialized at the empty graph are probability laws. Clamping the empirical denominator below by 1/9 controls the squared error of the ratio."
+  },
+  {
+    "module": "FQChem.StatePrep.ImaginaryTimeProjection.FerromagneticEnergySampling",
+    "names": [
+      "energySamplingRMS"
+    ],
+    "papers": [
+      "https://doi.org/10.1137/0222066"
+    ],
+    "relation": "derived",
+    "scope": "For k independent t-step runs at any β>0 on a nonempty unit ferromagnet, relative MSE is bounded by 648(m+1)⁴(1/k+η²), where η bounds the actual finite-time unhalved L¹ distance to stationarity. The small-β importance factors and the finite-chain bias are included."
+  },
+  {
+    "module": "FQChem.StatePrep.ImaginaryTimeProjection.FerromagneticTrails",
+    "names": [
+      "sameEnds",
+      "joinEnds",
+      "otherEnd",
+      "boundaryUnion",
+      "boundaryQuiet"
+    ],
+    "papers": [
+      "https://doi.org/10.1137/0222066"
+    ],
+    "relation": "supporting",
+    "scope": "A trail toggles only its endpoints; disjoint edge unions add parity boundaries by XOR. A vertex with no remaining incident edge has even remaining degree."
+  },
+  {
+    "module": "FQChem.StatePrep.ImaginaryTimeProjection.FerromagneticTrails",
+    "names": [
+      "maximalTrail",
+      "startingVertex",
+      "canonicalOrdering"
+    ],
+    "papers": [
+      "https://doi.org/10.1137/0222066"
+    ],
+    "relation": "specialization",
+    "scope": "Section 4 canonical paths. In an arbitrary two-site edge difference, construct edge-disjoint maximal trails, starting at an odd vertex whenever possible. Their concatenation visits every edge once; each prefix has at most two extra odd vertices outside the final odd boundary."
+  },
+  {
+    "module": "FQChem.StatePrep.ImaginaryTimeProjection.FerromagneticPathWeights",
+    "names": [
+      "toggleAbsent",
+      "togglePresent",
+      "boundaryToggle",
+      "boundaryDifference",
+      "partitionCard",
+      "siteFactor"
+    ],
+    "papers": [
+      "https://doi.org/10.1137/0222066"
+    ],
+    "relation": "supporting",
+    "scope": "A symmetric difference adds odd-site parity modulo two. During a canonical prefix the two encoded configurations preserve the sum of occupied edge counts; only the bounded set of extra odd vertices can decrease their combined fugacity."
+  },
+  {
+    "module": "FQChem.StatePrep.ImaginaryTimeProjection.FerromagneticPathWeights",
+    "names": [
+      "weightComparison"
+    ],
+    "papers": [
+      "https://doi.org/10.1137/0222066"
+    ],
+    "relation": "specialization",
+    "scope": "Section 4 canonical-path weight estimate. For T=I△P and U=F△P, with P a prefix of the symmetric-difference edge ordering, u⁴w(I)w(F)≤w(T)w(U). The positive odd-vertex fugacity is at most one."
+  },
+  {
+    "module": "FQChem.StatePrep.ImaginaryTimeProjection.FerromagneticCongestion",
+    "names": [
+      "routeSpec",
+      "differenceSubset",
+      "beforeSubset"
+    ],
+    "papers": [
+      "https://doi.org/10.1137/0222066"
+    ],
+    "relation": "supporting",
+    "scope": "The canonical order is chosen using only the symmetric difference of the endpoints, and its pre-edge prefixes stay within the input bond set."
+  },
+  {
+    "module": "FQChem.StatePrep.ImaginaryTimeProjection.FerromagneticCongestion",
+    "names": [
+      "cancelBoth",
+      "encodedDifference",
+      "cancelRight",
+      "encodingInjective"
+    ],
+    "papers": [
+      "https://doi.org/10.1137/0222066"
+    ],
+    "relation": "supporting",
+    "scope": "Knowing the pre-transition configuration T, the toggled edge, and U determines I△F=T△U. Its fixed order determines the prefix, then I and F are recovered by undoing its flips."
+  },
+  {
+    "module": "FQChem.StatePrep.ImaginaryTimeProjection.FerromagneticCongestion",
+    "names": [
+      "congestion"
+    ],
+    "papers": [
+      "https://doi.org/10.1137/0222066"
+    ],
+    "relation": "specialization",
+    "scope": "Section 4 canonical path encoding. The total endpoint weight using a given current state T and edge is at most w(T)Z/u⁴ by injectivity and the four-power fugacity comparison."
+  },
+  {
+    "module": "FQChem.StatePrep.ImaginaryTimeProjection.FerromagneticPathComparison",
+    "names": [
+      "flipSet",
+      "telescope",
+      "endSet",
+      "pathBound"
+    ],
+    "papers": [
+      "https://doi.org/10.1137/0222066"
+    ],
+    "relation": "supporting",
+    "scope": "A physical edge toggle is symmetric difference with its singleton mask. Telescoping with finite Cauchy–Schwarz bounds the squared endpoint difference by the number of available edges times the sum of the squared gradients along the canonical path."
+  },
+  {
+    "module": "FQChem.StatePrep.ImaginaryTimeProjection.FerromagneticPathComparison",
+    "names": [
+      "pathComparison"
+    ],
+    "papers": [
+      "https://doi.org/10.1137/0222066"
+    ],
+    "relation": "derived",
+    "scope": "All endpoint pairs are summed according to their weights and rerouted by current state and edge. The verified congestion bound compares the full pair quadratic form with the sum of edge gradients."
+  },
+  {
+    "module": "FQChem.StatePrep.ImaginaryTimeProjection.FerromagneticDirichlet",
+    "names": [
+      "edgePower",
+      "oddTransition",
+      "moveFloor"
+    ],
+    "papers": [
+      "https://doi.org/10.1137/0222066"
+    ],
+    "relation": "supporting",
+    "scope": "A single flip changes the edge count by one and exactly two vertex parities, so a homogeneous boosted edge with 0<x,u≤1 is accepted with probability at least x u²/2."
+  },
+  {
+    "module": "FQChem.StatePrep.ImaginaryTimeProjection.FerromagneticDirichlet",
+    "names": [
+      "edgeGradient",
+      "toggleComparison",
+      "poincare"
+    ],
+    "papers": [
+      "https://doi.org/10.1137/0222066"
+    ],
+    "relation": "derived",
+    "scope": "Section 4 mixing mechanism in Poincaré form. The stationary endpoint-pair mean squared difference times x u⁶ is at most 2m² times the stationary one-step squared difference for the actual lazy transition kernel. This gives an explicit polynomial relaxation coefficient at the boosted parameters."
+  },
+  {
+    "module": "FQChem.StatePrep.ImaginaryTimeProjection.FerromagneticMixing",
+    "names": [
+      "weightSum",
+      "totalPositive",
+      "lawProbability",
+      "pairMoment"
+    ],
+    "papers": [
+      "https://doi.org/10.1137/0222066"
+    ],
+    "relation": "supporting",
+    "scope": "The boosted finite mass normalizes to a positive law; the mean squared difference for two independent draws is twice the variance."
+  },
+  {
+    "module": "FQChem.StatePrep.ImaginaryTimeProjection.FerromagneticMixing",
+    "names": [
+      "contraction",
+      "centered",
+      "densityStep"
+    ],
+    "papers": [
+      "https://doi.org/10.1137/0222066"
+    ],
+    "relation": "derived",
+    "scope": "Detailed balance, laziness and the proved Poincaré inequality contract the squared stationary L² norm of a centered observable by at least x u⁶/(4m²) per update. The density of the actual empty-start chain minus one evolves by this operator and stays centered."
+  },
+  {
+    "module": "FQChem.StatePrep.ImaginaryTimeProjection.FerromagneticMixing",
+    "names": [
+      "initialSquare",
+      "mixingDistance"
+    ],
+    "papers": [
+      "https://doi.org/10.1137/0222066"
+    ],
+    "relation": "derived",
+    "scope": "Section 4 mixing result for the homogeneous zero-field proposal. The empty initialization has squared centered density norm at most 2ᵐ. The unhalved L¹ distance after t steps is at most the square root of 2ᵐ(1−x u⁶/(4m²))ᵗ."
+  },
+  {
+    "module": "FQChem.StatePrep.ImaginaryTimeProjection.FerromagneticApproximation",
+    "names": [
+      "halving",
+      "rateBudget",
+      "burnInAccuracy"
+    ],
+    "papers": [
+      "https://doi.org/10.1137/0222066"
+    ],
+    "relation": "derived",
+    "scope": "At u=1/n and proposal weight y=max(tanh β,1/(m+1)), an explicit block of 4m²(m+1)n⁶ updates halves the norm contraction factor. The supplied burn-in achieves unhalved L¹ error ≤1/[36(m+1)²s] from the empty subgraph."
+  },
+  {
+    "module": "FQChem.StatePrep.ImaginaryTimeProjection.FerromagneticApproximation",
+    "names": [
+      "allTemperatureEnergy"
+    ],
+    "papers": [
+      "https://doi.org/10.1137/0222066"
+    ],
+    "relation": "specialization",
+    "scope": "Jerrum–Sinclair Theorem 12 for homogeneous unit-strength, zero-field ferromagnetic Hamiltonians. The concrete empty-start lazy edge-toggle chain, run independently for the stated burn-in and batch sizes, approximates the physical quantum thermal energy with relative RMS ≤1/s for every β>0. The stated work counts ideal random edge proposals and real-valued acceptance tests."
+  },
+  {
+    "module": "FQChem.StatePrep.ImaginaryTimeProjection.FerromagneticApproximation",
+    "names": [
+      "emptyEnergy",
+      "infiniteTemperature"
+    ],
+    "papers": [
+      "https://doi.org/10.1137/0222066"
+    ],
+    "relation": "supporting",
+    "scope": "The exact sign-free quantum mean energy is zero both on an empty graph at any β and at β=0 for every two-site graph, so those cases require no sampling."
+  },
+  {
+    "module": "FQChem.StatePrep.ImaginaryTimeProjection.FerromagneticTrajectory",
+    "names": [
+      "trajectoryCons",
+      "trajectoryProbability",
+      "trajectoryMoment"
+    ],
+    "papers": [
+      "https://doi.org/10.1137/0222066"
+    ],
+    "relation": "supporting",
+    "scope": "The actual joint distribution of consecutive Markov states is normalized. Conditioning on the first state proves exact first- and second-moment recurrences for the cumulative readout, with no independence assumption on successive samples."
+  },
+  {
+    "module": "FQChem.StatePrep.ImaginaryTimeProjection.FerromagneticTrajectory",
+    "names": [
+      "initialDrift",
+      "stationaryMean"
+    ],
+    "papers": [
+      "https://doi.org/10.1137/0222066"
+    ],
+    "relation": "supporting",
+    "scope": "Changing the initial law by unhalved L¹ distance η changes any entire bounded path expectation by at most its range times η. The proved stationary subgraphs-world distribution preserves expectations under the transition operator."
+  },
+  {
+    "module": "FQChem.StatePrep.ImaginaryTimeProjection.FerromagneticTrajectoryVariance",
+    "names": [
+      "expectedScale",
+      "expectedMono",
+      "futureCentered"
+    ],
+    "papers": [
+      "https://doi.org/10.1137/0222066"
+    ],
+    "relation": "supporting",
+    "scope": "Finite expectation scales and preserves pointwise bounds under nonnegative weights. The expected conditional sum of a centered observable stays zero under the stationary trajectory law."
+  },
+  {
+    "module": "FQChem.StatePrep.ImaginaryTimeProjection.FerromagneticTrajectoryVariance",
+    "names": [
+      "futureSumBound",
+      "futureVariance"
+    ],
+    "papers": [
+      "https://doi.org/10.1137/0222066"
+    ],
+    "relation": "derived",
+    "scope": "For the lazy finite box chain with squared L² contraction 1−r, the conditional expected cumulative readout has stationary squared norm at most 4Var(f)/r². The actual stationary sum of k centered observations has variance at most 6kVar(f)/r, including their temporal correlations."
+  },
+  {
+    "module": "FQChem.StatePrep.ImaginaryTimeProjection.FerromagneticTrajectoryVariance",
+    "names": [
+      "trajectoryError"
+    ],
+    "papers": [
+      "https://doi.org/10.1137/0222066"
+    ],
+    "relation": "derived",
+    "scope": "For one chain whose initial law has unhalved L¹ distance ≤η from stationarity and f in [0,L], the consecutive k-sample mean has squared error about its true stationary mean at most L²[6/(kr)+η]."
+  },
+  {
+    "module": "FQChem.StatePrep.ImaginaryTimeProjection.FerromagneticMonteCarlo",
+    "names": [
+      "trajectoryEnergyRMS"
+    ],
+    "papers": [
+      "https://doi.org/10.1137/0222066"
+    ],
+    "relation": "derived",
+    "scope": "For the importance-weighted numerator and clipped denominator observed along a single boosted chain, the relative squared energy error is at most 324(m+1)⁴[6/(kr)+η], uniformly over homogeneous zero-field unit-coupling systems with positive inverse temperature and at least one bond."
+  },
+  {
+    "module": "FQChem.StatePrep.ImaginaryTimeProjection.FerromagneticMonteCarlo",
+    "names": [
+      "singleChainEnergy",
+      "singleChainWork",
+      "polynomialComparison"
+    ],
+    "papers": [
+      "https://doi.org/10.1137/0222066",
+      "https://doi.org/10.1103/PhysRevLett.94.170201"
+    ],
+    "relation": "specialization",
+    "scope": "All-temperature sign-free comparison for the homogeneous, zero-field Hamiltonian in Troyer–Wiese Eq. (9), with a single burn-in and consecutive Jerrum–Sinclair proposals. For 0<ε≤1 the actual mean squared error is at most ε² times the squared quantum thermal energy, and the number of ideal edge updates is at most 16m²(m+1)n⁶[m+2+5184(m+1)⁴]/ε². The counted operations use real-valued acceptance probabilities; no finite-bit arithmetic cost is claimed."
+  },
+  {
+    "module": "FQChem.StatePrep.ImaginaryTimeProjection.FerromagneticMonteCarlo",
+    "names": [
+      "latticeBudget",
+      "cubicPolynomialComparison"
+    ],
+    "papers": [
+      "https://doi.org/10.1137/0222066",
+      "https://doi.org/10.1103/PhysRevLett.94.170201"
+    ],
+    "relation": "derived",
+    "scope": "On the actual nearest-neighbour ±1/0 open cubic spin-glass inputs of Eq. (10), there are at most 3N occupied bonds. The checked single-chain sign-free energy estimator has relative RMS error at most ε with at most 764414784 N¹³/ε² ideal edge proposals, for every β>0 and every 0<ε≤1. Zero-bond or β=0 instances have exact zero energy."
+  }
+]

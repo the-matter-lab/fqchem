@@ -134,9 +134,11 @@ def assemble():
 
 
 def markdown(data):
+    published = sum(t["status"] == "published" for t in data["targets"])
+    hypotheses = sum(t["status"] == "hypothesis" for t in data["targets"])
     lines = ["# Papers and theorem statements", "",
              f"{len(data['papers'])} distinct primary references · {len(data['byNode'])} Lean declarations · "
-             f"{len(data['targets'])} literature targets awaiting a Lean proof.", "",
+             f"{published} published results with incomplete formalizations · {hypotheses} literature {'hypothesis' if hypotheses == 1 else 'hypotheses'}.", "",
              "[Interactive theorem atlas](https://fqchem.matterlab.ca/) · "
              "[Review selection and coverage](https://github.com/the-matter-lab/fqchem/blob/main/docs/theorems/Surveys.md)", ""]
     for pid, paper in sorted(data["papers"].items(), key=lambda i: (i[1]["authors"], i[1]["title"])):
@@ -156,6 +158,8 @@ def markdown(data):
                 status = "Proof in the literature" if target["status"] == "published" else "Literature hypothesis"
                 lines.append(f"- **{status} · needs Lean proof**. [{target['title']}]({SITE}#paper/{target['id']}). "
                              f"{target['locator']}. {target['scope']}")
+                if target.get("remaining"):
+                    lines.append(f"  - **Remaining Lean proof**. {target['remaining']}")
                 for ref in target.get("upstream", []):
                     lines.append(f"  - [{ref['label']}]({ref['url']})")
         lines.append("")

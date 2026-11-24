@@ -1,0 +1,89 @@
+[
+  {
+    "module": "FQChem.Complexity.AaronsonAmbainisQuery",
+    "names": [
+      "amplitudePolynomials"
+    ],
+    "papers": [
+      "https://arxiv.org/abs/quant-ph/9802049"
+    ],
+    "relation": "paper-result",
+    "scope": "Each coordinate of a q-query circuit’s output amplitude has real and imaginary polynomial representatives of degree at most q (Lemma 4.1)."
+  },
+  {
+    "module": "FQChem.Complexity.SparseParityQueries",
+    "names": [
+      "separatedParity"
+    ],
+    "papers": [
+      "https://arxiv.org/abs/quant-ph/9802049",
+      "https://doi.org/10.1103/PhysRevLett.118.010501"
+    ],
+    "relation": "derived",
+    "scope": "Distinguishing the two parity classes around any threshold requires N/4 coherent whole-row queries, even when the separation is arbitrarily small."
+  },
+  {
+    "module": "FQChem.Complexity.SparseSimulationPrecision",
+    "names": [
+      "endpointProbability",
+      "shortTimeLowerBound"
+    ],
+    "papers": [
+      "https://doi.org/10.1103/PhysRevLett.118.010501"
+    ],
+    "relation": "derived",
+    "scope": "At arbitrary time t, the evolved endpoint on the selected parity track has Born probability |sin(t/2)|²ᴺ. An estimator accurate to less than half this signal needs at least N/4 row queries."
+  },
+  {
+    "module": "FQChem.Complexity.SparseSimulationPrecision",
+    "names": [
+      "factorialBound",
+      "cutoffFromSignal",
+      "factorialObstruction"
+    ],
+    "papers": [
+      "https://doi.org/10.1103/PhysRevLett.118.010501",
+      "https://doi.org/10.22331/q-2019-07-12-163"
+    ],
+    "relation": "supporting",
+    "scope": "The endpoint signal before perfect transfer bounds the factorial cutoff using the exponential series and a uniform lower bound on sine."
+  },
+  {
+    "module": "FQChem.Complexity.SparseSimulationPrecision",
+    "names": [
+      "worstCaseCutoff"
+    ],
+    "papers": [
+      "https://doi.org/10.1103/PhysRevLett.118.010501",
+      "https://doi.org/10.22331/q-2019-07-12-163"
+    ],
+    "relation": "derived",
+    "scope": "For coherent access to two incident edge bits per row, any q-query approximation to the evolved endpoint at all scaled times through τ, with absolute probability error ε<1/2, admits a factorial cutoff at most 32q+8."
+  },
+  {
+    "module": "FQChem.Complexity.BlockSimulationPrecision",
+    "names": [
+      "blockEncoding",
+      "parityCoefficient",
+      "zeroCoefficient"
+    ],
+    "papers": [
+      "https://doi.org/10.22331/q-2019-07-12-163",
+      "https://arxiv.org/abs/quant-ph/9802049"
+    ],
+    "relation": "derived",
+    "scope": "A single phase oracle encodes the mean of N signs. The parity Fourier coefficient of its evolution can be evaluated exactly, while it vanishes in any compressed circuit amplitude with fewer than N queries."
+  },
+  {
+    "module": "FQChem.Complexity.BlockSimulationPrecision",
+    "names": [
+      "precisionBarrier",
+      "worstCaseBlockCutoff"
+    ],
+    "papers": [
+      "https://doi.org/10.22331/q-2019-07-12-163"
+    ],
+    "relation": "derived",
+    "scope": "On these explicitly block-encoded inputs, q controlled phase queries at time budget τ and uniform compressed-amplitude error ε<1 force the least admissible factorial cutoff in Eq. (1) to be at most 8(q+1). The simulator may choose its workspace, input and output frame."
+  }
+]

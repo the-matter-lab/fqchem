@@ -86,7 +86,7 @@
       "https://arxiv.org/abs/2611.20342"
     ],
     "relation": "paper-result",
-    "scope": "Shor §§3–5. The normalized ideal paper-clock experiment has one-shot success ≥(4/π²)φ(r)/r and constant error after O(log log r) independent shots. A concrete compiled circuit, run for a count computed solely from N, yields the exact order with error <1/3 after Boolean decoding and aggregation. Total logical gates and classical data-path operations are polynomial in the bit length of N, with the distinct ideal and compiled clocks explicit. The separate uniformity requirement in §2 concerns the classical time to generate gate descriptions. The polynomial-time factoring target tracks that remaining proof.",
+    "scope": "Shor §§3–5. The normalized ideal paper-clock experiment has one-shot success ≥(4/π²)φ(r)/r and constant error after O(log log r) independent shots. A concrete compiled circuit, run for a count computed solely from N, yields the exact order with error <1/3 after Boolean decoding and aggregation. Total logical gates and classical data-path operations are polynomial in the bit length of N, with the distinct ideal and compiled clocks explicit. The separate uniformity requirement in §2 concerns the classical time to generate gate descriptions. Its cost is outside this execution bound.",
     "aliases": {
       "paper/shor-order-finding": "FQChem.Complexity.VerifiedOrderFinding.shorOrderFinding"
     }

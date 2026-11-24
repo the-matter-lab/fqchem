@@ -1,0 +1,112 @@
+[
+  {
+    "module": "FQChemQatlib.Properties.SignedSineClock",
+    "names": [
+      "regularGain",
+      "relativeGain",
+      "decodedDistance",
+      "selectedGain"
+    ],
+    "papers": [
+      "https://doi.org/10.1103/PhysRevLett.103.150502"
+    ],
+    "relation": "supporting",
+    "scope": "The implemented success coordinate agrees with the signed reciprocal on regular bins. The decoded phase distance bounds the relative error even across a sign change."
+  },
+  {
+    "module": "FQChemQatlib.Properties.SignedSineClock",
+    "names": [
+      "signedRelativeClock",
+      "superpositionError",
+      "normalizedBranch"
+    ],
+    "papers": [
+      "https://doi.org/10.1103/PhysRevLett.103.150502"
+    ],
+    "relation": "derived",
+    "scope": "The exact sine clock on either spectral sign has squared relative error of order 1/(dM)² for any superposition. For a normalized input the selected branch has mass at least 4d² and normalized vector error at most 160/(dM), preserved by unitary uncomputation."
+  },
+  {
+    "module": "Qatlib.Concepts.BlockEncoding.Postselection",
+    "names": [
+      "normalize_error_of_gap"
+    ],
+    "papers": [
+      "https://doi.org/10.1103/PhysRevLett.103.150502"
+    ],
+    "relation": "supporting",
+    "scope": "Perturbation bound for normalized successful branches."
+  },
+  {
+    "module": "Qatlib.Concepts.HhlAlgorithms.SinEnvProgram.QlsHhl",
+    "names": [
+      "canonicalSignedFilter_consistent",
+      "canonicalSignedProgram_rotation"
+    ],
+    "papers": [
+      "https://doi.org/10.1103/PhysRevLett.103.150502"
+    ],
+    "relation": "supporting",
+    "scope": "Legality of the canonical signed filter and its action on an initialized flag qudit."
+  },
+  {
+    "module": "Qatlib.Concepts.HhlAlgorithms.SinEnvFilter.SinEnvelopeHHL",
+    "names": [
+      "sin_envelope_kernel_normalized",
+      "sin_envelope_kernel_second_moment"
+    ],
+    "papers": [
+      "https://doi.org/10.1103/PhysRevLett.103.150502"
+    ],
+    "relation": "supporting",
+    "scope": "The sine-clock distribution is normalized and satisfies a circular second-moment bound independent of the eigenphase."
+  },
+  {
+    "module": "FQChemQatlib.Properties.SignedSineUncompute",
+    "names": [
+      "clockUnitary",
+      "forwardKernel",
+      "cleanClock",
+      "signedSolution"
+    ],
+    "papers": [
+      "https://doi.org/10.1103/PhysRevLett.103.150502"
+    ],
+    "relation": "derived",
+    "scope": "The inverse Fourier transform, controlled-time phases and sine-state preparation give the exact eigenphase kernel. Their adjoint uncomputes the reciprocal-weighted state to a zero clock. The signed solution branch has probability at least 4d² and normalized error at most 160/(dM)."
+  },
+  {
+    "module": "Qatlib.Concepts.HhlAlgorithms.SinEnvFilter.SinEnvelopeHHL",
+    "names": [
+      "sin_envelope_state_normalized_and_prep"
+    ],
+    "papers": [
+      "https://doi.org/10.1103/PhysRevLett.103.150502"
+    ],
+    "relation": "supporting",
+    "scope": "The initialized sine-envelope clock has unit norm and is prepared by a unitary."
+  },
+  {
+    "module": "Qatlib.Concepts.SpectralFilter.PhaseReadout.PhaseEstimation",
+    "names": [
+      "norm_exp_two_pi_I",
+      "qftMatrix_unitary"
+    ],
+    "papers": [
+      "https://doi.org/10.1103/PhysRevLett.103.150502"
+    ],
+    "relation": "supporting",
+    "scope": "The controlled-time phases and quantum Fourier transform are unitary."
+  },
+  {
+    "module": "Qatlib.Concepts.QueryComplexity.DegreeMethod.LocalCapability",
+    "names": [
+      "blockDiag_unitary"
+    ],
+    "papers": [
+      "https://doi.org/10.1103/PhysRevLett.103.150502"
+    ],
+    "relation": "supporting",
+    "scope": "The direct sum of unitary eigenphase-clock blocks is unitary on the combined register."
+  }
+]

@@ -11,6 +11,10 @@
     "authors": "Pichler et al. (2018)",
     "title": "Quantum Optimization for Maximum Independent Set Using Rydberg Atom Arrays"
   },
+  "https://arxiv.org/abs/2001.03406": {
+    "authors": "Cai et al. (2020)",
+    "title": "Quantum computation of molecular response properties"
+  },
   "https://arxiv.org/abs/2611.09773": {
     "authors": "Turturean (2026)",
     "title": "A proof of the Aaronson-Ambainis conjecture"
@@ -273,6 +277,10 @@
     "authors": "Feynman (1939)",
     "title": "Forces in Molecules"
   },
+  "https://doi.org/10.1103/PhysRevA.52.3457": {
+    "authors": "Barenco et al. (1995)",
+    "title": "Elementary gates for quantum computation"
+  },
   "https://doi.org/10.1103/PhysRevA.60.2746": {
     "authors": "Zalka (1999)",
     "title": "Grover’s quantum searching algorithm is optimal"
@@ -383,6 +391,10 @@
       "quantum memory"
     ]
   },
+  "https://doi.org/10.1137/0222066": {
+    "authors": "Jerrum & Sinclair (1993)",
+    "title": "Polynomial-Time Approximation Algorithms for the Ising Model"
+  },
   "https://doi.org/10.1137/S0097539795293172": {
     "authors": "Shor (1997)",
     "title": "Polynomial-Time Algorithms for Prime Factorization and Discrete Logarithms on a Quantum Computer"
@@ -426,5 +438,9 @@
   "https://www.unige.ch/~gander/HistoricalReferences/GALERKIN.pdf": {
     "authors": "Galerkin (1915)",
     "title": "Rods and plates: series expansions for problems of elastic equilibrium"
+  },
+  "https://doi.org/10.1063/1.1747632": {
+    "title": "On the Non-Orthogonality Problem Connected with the Use of Atomic Wave Functions in the Theory of Molecules and Crystals",
+    "authors": "Per-Olov Löwdin (1950)"
   }
 }

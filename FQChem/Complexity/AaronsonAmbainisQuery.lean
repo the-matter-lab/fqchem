@@ -153,6 +153,13 @@ private theorem amplitudes_degree (c : Circuit N B t) (b : B) :
   | query previous address gate hgate ih =>
     exact mix_degree _ _ (fun k ↦ phaseScale_degree _ _ (ih k)) _
 
+/-- Each complex output amplitude has real and imaginary polynomial coordinates
+of degree at most the number of oracle calls, before taking a Born probability. -/
+theorem amplitudePolynomials (c : Circuit N B t) (b : B) :
+    ∃ u v : Poly N, u.totalDegree ≤ t ∧ v.totalDegree ≤ t ∧
+      ∀ x, amplitudes x c b = ⟨eval (bitsReal x) u,eval (bitsReal x) v⟩ :=
+  ⟨_,_,(amplitudes_degree c b).1,(amplitudes_degree c b).2,fun x => (amplitudes_value c x b).symm⟩
+
 /-- Born probability of the event that the measured basis configuration is in `accept`. -/
 def acceptance (c : Circuit N B t) (accept : Finset B) (x : Bits N) : ℝ :=
   ∑ b ∈ accept, Complex.normSq (amplitudes x c b)

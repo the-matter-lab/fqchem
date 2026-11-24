@@ -3,8 +3,14 @@ module
 public import FQChemKitaev
 public import FQChemQatlib.Complexity.QueryAlgorithms
 public import FQChemQatlib.Complexity.SimonTuringSeparation
+public import FQChemQatlib.Dynamics.BorrowedControls
+public import FQChemQatlib.Dynamics.LowChuangBinaryDecoder
+public import FQChemQatlib.Dynamics.LowChuangReadout
+public import FQChemQatlib.Dynamics.LowChuangSparseOracle
+public import FQChemQatlib.Dynamics.LowChuangStandardForm
 public import FQChemQatlib.Dynamics.SingularValueTransformation
 public import FQChemQatlib.Dynamics.SparseHamiltonianSimulation
 public import FQChemQatlib.Properties.AmplitudeEstimation
 public import FQChemQatlib.Properties.ClassicalShadows
 public import FQChemQatlib.Properties.LinearSystems
+public import FQChemQatlib.Properties.SignedSineUncompute

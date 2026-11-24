@@ -240,6 +240,28 @@ theorem parity_query_lower_bound {q : ℕ} (r : RowCircuit N B q) (outcome : Fin
     omega
   · omega
 
+/-- A positive separation between the two parity classes suffices, even when
+the endpoint signal is exponentially small. Centering the acceptance
+polynomial at the threshold preserves its degree. -/
+theorem separatedParity {q : ℕ} (r : RowCircuit N B q) (outcome : Finset B) (threshold : ℝ)
+    (separated : ∀ x, if prefixParity x N then threshold < accept r outcome x
+      else accept r outcome x < threshold) : N ≤ 4*q := by
+  by_contra! short
+  obtain ⟨c,hc⟩ := compile r
+  let p := MvPolynomial.C threshold - PhaseQuery.acceptancePolynomial c outcome
+  have degree : p.totalDegree < N := by
+    apply (MvPolynomial.totalDegree_sub _ _).trans_lt
+    rw [MvPolynomial.totalDegree_C]
+    exact max_lt (by omega) ((PhaseQuery.acceptancePolynomial_degree c outcome).trans_lt (by omega))
+  have positive (x : Bits N) : 0 < OrbitalSimulation.parity x * MvPolynomial.eval (bitsReal x) p := by
+    rw [parity_eq]
+    simp only [p,map_sub,MvPolynomial.eval_C,PhaseQuery.acceptancePolynomial_eval,
+      PhaseQuery.acceptance, hc]
+    have hx := separated x
+    cases h : prefixParity x N <;> simp_all [OrbitalSimulation.bitSign,accept]
+  exact (Finset.sum_pos (fun x _ => positive x) Finset.univ_nonempty).ne'
+    (OrbitalSimulation.parity_orthogonal p degree)
+
 /-- The query-cost step in Berry et al., Theorem 3, at time π. The simulated
 quantity is the actual Born probability at the far endpoint of track true. -/
 theorem endpoint_query_lower_bound

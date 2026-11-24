@@ -1,19 +1,33 @@
 module
 
 public import FQChem.Complexity.AaronsonAmbainis
+public import FQChem.Complexity.BlockSimulationPrecision
 public import FQChem.Complexity.ElectronicStructurePauli
 public import FQChem.Complexity.FactoringBitCost
 public import FQChem.Complexity.FactoringPreprocessing
 public import FQChem.Complexity.FactoringRecursion
 public import FQChem.Complexity.FactoringReduction
 public import FQChem.Complexity.FastForwarding
+public import FQChem.Complexity.FermionicMarginals
+public import FQChem.Complexity.FixedBasisCoulomb
+public import FQChem.Complexity.FixedBasisGaussians
+public import FQChem.Complexity.FixedBasisHopping
+public import FQChem.Complexity.FixedBasisArithmetic
+public import FQChem.Complexity.FixedBasisOrthonormalization
+public import FQChem.Complexity.FixedBasisShell
 public import FQChem.Complexity.GroundStateSearch
 public import FQChem.Complexity.LocalHamiltonianVerification
+public import FQChem.Complexity.MarginalVerification
 public import FQChem.Complexity.ModularInverse
+public import FQChem.Complexity.OrbitalSimulation
 public import FQChem.Complexity.OrderFindingBitCost
 public import FQChem.Complexity.OrderFindingDecoder
 public import FQChem.Complexity.OrderFindingPostprocessing
-public import FQChem.Complexity.OrbitalSimulation
 public import FQChem.Complexity.SearchOptimality
+public import FQChem.Complexity.SlaterEnergy
+public import FQChem.Complexity.SlaterEnergyHamiltonian
+public import FQChem.Complexity.SlaterEnergyThreeSAT
 public import FQChem.Complexity.SparseNoFastForwarding
 public import FQChem.Complexity.SparseParityPath
+public import FQChem.Complexity.SparseSimulationPrecision
+public import FQChem.Complexity.WitnessMajority

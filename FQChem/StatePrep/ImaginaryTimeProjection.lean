@@ -4,9 +4,12 @@ public import FQChem.StatePrep.ImaginaryTimeProjection.AFQMC
 public import FQChem.StatePrep.ImaginaryTimeProjection.CubicSpinGlass
 public import FQChem.StatePrep.ImaginaryTimeProjection.DiffusionMonteCarlo
 public import FQChem.StatePrep.ImaginaryTimeProjection.FCIQMC
+public import FQChem.StatePrep.ImaginaryTimeProjection.FerromagneticMonteCarlo
 public import FQChem.StatePrep.ImaginaryTimeProjection.GaussianAuxiliaryField
 public import FQChem.StatePrep.ImaginaryTimeProjection.GroundStateProjection
 public import FQChem.StatePrep.ImaginaryTimeProjection.HubbardProjection
 public import FQChem.StatePrep.ImaginaryTimeProjection.PhaseEstimationFilter
 public import FQChem.StatePrep.ImaginaryTimeProjection.SignProblem
 public import FQChem.StatePrep.ImaginaryTimeProjection.SpectralFiltering
+public import FQChem.StatePrep.ImaginaryTimeProjection.SpinGlassFrustration
+public import FQChem.StatePrep.ImaginaryTimeProjection.SpinGlassLatticeDecision
