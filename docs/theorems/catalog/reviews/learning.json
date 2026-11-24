@@ -142,5 +142,49 @@
     ],
     "relation": "specialization",
     "scope": "Supplementary Theorem 1 specialized to local Pauli shadows, with a different explicit constant choice. For δ,ε>0 use 2r+1 blocks where r is the ceiling binary logarithm of ⌈M/(4δ)⌉. The Pauli Born marginals, independent draws and Nε²≥8·3ᵏ on each target imply simultaneous failure probability at most δ."
+  },
+  {
+    "module": "FQChemQatlib.Properties.ClassicalShadows",
+    "names": [
+      "shadowNormSquaredMaximum"
+    ],
+    "papers": [
+      "https://doi.org/10.1038/s41567-020-0932-7"
+    ],
+    "relation": "specialization",
+    "scope": "For a bijective finite unitary-basis measurement channel in positive finite dimension and any Hermitian A, the squared shadow norm of Eq. (S7) is attained as the largest Born-record second moment over density states. Qatlib proves this through the positive moment effect."
+  },
+  {
+    "module": "FQChemQatlib.Properties.ClassicalShadows",
+    "names": [
+      "simultaneousPrediction"
+    ],
+    "papers": [
+      "https://doi.org/10.1038/s41567-020-0932-7"
+    ],
+    "relation": "specialization",
+    "scope": "Supplementary Theorem 1 for arbitrary finite families of Hermitian observables and finite, invertible unitary-basis measurement ensembles. Qatlib constructs the Born record law and inverse snapshots. With K independent blocks of L shared shots and Lε² at least four times every centered squared shadow norm, the simultaneous failure probability is at most M·3^⌊K/2⌋/2ᴷ."
+  },
+  {
+    "module": "Qatlib.Concepts.ShadowModels.ShadowChannel.FiniteEnsembleShadows",
+    "names": [
+      "finite_ensemble_second_moment_spectral_maximum"
+    ],
+    "papers": [
+      "https://doi.org/10.1038/s41567-020-0932-7"
+    ],
+    "relation": "specialization",
+    "scope": "The finite unitary ensemble version of Eq. (S7). In positive dimension, the positive moment effect attains the maximal second moment over density operators for any Hermitian observable."
+  },
+  {
+    "module": "Qatlib.Concepts.ShadowModels.ShadowChannel.FiniteEnsembleShadows",
+    "names": [
+      "finite_ensemble_same_records_many_observables"
+    ],
+    "papers": [
+      "https://doi.org/10.1038/s41567-020-0932-7"
+    ],
+    "relation": "specialization",
+    "scope": "Supplementary Theorem 1 for arbitrary Hermitian observables and finite unitary ensembles. The independent Born samples and inverse snapshots are explicit. A per-observable centered squared shadow norm at most Lε²/4 yields simultaneous failure probability at most M·3^⌊K/2⌋/2ᴷ."
   }
 ]

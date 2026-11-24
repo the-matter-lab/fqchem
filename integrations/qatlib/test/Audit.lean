@@ -1,5 +1,10 @@
 module
 
+import all FQChemQatlib
+import all FQChemQatlib.Complexity.QueryAlgorithms
+import all FQChemQatlib.Dynamics.SingularValueTransformation
+import all FQChemQatlib.Properties.AmplitudeEstimation
+import all FQChemQatlib.Properties.ClassicalShadows
 import all FQChemKitaev
 import all FQChemKitaev.AmplificationBounds
 import all FQChemKitaev.AmplifierCost
@@ -25,10 +30,10 @@ import Lean.Util.CollectAxioms
 open Lean Elab Command in
 run_cmd do
   let env ← getEnv
-  let root := `FQChemKitaev
-  let mut expected := #[root]
-  let sourceDir : System.FilePath := "FQChemKitaev"
-  if ← sourceDir.isDir then
+  let roots := #[`FQChemKitaev, `FQChemQatlib]
+  let mut expected := roots
+  for root in roots do
+    let sourceDir : System.FilePath := root.toString
     for file in ← sourceDir.walkDir do
       if file.extension == some "lean" then
         expected := expected.push ((file.withExtension "").components.foldl Name.str Name.anonymous)
@@ -40,7 +45,7 @@ run_cmd do
   let mut theorems : Nat := 0
   let mut privateCount : Nat := 0
   for modName in env.header.moduleNames, data in env.header.moduleData do
-    if root.isPrefixOf modName || (`FQChem).isPrefixOf modName then
+    if roots.any (·.isPrefixOf modName) || (`FQChem).isPrefixOf modName then
       for name in data.constNames do
         let some info := env.find? name | throwError "Missing kernel declaration {name}"
         if info.isAxiom then throwError "Unexpected integration axiom {name}"

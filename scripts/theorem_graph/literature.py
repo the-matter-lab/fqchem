@@ -70,7 +70,7 @@ def assemble():
             raise ValueError(f"Missing or duplicate bibliography reference: {urls}")
         return refs
 
-    groups, assigned = [], {}
+    groups, assigned, aliases = [], {}, {}
     for path in sorted(REVIEWS.glob("*.json")):
         for entry in read_json(path):
             module = entry["module"]
@@ -84,6 +84,11 @@ def assemble():
                 if len(hits) != 1 or hits[0] in assigned:
                     raise ValueError(f"Stale, ambiguous or duplicate review: {module}/{short}")
                 assigned[hits[0]] = len(groups)
+            for alias, name in entry.get("aliases", {}).items():
+                if (not re.fullmatch(r"paper/[a-z0-9-]+", alias) or alias in aliases
+                        or assigned.get((module, name)) != len(groups)):
+                    raise ValueError(f"Invalid resolved literature target {alias} in {module}")
+                aliases[alias] = f"{module}/{name}"
             groups.append(group)
 
     for key in sorted(nodes.keys() - assigned.keys()):
@@ -105,7 +110,7 @@ def assemble():
     seen = set()
     for target in targets:
         identifier = target["id"]
-        if (not re.fullmatch(r"[a-z0-9-]+", identifier) or identifier in seen
+        if (not re.fullmatch(r"[a-z0-9-]+", identifier) or identifier in seen or "paper/"+identifier in aliases
                 or target["status"] not in {"published", "hypothesis"}
                 or target["chapter"] not in CHAPTERS or not target["scope"] or not target["locator"]):
             raise ValueError(f"Invalid literature target: {identifier}")
@@ -113,6 +118,10 @@ def assemble():
         for name in target["related"]:
             if sum(decl == name for _, decl in nodes) != 1:
                 raise ValueError(f"Unknown or ambiguous checked result in {identifier}: {name}")
+        for ref in target.get("upstream", []):
+            if not ref["label"].strip() or not re.fullmatch(
+                    r"https://github\.com/[\w.-]+/[\w.-]+/blob/[0-9a-f]{40}/[^\s]+\.lean#L\d+(?:-L\d+)?", ref["url"]):
+                raise ValueError(f"Unpinned Lean reference in {identifier}: {ref}")
         seen.add(identifier)
     used = {p for entry in [*groups, *targets] for p in entry["papers"]}
     if used != papers.keys():
@@ -120,7 +129,7 @@ def assemble():
     return {
         "papers": papers, "groups": groups, "relations": RELATIONS,
         "byNode": {f"{m}/{n}": i for (m, n), i in sorted(assigned.items())},
-        "targets": targets,
+        "targets": targets, "aliases": aliases,
     }
 
 
@@ -147,6 +156,8 @@ def markdown(data):
                 status = "Proof in the literature" if target["status"] == "published" else "Literature hypothesis"
                 lines.append(f"- **{status} · needs Lean proof**. [{target['title']}]({SITE}#paper/{target['id']}). "
                              f"{target['locator']}. {target['scope']}")
+                for ref in target.get("upstream", []):
+                    lines.append(f"  - [{ref['label']}]({ref['url']})")
         lines.append("")
     return "\n".join(lines)
 

@@ -1,4 +1,15 @@
-# Kitaev's circuit-to-Hamiltonian construction
+# Qatlib integration
+
+In this Lean 4.35 project, `import FQChemQatlib` loads the results below and the Kitaev reduction. Each graph node links to the original publication and each upstream proof to the pinned Qatlib revision.
+
+| Result | Lean module |
+| --- | --- |
+| Arbitrary Hermitian observables under a finite, informationally complete unitary measurement ensemble. The shared-record median and variance-based sample bound are explicit. | [Classical shadows](FQChemQatlib/Properties/ClassicalShadows.lean) |
+| Finite counter Born probabilities in amplitude estimation, including the nearest-window and general-window guarantees. | [Amplitude estimation](FQChemQatlib/Properties/AmplitudeEstimation.lean) |
+| Exact odd and even projected-unitary singular-value transformations with constructive phase existence for admissible positive-degree polynomials. | [Singular-value transformation](FQChemQatlib/Dynamics/SingularValueTransformation.lean) |
+| Simon mask recovery, the finite classical query bound, and order-recovery and factoring success guarantees under the stated sampling and cost models. | [Query algorithms](FQChemQatlib/Complexity/QueryAlgorithms.lean) |
+
+## Kitaev's circuit-to-Hamiltonian construction
 
 This package checks a circuit-to-ground-energy reduction against Qatlib under Lean 4.35.0. From a quantum verification circuit it produces a bit string encoding a Hermitian five-local Hamiltonian with rational coefficients and rational energy thresholds. The gate alphabet is H, X, T, T† and CNOT. The encoding stores the real and imaginary parts of local entries as dyadic integers with a shared denominator. [History Hamiltonian](FQChemKitaev/HistoryHamiltonian.lean) · [Pinned Qatlib construction](https://github.com/quantum-atlas-ai/qatlib/blob/f76f71a7c5cd19a31c251d0feeab09c75a758d69/Qatlib/Papers/LocalHam06/MainResults/QmaCompleteness.lean)
 
@@ -43,7 +54,7 @@ lake exe cache get
 lake build
 ```
 
-The CI audit checks the transitive axiom dependencies of every declaration defined in the integration, including private declarations. It also checks that the audit imports every integration source module. Run the audit and graph extraction from this directory. Downstream Lean code can access all results with `import FQChemKitaev`.
+The CI audit checks the transitive axiom dependencies of every declaration defined in the integration, including private declarations. It also checks that the audit imports every integration source module. Run the audit and graph extraction from this directory. Downstream Lean code can import just the reduction with `import FQChemKitaev`.
 
 ```sh
 lake env lean test/Audit.lean

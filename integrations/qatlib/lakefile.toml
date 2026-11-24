@@ -1,6 +1,6 @@
 name = "fqchem_kitaev"
 version = "0.1.0"
-defaultTargets = ["FQChemKitaev"]
+defaultTargets = ["FQChemQatlib", "FQChemKitaev"]
 
 [[require]]
 name = "Qatlib"
@@ -10,6 +10,10 @@ rev = "f76f71a7c5cd19a31c251d0feeab09c75a758d69"
 [[lean_lib]]
 name = "FQChemKitaev"
 globs = ["FQChemKitaev", "FQChemKitaev.+"]
+
+[[lean_lib]]
+name = "FQChemQatlib"
+globs = ["FQChemQatlib", "FQChemQatlib.+"]
 
 [[lean_lib]]
 name = "FQChem"

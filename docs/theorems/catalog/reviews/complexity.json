@@ -1696,5 +1696,137 @@
     ],
     "relation": "specialization",
     "scope": "The parity-path step in the proof of Berry et al., Theorem 3. At every physical time the crossed propagator is exactly the lift of the uncrossed propagator. From the initial zero-track endpoint the far-end amplitude vanishes on the wrong parity track and equals the bare path amplitude on the correct one."
+  },
+  {
+    "module": "FQChemQatlib.Complexity.QueryAlgorithms",
+    "names": [
+      "simonMaskRecovery"
+    ],
+    "papers": [
+      "https://doi.org/10.1137/S0097539796298637"
+    ],
+    "relation": "paper-result",
+    "scope": "Simon, Theorem 3.2. Under the injective-or-hidden-XOR-mask promise, a verified retry process halts almost surely with the correct mask (zero denotes injective). Its expected number of trials is at most two, with at most 2(n+3) expected oracle calls and an explicit classical decoder cost in Qatlib’s model."
+  },
+  {
+    "module": "Qatlib.Papers.QPowerSimon97.Recovery.Theorem32Paper",
+    "names": [
+      "simonTheorem32"
+    ],
+    "papers": [
+      "https://doi.org/10.1137/S0097539796298637"
+    ],
+    "relation": "paper-result",
+    "scope": "Simon, Theorem 3.2. Under the injective-or-hidden-XOR-mask promise, a verified retry process halts almost surely with the correct mask (zero denotes injective). Its expected number of trials is at most two, with at most 2(n+3) expected oracle calls and an explicit classical decoder cost in Qatlib’s model."
+  },
+  {
+    "module": "FQChemQatlib.Complexity.QueryAlgorithms",
+    "names": [
+      "simonClassicalQueryBound"
+    ],
+    "papers": [
+      "https://doi.org/10.1137/S0097539796298637"
+    ],
+    "relation": "paper-result",
+    "scope": "Simon, Theorem 3.3. For n ≥ 1, a randomized adaptive tree with at most 2^(n/4) queries guesses the fair branch of the random oracle with probability at most 1/2 + 2^(−n/2). The branches are a uniform permutation and a uniform two-to-one function invariant under a uniformly sampled XOR mask, including zero as in the printed distribution."
+  },
+  {
+    "module": "Qatlib.Papers.QPowerSimon97.StandardModel.Theorem34Separation",
+    "names": [
+      "simonTheorem33RealBudget"
+    ],
+    "papers": [
+      "https://doi.org/10.1137/S0097539796298637"
+    ],
+    "relation": "paper-result",
+    "scope": "Simon, Theorem 3.3. For n ≥ 1, a randomized adaptive tree with at most 2^(n/4) queries guesses the fair branch of the random oracle with probability at most 1/2 + 2^(−n/2). The branches are a uniform permutation and a uniform two-to-one function invariant under a uniformly sampled XOR mask, including zero as in the printed distribution."
+  },
+  {
+    "module": "FQChemQatlib.Complexity.QueryAlgorithms",
+    "names": [
+      "simonOracleFamilySeparation"
+    ],
+    "papers": [
+      "https://doi.org/10.1137/S0097539796298637"
+    ],
+    "relation": "specialization",
+    "scope": "Simon, Theorem 3.4 in the length-indexed query-tree model. For any countable family of randomized trees with q(n) ≤ 2^(n/4), a single oracle family gives the quantum decision procedure success ≥ 2/3 eventually, while each classical family fails to exceed 2/3 at infinitely many widths. At width n each tree queries only the n-bit function."
+  },
+  {
+    "module": "Qatlib.Papers.QPowerSimon97.StandardModel.InfiniteOracle",
+    "names": [
+      "simon_infiniteOracle_separation"
+    ],
+    "papers": [
+      "https://doi.org/10.1137/S0097539796298637"
+    ],
+    "relation": "specialization",
+    "scope": "Simon, Theorem 3.4 in the length-indexed query-tree model. For any countable family of randomized trees with q(n) ≤ 2^(n/4), a single oracle family gives the quantum decision procedure success ≥ 2/3 eventually, while each classical family fails to exceed 2/3 at infinitely many widths. At width n each tree queries only the n-bit function."
+  },
+  {
+    "module": "FQChemQatlib.Complexity.QueryAlgorithms",
+    "names": [
+      "shorWindowRecovery"
+    ],
+    "papers": [
+      "https://doi.org/10.1137/S0097539795293172"
+    ],
+    "relation": "specialization",
+    "scope": "Shor, §5, Eqs. (5.12)–(5.13). With clock 2ᵗ ≥ N², reduced d/r with 0 ≤ d < r < N, and |rc−d2ᵗ| ≤ r/2, the bounded scan returns (d,r) using at most N(N−1)/2 comparisons. This implements the unique-fraction step with a scan. The paper uses a continued fraction to obtain polynomial bit cost."
+  },
+  {
+    "module": "Qatlib.Papers.ShorFactoring97.OrderRecovery.SourceWindowDecode",
+    "names": [
+      "source_clock_residue_window_actual_decoder_recovery"
+    ],
+    "papers": [
+      "https://doi.org/10.1137/S0097539795293172"
+    ],
+    "relation": "specialization",
+    "scope": "Shor, §5, Eqs. (5.12)–(5.13). With clock 2ᵗ ≥ N², reduced d/r with 0 ≤ d < r < N, and |rc−d2ᵗ| ≤ r/2, the bounded scan returns (d,r) using at most N(N−1)/2 comparisons. This implements the unique-fraction step with a scan. The paper uses a continued fraction to obtain polynomial bit cost."
+  },
+  {
+    "module": "FQChemQatlib.Complexity.QueryAlgorithms",
+    "names": [
+      "shorTwoSampleOrder"
+    ],
+    "papers": [
+      "https://doi.org/10.1137/S0097539795293172"
+    ],
+    "relation": "derived",
+    "scope": "A two-readout variant of Shor’s order recovery. For a unit a mod N of order r > 1 and clock M > 2N², the least-common-multiple decoder recovers r from two independent modular-order phase readouts with probability at least (8/π²)²/4. The paper’s single-readout coprimality estimate has a different success bound."
+  },
+  {
+    "module": "Qatlib.Concepts.PeriodSampling.OrderRecovery.PairLCMOrderRecovery",
+    "names": [
+      "pair_lcm_order_actual_fresh_success_bound"
+    ],
+    "papers": [
+      "https://doi.org/10.1137/S0097539795293172"
+    ],
+    "relation": "derived",
+    "scope": "A two-readout variant of Shor’s order recovery. For a unit a mod N of order r > 1 and clock M > 2N², the least-common-multiple decoder recovers r from two independent modular-order phase readouts with probability at least (8/π²)²/4. The paper’s single-readout coprimality estimate has a different success bound."
+  },
+  {
+    "module": "FQChemQatlib.Complexity.QueryAlgorithms",
+    "names": [
+      "shorFactoringSuccess"
+    ],
+    "papers": [
+      "https://doi.org/10.1137/S0097539795293172"
+    ],
+    "relation": "derived",
+    "scope": "For composite N ≥ 3, N ≤ 2ᵏ and clock M > 2N², the modeled residue-sampling program returns only nontrivial divisors. Its success after R rounds is at least 1−(1−p)ᴿ for Qatlib’s explicit single-attempt lower bound p. This program uses two independent phase readouts; its statement establishes success and soundness."
+  },
+  {
+    "module": "Qatlib.Concepts.PeriodSampling.FactorAlgorithm.ResidueFactoringAlgorithmShor",
+    "names": [
+      "residueFactoringAlgorithm"
+    ],
+    "papers": [
+      "https://doi.org/10.1137/S0097539795293172"
+    ],
+    "relation": "derived",
+    "scope": "For composite N ≥ 3, N ≤ 2ᵏ and clock M > 2N², the modeled residue-sampling program returns only nontrivial divisors. Its success after R rounds is at least 1−(1−p)ᴿ for Qatlib’s explicit single-attempt lower bound p. This program uses two independent phase readouts; its statement establishes success and soundness."
   }
 ]

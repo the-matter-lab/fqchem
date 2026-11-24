@@ -5,14 +5,14 @@ Open [the theorem atlas](https://fqchem.matterlab.ca/) to see the complete direc
 For offline use, download the [standalone atlas](https://raw.githubusercontent.com/the-matter-lab/fqchem/atlas/docs/theorems/index.html) and open it in a browser.
 
 - [fqchem theorem graphs by module](https://github.com/the-matter-lab/fqchem/blob/atlas/docs/theorems/library.md)
-- [Kitaev integration theorem graphs by module](https://github.com/the-matter-lab/fqchem/blob/atlas/docs/theorems/kitaev.md)
+- [Qatlib integration theorem graphs by module](https://github.com/the-matter-lab/fqchem/blob/atlas/docs/theorems/kitaev.md)
 - [Scope and references for the complexity results](../../FQChem/Complexity/README.md)
 
 ## Papers and outstanding proofs
 
 The [paper index](https://github.com/the-matter-lab/fqchem/blob/atlas/docs/theorems/papers.md) lists each original reference once. Select any result to read its scope, see its source, and follow the paper link. The inspector distinguishes an original result, a specialization, a derived consequence and a supporting lemma. A supporting lemma can have been written specifically for the Lean proof. Its citation identifies the construction it supports.
 
-Select [Needs proof](https://fqchem.matterlab.ca/#needs-proof) for the red nodes. Each identifies either a result proved in the cited paper or a hypothesis proposed there, with the paper locator and assumptions. The page keeps red targets outside the Lean library, so each axiom audit still ranges only over actual Lean declarations. A related checked step has its own inspector link. Dependency arrows are reserved for references that Lean extracted from checked declarations. The [review survey](Surveys.md) records how the literature was selected.
+Select [Needs proof](https://fqchem.matterlab.ca/#needs-proof) for the red nodes. Each identifies either a result proved in the cited paper or a hypothesis proposed there, with the paper locator and assumptions. The page keeps red targets outside the Lean library, so each axiom audit still ranges only over actual Lean declarations. Related checked steps have their own inspector links. Pinned links under “Existing Lean work” record the scope of relevant outside proofs. A literature target that acquires a checked theorem can keep its shared URL as an alias for that declaration. Dependency arrows are reserved for references that Lean extracted from checked declarations. The [review survey](Surveys.md) records how the literature was selected.
 
 ## Reading the graph
 
@@ -24,7 +24,7 @@ For example, VMC’s variational bound uses both the Born-average identity and R
 
 ## Rebuilding
 
-After building the main library and the [Kitaev integration](../../integrations/qatlib/), run these from the repository root.
+After building the main library and the [Qatlib integration](../../integrations/qatlib/), run these from the repository root.
 
 ```sh
 python3 scripts/theorem_graph/generate.py

@@ -1,4 +1,4 @@
-name: Kitaev reduction
+name: Qatlib integration
 on: workflow_call
 permissions:
   contents: read
@@ -18,7 +18,7 @@ jobs:
           use-github-cache: false
       - name: Fetch the pinned Mathlib dependencies of the integration
         run: |
-          lake --json query +FQChemKitaev:transImports > "$RUNNER_TEMP/kitaev-modules.json"
+          lake --json query +FQChemQatlib:transImports > "$RUNNER_TEMP/kitaev-modules.json"
           jq -r '.[] | select(startswith("Mathlib."))' "$RUNNER_TEMP/kitaev-modules.json" |
             sort -u | xargs -r lake exe cache get
       - run: lake build

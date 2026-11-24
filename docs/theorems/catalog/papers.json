@@ -301,6 +301,10 @@
     "authors": "Berry et al. (2015)",
     "title": "Simulating Hamiltonian Dynamics with a Truncated Taylor Series"
   },
+  "https://doi.org/10.1103/PhysRevLett.118.010501": {
+    "authors": "Low & Chuang (2017)",
+    "title": "Optimal Hamiltonian Simulation by Quantum Signal Processing"
+  },
   "https://doi.org/10.1103/PhysRevLett.120.110501": {
     "authors": "Kivlichan et al. (2018)",
     "title": "Quantum Simulation of Electronic Structure with Linear Depth and Connectivity"
@@ -370,6 +374,14 @@
       "Bell sampling",
       "quantum memory"
     ]
+  },
+  "https://doi.org/10.1137/S0097539795293172": {
+    "authors": "Shor (1997)",
+    "title": "Polynomial-Time Algorithms for Prime Factorization and Discrete Logarithms on a Quantum Computer"
+  },
+  "https://doi.org/10.1137/S0097539796298637": {
+    "authors": "Simon (1997)",
+    "title": "On the Power of Quantum Computation"
   },
   "https://doi.org/10.1143/JPSJ.5.435": {
     "authors": "Kato (1950)",

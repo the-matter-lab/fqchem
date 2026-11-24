@@ -5,7 +5,7 @@ open Lean Elab Command in
 run_cmd do
   let env ← getEnv
   let home (n : Name) := (env.getModuleIdxFor? n).map fun i => env.header.moduleNames[i.toNat]!
-  let localModule (m : Name) := (`FQChem).isPrefixOf m || (`FQChemKitaev).isPrefixOf m
+  let localModule (m : Name) := (`FQChem).isPrefixOf m || (`FQChemKitaev).isPrefixOf m || (`FQChemQatlib).isPrefixOf m
   let upstream (m : Name) := (`AaronsonAmbainisPort).isPrefixOf m || (`AaronsonAmbainis).isPrefixOf m || (`Qatlib).isPrefixOf m
   let allowed := #[``propext, ``Classical.choice, ``Quot.sound]
   let mut externalTheorems : NameSet := {}

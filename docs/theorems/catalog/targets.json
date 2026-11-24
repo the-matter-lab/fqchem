@@ -38,10 +38,26 @@
       "https://doi.org/10.1038/s41567-020-0932-7"
     ],
     "locator": "Supplementary Section 1, Theorem 1 · Eqs. (S7), (S12)–(S14)",
-    "scope": "Fix M Hermitian observables on n qubits and an invertible shadow measurement channel. Use K = ⌈2 log(2M/δ)⌉ independent batches of order 34 maxᵢ‖Oᵢ − Tr(Oᵢ)I/2ⁿ‖²shadow/ε² snapshots each. For 0 < ε,δ < 1 the medians of the batch means are simultaneously within ε of all M expectations with probability at least 1−δ.",
+    "scope": "Fix M Hermitian observables on n qubits and an invertible shadow measurement channel. Use K = ⌈2 log(2M/δ)⌉ independent batches of order 34 maxᵢ‖Oᵢ − Tr(Oᵢ)I/2ⁿ‖²shadow/ε² snapshots each. For 0 < ε,δ < 1 the medians of the batch means are simultaneously within ε of all M expectations with probability at least 1−δ. The finite-ensemble Lean result applies to arbitrary Hermitian observables with a different choice of constants. This target tracks the published Eq. (S13) confidence bound for the general measurement primitive.",
     "related": [
       "FQChem.Properties.ClassicalShadows.secondMoment",
-      "FQChem.Properties.ClassicalShadows.predictionAtConfidence"
+      "FQChem.Properties.ClassicalShadows.predictionAtConfidence",
+      "FQChemQatlib.Properties.ClassicalShadows.shadowNormSquaredMaximum",
+      "FQChemQatlib.Properties.ClassicalShadows.simultaneousPrediction"
+    ],
+    "upstream": [
+      {
+        "label": "Qatlib · Born record law for finite unitary measurement ensembles",
+        "url": "https://github.com/quantum-atlas-ai/qatlib/blob/f76f71a7c5cd19a31c251d0feeab09c75a758d69/Qatlib/Concepts/ShadowModels/ShadowChannel/FiniteEnsembleMeasurement.lean#L290-L301"
+      },
+      {
+        "label": "Qatlib · centered variance and maximum over density states",
+        "url": "https://github.com/quantum-atlas-ai/qatlib/blob/f76f71a7c5cd19a31c251d0feeab09c75a758d69/Qatlib/Concepts/ShadowModels/ShadowChannel/FiniteEnsembleShadows.lean#L465-L503"
+      },
+      {
+        "label": "Qatlib · simultaneous prediction for arbitrary Hermitian observables and finite ensembles",
+        "url": "https://github.com/quantum-atlas-ai/qatlib/blob/f76f71a7c5cd19a31c251d0feeab09c75a758d69/Qatlib/Concepts/ShadowModels/ShadowChannel/FiniteEnsembleShadows.lean#L505-L539"
+      }
     ]
   },
   {
@@ -56,6 +72,12 @@
     "scope": "Draw a uniform nonidentity Pauli P. With equal probability prepare ρ = I/2ⁿ or ρ = (I + 0.9sP)/2ⁿ for a hidden uniform sign s. P is revealed after acquisition. Estimating |Tr(Pρ)| within 0.25 with success at least 0.8 requires Ω(2ⁿ) copies under adaptive single-copy measurements with classical memory. Joint Bell measurements on pairs of copies suffice with O(1) copies.",
     "related": [
       "FQChem.Properties.BellSampling.magnitudeSquaredPauliExpectation"
+    ],
+    "upstream": [
+      {
+        "label": "Qatlib · entrywise Pauli completeness used in the second-moment identity of Eq. (D35)",
+        "url": "https://github.com/quantum-atlas-ai/qatlib/blob/f76f71a7c5cd19a31c251d0feeab09c75a758d69/Qatlib/Concepts/ShadowModels/ProductPOVM/TensorPauliTwirl.lean#L55-L82"
+      }
     ]
   },
   {
@@ -72,6 +94,12 @@
       "FQChem.Dynamics.OTOC.firstOrder_eq_anticommutingMass",
       "FQChem.Dynamics.OTOC.twoCopyReadout",
       "FQChem.Dynamics.OTOC.invariantTails"
+    ],
+    "upstream": [
+      {
+        "label": "Related Mele et al. result: subexponential arithmetic at depth 5n/3 for n=6s",
+        "url": "https://github.com/AntMele/observables-that-survive-concentration/blob/f0ccbfdf276ffc811a73439e3c5e8e50dbe22c29/Fluctuations/Simulation.lean#L108-L145"
+      }
     ]
   },
   {
@@ -118,21 +146,6 @@
     ]
   },
   {
-    "id": "brassard-amplitude-estimation",
-    "title": "Amplitude-estimation error guarantee",
-    "chapter": "Properties",
-    "status": "published",
-    "papers": [
-      "https://doi.org/10.1090/conm/305/05215"
-    ],
-    "locator": "Theorem 12 (Est_Amp), k = 1",
-    "scope": "For success probability a, amplitude estimation Est_Amp(A, χ, M) uses M evaluations of the Boolean success predicate. With probability at least 8/π² its estimate differs from a by at most 2π√(a(1−a))/M + π²/M².",
-    "related": [
-      "FQChem.StatePrep.CircuitPreparation.AmplitudeAmplification.success_law",
-      "FQChem.Algorithms.exactGridQPE"
-    ]
-  },
-  {
     "id": "zalka-search",
     "title": "Optimality of quantum search",
     "chapter": "Complexity",
@@ -144,20 +157,6 @@
     "scope": "For N equiprobable single-marked-item phase oracles and T queries up to the first Grover maximum, Grover’s average success sin²((2T+1) arcsin(1/√N)) is optimal. To reach success tending to one takes at least (π/4 − o(1))√N oracle calls.",
     "related": [
       "FQChem.StatePrep.CircuitPreparation.AmplitudeAmplification.success_law"
-    ]
-  },
-  {
-    "id": "gilyen-singular-transformation",
-    "title": "Polynomial singular-value transformation",
-    "chapter": "Dynamics",
-    "status": "published",
-    "papers": [
-      "https://arxiv.org/abs/1806.01838"
-    ],
-    "locator": "Theorem 17, Eq. (32) · phase admissibility in Corollary 8",
-    "scope": "Let U be unitary on a finite-dimensional Hilbert space, Π and Π̃ orthogonal projectors, and P a complex degree-d polynomial satisfying Corollary 8’s parity and magnitude conditions. A sequence of d phases and alternating U/U† applications implements the singular-value transform of Π̃UΠ. Its extracted block is Π̃UΦΠ for odd d and ΠUΦΠ for even d.",
-    "related": [
-      "FQChem.Dynamics.DigitalAlgorithms.Qubitization.Encoding.chebyshev_block"
     ]
   },
   {
@@ -222,6 +221,115 @@
     "scope": "Lee et al. propose poly(L)·poly(1/ε) effort for coupled cluster to reach energy error ε on single-reference problems, with L measuring system size. The argument uses empirical excitation-rank convergence for N₂ and extensivity for noninteracting replicas. Uniform input-class, convergence and iteration guarantees remain to be established.",
     "related": [
       "FQChem.VariationalMethods.coupledCluster"
+    ]
+  },
+  {
+    "id": "simon-oracle-separation",
+    "title": "Simon’s relativized exponential separation",
+    "chapter": "Complexity",
+    "status": "published",
+    "papers": [
+      "https://doi.org/10.1137/S0097539796298637"
+    ],
+    "locator": "§3.2, Theorem 3.4 · finite random-oracle bound in Theorem 3.3",
+    "scope": "There exist a single oracle O, a unary language in BQP relative to O and a constant c > 0 such that bounded-error classical oracle machines running in time 2^(cn) fail to decide the language. The finite query-tree bounds and a separation for length-indexed tree families are checked. The remaining statement connects these to the standard relativized machine classes.",
+    "related": [
+      "FQChem.Complexity.QueryAlgorithms.simonMaskRecovery",
+      "FQChem.Complexity.QueryAlgorithms.simonClassicalQueryBound",
+      "FQChem.Complexity.QueryAlgorithms.simonOracleFamilySeparation"
+    ]
+  },
+  {
+    "id": "shor-order-finding",
+    "title": "Polynomial-time modular order finding",
+    "chapter": "Complexity",
+    "status": "published",
+    "papers": [
+      "https://doi.org/10.1137/S0097539795293172"
+    ],
+    "locator": "§§3–5 · Fourier sampling and reconstruction in Eqs. (5.7)–(5.13)",
+    "scope": "For a unit a modulo N, let r be its multiplicative order. With N² ≤ q < 2N² a power of two, Fourier sampling and continued fractions recover r in a single run with probability at least φ(r)/(3r) for sufficiently large N. O(log log r) independent repetitions suffice asymptotically for constant success. The full algorithm uses polynomially many gates and classical bit operations in log N.",
+    "related": [
+      "FQChem.Complexity.QueryAlgorithms.shorWindowRecovery",
+      "FQChem.Complexity.QueryAlgorithms.shorTwoSampleOrder",
+      "FQChem.Algorithms.exactGridQPE"
+    ]
+  },
+  {
+    "id": "shor-integer-factoring",
+    "title": "Polynomial-time quantum factoring",
+    "chapter": "Complexity",
+    "status": "published",
+    "papers": [
+      "https://doi.org/10.1137/S0097539795293172"
+    ],
+    "locator": "§3 modular exponentiation · §5 prime factorization, reduction before Eq. (5.1)",
+    "scope": "A randomized quantum algorithm factors integers in time polynomial in their bit length. For odd N with k ≥ 2 distinct prime factors, a uniformly random unit and its exact order give a nontrivial factor with probability at least 1−2^(1−k). Classical preprocessing handles even inputs and prime powers. Whether a classical randomized polynomial-time factoring algorithm exists remains open.",
+    "related": [
+      "FQChem.Complexity.QueryAlgorithms.shorFactoringSuccess",
+      "FQChem.Complexity.QueryAlgorithms.shorTwoSampleOrder"
+    ]
+  },
+  {
+    "id": "hhl-linear-system-runtime",
+    "title": "HHL solution-state accuracy and runtime",
+    "chapter": "Properties",
+    "status": "published",
+    "papers": [
+      "https://doi.org/10.1103/PhysRevLett.103.150502"
+    ],
+    "locator": "§II and supplementary Appendix A.1–A.2 · Theorem 1(3), Eq. (A6)",
+    "scope": "Let A be an N-by-N s-sparse, efficiently row-computable Hermitian matrix with ‖A‖ ≤ 1 and ‖A⁻¹‖ ≤ κ, and let a unitary of cost Tᵦ prepare normalized |b⟩. With constant success HHL prepares a state within vector-norm error ε of A⁻¹|b⟩/‖A⁻¹|b⟩‖ in time Õ(κTᵦ + κ²s² log(N)/ε), suppressing the slowly growing simulation factors as in the paper. The output is a quantum state.",
+    "related": [
+      "FQChem.Algorithms.hhlSpectralInversion"
+    ],
+    "upstream": [
+      {
+        "label": "Qatlib · amplified success and oracle count for the positive-spectrum sine filter",
+        "url": "https://github.com/quantum-atlas-ai/qatlib/blob/f76f71a7c5cd19a31c251d0feeab09c75a758d69/Qatlib/Papers/LinearSystems09/Runtime.lean#L63"
+      }
+    ]
+  },
+  {
+    "id": "low-chuang-qubitization",
+    "title": "Optimal Hamiltonian simulation by qubitization",
+    "chapter": "Dynamics",
+    "status": "published",
+    "papers": [
+      "https://doi.org/10.22331/q-2019-07-12-163"
+    ],
+    "locator": "Theorem 1, Eq. (1) · §6 and p. 2, note 3",
+    "scope": "Let G prepare |g⟩ on a d-dimensional ancilla and let the |g⟩ block of unitary U be Hermitian H on dimension N. For 0 < ε < 1, evolution for time t has spectral-norm error ≤ ε and failure O(ε) with Θ(Q) queries to controlled G, U and their inverses, O(Q log d) extra two-qubit gates and at most ⌈log₂ N⌉+⌈log₂ d⌉+2 qubits. Q is the least positive q with 4(|t|/2)ᑫ/q! ≤ ε. This trade-off is optimal up to constants in the oracle model.",
+    "related": [
+      "FQChem.Dynamics.DigitalAlgorithms.Qubitization.Encoding.chebyshev_block",
+      "FQChem.Dynamics.DigitalAlgorithms.Qubitization.Encoding.quadratic_simulation_bound"
+    ],
+    "upstream": [
+      {
+        "label": "Qatlib · operator approximation by two finite oracle words",
+        "url": "https://github.com/quantum-atlas-ai/qatlib/blob/f76f71a7c5cd19a31c251d0feeab09c75a758d69/Qatlib/Papers/Qubitization19/MainResults/SourceTheorem1.lean#L60"
+      }
+    ]
+  },
+  {
+    "id": "low-chuang-sparse-simulation",
+    "title": "Optimal sparse simulation by quantum signal processing",
+    "chapter": "Dynamics",
+    "status": "published",
+    "papers": [
+      "https://doi.org/10.1103/PhysRevLett.118.010501",
+      "https://doi.org/10.22331/q-2019-07-12-163"
+    ],
+    "locator": "Theorems 2–3, Eqs. (8), (14)–(18) · distinct time and precision limits clarified in Low–Chuang (2019), p. 2, note 3",
+    "scope": "Given position and m-bit entry oracles for d-sparse H on n qubits, put τ = |t|d maxᵢⱼ|Hᵢⱼ|. For 0 < ε < 1/2, choose q ≥ τ+1 with 4(τ/2)ᑫ/q! ≤ ε/8. Quantum signal processing simulates evolution with error ≤ ε and success at least 1−2ε using O(q) queries and O(n + m polylog m) additional elementary gates per query. At fixed nonzero τ the optimal query scaling is Θ(log(1/ε)/log log(1/ε)); at fixed ε it is Θ(τ) for large τ.",
+    "related": [
+      "FQChem.Dynamics.DigitalAlgorithms.Qubitization.Encoding.simulation_error"
+    ],
+    "upstream": [
+      {
+        "label": "Qatlib · counted block-encoding circuit for an already encoded Hermitian matrix",
+        "url": "https://github.com/quantum-atlas-ai/qatlib/blob/f76f71a7c5cd19a31c251d0feeab09c75a758d69/Qatlib/Papers/HamSimQSP17/EndToEnd/CountedSingleOutput.lean#L78"
+      }
     ]
   }
 ]

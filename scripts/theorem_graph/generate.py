@@ -13,8 +13,8 @@ import tempfile
 ROOT = Path(__file__).resolve().parents[2]
 DEST = ROOT / "docs" / "theorems"
 PROJECTS = {
-    "library": (ROOT, "FQChem"),
-    "kitaev": (ROOT / "integrations" / "qatlib", "FQChemKitaev"),
+    "library": (ROOT, ("FQChem",)),
+    "kitaev": (ROOT / "integrations" / "qatlib", ("FQChemQatlib", "FQChemKitaev")),
 }
 DECLARATION = re.compile(
     r"^\s*(?:@\[[^\]]+\]\s*)*(?:(?:private|public|protected|nonrec|noncomputable)\s+)*"
@@ -185,15 +185,16 @@ def main():
     parser.add_argument("--project", choices=PROJECTS, default="library")
     parser.add_argument("--check", action="store_true")
     args = parser.parse_args()
-    project, prefix = PROJECTS[args.project]
-    paths = [project / (prefix + ".lean"), *sorted((project / prefix).rglob("*.lean"))]
+    project, roots = PROJECTS[args.project]
+    paths = [path for root in roots for path in
+             [project / (root + ".lean"), *sorted((project / root).rglob("*.lean"))]]
     sources = {".".join(p.relative_to(project).with_suffix("").parts): p for p in paths}
     imports = list(sources)
     if project != ROOT:
         # Load the private facets for shared modules as well. In particular this
         # preserves their source theorem identities on the older toolchain.
         deps = subprocess.check_output(
-            ["lake", "--json", "query", f"+{prefix}:transImports"], cwd=project, text=True,
+            ["lake", "--json", "query", f"+{roots[0]}:transImports"], cwd=project, text=True,
         )
         imports.extend(m for m in json.loads(deps) if m.startswith("FQChem."))
     imports = sorted(set(imports))
@@ -202,7 +203,7 @@ def main():
     data = json.dumps(nodes, ensure_ascii=False, sort_keys=True, separators=(",", ":"))
     outputs = {
         f"{args.project}.js": f"addTheoremGraph({data});\n",
-        f"{args.project}.md": markdown(nodes, "fqchem" if args.project == "library" else "Kitaev integration"),
+        f"{args.project}.md": markdown(nodes, "fqchem" if args.project == "library" else "Qatlib integration"),
     }
     for name, content in outputs.items():
         path = DEST / name

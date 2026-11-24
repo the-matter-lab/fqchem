@@ -754,5 +754,53 @@
     ],
     "relation": "paper-result",
     "scope": "Appendix A, Fact 1. Conjugation by U ⊗ U fixes both identity and swap, here for any finite-dimensional unitary U. These invariant tails are used in the window representation."
+  },
+  {
+    "module": "FQChemQatlib.Dynamics.SingularValueTransformation",
+    "names": [
+      "singularValueTransformationOfPhases"
+    ],
+    "papers": [
+      "https://arxiv.org/abs/1806.01838"
+    ],
+    "relation": "paper-result",
+    "scope": "Theorem 17, Eq. (32). For a finite-dimensional projected unitary encoding and a phase list realizing P, compressing the alternating word gives the odd or even singular-value transform of the encoded matrix. Orthonormal frames represent the two projector ranges. The result includes the empty phase word."
+  },
+  {
+    "module": "FQChemQatlib.Dynamics.SingularValueTransformation",
+    "names": [
+      "polynomialSingularValueTransformation"
+    ],
+    "papers": [
+      "https://arxiv.org/abs/1806.01838"
+    ],
+    "relation": "paper-result",
+    "scope": "Corollary 8 and Theorem 17, Eq. (32). For a complex polynomial of positive degree d satisfying the paper’s parity and magnitude conditions, d real phases realize P exactly and its alternating unitary word implements the singular-value transform on the specified input and output spaces.",
+    "aliases": {
+      "paper/gilyen-singular-transformation": "FQChemQatlib.Dynamics.SingularValueTransformation.polynomialSingularValueTransformation"
+    }
+  },
+  {
+    "module": "Qatlib.Concepts.QsvtCore.QsVtMain.ConventionBridge",
+    "names": [
+      "source_corner_odd_eq",
+      "source_corner_even_eq"
+    ],
+    "papers": [
+      "https://arxiv.org/abs/1806.01838"
+    ],
+    "relation": "paper-result",
+    "scope": "The two cases of Theorem 17, Eq. (32). The compressed alternating unitary word transforms the singular values by the response polynomial of a prescribed odd or even phase list. The even word uses the adjoint oracle and both outer projections onto the input space."
+  },
+  {
+    "module": "Qatlib.Concepts.QsvtCore.PhaseExistence.Corollary8ComplexPhaseExistenceGily",
+    "names": [
+      "corollary8ComplexPhaseExistence"
+    ],
+    "papers": [
+      "https://arxiv.org/abs/1806.01838"
+    ],
+    "relation": "paper-result",
+    "scope": "Corollary 8, Eq. (14). The response polynomial of a length-d list of real phases equals a prescribed positive-degree complex polynomial under the parity and magnitude hypotheses. Qatlib also proves minimal length and parity for any realizing list."
   }
 ]

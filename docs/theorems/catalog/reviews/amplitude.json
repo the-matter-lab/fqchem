@@ -1,0 +1,63 @@
+[
+  {
+    "module": "FQChemQatlib.Properties.AmplitudeEstimation",
+    "names": [
+      "amplitudeEstimation"
+    ],
+    "papers": [
+      "https://doi.org/10.1090/conm/305/05215"
+    ],
+    "relation": "specialization",
+    "scope": "Theorem 12, k=1, M≥2. The counter Born distribution for a unitary preparation has the BHMT amplitude-error guarantee with success at least 8/π². The expanded circuit counts M−1 controlled marking calls plus initialization. The paper counts M evaluations of its function.",
+    "aliases": {
+      "paper/brassard-amplitude-estimation": "FQChemQatlib.Properties.AmplitudeEstimation.amplitudeEstimation"
+    }
+  },
+  {
+    "module": "Qatlib.Concepts.AmplitudeCore.PreparedReadout.PreparedAmplitudeEstimation",
+    "names": [
+      "prepared_ae_bhmt_error_and_endpoints"
+    ],
+    "papers": [
+      "https://doi.org/10.1090/conm/305/05215"
+    ],
+    "relation": "specialization",
+    "scope": "Theorem 12 for k=1 and M≥2. The Born law meets the BHMT error window with probability at least 8/π². Probability-one endpoint outcomes hold for a=0 and for a=1 with even M."
+  },
+  {
+    "module": "Qatlib.Concepts.AmplitudeCore.PreparedReadout.PreparedAmplitudeEstimation",
+    "names": [
+      "prepared_ae_access_ledger"
+    ],
+    "papers": [
+      "https://doi.org/10.1090/conm/305/05215"
+    ],
+    "relation": "supporting",
+    "scope": "Counts the expanded implementation’s M−1 marking calls, gates, preparation accesses and source reflections in its explicit circuit vocabulary. The preparation budget is separate from the marking-query convention."
+  },
+  {
+    "module": "FQChemQatlib.Properties.AmplitudeEstimation",
+    "names": [
+      "amplitudeEstimationTail"
+    ],
+    "papers": [
+      "https://doi.org/10.1090/conm/305/05215"
+    ],
+    "relation": "specialization",
+    "scope": "Theorem 12, M≥2 and all integer windows k≥2. The actual prepared circuit satisfies the k-dependent amplitude error bound with success strictly above 1−1/[2(k−1)].",
+    "aliases": {
+      "paper/brassard-general-amplitude-window": "FQChemQatlib.Properties.AmplitudeEstimation.amplitudeEstimationTail"
+    }
+  },
+  {
+    "module": "Qatlib.Concepts.AEMeanReadout.LocalAEBackend.ComparativeStrictBounds",
+    "names": [
+      "preparedAeWindow_strict"
+    ],
+    "papers": [
+      "https://doi.org/10.1090/conm/305/05215"
+    ],
+    "relation": "specialization",
+    "scope": "The prepared Born distribution satisfies the strict k≥2 amplitude tail of Theorem 12 for M≥2. The proof handles zero and unit amplitude and otherwise uses the two-eigenphase mixture."
+  }
+]

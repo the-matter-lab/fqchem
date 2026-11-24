@@ -300,8 +300,9 @@ function showPanel(resetScroll=true) {
     panel.append(key);
     const review=active.review;
     if(active.pending) {
-      const status=active.status==="hypothesis" ? "Hypothesis in the literature" : "Proof in the paper";
-      panel.append(html("p","review-status",status+" · Lean proof needed"),html("p","locator",active.locator));
+      const status=active.status==="hypothesis" ? "Hypothesis in the literature · mathematical proof needed" :
+        "Proof in the paper · Lean proof needed in fqchem";
+      panel.append(html("p","review-status",status),html("p","locator",active.locator));
     } else {
       panel.append(html("p","review-status","Lean checked · "+atlasLiterature.relations[review.relation]));
       const source=html("a","source-link","Open Lean declaration"); source.href=active.url; source.append(icon("ext"));
@@ -314,6 +315,9 @@ function showPanel(resetScroll=true) {
     });
     panel.append(sub(sources.length===1?"Original reference":"Original references",sources));
     if(active.pending) {
+      if(active.upstream?.length) panel.append(sub("Existing Lean work",active.upstream.map(ref=>{
+        const link=html("a","original-paper",ref.label); link.href=ref.url; link.append(icon("ext")); return link;
+      })));
       if(active.related.length) panel.append(sub("Related checked results",active.related.map(id=>theoremRow(byName.get(id),true))));
     } else {
       for(const [name,list] of [["Prerequisites",active.before],["Used by",active.after]]) {
@@ -375,7 +379,7 @@ $("needs-proof").onclick=()=>showPending();
 function fromHash() {
   let id=""; try { id=decodeURIComponent(location.hash.slice(1)); } catch {}
   if(id==="needs-proof") { showPending(false); return; }
-  const n=byName.get(id)||byDeclaration.get(id);
+  const n=byName.get(id)||byDeclaration.get(id)||byDeclaration.get(atlasLiterature.aliases[id]);
   if(n) select(n,false); else overview(false);
 }
 $("search").addEventListener("input",()=>{

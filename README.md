@@ -43,7 +43,7 @@ lake build
 lake env lean test/Audit.lean
 ```
 
-The [Kitaev integration](integrations/qatlib/) has its own pinned Lean 4.35 build. The main library uses Lean 4.36 and builds its [Aaronson–Ambainis dependency](integrations/aaronson-ambainis/) through Lake.
+The [Qatlib integration](integrations/qatlib/) has its own pinned Lean 4.35 build. Within that project, `import FQChemQatlib` adds the Kitaev reduction, finite-ensemble shadows, amplitude estimation, singular-value transformation, and query algorithms. The main library uses Lean 4.36 and builds its [Aaronson–Ambainis dependency](integrations/aaronson-ambainis/) through Lake.
 
 The audit checks that the library imports every scientific module and verifies the axiom dependencies of its theorems. The continuum DFT formalization adapts [Miguel Marques’s lean_dft](https://github.com/hyllios/lean_dft/tree/b9065256a6ddb1a7a4e1df3fbbf49a9a3fd546a4).
 
