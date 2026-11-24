@@ -1,0 +1,23 @@
+[
+  {
+    "module": "FQChem.Complexity.ModularInverse",
+    "names": ["subtractMod_spec"],
+    "papers": ["https://doi.org/10.1137/S0097539795293172"],
+    "relation": "supporting",
+    "scope": "Classical arithmetic for the modular multiplication constants in Shor §3. For residues u,p below a positive w-bit modulus N, a padded sum, subtraction, and restoring division compute (u+N−p) mod N using at most 22(w+1)² Boolean gates."
+  },
+  {
+    "module": "FQChem.Complexity.ModularInverse",
+    "names": ["remainderCoefficient", "run_spec"],
+    "papers": ["https://doi.org/10.1137/S0097539795293172"],
+    "relation": "supporting",
+    "scope": "Shor §3 uses the classical modular inverse to implement reversible multiplication. The Euclidean loop maintains a coefficient residue for each remainder and returns a coefficient of the gcd. With valid input residues and t steps covering the Euclidean divisions, the loop uses at most 150t(w+1)² Boolean gates."
+  },
+  {
+    "module": "FQChem.Complexity.ModularInverse",
+    "names": ["inverse_spec"],
+    "papers": ["https://doi.org/10.1137/S0097539795293172"],
+    "relation": "derived",
+    "scope": "Shor §3, classical calculation of c⁻¹ mod n in the reversible cleanup pseudocode (preprint p. 12). For 1<N<2ʷ and 0≤a<N coprime to N, the executable bounded Euclidean algorithm produces b<N satisfying ab mod N=1 in at most 300(w+1)³ Boolean data-path gates. The explicit bound applies to this circuit-generation subroutine."
+  }
+]

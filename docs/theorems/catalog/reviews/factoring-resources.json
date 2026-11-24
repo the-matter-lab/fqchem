@@ -1,0 +1,186 @@
+[
+  {
+    "module": "FQChem.Complexity.FactoringBitCost",
+    "names": [
+      "leWord_spec",
+      "predWord_spec"
+    ],
+    "papers": [
+      "https://doi.org/10.1137/S0097539795293172"
+    ],
+    "relation": "supporting",
+    "scope": "Binary datapath primitives used in the Section 5 factoring reduction. On unsigned words that fit in w bits, one 6w-gate ripple subtraction computes a comparison or a saturating predecessor. Fixed-width wiring and branch selection use the repository’s branching-program model."
+  },
+  {
+    "module": "FQChem.Complexity.FactoringBitCost",
+    "names": [
+      "gcdRun_spec",
+      "gcdWord_spec"
+    ],
+    "papers": [
+      "https://doi.org/10.1137/S0097539795293172"
+    ],
+    "relation": "supporting",
+    "scope": "Computes the gcd of two unsigned w-bit integers by binary restoring division and the Euclidean remainder recurrence. A public limit of 2w divisions suffices and at most 40(w+1)³ Boolean arithmetic gates are charged."
+  },
+  {
+    "module": "FQChem.Complexity.FactoringBitCost",
+    "names": [
+      "exactPower_spec",
+      "root_range",
+      "rootRun_spec",
+      "powersRun_spec",
+      "preprocessWord_spec"
+    ],
+    "papers": [
+      "https://doi.org/10.1137/S0097539795293172"
+    ],
+    "relation": "supporting",
+    "scope": "Implements the factoring reduction’s even-number and perfect-power checks. For a b-bit input it tests small exponents by binary root search, carries exact powers in (b+1)² bits, and returns the same optional divisor as the executable preprocessor within 100(b+1)⁶ Boolean arithmetic gates."
+  },
+  {
+    "module": "FQChem.Complexity.FactoringBitCost",
+    "names": [
+      "checkedPair_spec",
+      "candidate_spec",
+      "extractPair_spec"
+    ],
+    "papers": [
+      "https://doi.org/10.1137/S0097539795293172"
+    ],
+    "relation": "supporting",
+    "scope": "Implements the Section 5 gcd reduction and checks both children of a proposed split. Word-based modular powering, Euclidean gcd and one restoring division agree with extractFactor and certify. Every successful pair includes the actual quotient."
+  },
+  {
+    "module": "FQChem.Complexity.FactoringBitCost",
+    "names": [
+      "readBase_spec"
+    ],
+    "papers": [
+      "https://doi.org/10.1137/S0097539795293172"
+    ],
+    "relation": "supporting",
+    "scope": "Converts a fair binary word into the same positive base as the probability proof, and detects words outside the allowed range. A comparison, decrement and increment cost at most 18w Boolean arithmetic gates."
+  },
+  {
+    "module": "FQChem.Complexity.FactoringBitCost",
+    "names": [
+      "decoded_bound",
+      "baseRun_spec"
+    ],
+    "papers": [
+      "https://doi.org/10.1137/S0097539795293172"
+    ],
+    "relation": "derived",
+    "scope": "The decoder returns an order candidate at most the clock size. With a proper positive base and a fitting positive clock, the postprocessing branch returns the certified divisor and cofactor from the same observed clock value within 2000(w+1)⁴ Boolean arithmetic gates. Nonunit bases take the gcd branch directly."
+  },
+  {
+    "module": "FQChem.Complexity.FactoringBitCost",
+    "names": [
+      "bitTrial_spec"
+    ],
+    "papers": [
+      "https://doi.org/10.1137/S0097539795293172"
+    ],
+    "relation": "derived",
+    "scope": "For m ≥ 2, a fair word fitting floor(log₂ m)+1 bits, and a measured record below a clock size fitting twice that width plus two bits, all classical branches of a factor attempt return exactly the verified split and cost at most 10⁶(floor(log₂ m)+2)⁶ Boolean arithmetic gates."
+  },
+  {
+    "module": "FQChemForShor.FactoringResources",
+    "names": [
+      "gateCap_covers",
+      "allWidths"
+    ],
+    "papers": [
+      "https://doi.org/10.1137/S0097539795293172"
+    ],
+    "relation": "derived",
+    "scope": "ForShor’s weighted logical-gate count for the allocated order-finding circuit is bounded uniformly over every modulus and legal coprime base by C(floor(log₂ m)+1)³. A finite maximum absorbs the small inputs left open by the asymptotic circuit theorem."
+  },
+  {
+    "module": "FQChemForShor.FactoringResources",
+    "names": [
+      "treeCharge_le",
+      "log_mono"
+    ],
+    "papers": [
+      "https://doi.org/10.1137/S0097539795293172"
+    ],
+    "relation": "supporting",
+    "scope": "Lifts a bound on one modulus to the actual recursive divisor tree by summing over the nodes the splitter visits. Binary input widths decrease along subproblems."
+  },
+  {
+    "module": "FQChemForShor.FactoringResources",
+    "names": [
+      "totalQuantumGates"
+    ],
+    "papers": [
+      "https://doi.org/10.1137/S0097539795293172"
+    ],
+    "relation": "derived",
+    "scope": "At every tape for input N, the adaptively visited subproblems, including all bases in a padded batch, cost at most C(floor(log₂ N)+1)⁶ logical gates in the pinned ForShor resource model. This is an execution count for the specified circuit family."
+  },
+  {
+    "module": "FQChemForShor.FactoringResources",
+    "names": [
+      "wordFits",
+      "clockFits",
+      "recordCost",
+      "classicalCap_le"
+    ],
+    "papers": [
+      "https://doi.org/10.1137/S0097539795293172"
+    ],
+    "relation": "supporting",
+    "scope": "The fair base word and actual Fourier clock fit the argument widths required by the bit-level factoring program. Taking the finite maximum of the program’s costs over the physical records preserves the polynomial one-shot bound."
+  },
+  {
+    "module": "FQChemForShor.FactoringResources",
+    "names": [
+      "measuredRecord",
+      "nonunitRecord",
+      "rejectedRecord",
+      "preprocessedRecord"
+    ],
+    "papers": [
+      "https://doi.org/10.1137/S0097539795293172"
+    ],
+    "relation": "supporting",
+    "scope": "Connects each branch in the physical law to the bit-level program. On a coprime base it processes the same clock result, a nonunit yields its gcd, an oversized draw is rejected, and successful preprocessing returns the divisor together with its cofactor."
+  },
+  {
+    "module": "FQChemForShor.FactoringResources",
+    "names": [
+      "totalClassicalBits",
+      "totalFairBits"
+    ],
+    "papers": [
+      "https://doi.org/10.1137/S0097539795293172"
+    ],
+    "relation": "derived",
+    "scope": "For every recursive tape, with L=floor(log₂ N), the total classical trial datapath cost is at most 768000000(L+2)⁹ Boolean arithmetic gates and at most 768(L+1)⁴ independent fair bits need be drawn for base selection. Both counts pad every visited modulus to a full batch."
+  },
+  {
+    "module": "FQChemForShor.FactoringResources",
+    "names": [
+      "leavesFit",
+      "totalOutputBits"
+    ],
+    "papers": [
+      "https://doi.org/10.1137/S0097539795293172"
+    ],
+    "relation": "supporting",
+    "scope": "Every factor fits in the original binary word and there are at most floor(log₂ m) leaves below a recursive call at m ≥ 2. Even copying the complete output list at each return takes at most 2(floor(log₂ N)+2)³ bit writes under the fixed-width tagged representation."
+  },
+  {
+    "module": "FQChemForShor.FactoringResources",
+    "names": [
+      "factoringPolynomialResources"
+    ],
+    "papers": [
+      "https://doi.org/10.1137/S0097539795293172"
+    ],
+    "relation": "derived",
+    "scope": "Shor Sections 3–5 at the level of adaptive logical-circuit execution. For every positive N the physical procedure returns a product equal to N on every tape and a prime factorization with probability at least 2/3. Worst-case bounds jointly cover weighted logical gates, binary trial arithmetic, random bits and output copies. Shor’s Section 2 uniform circuit-construction and numerical gate-entry generation costs are separate."
+  }
+]

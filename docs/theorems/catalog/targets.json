@@ -127,9 +127,11 @@
     "papers": [
       "https://doi.org/10.1137/S0097539795293172"
     ],
-    "locator": "§3 modular exponentiation · §5 prime factorization, reduction before Eq. (5.1)",
-    "scope": "A randomized quantum algorithm factors integers in time polynomial in their bit length. For odd N with k ≥ 2 distinct prime factors, a uniformly random unit and its exact order give a nontrivial factor with probability at least 1−2^(1−k). Classical preprocessing handles even inputs and prime powers. Whether a classical randomized polynomial-time factoring algorithm exists remains open.",
+    "locator": "§2 uniform circuit model · §3 modular exponentiation · §5 prime factorization, reduction before Eq. (5.1)",
+    "scope": "Shor gives a uniform quantum algorithm that factors integers in time polynomial in their bit length. Lean checks the recursive algorithm’s prime output with probability ≥2/3, its worst-case execution costs, and the classical arithmetic that generates its modular multiplier and cleanup constants. A polynomial classical time bound for emitting the entire lowered gate description and computing its entries to the required precision is still needed.",
     "related": [
+      "FQChem.Complexity.FactoringResources.factoringPolynomialResources",
+      "FQChem.Complexity.ModularConstants.compile_constants",
       "FQChem.Complexity.FactoringLaw.primeFactorization",
       "FQChem.Complexity.VerifiedOrderFinding.shorOrderFinding",
       "FQChem.Complexity.QuantumFactoring.uniformFactorProbability",

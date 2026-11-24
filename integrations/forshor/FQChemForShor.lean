@@ -1,2 +1,2 @@
-import FQChemForShor.FactoringLaw
-import FQChemForShor.VerifiedOrderFinding
+import FQChemForShor.FactoringResources
+import FQChemForShor.ModularConstants

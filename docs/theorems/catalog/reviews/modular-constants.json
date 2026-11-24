@@ -1,0 +1,38 @@
+[
+  {
+    "module": "FQChemForShor.ModularConstants",
+    "names": [
+      "cleanup_constant"
+    ],
+    "papers": [
+      "https://doi.org/10.1137/S0097539795293172",
+      "https://arxiv.org/abs/2611.20342"
+    ],
+    "relation": "supporting",
+    "scope": "Uniqueness of the reduced inverse identifies the residue (1 + N − v) mod N with the reference circuit’s Step-5 cleanup constant selected by bounded search."
+  },
+  {
+    "module": "FQChemForShor.ModularConstants",
+    "names": [
+      "steps_spec"
+    ],
+    "papers": [
+      "https://doi.org/10.1137/S0097539795293172",
+      "https://arxiv.org/abs/2611.20342"
+    ],
+    "relation": "supporting",
+    "scope": "Squaring a reduced multiplier and its inverse together emits exactly the reference modular-exponentiation stages. Their integer constants require at most 162(w+1)² Boolean gates per exponent control."
+  },
+  {
+    "module": "FQChemForShor.ModularConstants",
+    "names": [
+      "compile_constants"
+    ],
+    "papers": [
+      "https://doi.org/10.1137/S0097539795293172",
+      "https://arxiv.org/abs/2611.20342"
+    ],
+    "relation": "derived",
+    "scope": "Shor §3. From the input modulus and a coprime base, Euclidean inversion and repeated modular squaring produce every controlled multiplier and cleanup residue for the reference clock. The emitted modular-exponentiation gate tree is equal to ForShor’s specification, with at most 624(w+1)³ Boolean gates for generating the integer constants at modulus width w. Gate lowering and finite-precision evaluation of phase entries require separate bounds."
+  }
+]

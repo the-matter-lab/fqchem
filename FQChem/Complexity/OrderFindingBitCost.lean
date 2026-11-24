@@ -290,7 +290,8 @@ def productMod (w N x y : ℕ) : ℕ × ℕ :=
   let d := divide (2*w+1) (2*w) m.1 N
   (d.rem, m.2+d.gates)
 
-private theorem productMod_spec (w N x y : ℕ) (hx : x < 2^w) (hy : y < 2^w)
+/-- Modular multiplication returns a reduced residue using at most 70(w+1)² Boolean gates. -/
+theorem productMod_spec (w N x y : ℕ) (hx : x < 2^w) (hy : y < 2^w)
     (hN : 0 < N) (hw : N < 2^w) :
     (productMod w N x y).1 = x*y % N ∧ (productMod w N x y).2 ≤ 70*(w+1)^2 := by
   have hww : 2^w ≤ 2^(2*w) := Nat.pow_le_pow_right (by decide) (by omega)

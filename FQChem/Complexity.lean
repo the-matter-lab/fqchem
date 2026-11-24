@@ -2,12 +2,14 @@ module
 
 public import FQChem.Complexity.AaronsonAmbainis
 public import FQChem.Complexity.ElectronicStructurePauli
+public import FQChem.Complexity.FactoringBitCost
 public import FQChem.Complexity.FactoringPreprocessing
 public import FQChem.Complexity.FactoringRecursion
 public import FQChem.Complexity.FactoringReduction
 public import FQChem.Complexity.FastForwarding
 public import FQChem.Complexity.GroundStateSearch
 public import FQChem.Complexity.LocalHamiltonianVerification
+public import FQChem.Complexity.ModularInverse
 public import FQChem.Complexity.OrderFindingBitCost
 public import FQChem.Complexity.OrderFindingDecoder
 public import FQChem.Complexity.OrderFindingPostprocessing
