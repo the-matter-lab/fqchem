@@ -24,7 +24,15 @@ For example, VMC’s variational bound uses both the Born-average identity and R
 
 ## Rebuilding
 
-After building the main library and the [Qatlib integration](../../integrations/qatlib/), run these from the repository root.
+Build and audit the main library from the repository root.
+
+```sh
+lake exe cache get
+lake build
+lake env lean test/Audit.lean
+```
+
+To regenerate the atlas, build the [Qatlib integration](../../integrations/qatlib/), then run these from the repository root.
 
 ```sh
 python3 scripts/theorem_graph/generate.py

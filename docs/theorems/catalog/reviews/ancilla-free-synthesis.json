@@ -273,7 +273,7 @@
       "https://doi.org/10.22331/q-2019-07-12-163"
     ],
     "relation": "paper-result",
-    "scope": "Theorem 1 standard-form simulation for arbitrary finite dimensions, including a one-dimensional system. With a=⌈log₂ d⌉, r=⌈log₂ N⌉, and the least positive Q of Eq. (1), the same oracle-independent word uses a+r+2 wires, 54(64Q+1) controlled preparation/adjoint calls, 27(64Q+1) controlled block/adjoint calls, and ≤11000(a+4)[27(64Q+8)−2]+2 elementary gates. Its compressed coordinate block has error ≤ε²/2 and success ≥1−ε² for 0<ε<1. The linked parity lower bound shows the worst-case query count is optimal up to a constant factor.",
+    "scope": "Theorem 1 standard-form simulation for arbitrary finite dimensions, including a one-dimensional system. With a=⌈log₂ d⌉, r=⌈log₂ N⌉, and the least positive Q of Eq. (1), the same oracle-independent word uses a+r+2 wires, 54(64Q+1) calls to preparation or its adjoint, 27(64Q+1) calls to the controlled block or its adjoint, and ≤11000(a+4)[27(64Q+8)−2]+2 elementary gates. Its compressed coordinate block has error ≤ε²/2 and success ≥1−ε² for 0<ε<1. The linked parity lower bound shows the worst-case query count is optimal up to a constant factor.",
     "aliases": {
       "paper/low-chuang-qubitization": "FQChemQatlib.Dynamics.LowChuang.Singleton.allFiniteCoordinateSimulation"
     },
