@@ -215,4 +215,48 @@ theorem energyRange {J : Type*} [Fintype J] (σ : J → Equiv.Perm (Fin (n+2)))
   · rintro ⟨_,⟨ρ,h,rfl⟩,rfl⟩
     exact ⟨ρ,h, congrArg Complex.re (energy ρ h).symm⟩
 
+private theorem join_swap (a b : Fin d) (z : Coordinates d n) :
+    join d n ((a,b),z) ∘ Equiv.swap 0 (0 : Fin (n+1)).succ = join d n ((b,a),z) := by
+  change (Fin.cons a (Fin.cons b z)) ∘ _ = Fin.cons b (Fin.cons a z)
+  funext j
+  refine Fin.cases ?_ (fun k => ?_) j
+  · simp
+  · refine Fin.cases ?_ (fun k => ?_) k
+    · simp
+    · have h₁ : k.succ.succ ≠ (0 : Fin (n+1)).succ :=
+        fun h => Fin.succ_ne_zero k (Fin.succ_inj.mp h)
+      rw [Function.comp_apply, Equiv.swap_apply_of_ne_of_ne (Fin.succ_ne_zero _) h₁]
+      simp
+
+/-- Exchanging the two spin orbitals in a row of a representable pair density
+reverses its sign. -/
+theorem representable_exchange {γ : Operator (PairBasis d)} (h : Representable n γ)
+    (a b : Fin d) (y : PairBasis d) : γ (b,a) y = -γ (a,b) y := by
+  obtain ⟨ρ, state, rfl⟩ := h
+  rw [marginal_apply, marginal_apply, ← Finset.sum_neg_distrib]
+  apply Finset.sum_congr rfl
+  intro z _
+  let σ := Equiv.swap (0 : Fin (n+2)) (0 : Fin (n+1)).succ
+  have exchange := state.2.2 (join d n (y,z)) (join d n ((a,b),z)) σ
+  change ρ (join d n ((a,b),z) ∘ σ) _ = (Equiv.Perm.sign σ : ℂ) * _ at exchange
+  rw [show join d n ((a,b),z) ∘ σ = _ from join_swap a b z] at exchange
+  simpa only [σ, Equiv.Perm.sign_swap (Fin.succ_ne_zero _).symm, Units.val_neg,
+    Units.val_one, Int.cast_neg, Int.cast_one, neg_one_mul] using exchange
+
+/-- Pauli exclusion makes the entire repeated-spin-orbital row vanish. -/
+theorem representable_repeated {γ : Operator (PairBasis d)} (h : Representable n γ)
+    (a : Fin d) (y : PairBasis d) : γ (a,a) y = 0 := by
+  linear_combination (representable_exchange h a a y) / 2
+
+/-- A pair localized twice in one spin orbital is a positive trace-one matrix
+which has no fermionic N-electron extension for any N ≥ 2. -/
+theorem excludedPair (a : Fin d) (n : ℕ) :
+    let γ := diagonal (fun y : PairBasis d => if y = (a,a) then (1 : ℂ) else 0)
+    γ.PosSemidef ∧ γ.trace = 1 ∧ ¬ Representable n γ := by
+  dsimp only
+  refine ⟨posSemidef_diagonal_iff.mpr (fun y => by split <;> simp), ?_, ?_⟩
+  · simp [trace]
+  · intro h
+    simpa using representable_repeated h a (a,a)
+
 end FQChem.Complexity.FermionicMarginals

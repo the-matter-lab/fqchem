@@ -405,6 +405,10 @@
     "authors": "Pfau et al. (2020)",
     "title": "Ab initio solution of the many-electron Schrödinger equation with deep neural networks"
   },
+  "https://doi.org/10.1103/RevModPhys.35.668": {
+    "authors": "Coleman (1963)",
+    "title": "Structure of Fermion Density Matrices"
+  },
   "https://doi.org/10.1126/sciadv.1603015": {
     "authors": "Chmiela et al. (2017)",
     "title": "Machine learning of accurate energy-conserving molecular force fields"

@@ -81,7 +81,7 @@
   },
   {
     "id": "liu-n-representability",
-    "title": "Fermionic N-representability",
+    "title": "Two-particle N-representability is QMA-complete",
     "chapter": "Complexity",
     "status": "published",
     "papers": [

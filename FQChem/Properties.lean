@@ -1,5 +1,6 @@
 module
 
+public import FQChem.Properties.NRepresentability.Coleman
 public import FQChem.Properties.MeasurementTheory
 public import FQChem.Properties.AtomicBinding
 public import FQChem.Properties.ResponseAndEstimation

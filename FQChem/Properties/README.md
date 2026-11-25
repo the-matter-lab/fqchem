@@ -2,6 +2,11 @@
 
 Import this chapter with `import FQChem.Properties`.
 
+## N-representability of reduced density matrices
+
+- **One-particle density matrix.** In a finite spin-orbital basis, an ensemble of exactly N electrons realizes a matrix if and only if its natural occupations lie in [0,1] and sum to N. [Lean proof](NRepresentability/Coleman.lean#L128) · [Coleman (1963), §9](https://doi.org/10.1103/RevModPhys.35.668)
+- **Two-particle density matrix.** The library proves convexity, nesting in particle number, Pauli exclusion, and the energy variational principle for trace-one pair densities. [Lean proofs](../Complexity/FermionicMarginals.lean) · [Liu, Christandl & Verstraete (2007)](https://doi.org/10.1103/PhysRevLett.98.110503)
+
 ## [Projective, generalized, and weak measurements](MeasurementTheory.lean)
 
 - [A complete Kraus measurement gives normalized Born probabilities](MeasurementTheory.lean#L69). [Repeating a projective measurement reproduces the outcome](MeasurementTheory.lean#L78). [An unsharp qubit measurement yields explicit outcome probabilities and posterior polarization](MeasurementTheory.lean#L96). [Born (1926)](https://doi.org/10.1007/BF01397477), [Lüders (1951)](https://doi.org/10.1002/andp.19504430510), [Oreshkov & Brun (2005)](https://doi.org/10.1103/PhysRevLett.95.110409)

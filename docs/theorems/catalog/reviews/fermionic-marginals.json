@@ -16,6 +16,20 @@
   {
     "module": "FQChem.Complexity.FermionicMarginals",
     "names": [
+      "join_swap",
+      "representable_exchange",
+      "representable_repeated",
+      "excludedPair"
+    ],
+    "papers": [
+      "https://doi.org/10.1103/RevModPhys.35.668"
+    ],
+    "relation": "derived",
+    "scope": "A representable ordered pair density changes sign when the two row orbitals are exchanged. A repeated spin orbital gives a zero row, so a trace-one positive matrix supported on a doubly occupied spin orbital has no fermionic extension."
+  },
+  {
+    "module": "FQChem.Complexity.FermionicMarginals",
+    "names": [
       "convexRepresentable",
       "representable_previous"
     ],

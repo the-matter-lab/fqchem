@@ -1,0 +1,63 @@
+[
+  {
+    "module": "FQChem.Properties.NRepresentability.Occupations",
+    "names": [
+      "columnMass",
+      "exists_occupation_weights",
+      "occupation_bounds"
+    ],
+    "papers": [
+      "https://doi.org/10.1103/RevModPhys.35.668"
+    ],
+    "relation": "supporting",
+    "scope": "The vector of orbital occupations is a convex combination of N-element occupation patterns exactly when its entries lie in [0,1] and sum to N. The Lean construction uses the Birkhoff–von Neumann theorem."
+  },
+  {
+    "module": "FQChem.Properties.NRepresentability.SlaterOccupations",
+    "names": [
+      "inSlots",
+      "basisKet",
+      "number_basis",
+      "numberCoeff",
+      "coefficient_change",
+      "mixedOverlap",
+      "norm_from_bra",
+      "born_sum_basis_independent",
+      "slaterBorn_total",
+      "slaterOccupation"
+    ],
+    "papers": [
+      "https://doi.org/10.1103/RevModPhys.35.668"
+    ],
+    "relation": "supporting",
+    "scope": "Exterior-power amplitudes give basis-independent total Born weight for arbitrary fermion states. For a Slater determinant they give each orbital’s occupation as a sum of squared overlaps with its occupied spin orbitals."
+  },
+  {
+    "module": "FQChem.Properties.NRepresentability.Coleman",
+    "names": [
+      "ensemble_weights",
+      "spectralReadout",
+      "occupiedFrame_orthonormal",
+      "occupied_sum",
+      "slaterEnsemble_readout",
+      "hole_positive_iff"
+    ],
+    "papers": [
+      "https://doi.org/10.1103/RevModPhys.35.668"
+    ],
+    "relation": "supporting",
+    "scope": "An ensemble of orthonormal Slater determinants realizes its one-particle occupation measurements in every orbital basis. Spectral decomposition relates these expectations to the particle and hole eigenvalues."
+  },
+  {
+    "module": "FQChem.Properties.NRepresentability.Coleman",
+    "names": [
+      "coleman",
+      "coleman_operator"
+    ],
+    "papers": [
+      "https://doi.org/10.1103/RevModPhys.35.668"
+    ],
+    "relation": "paper-result",
+    "scope": "Coleman §9, finite spin-orbital basis and trace-N convention. A one-particle density matrix comes from a mixed state of exactly N fermions if and only if its eigenvalues belong to [0,1] and sum to N. Equivalently, the particle and hole matrices are positive semidefinite and the trace is N."
+  }
+]

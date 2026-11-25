@@ -7,6 +7,7 @@ Machine-checked quantum chemistry in Lean 4.
 | Selected paper | Lean proof |
 | --- | --- |
 | [Ritz (1909)](https://doi.org/10.1515/crll.1909.135.1) | [Rayleigh–Ritz minimum](FQChem/StatePrep/VariationalOptimization/RayleighRitz.lean#L59) |
+| [Coleman (1963)](https://doi.org/10.1103/RevModPhys.35.668) | [One-particle N-representability](FQChem/Properties/NRepresentability/Coleman.lean#L128) |
 | [Hohenberg & Kohn (1964)](https://doi.org/10.1103/PhysRev.136.B864) | [Conditional potential uniqueness](FQChem/StatePrep/VariationalOptimization/DensityFunctionals/MolecularHohenbergKohn.lean#L84) |
 | [McMillan (1965)](https://doi.org/10.1103/PhysRev.138.A442) | [VMC energy bound](FQChem/StatePrep/VariationalOptimization/VariationalMonteCarlo.lean#L77) |
 | [Hirsch (1983)](https://doi.org/10.1103/PhysRevB.28.4059) | [Hubbard–Stratonovich identity](FQChem/StatePrep/ImaginaryTimeProjection/AFQMC.lean#L68) |
