@@ -1,6 +1,6 @@
 module
 
-public import FQChem.Unproven.AtomicEnergy
+public import FQChem.Properties.AtomicTrialStates
 
 @[expose] public section
 
@@ -23,5 +23,11 @@ theorem consecutiveBinding_of_convexity
     (fun atTop _ => (belowTop.ne atTop).elim)
   rw [add_comm (groundEnergy Z (n + 2))] at strictlyLess
   exact (not_lt_of_ge (convex Z hZ n)) strictlyLess
+
+/-- The variational atomic model satisfies the trial-state existence hypothesis
+in every sector, so atomic convexity alone implies consecutive binding. -/
+theorem convexity_implies_consecutiveBinding (convex : ElectronNumberConvexity) :
+    ConsecutiveBinding :=
+  consecutiveBinding_of_convexity (fun Z _ n => trialSpinor_nonempty Z (n + 1)) convex
 
 end FQChem.Properties.AtomicBinding

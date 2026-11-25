@@ -1,0 +1,99 @@
+[
+  {
+    "module": "FQChem.Properties.AtomicTrialStates",
+    "names": [
+      "permutationPacket",
+      "integrableKinetic",
+      "finiteEnergy_of_regularSupport",
+      "normalizedPacket",
+      "trialSpinor_nonempty"
+    ],
+    "papers": [
+      "https://arxiv.org/abs/2206.15393"
+    ],
+    "relation": "supporting",
+    "scope": "Construct a normalized spin-polarized antisymmetric packet in every continuum atomic sector. Its compact support avoids the nucleus and electron coincidences, and both contributions to its energy are integrable. These lemmas supply admissible trial states for the variational infimum."
+  },
+  {
+    "module": "FQChem.Properties.AtomicTrialStates",
+    "names": [
+      "kinetic_dilate"
+    ],
+    "papers": [
+      "https://arxiv.org/abs/2206.15393"
+    ],
+    "relation": "supporting",
+    "scope": "Under spatial dilation by t and real amplitude rescaling by a, the kinetic energy density is a²t² times the original density evaluated at the dilated coordinates."
+  },
+  {
+    "module": "FQChem.Properties.AtomicTrialStates",
+    "names": [
+      "firstElectronBinds"
+    ],
+    "papers": [
+      "https://arxiv.org/abs/2206.15393"
+    ],
+    "relation": "specialization",
+    "scope": "Every positive integer-charge Coulomb nucleus has a one-electron variational energy strictly below vacuum. The proof constructs a smooth compactly supported trial spinor and dilates it until attraction dominates kinetic energy. This proves the first binding step."
+  },
+  {
+    "module": "FQChem.Properties.AtomicBinding",
+    "names": [
+      "convexity_implies_consecutiveBinding"
+    ],
+    "papers": [
+      "https://arxiv.org/abs/2206.15393"
+    ],
+    "relation": "derived",
+    "scope": "For the isolated atomic continuum model, electron-number convexity alone implies consecutive strict binding. Existence of finite-energy antisymmetric trial states in every sector is proved in Lean."
+  },
+  {
+    "module": "FQChem.StatePrep.PerturbationTheory.IndependentOrbitals",
+    "names": [
+      "filled_eq",
+      "filling_minimum",
+      "fillingGround"
+    ],
+    "papers": [
+      "https://arxiv.org/abs/2409.08632"
+    ],
+    "relation": "supporting",
+    "scope": "In a finite orthonormal spin-orbital eigenbasis of a noninteracting Hamiltonian, the lowest N orbital energies sum to the sector ground energy. A positive semidefinite shift certifies the lower bound on the whole determinant space."
+  },
+  {
+    "module": "FQChem.StatePrep.PerturbationTheory.IndependentOrbitals",
+    "names": [
+      "fillingConvex",
+      "fillingConsecutiveBinding"
+    ],
+    "papers": [
+      "https://arxiv.org/abs/2409.08632"
+    ],
+    "relation": "specialization",
+    "scope": "For independent fermions in ordered spin orbitals the ground energies are convex in electron number, and strict binding at one filling implies strict binding at the preceding filling."
+  },
+  {
+    "module": "FQChem.StatePrep.PerturbationTheory.IndependentOrbitals",
+    "names": [
+      "repulsiveLowerBound",
+      "twoElectronConvexity"
+    ],
+    "papers": [
+      "https://arxiv.org/abs/2409.08632"
+    ],
+    "relation": "specialization",
+    "scope": "In a finite spin-orbital basis an arbitrary positive semidefinite interaction raises the sector ground energy weakly. At two electrons this gives twice the lowest one-electron energy as a lower bound, including interactions that mix determinants."
+  },
+  {
+    "module": "FQChem.StatePrep.PerturbationTheory.IndependentOrbitals",
+    "names": [
+      "fill_spec",
+      "polynomialWork"
+    ],
+    "papers": [
+      "https://doi.org/10.1038/s41467-023-37587-6"
+    ],
+    "relation": "specialization",
+    "scope": "For independent electrons with the ordered one-body spectrum supplied, the filled determinant needs zero excitation amplitudes. The projected energy is exact at every requested precision. A prefix sum takes one orbital-energy read and one exact real addition per occupied orbital."
+  }
+]

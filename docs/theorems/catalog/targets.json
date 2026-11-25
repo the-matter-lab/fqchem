@@ -129,7 +129,8 @@
     "related": [
       "FQChem.StatePrep.CoupledClusterReplicas.replicaScaling",
       "FQChem.VariationalMethods.coupledCluster",
-      "FQChem.StatePrep.TruncationScaling.fixedRankBoundsDoNotGiveJointPolynomial"
+      "FQChem.StatePrep.TruncationScaling.fixedRankBoundsDoNotGiveJointPolynomial",
+      "FQChem.StatePrep.IndependentOrbitals.polynomialWork"
     ]
   },
   {
@@ -144,7 +145,11 @@
     ],
     "locator": "Di Marino et al., Eq. (4) · Hofacker, Appendix C, Eq. (63)",
     "scope": "At fixed positive integer nuclear charge, twice the ground energy of the N-electron Coulomb atom should be at most the sum for N−1 and N+1 electrons. The variational definition includes both spin states and simultaneous fermionic exchange. The six-centre counterexample concerns a different external potential.",
-    "related": ["FQChem.Properties.AtomicBinding.consecutiveBinding_of_convexity"]
+    "related": [
+      "FQChem.Properties.AtomicBinding.convexity_implies_consecutiveBinding",
+      "FQChem.StatePrep.IndependentOrbitals.fillingConvex",
+      "FQChem.StatePrep.IndependentOrbitals.twoElectronConvexity"
+    ]
   },
   {
     "id": "atomic-consecutive-binding",
@@ -155,7 +160,11 @@
     "papers": ["https://arxiv.org/abs/2206.15393"],
     "locator": "Discussion after Conjecture 3",
     "scope": "For a single positive integer-charge nucleus, strict binding of N+1 electrons should imply strict binding of N, for N ≥ 1. Each binding test compares successive many-electron ground energies at the same nuclear charge.",
-    "related": ["FQChem.Properties.AtomicBinding.consecutiveBinding_of_convexity"]
+    "related": [
+      "FQChem.Properties.AtomicBinding.convexity_implies_consecutiveBinding",
+      "FQChem.Properties.AtomicBinding.firstElectronBinds",
+      "FQChem.StatePrep.IndependentOrbitals.fillingConsecutiveBinding"
+    ]
   },
   {
     "id": "hhl-linear-system-runtime",
