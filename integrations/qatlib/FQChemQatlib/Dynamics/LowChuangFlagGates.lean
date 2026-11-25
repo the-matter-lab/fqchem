@@ -81,30 +81,41 @@ theorem cnotBasis_unit : cnotBasis ∈ Matrix.unitaryGroup Flags ℂ :=
 
 private theorem cnot_basis_marker : cnotBasis * pairCnot * cnotBasisᴴ =
     Matrix.diagonal (fun b : Flags => if b=(false,false) then -1 else 1) := by
-  have hs : (Real.sqrt 2 : ℂ)^2=2 := by exact_mod_cast Real.sq_sqrt (by norm_num : (0:ℝ)≤2)
-  have hn : (Real.sqrt 2 : ℂ) ≠ 0 := by exact_mod_cast (Real.sqrt_pos.mpr (by norm_num : (0:ℝ)<2)).ne'
-  ext ⟨a,b⟩ ⟨c,d⟩
-  cases a <;> cases b <;> cases c <;> cases d <;>
-    simp [cnotBasis,pairCnot,tensorGate_apply,PauliX,Qatlib.Foundations.PureStateMath.permMatrix,
-      Hadamard,Matrix.mul_apply,Fintype.sum_prod_type,Matrix.conjTranspose_apply] <;> field_simp <;> first | linear_combination hs | linear_combination -hs
+  let marker := Matrix.diagonal (fun b : Flags => if b = (false, false) then (-1 : ℂ) else 1)
+  have intertwines : cnotBasis * pairCnot = marker * cnotBasis := by
+    ext ⟨a, b⟩ ⟨c, d⟩
+    rw [Matrix.diagonal_mul, Matrix.mul_apply]
+    simp only [pairCnot, Qatlib.Foundations.PureStateMath.permMatrix, Matrix.of_apply,
+      mul_ite, mul_one, mul_zero, Finset.sum_ite_eq', Finset.mem_univ, ite_true]
+    simp only [cnotBasis, tensorGate_apply, Matrix.mul_apply, Fintype.sum_bool, PauliX,
+      Qatlib.Foundations.PureStateMath.permMatrix, Hadamard, Matrix.of_apply]
+    cases a <;> cases b <;> cases c <;> cases d <;> dsimp <;> ring
+  have unitary : cnotBasis * cnotBasisᴴ = 1 := (Matrix.mem_unitaryGroup_iff).mp cnotBasis_unit
+  rw [intertwines, Matrix.mul_assoc, unitary, Matrix.mul_one]
 
 theorem conditionalCnot (zero : J) :
     (testBoth (I:=I) zero).permMatrix ℂ = onAncilla zero pairCnot := by
-  ext ⟨a,b,j,i⟩ ⟨c,d,k,l⟩
-  by_cases ej : j=k <;> by_cases ei : i=l <;> by_cases h : j=zero <;>
-    cases a <;> cases b <;> cases c <;> cases d <;>
-    simp_all [Equiv.Perm.permMatrix,PEquiv.toMatrix_apply,onAncilla,onBlocks_apply,
-      testBoth,pairCnot,Qatlib.Foundations.PureStateMath.permMatrix]
+  ext ⟨a, b, u⟩ ⟨c, d, v⟩
+  by_cases same : u = v
+  · subst v
+    by_cases selected : u.1 = zero
+    · cases a <;> cases b <;> cases c <;> cases d <;>
+        simp [Equiv.Perm.permMatrix, PEquiv.toMatrix_apply, onAncilla, onBlocks_apply,
+          testBoth, pairCnot, Qatlib.Foundations.PureStateMath.permMatrix, selected]
+    · simp [Equiv.Perm.permMatrix, PEquiv.toMatrix_apply, onAncilla, onBlocks_apply, testBoth, Matrix.one_apply, selected]
+  · simp [Equiv.Perm.permMatrix, PEquiv.toMatrix_apply, onAncilla, onBlocks_apply, testBoth, same]
 
 theorem cubic_mark (zero : J) :
     2 • rangeProjector (flagsZero (I:=I) zero) - (1 : Matrix (Signals J I) (Signals J I) ℂ) =
     -(onFlags (J:=J) (I:=I) cnotBasis * (testBoth (I:=I) zero).permMatrix ℂ * (onFlags cnotBasis)ᴴ) := by
   rw [conditionalCnot,flags_conjugate zero cnotBasis_unit,cnot_basis_marker,zero_projector,two_nsmul]
-  ext ⟨a,b,j,i⟩ ⟨c,d,k,l⟩
-  simp only [Matrix.sub_apply,Matrix.add_apply,Matrix.neg_apply,Matrix.one_apply,Matrix.diagonal_apply]
-  by_cases ej : j=k <;> by_cases ei : i=l <;> by_cases h : j=zero <;>
-    cases a <;> cases b <;> cases c <;> cases d <;>
-    simp_all [onAncilla,onBlocks_apply]
+  ext ⟨a, b, u⟩ ⟨c, d, v⟩
+  by_cases same : u = v
+  · subst v
+    by_cases selected : u.1 = zero
+    · cases a <;> cases b <;> cases c <;> cases d <;> simp [onAncilla, onBlocks_apply, selected]
+    · simp [onAncilla, onBlocks_apply, Matrix.diagonal_apply, Matrix.one_apply, selected]
+  · simp [onAncilla, onBlocks_apply, same]
 
 private theorem diagonal_flags (f : Flags → ℂ) : onFlags (J:=J) (I:=I) (diagonal f) =
     diagonal (fun x : Signals J I => f (x.1,x.2.1)) := by
@@ -119,9 +130,11 @@ theorem localPhase (z : ℂ) (hz : IsPhase z) :
   refine ⟨?_,by rw [pairPhase,diagonal_flags]; rfl⟩
   rw [Matrix.mem_unitaryGroup_iff',Matrix.star_eq_conjTranspose,pairPhase,
     Matrix.diagonal_conjTranspose,Matrix.diagonal_mul_diagonal]
-  ext ⟨a,b⟩ ⟨c,d⟩
+  rw [← Matrix.diagonal_one]
+  congr 1
+  funext ⟨a,b⟩
   change (starRingEnd ℂ) z * z = 1 at hz
-  cases a <;> cases b <;> cases c <;> cases d <;> simp [hz,mul_comm z]
+  cases a <;> cases b <;> simp [hz, mul_comm z]
 
 theorem flagsTensor (A B : Matrix Bool Bool ℂ) : onFlags (J:=J) (I:=I) (TensorGate A B) =
     TensorGate A (TensorGate B (1 : Matrix (J × I) _ ℂ)) := by

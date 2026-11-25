@@ -57,10 +57,18 @@ theorem railMatrix_secondQuantized (p : Pauli) :
 theorem numberPenalty :
     Matrix.diagonal (fun x : Rail => if x = .single x.bit then (0 : ℂ) else 1) =
       (oneBody false false + oneBody true true - 1)^2 := by
-  ext i j
-  cases i <;> cases j <;> repeat' first | rename_i b; cases b
-  all_goals norm_num [pow_two, Matrix.mul_apply, sum_rail, Matrix.diagonal_apply, oneBody_apply,
-    annihilate, Matrix.one_apply, Rail.bit]
+  let shifted (x : Rail) : ℂ := (x.count : ℂ) - 1
+  have diagonal : oneBody false false + oneBody true true - 1 = Matrix.diagonal shifted := by
+    ext i j
+    simp only [Matrix.sub_apply, Matrix.add_apply, oneBody_apply, sum_rail, Matrix.one_apply,
+      Matrix.diagonal_apply]
+    rcases i with _ | (_ | _) | _ <;> dsimp [annihilate] <;>
+      rcases j with _ | (_ | _) | _ <;>
+      norm_num [shifted, Rail.count]
+  rw [diagonal, Matrix.diagonal_pow]
+  congr 1
+  funext x
+  cases x <;> norm_num [shifted, Rail.count, Rail.bit]
 
 def support (w : Word n) : Finset (Fin n) := Finset.univ.filter (fun i => w i ≠ .I)
 

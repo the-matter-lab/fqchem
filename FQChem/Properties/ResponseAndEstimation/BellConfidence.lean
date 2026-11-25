@@ -209,10 +209,13 @@ private theorem traceDifferent (p q : Word n) (hne : p ≠ q) :
       ∏ i, ∑ y : Bool, g i (x i) y := (Fintype.prod_sum (fun i y => g i (x i) y)).symm
   simp_rw [inner]
   rw [← Fintype.prod_sum (fun i x => ∑ y, g i x y)]
-  apply Finset.prod_eq_zero (Finset.mem_univ j)
-  dsimp only [g]
-  cases h : p j <;> cases h' : q j <;>
-    simp_all [Pauli.entry, Pauli.phase, Pauli.move]
+  have orthogonal (P Q : Pauli) (distinct : P ≠ Q) :
+      (∑ x : Bool, ∑ y : Bool, P.entry x y * Q.entry y x) = 0 := by
+    simp only [Fintype.sum_bool]
+    cases P <;> cases Q <;> first
+      | exact (distinct rfl).elim
+      | norm_num [Pauli.entry, Pauli.phase, Pauli.move]
+  exact Finset.prod_eq_zero (Finset.mem_univ j) (orthogonal _ _ hj)
 
 /-- The promised state (I+aP)/2ⁿ is a density operator for a nonidentity P and |a|≤1. -/
 def hiddenState (p : Word n) (hp : p ∈ nonidentity n) (a : ℝ) (ha : |a| ≤ 1) : State n :=

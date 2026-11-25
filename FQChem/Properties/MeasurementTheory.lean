@@ -102,19 +102,19 @@ theorem unsharpQubit : UnsharpQubit := by
     simp only [weakBranch, Complex.normSq_mul, Complex.normSq_ofReal, Real.mul_self_sqrt (by linarith : 0 ≤ (1+x)/2),
       Real.mul_self_sqrt (by linarith : 0 ≤ (1-x)/2), and_self]
   have plus := weights η hlo hhi
-  have minus := weights (-η) (by linarith) (by linarith)
+  have minus := weights (-η) (neg_le_neg hhi) (neg_le.mp hlo)
   have hp : branchMass (weakBranch η a b) = (1 + η*(Complex.normSq a - Complex.normSq b))/2 := by
     unfold branchMass
     rw [plus.1, plus.2]
-    linarith
+    linear_combination hn / 2
   refine ⟨hp, ?_, ?_⟩
   · simp only [branchMass, plus.1, plus.2, minus.1, minus.2]
-    linarith
+    linear_combination hn
   · intro _
     unfold branchZ
     rw [plus.1, plus.2, hp]
     have hd : (1+η)/2*Complex.normSq a - (1-η)/2*Complex.normSq b =
-        (Complex.normSq a - Complex.normSq b + η)/2 := by nlinarith [congrArg (η * ·) hn]
+        (Complex.normSq a - Complex.normSq b + η)/2 := by linear_combination η * hn / 2
     rw [hd, div_div_div_cancel_right₀ (by norm_num : (2 : ℝ) ≠ 0)]
 
 end FQChem.Properties.MeasurementTheory

@@ -198,6 +198,17 @@
   {
     "module": "FQChem.StatePrep.ImaginaryTimeProjection.FerromagneticEnergySampling",
     "names": [
+      "ratioEnergyMSE"
+    ],
+    "papers": [
+      "https://doi.org/10.1137/0222066"
+    ],
+    "relation": "derived",
+    "scope": "At positive inverse temperature on a nonempty ferromagnet, a common mean-square bound B for bounded empirical readouts gives mean-square energy error at most 324 B E². The same estimate applies to independent samples and to trajectories."
+  },
+  {
+    "module": "FQChem.StatePrep.ImaginaryTimeProjection.FerromagneticEnergySampling",
+    "names": [
       "energySamplingRMS"
     ],
     "papers": [

@@ -1,5 +1,12 @@
 [
   {
+    "module": "FQChem.Properties.AtomicBinding",
+    "names": ["consecutiveBinding_of_convexity"],
+    "papers": ["https://arxiv.org/abs/2206.15393"],
+    "relation": "derived",
+    "scope": "Assuming atomic energy convexity and an admissible trial spinor in each positive electron sector, strict binding of N+1 electrons implies strict binding of N. The implication is proved with extended-real variational infima."
+  },
+  {
     "module": "FQChem.Dynamics.DigitalAlgorithms.CommutingTerms",
     "names": [
       "commutingProductFormula"

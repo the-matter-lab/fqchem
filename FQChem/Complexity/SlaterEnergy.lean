@@ -104,18 +104,16 @@ theorem noInstance (G : SimpleGraph (Fin n)) (U V : ℝ) (hU : V ≤ U) (hV : 0 
   classical
   by_cases d : (doubles s.val).Nonempty
   · have one : (1:ℝ) ≤ (doubles s.val).card := by exact_mod_cast d.card_pos
-    unfold cost
-    nlinarith [mul_nonneg hV (Nat.cast_nonneg (α:=ℝ) (pairs G s.val).card),
-      mul_nonneg (hV.trans hU) (sub_nonneg.mpr one)]
+    exact (hU.trans (le_mul_of_one_le_right (hV.trans hU) one)).trans
+      (le_add_of_nonneg_right (mul_nonneg hV (Nat.cast_nonneg _)))
   · have e : (pairs G s.val).Nonempty := by
       by_contra empty
       exact hno ⟨sites s.val, (Finset.card_image_of_injOn
         (injective_sites _ (Finset.not_nonempty_iff_eq_empty.mp d))).trans s.property,
         independent_sites G _ (Finset.not_nonempty_iff_eq_empty.mp empty)⟩
     have one : (1:ℝ) ≤ (pairs G s.val).card := by exact_mod_cast e.card_pos
-    unfold cost
-    nlinarith [mul_nonneg (hV.trans hU) (Nat.cast_nonneg (α:=ℝ) (doubles s.val).card),
-      mul_nonneg hV (sub_nonneg.mpr one),hV.trans hU]
+    exact (le_mul_of_one_le_right hV one).trans
+      (le_add_of_nonneg_left (mul_nonneg (hV.trans hU) (Nat.cast_nonneg _)))
 
 /-- Occupation amplitudes of the exterior product of k occupied orbitals. -/
 def amplitudes (f : Frame n k) (s : Sector n k) : ℂ :=

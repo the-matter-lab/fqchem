@@ -108,7 +108,6 @@ private theorem grad (t : W n) (cs ds : List (W n)) (inside : ∀i∈ds, i∈cs)
       cases hb : s t <;> cases hi : s i <;> simp [enabled,hi,BorrowedRipple.read] <;> ring
     simpa only [Function.comp_id,id_eq,eq,List.length_cons,Nat.add_comm 1 ds.length] using together
 
-set_option maxRecDepth 8192 in
 /-- On n physical wires, a k-controlled phase of any real angle uses at most
 2·720(k+3)+2k+1 local gates, even when the k controls and target exhaust n.
 The circuit matrix is exact on every basis column and hence on superpositions. -/
@@ -126,37 +125,36 @@ theorem multiControlledPhase (t : W n) (cs : List (W n)) (nd : (t::cs).Nodup) (�
   have D := classicalWord t cs back
   have word := followed (followed (followed (followed
     (a:=fun (s : Reg n) => if s t && enabled none s then step else 0) first grads) I) neg) D
-  have bound : 1+k+720*(k+3)+k+720*(k+3)=2*(720*(k+3))+2*k+1 := by omega
-  clear I D
-  convert word using 1
-  · ext i j
-    have same := stay j t (List.nodup_cons.mp nd).1
-    have inc := modular_read (add j)
-    simp only [enabled,Option.elim_none,ite_true] at inc
-    have wrap := all_max j cs
-    have angle : (if j t then step else 0)+(if j t then (BorrowedRipple.read j cs:ℝ)*step else 0)+
-        (if j t then (BorrowedRipple.read (f j) cs:ℝ)*(-step) else 0) =
-        (if j t && cs.all j then θ else 0) := by
-      cases h : j t with
-      | false => simp
-      | true =>
-        simp only [ite_true,Bool.true_and]
-        by_cases c : cs.all j=true
-        · have endword := wrap.mp c
-          rw [ite_eq_left c]
-          rw [ite_eq_left endword] at inc
-          have er : (BorrowedRipple.read j cs:ℝ)+1=(2:ℝ)^k := by exact_mod_cast endword
-          rw [inc]; simp only [Nat.cast_zero,zero_mul,add_zero]; dsimp [step]; field_simp; nlinarith only [congrArg (·*θ) er]
-        · rw [ite_eq_right c]
-          rw [ite_eq_right (mt wrap.mpr c)] at inc
-          rw [inc]; push_cast; ring
-    simp only [mono,Function.comp_apply,id_eq,L j,Matrix.diagonal_apply,enabled,Option.elim_none,
-      Bool.and_true,add_zero,same,angle]
-    by_cases eq : i=j
-    · subst i
-      simp only [ite_true]
-      split <;> simp_all [SingletonPhaseGradient.phase]
-    · simp [eq]
-  · omega
+  have bound : 1+k+720*(k+3)+k+720*(k+3)=2*(720*(k+3))+2*k+1 := by ring
+  obtain ⟨gates, count, legal, action⟩ := word
+  refine ⟨gates, count.trans_eq bound, legal, action.trans ?_⟩
+  ext i j
+  have same := stay j t (List.nodup_cons.mp nd).1
+  have inc := modular_read (add j)
+  simp only [enabled,Option.elim_none,ite_true] at inc
+  have wrap := all_max j cs
+  have angle : (if j t then step else 0)+(if j t then (BorrowedRipple.read j cs:ℝ)*step else 0)+
+      (if j t then (BorrowedRipple.read (f j) cs:ℝ)*(-step) else 0) =
+      (if j t && cs.all j then θ else 0) := by
+    cases h : j t with
+    | false => simp
+    | true =>
+      simp only [ite_true,Bool.true_and]
+      by_cases c : cs.all j=true
+      · have endword := wrap.mp c
+        rw [ite_eq_left c]
+        rw [ite_eq_left endword] at inc
+        have er : (BorrowedRipple.read j cs:ℝ)+1=(2:ℝ)^k := by exact_mod_cast endword
+        rw [inc, Nat.cast_zero, zero_mul, add_zero, add_comm step, ← add_one_mul, er]
+        exact mul_div_cancel₀ θ (pow_ne_zero k (by norm_num))
+      · rw [ite_eq_right c]
+        rw [ite_eq_right (mt wrap.mpr c)] at inc
+        rw [inc]; push_cast; ring
+  simp only [mono,Function.comp_apply,id_eq,L j,Matrix.diagonal_apply,enabled,Option.elim_none,
+    Bool.and_true,add_zero,same,angle]
+  by_cases eq : i = j
+  · subst i
+    cases active : j t && cs.all j <;> simp [SingletonPhaseGradient.phase]
+  · simp [eq]
 
 end FQChemQatlib.Dynamics.AncillaFreePhase

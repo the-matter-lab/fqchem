@@ -4,6 +4,7 @@ public import FQChem.Properties.ResponseAndEstimation.ClassicalShadows
 public import Mathlib.Probability.Moments.Variance
 public import Mathlib.Data.Fin.Tuple.Sort
 public import Mathlib.Data.Nat.Log
+import FQChem.Properties.ResponseAndEstimation.ShadowConfidence
 import Mathlib.Tactic
 
 /-!
@@ -72,56 +73,25 @@ theorem blockPrediction (D : ShadowBlocks μ n N B) (wire : Fin k ↪ Fin n)
     (p : Setting k) (b : Fin B) (hN : 0 < N) {ε : ℝ} (hε : 0 < ε) :
     μ.real {ω | ε ≤ |blockMean wire p (D.record b ω) - pauliMean ρ p|} ≤
       (3 : ℝ)^k / ((N : ℝ) * ε^2) := by
-  let eval := fun s : Shot n => singleEstimate p (restrictShot wire s)
-  let X := fun i : Fin N => fun ω => eval (D.record b ω i)
+  let blocks : ShadowConfidence.Blocks μ (Shot n) N B :=
+    ⟨D.record, D.measurable, D.independentWithin, D.independentBlocks⟩
+  let eval (s : Shot n) := singleEstimate p (restrictShot wire s)
   have me : Measurable eval := Measurable.of_discrete
-  have mx (i : Fin N) : Measurable (X i) :=
+  have mx (i : Fin N) : Measurable (fun ω => eval (D.record b ω i)) :=
     me.comp ((measurable_pi_apply i).comp (D.measurable b))
-  obtain ⟨c, hc⟩ := (Set.finite_range (fun s : Shot n => ‖eval s‖)).bddAbove
-  have lp (i) : MemLp (X i) 2 μ := MemLp.of_bound (mx i).aestronglyMeasurable c
-    (Filter.Eventually.of_forall fun ω => hc (Set.mem_range_self (D.record b ω i)))
-  have avg (i) : (∫ ω, X i ω ∂μ) = pauliMean ρ p := by
-    rw [show (∫ ω, X i ω ∂μ) = _ from law b i (singleEstimate p)]
-    simp only [estimate_real, unbiased, pauliMean]
-  have moment (i) : (∫ ω, X i ω ^ 2 ∂μ) = (3 : ℝ)^k := by
-    rw [show (∫ ω, X i ω ^ 2 ∂μ) = _ from law b i (fun s => singleEstimate p s ^ 2)]
-    simp only [Complex.ofReal_pow, estimate_real, secondMoment ρ hρ]
-    norm_cast
-  have vbound (i) : variance (X i) μ ≤ (3 : ℝ)^k := by
-    rw [variance_eq_sub (lp i)]
-    change (∫ ω, X i ω ^ 2 ∂μ) - _ ≤ _
-    rw [moment]
-    exact sub_le_self _ (sq_nonneg _)
-  have indep : Pairwise fun i j => IndepFun (X i) (X j) μ :=
-    fun _ _ hij => ((D.independentWithin b).indepFun hij).comp me me
-  let total : Ω → ℝ := ∑ i, X i
-  have vtotal : variance total μ ≤ N * (3 : ℝ)^k := by
-    unfold total
-    rw [IndepFun.variance_sum (fun i _ => lp i) (fun _ _ _ _ hij => indep hij)]
-    simpa using Finset.sum_le_sum (fun i (_ : i ∈ Finset.univ) => vbound i)
-  have scaled : (fun ω => blockMean wire p (D.record b ω)) = fun ω => (N : ℝ)⁻¹ * total ω := by
-    ext ω
-    simp [total, blockMean, X, eval, Finset.sum_apply]
-  have hNr : (0 : ℝ) < N := by exact_mod_cast hN
-  have meanB : (∫ ω, (N : ℝ)⁻¹ * total ω ∂μ) = pauliMean ρ p := by
-    simp only [integral_const_mul, total, Finset.sum_apply]
-    rw [integral_finsetSum _ fun i _ => (lp i).integrable (by norm_num)]
-    simp [avg, hNr.ne']
-  have lpTotal : MemLp total 2 μ := by
-    convert! memLp_finsetSum Finset.univ (fun i _ => lp i) using 1
-    ext ω
-    simp [total, Finset.sum_apply]
-  have cheb := meas_ge_le_variance_div_sq ((lpTotal.const_mul (N : ℝ)⁻¹)) hε
-  rw [meanB] at cheb
-  have realCheb := ENNReal.toReal_mono ENNReal.ofReal_ne_top cheb
-  rw [ENNReal.toReal_ofReal (div_nonneg (variance_nonneg _ _) (sq_nonneg _))] at realCheb
-  change μ.real {ω | ε ≤ |(fun t => blockMean wire p (D.record b t)) ω - pauliMean ρ p|} ≤ _
-  rw [scaled]
-  refine realCheb.trans ?_
-  rw [variance_const_mul]
-  calc
-    _ ≤ (N : ℝ)⁻¹ ^ 2 * (N * (3 : ℝ)^k) / ε^2 := by gcongr
-    _ = _ := by field_simp
+  apply ShadowConfidence.blockChebyshev blocks eval me b (pauliMean ρ p) ((3 : ℝ)^k) ε hN hε
+  · obtain ⟨c, hc⟩ := (Set.finite_range (fun s : Shot n => ‖eval s‖)).bddAbove
+    exact fun i => MemLp.of_bound (mx i).aestronglyMeasurable c
+      (Filter.Eventually.of_forall fun ω => hc (Set.mem_range_self (D.record b ω i)))
+  · intro i
+    simpa only [estimate_real, unbiased, pauliMean] using law b i (singleEstimate p)
+  · intro i
+    refine (variance_le_expectation_sq (μ := μ) (mx i).aestronglyMeasurable).trans_eq ?_
+    calc
+      _ = _ := law b i (fun s => singleEstimate p s ^ 2)
+      _ = (3 : ℝ)^k := by
+        simp only [Complex.ofReal_pow, estimate_real, secondMoment ρ hρ]
+        norm_cast
 
 /-- A failed median supplies r+1 distinct failed block estimates. -/
 private theorem median_witness {r : ℕ} (v : Fin (2*r+1) → ℝ) (m ε : ℝ)

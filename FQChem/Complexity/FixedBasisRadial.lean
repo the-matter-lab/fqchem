@@ -30,21 +30,21 @@ theorem smooth : ContDiff ℝ 2 shape := by
 theorem zero {x : Space} (h : 1≤‖x‖) : shape x=0 := by
   unfold shape
   rcases lt_or_eq_of_le h with h|h
-  · rw [rpow_def_of_neg (by nlinarith : 1-‖x‖^2<0),show (5/2:ℝ)*π=π/2+2*π by ring,
+  · rw [rpow_def_of_neg (sub_neg.mpr (one_lt_pow₀ h (by decide : 2 ≠ 0))),show (5/2:ℝ)*π=π/2+2*π by ring,
       cos_add_two_pi,cos_pi_div_two,mul_zero]
   · simp [←h,zero_rpow (by norm_num : (5/2:ℝ)≠0)]
 
 theorem bounds (x : Space) : 0≤shape x ∧ shape x≤1 := by
   by_cases h : ‖x‖<1
-  · exact ⟨rpow_nonneg (by nlinarith [norm_nonneg x] : 0≤1-‖x‖^2) _,
-      rpow_le_one (by nlinarith [norm_nonneg x]) (by nlinarith [sq_nonneg ‖x‖]) (by norm_num)⟩
+  · have nonneg := sub_nonneg.mpr ((sq_le_one_iff₀ (norm_nonneg x)).2 h.le)
+    exact ⟨rpow_nonneg nonneg _, rpow_le_one nonneg (sub_le_self _ (sq_nonneg _)) (by norm_num)⟩
   · simp [zero (le_of_not_gt h)]
 
 theorem squared (x : Space) : shape x^2 = if ‖x‖<1 then (1-‖x‖^2)^5 else 0 := by
   split
   next h =>
     unfold shape
-    rw [←rpow_mul_natCast (by nlinarith [norm_nonneg x])]
+    rw [←rpow_mul_natCast (sub_nonneg.mpr ((sq_le_one_iff₀ (norm_nonneg x)).2 h.le))]
     norm_num
   next h => simp [zero (le_of_not_gt h)]
 
@@ -80,13 +80,13 @@ theorem shape_laplacian (x : Space) :
   next h =>
     rw [laplacian_eq_iteratedFDeriv_orthonormalBasis shape (EuclideanSpace.basisFun (Fin 3) ℝ)]
     simp_rw [second]
-    have pos : 0<1-‖x‖^2 := by nlinarith [norm_nonneg x]
+    have pos := sub_pos.mpr ((sq_lt_one_iff₀ (norm_nonneg x)).2 h)
     have a : shape x * (1-‖x‖^2)^(1/2:ℝ) = (1-‖x‖^2)^3 := by
       rw [shape,←rpow_add pos]; norm_num
     have b : shape x * (1-‖x‖^2)^(3/2:ℝ) = (1-‖x‖^2)^4 := by
       rw [shape,←rpow_add pos]; norm_num
     simp [Finset.sum_sub_distrib,←Finset.mul_sum,EuclideanSpace.inner_single_right]
-    rw [EuclideanSpace.real_norm_sq_eq x] at *
+    rw [EuclideanSpace.real_norm_sq_eq x] at a b ⊢
     simp only [one_div] at a ⊢
     linear_combination 15*(∑ i, x i^2)*a-15*b
   next h => simp [zero (le_of_not_gt h)]

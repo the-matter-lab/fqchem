@@ -78,42 +78,39 @@ theorem shotStatistics {Ω : Type*} [MeasurableSpace Ω] (μ : Measure Ω) [IsPr
   have hn' : (n : ℝ) ≠ 0 := Nat.cast_ne_zero.mpr hn.ne'
   have lp (p) : MemLp (outcome p) 2 μ :=
     MemLp.of_bound (measurable p).aestronglyMeasurable 1 ((signs p).mono fun _ h ↦ h.le)
+  have weighted (p) : MemLp (fun ω => (coeff p.1 / n) * outcome p ω) 2 μ :=
+    (lp p).const_mul _
   have single (p) : variance (outcome p) μ = 1 - mean p.1 ^ 2 := by
     rw [variance_eq_sub (lp p), calibrated]
-    congr 1
-    calc (∫ ω, (outcome p ^ 2) ω ∂μ) = ∫ _, (1 : ℝ) ∂μ := by
-           apply integral_congr_ae
-           filter_upwards [signs p] with ω hω
-           change outcome p ω ^ 2 = 1
-           rw [← sq_abs, hω, one_pow]
-         _ = _ := by simp
+    have square : outcome p ^ 2 =ᵐ[μ] fun _ => (1 : ℝ) := (signs p).mono fun ω h => by
+      change outcome p ω ^ 2 = 1
+      rw [← sq_abs, h, one_pow]
+    simp only [integral_congr_ae square, integral_const, probReal_univ, one_smul]
+  have sumShots (f : ι → ℝ) : (∑ p : ι × Fin n, f p.1) = n * ∑ i, f i := by
+    simp only [Fintype.sum_prod_type, Finset.sum_const, Finset.card_univ, Fintype.card_fin,
+      nsmul_eq_mul, Finset.mul_sum]
   have varianceFormula : variance (estimate coeff outcome) μ =
       (∑ i, coeff i ^ 2 * (1 - mean i ^ 2)) / n := by
     unfold estimate
     rw [IndepFun.variance_sum]
-    · simp_rw [variance_const_mul, single]
-      rw [Fintype.sum_prod_type, Finset.sum_div]
-      apply Finset.sum_congr rfl
-      intro i _
-      simp [field]
-    · intro p _
-      exact (lp p).const_mul _
+    · simp_rw [variance_const_mul, single, div_pow, div_mul_eq_mul_div]
+      rw [← Finset.sum_div, sumShots (fun i => coeff i ^ 2 * (1 - mean i ^ 2))]
+      rw [sq (n : ℝ), mul_div_mul_left _ _ hn']
+    · exact fun p _ => weighted p
     · intro i _ j _ hij
       exact (independent hij).comp (measurable_const.mul measurable_id)
         (measurable_const.mul measurable_id)
   refine ⟨?_, varianceFormula, ?_⟩
   · simp only [estimate, Finset.sum_apply]
     rw [integral_finsetSum]
-    · simp_rw [integral_const_mul, calibrated]
-      rw [Fintype.sum_prod_type]
-      apply Finset.sum_congr rfl
-      intro i _
-      simp [field]
+    · simp_rw [integral_const_mul, calibrated, div_mul_eq_mul_div]
+      rw [← Finset.sum_div, sumShots (fun i => coeff i * mean i), mul_div_cancel_left₀ _ hn']
     · intro p _
-      exact ((lp p).const_mul _).integrable (by norm_num)
+      exact (weighted p).integrable (by norm_num)
   · rw [varianceFormula]
-    gcongr with i
-    nlinarith [sq_nonneg (coeff i * mean i)]
+    apply div_le_div_of_nonneg_right _ (Nat.cast_nonneg n)
+    exact Finset.sum_le_sum fun i _ =>
+      mul_le_of_le_one_right (sq_nonneg _) (sub_le_self _ (sq_nonneg _))
 
 theorem finiteShotVQE {Ω : Type*} [MeasurableSpace Ω] (μ : Measure Ω) [IsProbabilityMeasure μ]
     {n : ℕ} (H : E →L[ℂ] E) (term : ι → PauliTerm E) (coeff : ι → ℝ)

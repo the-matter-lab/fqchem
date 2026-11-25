@@ -208,6 +208,17 @@ theorem katoTransport (A P P' : ℝ → R) : KatoTransport A P P' := by
 
 end RealAlgebra
 
+/-- An idempotent initial projection of norm at most one turns an intertwining
+error into a leakage bound. -/
+private theorem leakage_le_intertwining {R : Type*} [NormedRing R] {P₀ : R} (P U : R)
+    (idempotent : P₀ * P₀ = P₀) (hnorm : ‖P₀‖ ≤ 1) :
+    ‖(1 - P) * U * P₀‖ ≤ ‖P * U - U * P₀‖ := by
+  have factor : (1 - P) * U * P₀ = -(P * U - U * P₀) * P₀ := by
+    simp only [sub_mul, one_mul, mul_assoc, idempotent, neg_sub]
+  rw [factor]
+  simpa only [norm_neg, mul_one] using
+    norm_mul_le_of_le (le_refl ‖-(P * U - U * P₀)‖) hnorm
+
 variable {R : Type*} [NormedRing R] [NormedAlgebra ℂ R]
 
 /-- Leakage bound for an actual two-band path. The inverse gap arises from
@@ -250,16 +261,8 @@ theorem gappedBandPreparation
     (fun t _ => hc t) (fun t ht => hsolve t ht ▸ hp t ht) hdx
     (fun t ht => (hbound t ht (P' t)).trans (by gcongr; exact hL t ht))
     (fun t ht => (hbound t ht (P'' t)).trans (by gcongr; exact hM t ht)) T U V ev s hs
-  have factor : (1 - P s) * U s * P 0 = -(P s * U s - U s * P 0) * P 0 := by
-    simp only [sub_mul, one_mul, mul_assoc, proj, neg_sub]
-  rw [factor]
-  calc
-    _ ≤ ‖P s * U s - U s * P 0‖ * ‖P 0‖ := by simpa only [norm_neg] using norm_mul_le (-(P s * U s - U s * P 0)) (P 0)
-    _ ≤ ‖P s * U s - U s * P 0‖ * 1 := by gcongr; exact hnorm 0 ⟨le_rfl, zero_le_one⟩
-    _ ≤ _ := by
-      rw [mul_one]
-      refine main.trans_eq ?_
-      ring
+  exact (leakage_le_intertwining (P s) (U s) (proj 0) (hnorm 0 ⟨le_rfl, zero_le_one⟩)).trans
+    (main.trans_eq (by ring))
 
 theorem reducedResolventPreparation (a : ℝ → ℂ) (B S P P' : ℝ → R) (g L D : ℝ) :
     ReducedResolventPreparation a B S P P' g L D := by
@@ -297,13 +300,8 @@ theorem reducedResolventPreparation (a : ℝ → ℂ) (B S P P' : ℝ → R) (g 
   have main := adiabaticIntertwining A P X (deriv X) (2 * (L / g)) D hcomm
     (fun t ht => solve t ht ▸ hp t ht) (fun t ht => (hX t ht).1.hasDerivAt)
     bound (fun t ht => (hX t ht).2) T U V ev s hs
-  have factor : (1 - P s) * U s * P 0 = -(P s * U s - U s * P 0) * P 0 := by
-    simp only [sub_mul, one_mul, mul_assoc, proj, neg_sub]
-  calc
-    _ ≤ ‖P s * U s - U s * P 0‖ * ‖P 0‖ := by
-      rw [factor]; simpa only [norm_neg] using norm_mul_le (-(P s * U s - U s * P 0)) (P 0)
-    _ ≤ ‖P s * U s - U s * P 0‖ * 1 := by gcongr; exact (bounds 0 ⟨le_rfl, zero_le_one⟩).2.1
-    _ ≤ _ := by rw [mul_one]; exact main.trans_eq (by ring)
+  exact (leakage_le_intertwining (P s) (U s) (proj 0) (bounds 0 ⟨le_rfl, zero_le_one⟩).2.1).trans
+    (main.trans_eq (by ring))
 
 /-- Preparation at the end of a fixed two-band path approaches the target
 subspace as runtime tends to infinity. The constants control the common

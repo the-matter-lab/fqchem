@@ -3,13 +3,14 @@
     "module": "FQChem.StatePrep.AdiabaticPreparation.AdiabaticTheorem",
     "names": [
       "transportedDerivative",
-      "sandwichBound"
+      "sandwichBound",
+      "leakage_le_intertwining"
     ],
     "papers": [
       "https://doi.org/10.1007/s002200050620"
     ],
     "relation": "supporting",
-    "scope": "Product differentiation and a norm estimate for a bounded observable conjugated by the supplied contractive evolution."
+    "scope": "Product differentiation and a norm estimate control a transported observable. For a contractive idempotent initial projection, the intertwining error bounds leakage."
   },
   {
     "module": "FQChem.StatePrep.AdiabaticPreparation.AdiabaticTheorem",

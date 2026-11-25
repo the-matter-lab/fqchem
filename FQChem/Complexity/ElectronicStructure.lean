@@ -152,8 +152,7 @@ theorem phase_encode (w : Word n) (x : Spin n) :
 private theorem physicalPhase_norm (w : Word n) (x : Occupation n) : ‖physicalPhase w x‖ ≤ 1 := by
   unfold physicalPhase
   rw [norm_prod]
-  apply (Finset.prod_le_prod₀ (g := fun _ : Fin n => (1 : ℝ)) (fun _ _ => norm_nonneg _) ?_).trans_eq (by simp)
-  intro i _
+  refine Finset.prod_le_one₀ (fun _ _ => norm_nonneg _) fun i _ => ?_
   generalize x.val i = r
   cases r with
   | single b => cases w i <;> cases b <;> simp [Pauli.railPhase, Pauli.phase]

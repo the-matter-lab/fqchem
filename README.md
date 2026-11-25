@@ -14,12 +14,12 @@ fqchem is a Lean 4 library of machine-checked theorems for quantum chemistry. Tr
 | [Hirsch (1983)](https://doi.org/10.1103/PhysRevB.28.4059) | [Discrete Hubbard–Stratonovich identity](FQChem/StatePrep/ImaginaryTimeProjection/AFQMC.lean#L68) |
 | [Vidal (2003)](https://doi.org/10.1103/PhysRevLett.91.147902) | [MPS cut factorization](FQChem/StatePrep/VariationalOptimization/TensorNetworks/MatrixProductStates.lean#L41) |
 | [Peruzzo et al. (2014)](https://doi.org/10.1038/ncomms5213) | [VQE minimum for reachable ground states](FQChem/StatePrep/VariationalOptimization/VQE.lean#L38) |
-| [Low & Chuang (2019)](https://doi.org/10.22331/q-2019-07-12-163) | [Hamiltonian simulation by qubitization](integrations/qatlib/FQChemQatlib/Dynamics/LowChuangAllDimensions.lean#L141) |
+| [Low & Chuang (2019)](https://doi.org/10.22331/q-2019-07-12-163) | [Hamiltonian simulation by qubitization](integrations/qatlib/FQChemQatlib/Dynamics/LowChuangAllDimensions.lean#L116) |
 | [Lüders (1951)](https://doi.org/10.1002/andp.19504430510) | [Projective measurement repeatability](FQChem/Properties/MeasurementTheory.lean#L78) |
 | [Svensson et al. (1996)](https://doi.org/10.1021/jp962071j) | [ONIOM forces](FQChem/Multiscale/ChoosingLayers/ClassicalEnvironments.lean#L26) |
 | [Beals et al. (2001)](https://arxiv.org/abs/quant-ph/9802049) | [Quantum query polynomial degree bound](FQChem/Complexity/AaronsonAmbainisQuery.lean#L180) |
 
-[Full paper and proof index](https://github.com/the-matter-lab/fqchem/blob/atlas/docs/theorems/papers.md) · [Outstanding proofs](https://fqchem.matterlab.ca/#needs-proof)
+[Full paper and proof index](https://github.com/the-matter-lab/fqchem/blob/atlas/docs/theorems/papers.md) · [Open conjectures in Lean](FQChem/Unproven/) · [Outstanding proofs](https://fqchem.matterlab.ca/#needs-proof)
 
 ## Use the library
 

@@ -18,10 +18,10 @@ theorem frozenMolecularEnergy (N K : ℕ) (Z : Fin K → ℝ) (R : Fin K → Pos
     let molecular := electronicEnergy N (nuclearPotential Z R)
     let frozen := ⨅ a : active, E (a.val + b)
     molecular ≤ frozen ∧ (∀ a ∈ active, E (a + b) = molecular → frozen = molecular) := by
-  let E := fun ρ : Measure Position => levy N ρ + ((∫ r, nuclearPotential Z R r ∂ρ : ℝ) : EReal)
-  have bound := frozenSearch E Set.univ active b (by simp)
-  dsimp only
-  rw [coulombConstrainedSearch N K Z R]
-  simpa [E, iInf_subtype] using bound
+  intro E molecular frozen
+  have energy : molecular = ⨅ ρ : (Set.univ : Set (Measure Position)), E ρ.val :=
+    (coulombConstrainedSearch N K Z R).trans (Equiv.Set.univ _).iInf_comp.symm
+  rw [energy]
+  exact frozenSearch E Set.univ active b (fun _ _ => Set.mem_univ _)
 
 end FQChem.Multiscale

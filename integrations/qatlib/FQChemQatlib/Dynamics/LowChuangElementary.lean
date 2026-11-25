@@ -80,41 +80,53 @@ private theorem scalar_flags (z : ℂ) : onFlags (J:=Reg a) (I:=Reg r) (z • (1
   by_cases h : u=v <;> by_cases hb : b=d <;> by_cases hc : c=f <;>
     simp [onFlags,onBlocks_apply,h,hb,hc]
 
-/-- Every gate in the fixed-instruction classification has a bounded
-elementary expansion on the original register. The extra control of a cubic
-phase borrows and restores an existing system qubit. -/
-theorem frameGate_emits (zero : Reg a) (scratch : Fin r) {M : Operator a r}
-    (gate : FrameGate (encodingFiber (I:=Reg r) zero) M) : Emits M (250*(a+4)) := by
+private theorem frameGate_emits_of_cubic (zero : Reg a) {limit : ℕ}
+    (budget : 120*(a+3) + 1 + 120*(a+3) ≤ limit)
+    (cubic : ∀ z, z = Complex.I ∨ z = -Complex.I →
+      Emits (phaseRotation (rangeProjector (hamiltonianFrame (encodingFiber (I := Reg r) zero))) z) limit)
+    {M : Operator a r} (gate : FrameGate (encodingFiber (I := Reg r) zero) M) : Emits M limit := by
+  have oneGate : 1 ≤ limit := (Nat.le_add_right_of_le (Nat.le_add_left 1 (120*(a+3)))).trans budget
   induction gate with
   | phase z hz =>
     rw [fiberPhase_sandwich]
     have ⟨unit,eq⟩ := localPhase (J:=Reg a) (I:=Reg r) z hz
     rw [eq]
     have test := compiles_emits (testAncilla_compiles a r zero)
-    exact weaken (mul_emits (mul_emits test (single (.flags _ unit))) test) (by omega)
+    exact weaken (mul_emits (mul_emits test (single (.flags _ unit))) test) budget
   | flip =>
     rw [localFlip]
-    exact weaken (single (.flags _ (tensorGate_unitary pauliX_unitary (Submonoid.one_mem _)))) (by omega)
+    exact weaken (single (.flags _ (tensorGate_unitary pauliX_unitary (Submonoid.one_mem _))))
+      oneGate
   | scalar =>
     rw [localScalar]
-    apply weaken (single (.flags _ ?_)) (by omega)
+    apply weaken (single (.flags _ ?_)) oneGate
     rw [Matrix.mem_unitaryGroup_iff',Matrix.star_eq_conjTranspose,Matrix.diagonal_conjTranspose,
       Matrix.diagonal_mul_diagonal]
-    ext ⟨b,c⟩ ⟨d,f⟩
-    cases b <;> cases c <;> cases d <;> cases f <;> simp
-  | cubic z hz =>
-    rw [cubic_coordinate zero hz,cubic_mark,localHadamards]
-    have had := single (Elementary.flags (a:=a) (r:=r) _ (tensorGate_unitary hadamard_unitary hadamard_unitary))
-    have changeBasis := single (Elementary.flags (a:=a) (r:=r) _ cnotBasis_unit)
-    have test := compiles_emits (testBoth_compiles a r zero scratch)
-    have scalar := single (Elementary.flags (a:=a) (r:=r) _ (scalar_pair (-z) (by
-      rcases hz with rfl|rfl <;> simp [IsPhase])))
-    rw [scalar_flags] at scalar
-    have all := mul_emits (mul_emits had (mul_emits scalar
-      (mul_emits (mul_emits changeBasis test) (adj_emits changeBasis)))) (adj_emits had)
-    apply weaken _ (by omega : 1+(1+((1+120*(a+4))+1))+1 ≤ 250*(a+4))
-    simpa only [neg_mul,Matrix.smul_mul,Matrix.one_mul,neg_smul,smul_neg] using all
-  | adj old ih => exact adj_emits ih
+    rw [← Matrix.diagonal_one]
+    congr 1
+    funext ⟨b,c⟩
+    cases b <;> simp
+  | cubic z hz => exact cubic z hz
+  | adj _ ih => exact adj_emits ih
+
+/-- Every gate in the fixed-instruction classification has a bounded
+elementary expansion on the original register. The extra control of a cubic
+phase borrows and restores an existing system qubit. -/
+theorem frameGate_emits (zero : Reg a) (scratch : Fin r) {M : Operator a r}
+    (gate : FrameGate (encodingFiber (I:=Reg r) zero) M) : Emits M (250*(a+4)) := by
+  apply frameGate_emits_of_cubic zero (by omega) _ gate
+  intro z hz
+  rw [cubic_coordinate zero hz,cubic_mark,localHadamards]
+  have had := single (Elementary.flags (a:=a) (r:=r) _ (tensorGate_unitary hadamard_unitary hadamard_unitary))
+  have changeBasis := single (Elementary.flags (a:=a) (r:=r) _ cnotBasis_unit)
+  have test := compiles_emits (testBoth_compiles a r zero scratch)
+  have scalar := single (Elementary.flags (a:=a) (r:=r) _ (scalar_pair (-z) (by
+    rcases hz with rfl|rfl <;> simp [IsPhase])))
+  rw [scalar_flags] at scalar
+  have all := mul_emits (mul_emits had (mul_emits scalar
+    (mul_emits (mul_emits changeBasis test) (adj_emits changeBasis)))) (adj_emits had)
+  apply weaken _ (by omega : 1+(1+((1+120*(a+4))+1))+1 ≤ 250*(a+4))
+  simpa only [neg_mul,Matrix.smul_mul,Matrix.one_mul,neg_smul,smul_neg] using all
 
 private theorem fixed_program {K : Type} [DecidableEq K] (gs : List (Operator a r)) :
     (∀ (d : K → Operator a r), run d (gs.map Step.fixed) = gs.prod) ∧

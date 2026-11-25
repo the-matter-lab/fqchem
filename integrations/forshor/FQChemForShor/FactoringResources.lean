@@ -86,6 +86,9 @@ theorem treeCharge_le (N cap : ℕ) (split : (m : ℕ) → Option (Divisor m)) (
         simp only [Nat.add_mul,one_mul]
         omega
 
+private theorem log_mono {m N : ℕ} (h : m ≤ N) : m.log2 ≤ N.log2 := by
+  simpa only [Nat.log2_eq_log_two] using Nat.log_mono_right (b := 2) h
+
 /-- Total legal logical gates for all actually visited subproblems and all
 candidate sampled bases. This pads each visited node to a complete batch,
 including nonunit bases and classical preprocessing branches that need no gates. -/
@@ -99,11 +102,7 @@ theorem totalQuantumGates : ∃ C : ℕ, ∀ N (t : Tape N),
   let b := N.log2+1
   have ub : ∀ m ≤ N, 2≤m → shots N * gateCap m ≤ shots N * (c*b^3) := by
     intro m hm _
-    have h : m.log2 ≤ N.log2 := by
-      by_cases hz : m=0
-      · simp [hz]
-      · have := (Nat.log2_lt hz).mpr (hm.trans_lt (Nat.lt_log2_self (n:=N)));omega
-    exact Nat.mul_le_mul_left _ ((hc m).trans (by dsimp [b]; gcongr))
+    exact Nat.mul_le_mul_left _ ((hc m).trans (by dsimp [b]; gcongr; exact log_mono hm))
   have q := treeCharge_le N _ (readTape N t) _ ub N le_rfl
   change treeCharge _ _ _ ≤ _
   apply q.trans ((Nat.mul_le_mul_right _ (visit_bound _ _)).trans ?_)
@@ -113,12 +112,8 @@ theorem totalQuantumGates : ∃ C : ℕ, ∀ N (t : Tape N),
 
 def clockSize (m : ℕ) := 2^(2*m^2).log2
 
-private theorem wordFits (m : ℕ) (w : Fin (FactoringLaw.words m)) : w.val<2^(m.log2+1) := by
-  by_cases hz : m-1=0
-  · have small : w.val<2 := by simpa [FactoringLaw.words,hz] using w.isLt
-    exact small.trans_le (by rw [pow_succ]; have := Nat.two_pow_pos m.log2; omega)
-  · have mono := (Nat.log2_lt hz).mpr ((Nat.sub_le m 1).trans_lt (Nat.lt_log2_self (n:=m)))
-    exact w.isLt.trans_le (Nat.pow_le_pow_right (by decide) (by omega))
+private theorem wordFits (m : ℕ) (w : Fin (FactoringLaw.words m)) : w.val<2^(m.log2+1) :=
+  w.isLt.trans_le (Nat.pow_le_pow_right (by decide) (Nat.add_le_add_right (log_mono (Nat.sub_le m 1)) 1))
 
 private theorem clockFits (m : ℕ) (hm : 2≤m) : clockSize m < 2^(2*(m.log2+1)+2) := by
   let b := m.log2+1
@@ -198,11 +193,6 @@ def classicalCharge (N : ℕ) (t : Tape N) :=
 at m. The pad also covers branches which terminate before drawing any bits. -/
 def randomCharge (N : ℕ) (t : Tape N) :=
   treeCharge (readTape N t) (fun m => shots N * ((m-1).log2+1)) N
-
-private theorem log_mono {m N : ℕ} (h : m≤N) : m.log2 ≤ N.log2 := by
-  by_cases hz : m=0
-  · simp [hz]
-  · have := (Nat.log2_lt hz).mpr (h.trans_lt (Nat.lt_log2_self (n:=N)));omega
 
 theorem totalClassicalBits (N : ℕ) (t : Tape N) : classicalCharge N t ≤ 768000000*(N.log2+2)^9 := by
   let b := N.log2+2

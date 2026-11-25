@@ -51,10 +51,6 @@ private theorem budget {s : ℕ} (hs : 0 < s) :
       congr 1
       unfold rounds l
       omega
-  have doubling (j : ℕ) : j+1 ≤ 2^j := by
-    induction j with
-    | zero => decide
-    | succ j ih => rw [pow_succ]; omega
   calc
     2^14 * (3^(rounds s) * s)^2 ≤ 2^14 * (2^(3*l+19))^2 := by gcongr
     _ = 2^(14+(3*l+19)*2) := by rw [← pow_mul, ← pow_add]
@@ -63,7 +59,7 @@ private theorem budget {s : ℕ} (hs : 0 < s) :
       change 14 + (3*l+19)*2 ≤ 2^(l+6)
       rw [pow_add]
       norm_num
-      have := doubling l
+      have := Nat.lt_two_pow_self (n := l)
       omega
 
 /-- Starting at error ≤1/3, the recursively amplified error reaches the

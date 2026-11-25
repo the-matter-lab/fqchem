@@ -46,8 +46,8 @@ theorem existsOrbitalUnitary (occ : Fin n ↪ Fin d) {target : Fin n → Orbital
     funext j
     obtain ⟨_, j, rfl⟩ := j
     simp [Set.domRestrict, v, e, occ.injective.extend_apply]
-  obtain ⟨b, hb⟩ := (hv ▸ h.comp e.symm e.symm.injective).exists_orthonormalBasis_extension_of_card_eq
-    finrank_euclideanSpace
+  obtain ⟨b, hb⟩ := Orthonormal.exists_orthonormalBasis_extension_of_card_eq
+    (𝕜 := ℂ) (E := OrbitalSpace d) finrank_euclideanSpace (hv ▸ h.comp e.symm e.symm.injective)
   refine ⟨(EuclideanSpace.basisFun (Fin d) ℂ).equiv b (Equiv.refl _), fun i => ?_⟩
   rw [coordinateOrbitals, OrthonormalBasis.equiv_apply_basis]
   exact (hb (occ i) ⟨i, rfl⟩).trans (occ.injective.extend_apply _ _ i)
@@ -118,7 +118,8 @@ private theorem gateForPair {a b : Fin d} {v : OrbitalSpace d}
           simp [f, hia, basisMode, EuclideanSpace.inner_single_left, h i hia (hi.resolve_left hia)]
         · simpa [f, hia, hja] using
             (EuclideanSpace.orthonormal_single (ι := Fin d) (𝕜 := ℂ)).inner_eq_zero hij'
-  obtain ⟨B, hB⟩ := hf.exists_orthonormalBasis_extension_of_card_eq finrank_euclideanSpace
+  obtain ⟨B, hB⟩ := Orthonormal.exists_orthonormalBasis_extension_of_card_eq
+    (𝕜 := ℂ) (E := OrbitalSpace d) finrank_euclideanSpace hf
   let G := (EuclideanSpace.basisFun (Fin d) ℂ).equiv B (Equiv.refl _)
   have hg (i : Fin d) : G (basisMode i) = B i := by
     rw [basisMode, ← EuclideanSpace.basisFun_apply]

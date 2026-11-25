@@ -105,10 +105,10 @@ theorem groundSeparated {H : Matrix ι ι ℂ} {K : Matrix κ κ ℂ} {E F : ℝ
   · have sum := (hp.kronecker (PosSemidef.one (n := κ) (R := ℂ))).add
       ((PosSemidef.one (n := ι) (R := ℂ)).kronecker kp)
     convert sum using 1
-    ext i j
-    simp [separated, Matrix.one_apply, kroneckerMap_apply, Prod.ext_iff, smul_eq_mul]
-    split_ifs <;> simp_all
-    ring
+    simp only [separated, sub_eq_add_neg, ← neg_smul, add_kronecker, kronecker_add,
+      smul_kronecker, kronecker_smul, one_kronecker_one, Complex.ofReal_add,
+      neg_add, add_smul]
+    abel
   · refine ⟨fun p => u p.1 * v p.2, ?_, ?_⟩
     · obtain ⟨i, hi⟩ := Function.ne_iff.mp hu
       obtain ⟨j, hj⟩ := Function.ne_iff.mp hv

@@ -86,20 +86,34 @@ private theorem walsh_adjoint : walshᴴ = walsh := by
     norm_num [walsh, character, OrbitalSimulation.bitSign, Matrix.conjTranspose_apply]
 
 private theorem walsh_square : walsh * walsh = 1 := by
-  ext ⟨a,b⟩ ⟨u,v⟩
-  cases a <;> cases b <;> cases u <;> cases v <;>
-    norm_num [walsh,character,OrbitalSimulation.bitSign,Matrix.mul_apply,Fintype.sum_prod_type,
-      Fintype.sum_bool,Matrix.one_apply]
+  have symmetric (a b : Answer) : character a b = character b a := by
+    simp only [character, Bool.and_comm]
+  have characterSum (d : Answer) : (∑ k : Answer, (character k d : ℂ)) =
+      if d = (false, false) then 4 else 0 := by
+    rcases d with ⟨u, v⟩
+    simp only [Fintype.sum_prod_type, Fintype.sum_bool]
+    cases u <;> cases v <;> norm_num [character, OrbitalSimulation.bitSign]
+  ext a b
+  simp only [Matrix.mul_apply, walsh, Matrix.of_apply, Matrix.one_apply, div_mul_div_comm]
+  simp_rw [symmetric a, ← Complex.ofReal_mul, ← xor_character]
+  rw [← Finset.sum_div, characterSum]
+  have zero : (a.1 ^^ b.1, a.2 ^^ b.2) = (false, false) ↔ a = b := by
+    simp [Prod.ext_iff]
+  simp only [zero]
+  split <;> norm_num
 
 /-- The fixed two-bit Walsh gate converts the usual reversible row response
 to the oracle used by the query compiler, with no calls to the input. -/
 theorem walsh_lookup (d : Answer) :
     walsh * Matrix.diagonal (fun a : Answer => (character a d : ℂ)) * walsh = translate d := by
-  ext ⟨a,b⟩ ⟨u,v⟩
-  rcases d with ⟨p,q⟩
-  cases a <;> cases b <;> cases u <;> cases v <;> cases p <;> cases q <;>
-    norm_num [Matrix.mul_apply,Matrix.mul_diagonal,walsh,character,OrbitalSimulation.bitSign,
-      translate,xor,Fintype.sum_prod_type,Fintype.sum_bool,Matrix.diagonal_apply]
+  have intertwine : Matrix.diagonal (fun a : Answer => (character a d : ℂ)) * walsh =
+      walsh * translate d := by
+    ext a b
+    rw [Matrix.diagonal_mul, Matrix.mul_apply]
+    simp only [walsh, translate, Matrix.of_apply, mul_ite, mul_one, mul_zero,
+      Finset.sum_ite_eq', Finset.mem_univ, ite_true]
+    rw [xor, xor_character, Complex.ofReal_mul, ← mul_div_assoc, mul_comm (character a d : ℂ)]
+  rw [Matrix.mul_assoc, intertwine, ← Matrix.mul_assoc, walsh_square, Matrix.one_mul]
 
 theorem row_character (x : Bits N) (a : Address N) :
     character (a.left,a.right) (response x a.level) = phase x (left a) * phase x (right a) := by

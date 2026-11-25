@@ -26,7 +26,7 @@ theorem dirichletPoissonMode (N m : ℕ) : DirichletPoissonMode N m := by
     · positivity
     · apply (div_lt_iff₀ (by positivity : 0 < (N : ℝ) + 1)).mpr
       have hmn : (m : ℝ) < (N : ℝ) + 1 := by exact_mod_cast Nat.lt_succ_of_le hmN
-      nlinarith [mul_lt_mul_of_pos_right hmn Real.pi_pos]
+      simpa only [mul_comm Real.pi] using mul_lt_mul_of_pos_right hmn Real.pi_pos
   · have hn : (N : ℝ) + 1 ≠ 0 := by positivity
     push_cast
     convert Real.sin_nat_mul_pi m using 2

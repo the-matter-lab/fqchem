@@ -39,30 +39,15 @@ variable [NormOneClass A] [CompleteSpace A]
 /-- All-generator Taylor bound, obtained by dominating each omitted
 operator coefficient by a scalar exponential coefficient. -/
 theorem segment_error (x : A) (k : ℕ) : ‖segment x k - exp x‖ ≤ tailBudget ‖x‖ k := by
-  let term (j : ℕ) := (j.factorial : ℝ)⁻¹ • x ^ j
-  have habs := norm_expSeries_summable' (𝕂 := ℝ) x
-  have tail : exp x = segment x k + ∑' m, term (m + k) := by
-    rw [exp_eq_tsum ℝ]
-    exact ((expSeries_summable' (𝕂 := ℝ) x).sum_add_tsum_nat_add k).symm
-  rw [tail, sub_add_cancel_left, norm_neg]
-  have scalar := expSeries_div_hasSum_exp ‖x‖
-  rw [← Real.exp_eq_exp_ℝ] at scalar
-  have fact (j : ℕ) : (k.factorial : ℝ) * j.factorial ≤ (j + k).factorial := by
-    exact_mod_cast Nat.le_of_dvd (Nat.factorial_pos _) ((Nat.mul_comm _ _).symm ▸
-      Nat.factorial_mul_factorial_dvd_factorial_add j k)
-  have coeff (j : ℕ) : ‖term (j + k)‖ ≤
-      (‖x‖ ^ k / k.factorial) * (‖x‖ ^ j / j.factorial) := by
-    simp only [term, norm_smul, Real.norm_eq_abs, abs_inv, Nat.abs_cast]
-    calc
-      _ ≤ ((j + k).factorial : ℝ)⁻¹ * ‖x‖ ^ (j + k) := by gcongr; exact norm_pow_le ..
-      _ = (‖x‖ ^ k * ‖x‖ ^ j) / (j + k).factorial := by rw [pow_add]; ring
-      _ ≤ (‖x‖ ^ k * ‖x‖ ^ j) / (k.factorial * j.factorial) := by gcongr; exact fact _
-      _ = _ := by ring
-  calc
-    _ ≤ ∑' m, ‖term (m + k)‖ := norm_tsum_le_tsum_norm ((summable_nat_add_iff k).mpr habs)
-    _ ≤ _ := ((summable_nat_add_iff k).mpr habs).tsum_le_tsum coeff
-      ((scalar.mul_left (‖x‖ ^ k / k.factorial)).summable) |>.trans_eq
-        ((scalar.mul_left (‖x‖ ^ k / k.factorial)).tsum_eq)
+  have tail := (hasSum_nat_add_iff' k).mpr (exp_series_hasSum_exp' (𝕂 := ℝ) x)
+  rw [norm_sub_rev, tailBudget, Real.exp_eq_exp_ℝ, mul_comm (‖x‖ ^ k / _)]
+  refine tail.norm_le_of_bounded ((expSeries_div_hasSum_exp ‖x‖).mul_right _) ?_
+  intro j
+  simp only [norm_smul, Real.norm_eq_abs, abs_inv, Nat.abs_cast, inv_mul_eq_div,
+    div_mul_div_comm, ← pow_add]
+  apply div_le_div₀ (by positivity) (norm_pow_le ..) (by positivity)
+  exact_mod_cast Nat.le_of_dvd (Nat.factorial_pos _)
+    (Nat.factorial_mul_factorial_dvd_factorial_add j k)
 
 omit [NormOneClass A] in
 /-- Taylor polynomials of a bounded generator converge in norm with no

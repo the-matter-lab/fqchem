@@ -97,8 +97,7 @@ theorem precisionBarrier (r : Circuit N B q) (v : B → ℂ) (t ε : ℝ) (few :
     |Real.sin (t/N)|^N ≤ ε := by
   have err (x : Bits N) : ‖(parity x:ℂ)*(evolution t x - star v ⬝ᵥ amplitudes x r)‖ ≤ ε := by
     simpa [norm_mul,parity,Finset.abs_prod,bitSign,apply_ite abs] using accurate x
-  have total := (norm_sum_le _ (fun x : Bits N => (parity x:ℂ)*(evolution t x -
-    star v ⬝ᵥ amplitudes x r))).trans (Finset.sum_le_sum (s:=Finset.univ) (fun x _ => err x))
+  have total := norm_sum_le_of_le Finset.univ fun x _ => err x
   simp only [mul_sub,Finset.sum_sub_distrib,zeroCoefficient r v few,sub_zero,parityCoefficient,
     Finset.sum_const,Finset.card_univ,Fintype.card_pi,Fintype.card_bool,Finset.prod_const,
     Fintype.card_fin,nsmul_eq_mul] at total

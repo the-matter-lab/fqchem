@@ -95,26 +95,23 @@ private theorem optimal {n m} (f : Formula n m) (s : Site → Bool) :
     (∀ w, term s (wireNegative f w) (wirePosition f w) = -1) ∧
     (∀ c : Fin m, rimEnergy s c = -4) := by
   let W := fun w : Wire f => term s (wireNegative f w) (wirePosition f w)
-  have hw (w : Wire f) : 0 ≤ W w + 1 := by have := (wireMinimum (wireNegative f w)
-      (s (wirePosition f w).start) (s (wirePosition f w).finish)).1; change 0 ≤ _ + 1; dsimp [W,term]; omega
+  have hw (w : Wire f) : 0 ≤ W w + 1 :=
+    neg_le_iff_add_nonneg.mp (wireMinimum (wireNegative f w) _ _).1
   have hr (c : Fin m) : 0 ≤ rimEnergy s c + 4 := by
-    rw [rimFormula]; have h := (cycleMinimum (s ⟨c.val*3,0,1⟩) (s ⟨c.val*3+1,0,1⟩)
-      (s ⟨c.val*3+2,0,1⟩) (s ⟨c.val*3,0,2⟩) (s ⟨c.val*3+1,0,2⟩) (s ⟨c.val*3+2,0,2⟩)).1
-    omega
+    rw [rimFormula]
+    exact neg_le_iff_add_nonneg.mp (cycleMinimum ..).1
   have eq : (∑ w, (W w+1)) + (∑ c : Fin m, (rimEnergy s c+4)) = energy f s - target f := by
     simp [W, energy, target, Finset.sum_add_distrib]; ring
   constructor
   · intro h
     have wz := Finset.sum_nonneg (fun w (_ : w ∈ Finset.univ) => hw w)
     have rz := Finset.sum_nonneg (fun c (_ : c ∈ Finset.univ) => hr c)
-    constructor
-    · intro w
-      have := Finset.single_le_sum (fun i (_ : i ∈ Finset.univ) => hw i) (Finset.mem_univ w)
-      change W w = -1
-      linarith [hw w]
-    · intro c
-      have := Finset.single_le_sum (fun i (_ : i ∈ Finset.univ) => hr i) (Finset.mem_univ c)
-      linarith [hr c]
+    have zero := (add_eq_zero_iff_of_nonneg wz rz).mp
+      (le_antisymm (eq.trans_le (sub_nonpos.mpr h)) (add_nonneg wz rz))
+    rw [Finset.sum_eq_zero_iff_of_nonneg (fun i _ => hw i),
+      Finset.sum_eq_zero_iff_of_nonneg (fun i _ => hr i)] at zero
+    exact ⟨fun w => eq_neg_of_add_eq_zero_left (zero.1 w (Finset.mem_univ w)),
+      fun c => eq_neg_of_add_eq_zero_left (zero.2 c (Finset.mem_univ c))⟩
   · rintro ⟨w,r⟩
     simp [energy, w, r, target]
     omega

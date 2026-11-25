@@ -26,7 +26,7 @@ instance : Fintype Pauli := Fintype.ofEquiv (Fin 4) Pauli.index.symm
 
 def Pauli.entry (p : Pauli) (x y : Bool) : ℂ := if y = p.move x then p.phase x else 0
 
-private theorem pauliEntry_conj (p : Pauli) (x y : Bool) :
+theorem pauliEntry_conj (p : Pauli) (x y : Bool) :
     conj (p.entry x y) = p.entry y x := by
   cases p <;> cases x <;> cases y <;> simp [Pauli.entry, Pauli.move, Pauli.phase]
 
@@ -45,7 +45,7 @@ theorem wordEntry_eq (p : Word k) (x y : Spin k) : wordEntry p x y =
   congr 1
   exact propext (funext_iff).symm
 
-private theorem wordEntry_conj (p : Word k) (x y : Spin k) :
+theorem wordEntry_conj (p : Word k) (x y : Spin k) :
     conj (wordEntry p x y) = wordEntry p y x := by
   simp [wordEntry, map_prod, pauliEntry_conj]
 
@@ -221,11 +221,9 @@ private theorem entry_norm_le_one (p : Pauli) (r c : Bool) : ‖p.entry r c‖ �
 
 private theorem dualEntry_norm (p : Word k) (r c : Spin k) : ‖dualEntry p r c‖ ≤ 1 := by
   rw [dualEntry, norm_prod]
-  apply (Finset.prod_le_prod₀ (g := fun _ : Fin k => (1 : ℝ)) (fun _ _ => norm_nonneg _) ?_).trans_eq (by simp)
-  intro i _
-  rw [norm_div, Complex.norm_conj]
-  norm_num
-  linarith [entry_norm_le_one (p i) (r i) (c i)]
+  refine Finset.prod_le_one₀ (fun _ _ => norm_nonneg _) fun i _ => ?_
+  rw [norm_div, Complex.norm_conj, Complex.norm_two]
+  exact (half_le_self (norm_nonneg _)).trans (entry_norm_le_one (p i) (r i) (c i))
 
 /-- A simple bound for the encoded penalty in terms of the supplied local
 matrix entries. For fixed k the factor multiplying m B is constant. -/
@@ -234,25 +232,21 @@ theorem localExpansion_strength (t : Fin m → LocalTerm n) (k : ℕ) (B : ℝ)
     strength (localCoefficients t) ≤ (m * 4^k : ℕ) * ((2^k : ℝ) * (2^k * B)) := by
   have bound (j : Fin m) (p : Word (t j).arity) : ‖pauliCoefficient (t j).table p‖ ≤
       (2^k : ℝ) * (2^k * B) := by
-    have hc : (2 : ℝ)^(t j).arity ≤ 2^k := by exact_mod_cast Nat.pow_le_pow_right (by decide : 0 < 2) (hk j)
+    have hc : (2 : ℝ)^(t j).arity ≤ 2^k := pow_le_pow_right₀ (by norm_num) (hk j)
     calc
       _ ≤ ∑ r, ∑ c, B := by
-        apply (norm_sum_le _ _).trans
-        apply Finset.sum_le_sum
-        intro r _
-        apply (norm_sum_le _ _).trans
-        apply Finset.sum_le_sum
-        intro c _
+        refine norm_sum_le_of_le Finset.univ fun r _ => ?_
+        refine norm_sum_le_of_le Finset.univ fun c _ => ?_
         rw [norm_mul]
-        exact (mul_le_mul (h j r c) (dualEntry_norm p r c) (norm_nonneg _) hB).trans_eq (mul_one _)
+        exact (mul_le_of_le_one_right (norm_nonneg _) (dualEntry_norm p r c)).trans (h j r c)
       _ = (2:ℝ)^(t j).arity * (2^(t j).arity * B) := by simp [Spin]
-      _ ≤ _ := by gcongr
+      _ ≤ _ := mul_le_mul hc (mul_le_mul_of_nonneg_right hc hB) (by positivity) (by positivity)
   have each (u) : |localCoefficients t u| ≤ (2^k : ℝ) * (2^k * B) :=
     (Complex.abs_re_le_norm _).trans (bound _ (expansionIndex t u).2)
   calc
     _ ≤ ∑ u : Fin (Fintype.card (ExpansionIndex t)), (2^k : ℝ) * (2^k * B) :=
       Finset.sum_le_sum (fun u _ => each u)
-    _ = (Fintype.card (ExpansionIndex t) : ℝ) * (2^k * (2^k * B)) := by rw [Finset.sum_const]; simp
+    _ = (Fintype.card (ExpansionIndex t) : ℝ) * (2^k * (2^k * B)) := by simp
     _ ≤ _ := mul_le_mul_of_nonneg_right (by exact_mod_cast (localExpansion_size t k hk).1) (by positivity)
 
 end FQChem.Complexity.ElectronicStructure

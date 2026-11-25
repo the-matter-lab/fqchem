@@ -65,13 +65,13 @@ def blockMean (f : S → ℝ) (v : Fin N → S) : ℝ := (N : ℝ)⁻¹ * ∑ i,
 def median (hK : 0 < K) (v : Fin K → ℝ) : ℝ :=
   v (Tuple.sort v ⟨K / 2, by omega⟩)
 
-private theorem blockFailure (D : Blocks μ S N K) (f : S → ℝ) (mf : Measurable f)
+/-- Chebyshev bound for a mean of independent records with a common variance bound. -/
+theorem blockChebyshev (D : Blocks μ S N K) (f : S → ℝ) (mf : Measurable f)
     (b : Fin K) (m V ε : ℝ) (hN : 0 < N) (hε : 0 < ε)
     (lp : ∀ i, MemLp (fun ω => f (D.record b ω i)) 2 μ)
     (avg : ∀ i, (∫ ω, f (D.record b ω i) ∂μ) = m)
-    (var : ∀ i, variance (fun ω => f (D.record b ω i)) μ ≤ V)
-    (budget : 34 * V ≤ (N : ℝ) * ε^2) :
-    μ.real {ω | ε ≤ |blockMean f (D.record b ω) - m|} ≤ 1/34 := by
+    (var : ∀ i, variance (fun ω => f (D.record b ω i)) μ ≤ V) :
+    μ.real {ω | ε ≤ |blockMean f (D.record b ω) - m|} ≤ V / ((N : ℝ) * ε^2) := by
   let X := fun i : Fin N => fun ω => f (D.record b ω i)
   let total : Ω → ℝ := ∑ i, X i
   have vtotal : variance total μ ≤ N * V := by
@@ -84,10 +84,7 @@ private theorem blockFailure (D : Blocks μ S N K) (f : S → ℝ) (mf : Measura
     simp only [integral_const_mul, total, Finset.sum_apply]
     rw [integral_finsetSum _ fun i _ => (lp i).integrable (by norm_num)]
     simp [avg, hNr.ne']
-  have lpTotal : MemLp total 2 μ := by
-    convert! memLp_finsetSum Finset.univ (fun i _ => lp i) using 1
-    ext ω
-    simp [total, X, Finset.sum_apply]
+  have lpTotal : MemLp total 2 μ := memLp_finsetSum' Finset.univ (fun i _ => lp i)
   have cheb := meas_ge_le_variance_div_sq (lpTotal.const_mul (N : ℝ)⁻¹) hε
   rw [meanB] at cheb
   have realCheb := ENNReal.toReal_mono ENNReal.ofReal_ne_top cheb
@@ -100,7 +97,17 @@ private theorem blockFailure (D : Blocks μ S N K) (f : S → ℝ) (mf : Measura
   calc
     _ ≤ (N : ℝ)⁻¹ ^ 2 * (N * V) / ε^2 := by gcongr
     _ = V / ((N : ℝ) * ε^2) := by field_simp
-    _ ≤ 1/34 := by apply (div_le_div_iff₀ (by positivity) (by norm_num)).mpr; linarith
+
+private theorem blockFailure (D : Blocks μ S N K) (f : S → ℝ) (mf : Measurable f)
+    (b : Fin K) (m V ε : ℝ) (hN : 0 < N) (hε : 0 < ε)
+    (lp : ∀ i, MemLp (fun ω => f (D.record b ω i)) 2 μ)
+    (avg : ∀ i, (∫ ω, f (D.record b ω i) ∂μ) = m)
+    (var : ∀ i, variance (fun ω => f (D.record b ω i)) μ ≤ V)
+    (budget : 34 * V ≤ (N : ℝ) * ε^2) :
+    μ.real {ω | ε ≤ |blockMean f (D.record b ω) - m|} ≤ 1/34 := by
+  refine (blockChebyshev D f mf b m V ε hN hε lp avg var).trans ?_
+  apply (div_le_div_iff₀ (by positivity) (by norm_num)).mpr
+  simpa only [one_mul, mul_comm V] using budget
 
 /-- An upper median outside the accuracy interval requires at least ⌈K/2⌉ bad blocks. -/
 private theorem medianWitness (hK : 0 < K) (v : Fin K → ℝ) (m ε : ℝ)

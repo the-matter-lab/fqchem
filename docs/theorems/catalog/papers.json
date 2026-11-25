@@ -19,6 +19,18 @@
     "authors": "Cai et al. (2020)",
     "title": "Quantum computation of molecular response properties"
   },
+  "https://arxiv.org/abs/2206.15393": {
+    "authors": "Nam (2022)",
+    "title": "The ionization problem in quantum mechanics"
+  },
+  "https://arxiv.org/abs/2409.08632": {
+    "authors": "Di Marino, Lewin & Nenna (2024)",
+    "title": "Ground state energy is not always convex in the number of electrons"
+  },
+  "https://arxiv.org/abs/2610.34480": {
+    "authors": "Hofacker (2026)",
+    "title": "Rigorous Lower Bounds for Atomic and Ionic Ground-State Energies"
+  },
   "https://arxiv.org/abs/2611.09773": {
     "authors": "Turturean (2026)",
     "title": "A proof of the Aaronson-Ambainis conjecture"

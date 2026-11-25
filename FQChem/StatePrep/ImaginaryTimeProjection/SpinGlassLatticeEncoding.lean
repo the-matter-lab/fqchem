@@ -131,24 +131,19 @@ private theorem permitted {n m} (f : Formula n m) (e : Edge f) : (slot f e).1 �
 
 theorem sparseBonds {n m} (f : Formula n m) :
     (model f).bonds = Finset.univ.image (bondMask f) := by
-  ext mask
-  change mask ∈ Finset.image _ (Finset.filter _ Finset.univ) ↔ _
-  constructor
-  · rintro hm
-    obtain ⟨⟨p,d⟩,hp,rfl⟩ := Finset.mem_image.mp hm
-    have on := (Finset.mem_filter.mp hp).2.1
-    change decide ((p,d) ∈ Finset.univ.image (slot f)) = true at on
-    obtain ⟨e,_,he⟩ := Finset.mem_image.mp (of_decide_eq_true on)
-    obtain rfl : p = (slot f e).1 := (congrArg Prod.fst he).symm
-    obtain rfl : d = (slot f e).2 := (congrArg Prod.snd he).symm
-    refine Finset.mem_image.mpr ⟨e,Finset.mem_univ _,?_⟩
-    simp only [slot, bondMask, forwardStep _ _ (bounds f e).2]
-  · intro hm
-    obtain ⟨e,_,rfl⟩ := Finset.mem_image.mp hm
-    refine Finset.mem_image.mpr ⟨slot f e,Finset.mem_filter.mpr ⟨Finset.mem_univ _,?_,permitted f e⟩,?_⟩
-    · change decide ((slot f e) ∈ Finset.univ.image (slot f)) = true
-      simp
-    · simp only [slot, bondMask, forwardStep _ _ (bounds f e).2]
+  have active : Finset.univ.filter (fun p : Grid n m × Fin 3 =>
+      occupied f p.1 p.2 ∧ p.1 ≠ forward p.1 p.2) = Finset.univ.image (slot f) := by
+    ext p
+    simp only [Finset.mem_filter, Finset.mem_univ, true_and, occupied, decide_eq_true_eq]
+    exact and_iff_left_of_imp fun h => by
+      change p ∈ Finset.univ.image (slot f) at h
+      obtain ⟨e, _, rfl⟩ := Finset.mem_image.mp h
+      exact permitted f e
+  change Finset.image _ (Finset.filter _ Finset.univ) = _
+  rw [active, Finset.image_image]
+  apply Finset.image_congr
+  intro e _
+  simp only [Function.comp_apply, slot, bondMask, forwardStep _ _ (bounds f e).2]
 
 theorem compiledBondCount {n m} (f : Formula n m) :
     (model f).bonds.card = Fintype.card (Edge f) := by

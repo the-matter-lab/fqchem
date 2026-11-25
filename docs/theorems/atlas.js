@@ -307,6 +307,10 @@ function showPanel(resetScroll=true) {
       const status=active.status==="hypothesis" ? "Hypothesis in the literature · mathematical proof needed" :
         "Proof in the paper · Lean proof needed in fqchem";
       panel.append(html("p","review-status",status),html("p","locator",active.locator));
+      if(active.statementUrl) {
+        const source=html("a","source-link","Open conjecture in Lean");
+        source.href=active.statementUrl; source.append(icon("ext")); panel.append(source);
+      }
     } else {
       panel.append(html("p","review-status","Lean checked · "+atlasLiterature.relations[review.relation]));
       const source=html("a","source-link","Open Lean declaration"); source.href=active.url; source.append(icon("ext"));

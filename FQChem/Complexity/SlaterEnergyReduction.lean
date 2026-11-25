@@ -40,11 +40,8 @@ theorem independent_upper (G : SimpleGraph (Fin n)) (hn : 0<n) (S : Finset (Fin 
   let s := polarized S hk
   have hR := four_le_spacing hn
   have npos : (0:ℝ)<n := by exact_mod_cast hn
-  have ud := polarized_zero G 1 1 S hk hind
-  change (1:ℝ)*(doubles s.val).card + 1*(pairs G s.val).card = 0 at ud
-  have empty : doubles s.val = ∅ := Finset.card_eq_zero.mp (by
-    have h : ((doubles s.val).card:ℝ)=0 := by linarith [Nat.cast_nonneg (α:=ℝ) (pairs G s.val).card]
-    exact_mod_cast h)
+  have empty : doubles s.val = ∅ := by
+    simpa [cost, s] using polarized_zero G 1 0 S hk hind
   have one (p) (hp : p ∈ offsite s) :
       direct G (spacing n) (vertex p.1) (vertex p.2) ≤ 1/((spacing n:ℝ)-2) := by
     have ⟨inside,lt⟩ := Finset.mem_filter.mp hp

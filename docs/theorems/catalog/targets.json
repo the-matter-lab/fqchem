@@ -117,6 +117,7 @@
   },
   {
     "id": "lee-coupled-cluster-scaling",
+    "statement": "FQChem.Unproven.CoupledCluster.PolynomialWork",
     "title": "Single-reference coupled-cluster scaling",
     "chapter": "StatePrep",
     "status": "hypothesis",
@@ -124,12 +125,37 @@
       "https://doi.org/10.1038/s41467-023-37587-6"
     ],
     "locator": "Single-reference coupled-cluster discussion at Fig. 3A · Supplementary §§S2.7, S5",
-    "scope": "Lee et al. propose poly(L)·poly(1/ε) effort for coupled cluster to reach energy error ε on single-reference problems, with L measuring system size. The argument uses empirical excitation-rank convergence for N₂ and extensivity for noninteracting replicas. Uniform input-class, convergence and iteration guarantees remain to be established.",
+    "scope": "Lee et al. propose poly(L)·poly(1/ε) effort for coupled cluster to reach energy error ε on single-reference problems, with L measuring system size. The argument uses empirical excitation-rank convergence for N₂ and extensivity for noninteracting replicas. The Lean statement fixes the promised family and costed solver, uses occupied-to-virtual cluster excitations, and asks for uniform exponents in size and inverse absolute energy error.",
     "related": [
       "FQChem.StatePrep.CoupledClusterReplicas.replicaScaling",
       "FQChem.VariationalMethods.coupledCluster",
       "FQChem.StatePrep.TruncationScaling.fixedRankBoundsDoNotGiveJointPolynomial"
     ]
+  },
+  {
+    "id": "atomic-energy-convexity",
+    "title": "Atomic energy convexity in electron number",
+    "chapter": "Properties",
+    "status": "hypothesis",
+    "statement": "FQChem.Unproven.AtomicEnergy.ElectronNumberConvexity",
+    "papers": [
+      "https://arxiv.org/abs/2409.08632",
+      "https://arxiv.org/abs/2610.34480"
+    ],
+    "locator": "Di Marino et al., Eq. (4) · Hofacker, Appendix C, Eq. (63)",
+    "scope": "At fixed positive integer nuclear charge, twice the ground energy of the N-electron Coulomb atom should be at most the sum for N−1 and N+1 electrons. The variational definition includes both spin states and simultaneous fermionic exchange. The six-centre counterexample concerns a different external potential.",
+    "related": ["FQChem.Properties.AtomicBinding.consecutiveBinding_of_convexity"]
+  },
+  {
+    "id": "atomic-consecutive-binding",
+    "title": "Consecutive electron binding in atoms",
+    "chapter": "Properties",
+    "status": "hypothesis",
+    "statement": "FQChem.Unproven.AtomicEnergy.ConsecutiveBinding",
+    "papers": ["https://arxiv.org/abs/2206.15393"],
+    "locator": "Discussion after Conjecture 3",
+    "scope": "For a single positive integer-charge nucleus, strict binding of N+1 electrons should imply strict binding of N, for N ≥ 1. Each binding test compares successive many-electron ground energies at the same nuclear charge.",
+    "related": ["FQChem.Properties.AtomicBinding.consecutiveBinding_of_convexity"]
   },
   {
     "id": "hhl-linear-system-runtime",

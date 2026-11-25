@@ -36,11 +36,7 @@ theorem identityMatrix : wordMatrix (identityWord n) = 1 := by
   simp [identityWord, logicalMove, logicalPhase, Pauli.move, Pauli.phase, Matrix.one_apply, eq_comm]
 
 theorem pauliHermitian (p : Word n) : (wordMatrix p).IsHermitian := by
-  ext i j
-  change conj (wordEntry p j i) = wordEntry p i j
-  have localH (q : Pauli) (a b : Bool) : conj (q.entry a b) = q.entry b a := by
-    cases q <;> cases a <;> cases b <;> simp [Pauli.entry, Pauli.move, Pauli.phase]
-  simp [wordEntry, localH]
+  exact Matrix.ext fun i j => wordEntry_conj p j i
 
 theorem pauliSquare (p : Word n) : wordMatrix p * wordMatrix p = 1 := by
   have single (q : Pauli) (x y : Bool) :

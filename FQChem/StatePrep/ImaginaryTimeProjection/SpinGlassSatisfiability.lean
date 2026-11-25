@@ -59,12 +59,12 @@ theorem maskUnordered {n} {a b c d : Fin n} (hab : a ≠ b)
   have hb : b=c ∨ b=d := by simpa [pairMask] using (congrFun h b).symm
   grind
 
-set_option maxHeartbeats 1000000 in
 private theorem maskInjective {n m} (f : Formula n m) : Function.Injective (mask f) := by
   rintro ⟨c,i⟩ ⟨d,j⟩ h
   have h' := maskUnordered ((vertexIndex n m).injective.ne (distinctEnds f c i)) h
+  clear h
   simp only [Equiv.apply_eq_iff_eq] at h'
-  fin_cases i <;> fin_cases j <;> simp_all [endpoints]
+  fin_cases i <;> fin_cases j <;> simp [endpoints] at h' ⊢ <;> tauto
 
 noncomputable def glass {n m} (f : Formula n m) : Glass (n + m*3) where
   bonds := Finset.univ.image (mask f)

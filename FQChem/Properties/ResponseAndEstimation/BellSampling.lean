@@ -1,7 +1,6 @@
 module
 
 public import FQChem.Complexity.ElectronicStructurePauli
-import all FQChem.Complexity.ElectronicStructurePauli
 import Mathlib.Tactic
 
 /-!
@@ -40,9 +39,10 @@ def readout (p : Pauli) (b : Bell) : ℂ :=
 
 theorem bellResolution (p : Pauli) (r u c v : Bool) :
     ∑ b : Bell, projector b r u c v * readout p b = p.entry r c * p.entry u v := by
-  cases p <;> cases r <;> cases u <;> cases c <;> cases v <;>
-    norm_num [Fintype.sum_prod_type, Fintype.sum_bool, projector, readout, sign,
-      Pauli.entry, Pauli.phase, Pauli.move, Complex.I_mul_I]
+  simp only [Fintype.sum_prod_type, Fintype.sum_bool]
+  cases r <;> cases u <;> cases c <;> cases v <;> dsimp [projector, sign] <;>
+    cases p <;> dsimp [readout, sign, Pauli.entry, Pauli.move, Pauli.phase] <;>
+    norm_num [Complex.I_mul_I]
 
 variable {n : ℕ}
 

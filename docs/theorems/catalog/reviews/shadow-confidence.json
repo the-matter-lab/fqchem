@@ -13,13 +13,14 @@
   {
     "module": "FQChem.Properties.ResponseAndEstimation.ShadowConfidence",
     "names": [
+      "blockChebyshev",
       "blockFailure"
     ],
     "papers": [
       "https://doi.org/10.1038/s41567-020-0932-7"
     ],
     "relation": "supporting",
-    "scope": "Under independence, Nε²≥34V and single-shot variance at most V give block failure probability at most 1/34 by Chebyshev."
+    "scope": "For independent shots with a common mean and variance at most V, Chebyshev bounds the batch failure probability by V/(Nε²). When Nε² ≥ 34V this gives the 1/34 bound used for median amplification."
   },
   {
     "module": "FQChem.Properties.ResponseAndEstimation.ShadowConfidence",

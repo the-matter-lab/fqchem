@@ -79,6 +79,18 @@ theorem evolved_action (E : Matrix K J ℂ) (iso : IsIsometry E) (H : Matrix J J
     hamiltonianEvolution (pad E H) t * E = E * hamiltonianEvolution H t :=
   exp_action E _ _ (by rw [Matrix.smul_mul,Matrix.mul_smul,pad_action E iso])
 
+private theorem unpad_error (s : I ↪ L) (A : Matrix L L ℂ) (H : Matrix I I ℂ) (t : ℝ) :
+    ‖compress (coord s) A (coord s) - hamiltonianEvolution H t‖ ≤
+      ‖A - hamiltonianEvolution (pad (coord s) H) t‖ := by
+  have iso : (coord s)ᴴ * coord s = 1 := coord_iso s
+  have evolved : compress (coord s) (hamiltonianEvolution (pad (coord s) H) t) (coord s) =
+      hamiltonianEvolution H t := by
+    rw [compress, Matrix.mul_assoc, evolved_action _ (coord_iso s), ← Matrix.mul_assoc,
+      iso, Matrix.one_mul]
+  rw [← evolved]
+  simpa only [compress, Matrix.mul_sub, Matrix.sub_mul] using
+    compress_norm_le (coord_iso s) (coord_iso s) (A - hamiltonianEvolution (pad (coord s) H) t)
+
 /-- A physical binary register of the ceiling-logarithmic width contains an
 injective labeling of every logical basis element. -/
 def physicalBasis (X : Type) [Fintype X] : X ↪ Reg (Nat.clog 2 (Fintype.card X)) :=
@@ -123,11 +135,9 @@ def preparation (z : J) (G : Matrix J J ℂ) := TensorGate G (1:Matrix I I ℂ) 
 
 private theorem prep_iso (z : J) {G : Matrix J J ℂ} (h : G ∈ Matrix.unitaryGroup J ℂ) :
     IsIsometry (preparation (I:=I) z G) := by
-  have unit : (TensorGate G (1:Matrix I I ℂ))ᴴ * TensorGate G 1 = 1 :=
-    (Matrix.mem_unitaryGroup_iff').mp (tensorGate_unitary h (Submonoid.one_mem _))
-  unfold preparation IsIsometry
-  rw [Matrix.conjTranspose_mul,Matrix.mul_assoc,← Matrix.mul_assoc (TensorGate G _)ᴴ,unit,Matrix.one_mul]
-  exact encodingFiber_isIsometry _
+  exact IsIsometry.mul
+    ((Matrix.mem_unitaryGroup_iff').mp (tensorGate_unitary h (Submonoid.one_mem _)))
+    (encodingFiber_isIsometry z)
 
 theorem padded_signal (j : J ↪ K) (s : I ↪ L) (z : J) (G : Matrix J J ℂ)
     (U : Matrix (J × I) (J × I) ℂ) (hG : G ∈ Matrix.unitaryGroup J ℂ) :
@@ -188,15 +198,7 @@ theorem finiteSimulation (z : J) (two : 1 < Fintype.card I) (t ε : ℝ) (positi
   have out := corr (pad (coord j) G) (pad Z U) (pad E H)
     (pad_unit _ (coord_iso j) hG) (pad_unit _ (coord_iso _) hU) (pad_hermitian _ hH)
     ((padded_signal j s z G U hG).trans (congrArg (pad E) signal))
-  have unpad : compress E (hamiltonianEvolution (pad E H) t) E = hamiltonianEvolution H t := by
-    have iso : Eᴴ*E=1 := coord_iso _
-    rw [compress,Matrix.mul_assoc,evolved_action _ (coord_iso _),← Matrix.mul_assoc,iso,Matrix.one_mul]
-  have eq : compress E (compress R M R - hamiltonianEvolution (pad E H) t) E =
-      compress E (compress R M R) E - hamiltonianEvolution H t := by
-    simpa only [compress,Matrix.mul_sub,Matrix.sub_mul] using congrArg (fun V => compress E (compress R M R) E - V) unpad
-  refine ⟨?_,fun ψ hψ => out.2 _ (Qatlib.Concepts.BlockEncoding.Postselection.Encoding.IsIsometry.normalized_mulVec (coord_iso s) hψ)⟩
-  change ‖compress E (compress R M R) E - hamiltonianEvolution H t‖ ≤ _
-  rw [← eq]
-  exact (compress_norm_le (coord_iso _) (coord_iso _) _).trans out.1
+  exact ⟨(unpad_error s (compress R M R) H t).trans out.1,
+    fun ψ hψ => out.2 _ (Qatlib.Concepts.BlockEncoding.Postselection.Encoding.IsIsometry.normalized_mulVec (coord_iso s) hψ)⟩
 
 end FQChemQatlib.Dynamics.LowChuang.Padding

@@ -34,7 +34,6 @@ def testAncilla (zero : J) : Equiv.Perm (Signals J I) where
 def flagsPhase (z : ℂ) : Matrix (Signals J I) (Signals J I) ℂ :=
   diagonal (fun x => if x.1 then if x.2.1 then star z else z else 1)
 
-set_option maxHeartbeats 2400000 in
 /-- A phase about the fiber costs two tests of the ancilla and a single
 two-qubit diagonal gate, independently of the phase angle. -/
 theorem fiberPhase_sandwich (zero : J) (z : ℂ) :
@@ -49,10 +48,21 @@ theorem fiberPhase_sandwich (zero : J) (z : ℂ) :
   simp only [Equiv.apply_eq_iff_eq]
   rcases x with ⟨a,b,j,i⟩
   rcases y with ⟨a',b',j',i'⟩
-  by_cases ej : j=j' <;> by_cases ei : i=i' <;> by_cases hj : j=zero <;>
-    cases a <;> cases a' <;> cases b <;> cases b' <;>
-    simp_all [testAncilla,controlOracle,select,phaseRotation,fiberProjector_apply,
-      Matrix.one_apply,conjugateParallelPhase]
+  by_cases outer : a = a'
+  · subst a'
+    cases a
+    · simp [controlOracle, select, Matrix.one_apply, testAncilla]
+    · by_cases inner : b = b'
+      · subst b'
+        by_cases same : (j, i) = (j', i')
+        · obtain ⟨rfl, rfl⟩ := Prod.mk.inj same
+          cases b <;> by_cases selected : j = zero <;>
+            simp [controlOracle, select, phaseRotation, fiberProjector_apply,
+              Matrix.one_apply, conjugateParallelPhase, testAncilla, selected]
+        · have off : ¬(j = j' ∧ i = i') := fun h => same (Prod.ext h.1 h.2)
+          simp [controlOracle, select, phaseRotation, fiberProjector_apply, Matrix.one_apply, off]
+      · simp [controlOracle, select, inner]
+  · simp [controlOracle, select, outer]
 
 /-- The globally phased double average has a real Hadamard on each of the two
 flags. This matrix acts only on those flags. -/
@@ -91,12 +101,9 @@ private theorem H_unit : flagsHadamard (I:=I) (J:=J) ∈ Matrix.unitaryGroup _ �
 theorem zero_projector (zero : J) : rangeProjector (flagsZero (I:=I) zero) =
     Matrix.diagonal (fun x : Signals J I => if x.1=false ∧ x.2.1=false ∧ x.2.2.1=zero then 1 else 0) := by
   ext ⟨a,b,j,i⟩ ⟨a',b',j',i'⟩
-  by_cases ea : a=false <;> by_cases eb : b=false <;>
-    by_cases ea' : a'=false <;> by_cases eb' : b'=false <;>
-    by_cases ej : j=zero <;> by_cases ej' : j'=zero <;>
-    simp_all [rangeProjector,Matrix.mul_apply,flagsZero,coordinatePhaseFrame_apply,
-      encodingFiber,Matrix.conjTranspose_apply,Matrix.diagonal_apply,ite_and]
-  grind
+  simp [rangeProjector, Matrix.mul_apply, flagsZero, coordinatePhaseFrame_apply,
+    encodingFiber, Matrix.conjTranspose_apply, Matrix.diagonal_apply, ite_and]
+  split_ifs <;> simp_all
 
 /-- The cubic gates reduce to two Hadamards on either side of a basis
 reflection and a register-independent scalar. The test fixes the two signal

@@ -27,10 +27,7 @@ theorem subtractMod_spec (w N u p : ℕ) (hN : 0 < N) (hw : N < 2^w)
     (subtractMod w N u p).1 = (u + N - p) % N ∧
       (subtractMod w N u p).2 ≤ 22*(w+1)^2 := by
   have wide : 2^(w+1) = 2^w*2 := pow_succ ..
-  have ⟨_,sg,sc⟩ := ripple_spec false (w+1) u N false (by omega) (by omega)
-  simp only [Bool.false_eq_true, ite_false, Bool.toNat_false, Nat.add_zero] at sc
-  have sval : (ripple false (w+1) u N false).word = u+N := by
-    cases h : (ripple false (w+1) u N false).carry <;> simp [h] at sc <;> omega
+  obtain ⟨sval, sg⟩ := add_word (w+1) u N (by omega)
   have ⟨db,dg,dc⟩ := ripple_spec true (w+1) (u+N) p true (by omega) (by omega)
   simp only [ite_true, Bool.toNat_true] at dc
   have dval : (ripple true (w+1) (u+N) p true).word = u+N-p := by

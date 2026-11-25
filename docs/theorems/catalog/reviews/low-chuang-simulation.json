@@ -250,6 +250,7 @@
       "compiles_emits",
       "scalar_pair",
       "scalar_flags",
+      "frameGate_emits_of_cubic",
       "frameGate_emits",
       "fixed_program",
       "expand"
@@ -282,6 +283,7 @@
       "pad_hermitian",
       "exp_action",
       "evolved_action",
+      "unpad_error",
       "mul_coord",
       "star_coord_mul",
       "frame_entry",
@@ -310,7 +312,8 @@
     "module": "FQChemQatlib.Dynamics.LowChuangReadout",
     "names": [
       "coordinate_iso",
-      "coordinate_acts"
+      "coordinate_acts",
+      "coordinate_program"
     ],
     "papers": [
       "https://doi.org/10.22331/q-2019-07-12-163"
@@ -432,6 +435,20 @@
     ],
     "relation": "derived",
     "scope": "One fixed unitary reads two p-bit offset-binary Cartesian coordinates and encodes (x+iy)/2 exactly as its diagonal amplitude with workspace initialized to zero. The circuit uses at most 190p+4 addressed one- or two-qubit gates on 5p+3 wires. This is the binary-value decoder layer for the sparse simulation proof."
+  },
+  {
+    "module": "Qatlib.Concepts.BlockEncoding.EncodingCore.AncillaErrorLaws",
+    "names": ["Qatlib.Concepts.BlockEncoding.EncodingCore.IsIsometry.mul"],
+    "papers": ["https://doi.org/10.22331/q-2019-07-12-163"],
+    "relation": "supporting",
+    "scope": "The matrix product of two compatible isometries is an isometry. This composes preparation with the coordinate embedding in the padded block encoding."
+  },
+  {
+    "module": "Qatlib.Concepts.QsvtCore.LinearSystems.FiniteInversePhaseProgram",
+    "names": ["coordinatePhaseFrame_isometry"],
+    "papers": ["https://doi.org/10.22331/q-2019-07-12-163"],
+    "relation": "supporting",
+    "scope": "Extending an isometric frame by a coordinate flag preserves its inner products. The two-flag computational readout applies this fact twice."
   },
   {
     "module": "Qatlib.Concepts.BlockEncoding.Basic",

@@ -28,6 +28,10 @@ run_cmd do
     if `FQChem |>.isPrefixOf name then
       match info with
       | .axiomInfo _ => throwError "Unexpected axiom {name}"
+      | .defnInfo _ =>
+        if `FQChem.Unproven |>.isPrefixOf name then
+          let extra := (← Lean.collectAxioms name).filter (!allowed.contains ·)
+          unless extra.isEmpty do throwError "Conjecture definition {name} depends on {extra}"
       | .thmInfo _ =>
         let extra := (← Lean.collectAxioms name).filter (!allowed.contains ·)
         unless extra.isEmpty do throwError "{name} depends on {extra}"

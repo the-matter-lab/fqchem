@@ -26,6 +26,7 @@ globs = [
   "FQChem.Dynamics.*",
   "FQChem.Properties.*",
   "FQChem.Multiscale.*",
+  "FQChem.Unproven.*",
 ]
 
 [[lean_lib]]

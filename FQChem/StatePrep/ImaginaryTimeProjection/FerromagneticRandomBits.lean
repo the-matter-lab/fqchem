@@ -114,12 +114,12 @@ theorem finiteStepError {m : ℕ} {α : Type*} (bits : ℕ) (hm : 0 < m)
   have split : (m:ℝ)*Q+R=D := by dsimp [Q,R,D]; exact_mod_cast Nat.div_add_mod (2^bits) m
   have rem : R ≤ m := by dsimp [R]; exact_mod_cast (Nat.mod_lt (2^bits) hm).le
   have rem0 : 0 ≤ R := by dsimp [R]; positivity
-  have qp : 0 ≤ Q := by dsimp [Q]; positivity
-  have bounds (e : Fin m) := acceptanceError bits w (v e) hw
-  have prob (e : Fin m) : 0 ≤ p e ∧ p e ≤ 1 := by
-    dsimp [p]
-    refine ⟨by positivity, (div_le_one (by positivity : 0 < 2*(w:ℝ))).mpr ?_⟩
-    linarith [min_le_left (w:ℝ) (v e)]
+  -- Only complete batches propose a move; the residual edge strings stay put.
+  let batchMass := (m : ℝ) * Q / D
+  have totalMass : batchMass + R/D = 1 := by
+    dsimp only [batchMass]
+    rw [← add_div, split, div_self dp.ne']
+  have mass_le_one : batchMass ≤ 1 := totalMass ▸ le_add_of_nonneg_right (div_nonneg rem0 dp.le)
   have coin (e : Fin m) : (∑ i, f (if accepts bits w (v e) i then move e else stay)) =
       D * (f stay + q e*diff e) := by
     simp only [apply_ite f]
@@ -142,46 +142,44 @@ theorem finiteStepError {m : ℕ} {α : Type*} (bits : ℕ) (hm : 0 < m)
     field_simp
   have idealForm : ideal = (∑ e, (f stay+p e*diff e))/m := by
     dsimp only [ideal]; congr 1; apply Finset.sum_congr rfl; intro e _; dsimp [diff]; ring
-  let rounded := (∑ e, (f stay+q e*diff e))/m
-  have averaged : |rounded-ideal| ≤ 1/D := by
-    dsimp only [rounded]; rw [idealForm,← sub_div,abs_div,abs_of_pos mp,← Finset.sum_sub_distrib]
-    apply (div_le_iff₀ mp).mpr
-    calc _ ≤ _ := Finset.abs_sum_le_sum_abs _ _
-         _ ≤ ∑ _e : Fin m, (1/D) := by
-            apply Finset.sum_le_sum
-            intro e _
-            rw [add_sub_add_left_eq_sub,← sub_mul,abs_mul]
-            have gap : |q e-p e| ≤ 1/D := by
-              rw [abs_of_nonpos (sub_nonpos.mpr (bounds e).1)]
-              linarith [(bounds e).2]
-            have diffBound : |diff e| ≤ 1 := abs_le.mpr
-              ⟨by dsimp [diff]; linarith [(bound (move e)).1,(bound stay).2],
-               by dsimp [diff]; linarith [(bound (move e)).2,(bound stay).1]⟩
-            exact (mul_le_mul gap diffBound (abs_nonneg _) (by positivity)).trans_eq (mul_one _)
-         _ = _ := by simp [mul_comm]
-  have idealBounds : 0 ≤ ideal ∧ ideal ≤ 1 := by
-    have each (e : Fin m) : 0 ≤ (1-p e)*f stay+p e*f (move e) ∧ (1-p e)*f stay+p e*f (move e) ≤ 1 := by
-      have l := (prob e).1
-      have r := sub_nonneg.mpr (prob e).2
-      exact ⟨add_nonneg (mul_nonneg r (bound _).1) (mul_nonneg l (bound _).1), by
-        nlinarith [mul_nonneg r (sub_nonneg.mpr (bound stay).2),mul_nonneg l (sub_nonneg.mpr (bound (move e)).2)]⟩
-    refine ⟨div_nonneg (Finset.sum_nonneg (fun e _ => (each e).1)) mp.le,(div_le_one mp).mpr ?_⟩
-    simpa using Finset.sum_le_sum (s:=Finset.univ) (fun e _ => (each e).2)
-  have coeff : (m:ℝ)*Q/D + R/D = 1 := by rw [← add_div,split,div_self dp.ne']
-  have mix : sampled-ideal = ((m:ℝ)*Q/D)*(rounded-ideal) + (R/D)*(f stay-ideal) := by
-    rw [eqSample]
-    dsimp only [rounded]
-    field_simp
-    nlinarith only [congrArg (· * (ideal*D)) split,congrArg (· * ideal) split,
-      congrArg (· * (m*ideal)) split]
-  rw [mix]
-  apply (abs_add_le _ _).trans
-  rw [abs_mul,abs_mul,abs_of_nonneg (by positivity : 0 ≤ (m:ℝ)*Q/D),abs_of_nonneg (div_nonneg rem0 dp.le)]
-  have result : |f stay-ideal| ≤ 1 := abs_le.mpr ⟨by linarith [(bound stay).1,idealBounds.2],by linarith [(bound stay).2,idealBounds.1]⟩
-  calc _ ≤ (1:ℝ)*(1/D) + ((m:ℝ)/D)*1 := by
-          exact add_le_add (mul_le_mul (by linarith [div_nonneg rem0 dp.le] : (m:ℝ)*Q/D ≤ 1) averaged
-            (abs_nonneg _) zero_le_one) (mul_le_mul (div_le_div_of_nonneg_right rem dp.le) result (abs_nonneg _) (by positivity))
-       _ = _ := by ring
+  -- Centering at the stay outcome leaves only the change in the move probabilities.
+  have centered : sampled-ideal = (∑ e, (batchMass*q e-p e)*diff e)/m := by
+    rw [eqSample, idealForm]
+    simp_rw [sub_mul, mul_assoc batchMass]
+    simp only [Finset.sum_add_distrib, Finset.sum_sub_distrib, ← Finset.mul_sum,
+      Finset.sum_const, Finset.card_univ, Fintype.card_fin, nsmul_eq_mul]
+    dsimp only [batchMass]
+    field_simp [mp.ne', dp.ne']
+    linear_combination f stay * (m:ℝ) * split
+  have loss (e : Fin m) : |batchMass*q e-p e| ≤ ((m:ℝ)+1)/D := by
+    obtain ⟨lower, upper⟩ := acceptanceError bits w (v e) hw
+    change q e ≤ p e at lower
+    change p e < q e + 1/D at upper
+    have q0 : 0 ≤ q e := div_nonneg (Nat.cast_nonneg _) dp.le
+    have q1 : q e ≤ 1 := (div_le_one dp).mpr (by
+      dsimp only [D]
+      exact_mod_cast cutoffLe bits w (v e) hw)
+    rw [abs_of_nonpos (sub_nonpos.mpr ((mul_le_of_le_one_left q0 mass_le_one).trans lower)), neg_sub]
+    calc
+      p e - batchMass * q e = (p e - q e) + R / D * q e := by
+        linear_combination -q e * totalMass
+      _ ≤ 1 / D + R / D :=
+        add_le_add (by linarith only [upper]) (mul_le_of_le_one_right (div_nonneg rem0 dp.le) q1)
+      _ ≤ _ := by
+        rw [← add_div, add_comm]
+        exact div_le_div_of_nonneg_right (add_le_add rem le_rfl) dp.le
+  rw [centered, abs_div, abs_of_pos mp]
+  apply (div_le_iff₀ mp).mpr
+  calc _ ≤ _ := Finset.abs_sum_le_sum_abs _ _
+       _ ≤ ∑ _e : Fin m, (((m:ℝ)+1)/D) := by
+          apply Finset.sum_le_sum
+          intro e _
+          rw [abs_mul]
+          have hf : |diff e| ≤ 1 := abs_sub_le_iff.mpr
+            ⟨(sub_le_self _ (bound stay).1).trans (bound _).2,
+             (sub_le_self _ (bound _).1).trans (bound stay).2⟩
+          exact (mul_le_of_le_one_right (abs_nonneg _) hf).trans (loss e)
+       _ = _ := by simp [mul_comm]
 
 variable {n : ℕ}
 

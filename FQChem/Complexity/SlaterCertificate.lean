@@ -32,7 +32,7 @@ theorem gram_iff (B : Coeff d k) : Orthonormal ℂ (frame B) ↔ Bᴴ*B=1 := by
 
 private theorem sumBound {n : ℕ} (v : Fin n → ℂ) (C : ℝ) (h : ∀ i, ‖v i‖≤C) :
     ‖∑ i, v i‖≤n*C := by
-  exact (norm_sum_le _ _).trans (by simpa using Finset.sum_le_sum (s:=Finset.univ) fun i _ => h i)
+  simpa using norm_sum_le_of_le Finset.univ fun i _ => h i
 
 private theorem vectorBound {n : ℕ} (x : Orbital (Fin n)) :
     ‖x‖≤∑ i, ‖x i‖ := by
@@ -86,8 +86,11 @@ theorem score_error (f g : Frame (Fin d) k) (h : Fin d → Fin d → ℂ)
   have dens (v : Frame (Fin d) k) (hv : ∀ i j, ‖v j i‖≤2) (p q : Fin d) :
       ‖density v p q‖≤4*K := by
     calc
-      _ ≤ (k:ℝ)*4 := sumBound _ _ fun j => by rw [norm_mul,Complex.norm_conj]; nlinarith [mul_le_mul (hv p j) (hv q j) (norm_nonneg _) (by norm_num : 0≤(2:ℝ))]
-      _ = _ := by dsimp [K]; ring
+      _ ≤ (k:ℝ)*4 := sumBound _ _ fun j => by
+        rw [norm_mul, Complex.norm_conj]
+        simpa only [show (2:ℝ)*2 = 4 by norm_num] using
+          mul_le_mul (hv p j) (hv q j) (norm_nonneg _) (by norm_num)
+      _ = _ := mul_comm _ _
   have err (p q : Fin d) : ‖density f p q-density g p q‖≤4*K*e := by
     change ‖(∑ j : Fin k, f j p*conj (f j q)) - ∑ j : Fin k, g j p*conj (g j q)‖≤_
     rw [←Finset.sum_sub_distrib]
@@ -153,14 +156,13 @@ def Digits.decode (D : ℕ) (a : Digits d k) : Coeff d k :=
   Matrix.of fun i j => ⟨(a.re i j : ℝ)/D,(a.im i j : ℝ)/D⟩
 
 private theorem floor_bound (D : ℕ) (y : ℝ) (hy : |y|≤1) : |⌊D*y⌋|≤(D:ℤ) := by
-  obtain ⟨l,u⟩ := abs_le.mp hy
-  rw [abs_le]
+  obtain ⟨lo, hi⟩ := abs_le.mp hy
+  have nonneg : 0 ≤ (D:ℝ) := Nat.cast_nonneg D
+  apply abs_le.mpr
   constructor
   · apply Int.le_floor.mpr
-    push_cast
-    nlinarith [mul_le_mul_of_nonneg_left l (Nat.cast_nonneg D : 0≤(D:ℝ))]
-  · have t := Int.floor_le (D*y)
-    exact_mod_cast t.trans (by nlinarith [mul_le_mul_of_nonneg_left u (Nat.cast_nonneg D : 0≤(D:ℝ))] : (D:ℝ)*y≤D)
+    simpa using mul_le_mul_of_nonneg_left lo nonneg
+  · simpa using Int.floor_le_floor (mul_le_mul_of_nonneg_left hi nonneg)
 
 private theorem floor_error (D : ℕ) (hD : 0<D) (y : ℝ) :
     |(⌊D*y⌋:ℝ)/D-y|≤1/D := by

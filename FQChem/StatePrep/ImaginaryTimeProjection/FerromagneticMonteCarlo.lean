@@ -33,9 +33,6 @@ theorem trajectoryEnergyRMS (g : Glass n) (hn : 0<n) (hm : 0<g.bonds.card) {β :
     expected (trajectory K k q) (fun ω => (-(g.bonds.card*x)*ratioEstimate g x y ω-E)^2) ≤
       324*L^2*(6/(k*r)+η)*E^2 := by
   intro x y u q p K r E L dist
-  let v := fun A : Config g.bonds => numerator g.bonds.card x y A.val
-  let d := fun A : Config g.bonds => denominator x y A.val
-  let θ := expected p v / expected p d
   have hx : 0 < x := tanhPositive hβ
   have hy : 0 < y := hx.trans_le (le_max_left ..)
   have nr : 0 < (n:ℝ) := by exact_mod_cast hn
@@ -46,51 +43,9 @@ theorem trajectoryEnergyRMS (g : Glass n) (hn : 0<n) (hm : 0<g.bonds.card) {β :
   have r₁ : r≤1 := sub_nonneg.mp (rateBudget hn hm hx (Real.tanh_lt_one β)).1
   have qprob := fromEmptyProbability g hy hu t
   have prob := trajectoryProbability K (kernelProbability g hy hu) q qprob.1 qprob.2 k
-  have obs (A : Config g.bonds) := observationBounds g hm hx (Real.tanh_lt_one β) (Finset.mem_powerset.mp A.property)
-  have means := proposalMeans g hn hm hβ
-  change 1/9 ≤ mean g.bonds y u _ ∧ mean g.bonds y u _ / mean g.bonds y u _ = _ at means
-  rw [← lawMean, ← lawMean] at means
-  change 1/9 ≤ expected p d ∧ θ = -E / ((g.bonds.card:ℝ)*x) at means
-  have dp : 0 < expected p d := by linarith [means.1]
-  have pn (A : Config g.bonds) : 0 ≤ p A := by
-    apply div_nonneg (boostedWeightPositive hy hu _).le
-    exact Finset.sum_nonneg fun A _ => (boostedWeightPositive hy hu A).le
-  have order : 1 ≤ θ := (one_le_div dp).mpr
-    (Finset.sum_le_sum (fun A _ => mul_le_mul_of_nonneg_left (obs A).2.2.1 (pn A)))
-  have value : expected p v = θ*expected p d := by dsimp [θ]; field_simp
-  have LP : 1 ≤ L := by dsimp [L]; nlinarith [Nat.cast_nonneg (α := ℝ) g.bonds.card, sq_nonneg (g.bonds.card:ℝ)]
-  have vb := trajectoryError g hm hy y₁ hu u₁ q v
-    (fun A => ⟨(obs A).1.trans (obs A).2.2.1,(obs A).2.2.2⟩) dist r₁ hk
-  have db := trajectoryError g hm hy y₁ hu u₁ q d
-    (fun A => ⟨(obs A).1,(obs A).2.1.trans LP⟩) dist r₁ hk
-  have normalized : expected (trajectory K k q) (fun ω : Fin k → Config g.bonds => (ratioEstimate g x y ω-θ)^2) ≤
-      324*θ^2*L^2*(6/(k*r)+η) := by
-    calc _ ≤ expected (trajectory K k q) (fun ω : Fin k → Config g.bonds =>
-           (162*θ^2)*(empirical v ω-expected p v)^2+(162*θ^2)*(empirical d ω-expected p d)^2) := by
-             apply Finset.sum_le_sum
-             intro ω _
-             apply mul_le_mul_of_nonneg_left _ (prob.1 ω)
-             dsimp only; rw [← mul_add]
-             exact ratioError means.1 order value
-         _ = (162*θ^2)*expected (trajectory K k q) (fun ω : Fin k → Config g.bonds => (empirical v ω-expected p v)^2)+
-             (162*θ^2)*expected (trajectory K k q) (fun ω : Fin k → Config g.bonds => (empirical d ω-expected p d)^2) := by
-             exact expectationLinear ..
-         _ ≤ _ := by
-           change expected (trajectory K k q) _ ≤ L^2*(6/(k*r)+η) at vb db
-           nlinarith [mul_le_mul_of_nonneg_left vb (by positivity : 0 ≤ 162*θ^2),
-             mul_le_mul_of_nonneg_left db (by positivity : 0 ≤ 162*θ^2)]
-  let scale := (g.bonds.card:ℝ)*x
-  have sp : 0 < scale := mul_pos (by exact_mod_cast hm) hx
-  have eng : E = -scale*θ := by have := (eq_div_iff sp.ne').mp means.2; linarith
-  calc _ = scale^2*expected (trajectory K k q) (fun ω : Fin k → Config g.bonds => (ratioEstimate g x y ω-θ)^2) := by
-         simp only [expected,Finset.mul_sum]
-         apply Finset.sum_congr rfl
-         intro ω _
-         change _ * (-scale*_ - E)^2 = _
-         rw [eng]; ring
-       _ ≤ _ := by
-         have bound := mul_le_mul_of_nonneg_left normalized (sq_nonneg scale)
-         rw [eng]; nlinarith only [bound]
+  have bound := ratioEnergyMSE g hn hm hβ (trajectory K k q) prob.1 (L^2*(6/(k*r)+η))
+    (fun f bounds => trajectoryError g hm hy y₁ hu u₁ q f bounds dist r₁ hk)
+  exact bound.trans_eq (by ring)
 
 def warmPrecision (m s : ℕ) := 18*(m+1)^2*s^2
 

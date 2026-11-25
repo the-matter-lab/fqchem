@@ -3,6 +3,7 @@
 import json
 from pathlib import Path
 import re
+import subprocess
 from urllib.parse import quote, unquote, urlsplit
 
 ROOT = Path(__file__).resolve().parents[2]
@@ -115,6 +116,7 @@ def assemble():
                        "scope": "This declaration cites the paper in its Lean docstring. Its correspondence to the published result awaits review."})
 
     targets = read_json(CATALOG / "targets.json")
+    revision = subprocess.check_output(["git", "rev-parse", "HEAD"], cwd=ROOT, text=True).strip()
     seen = set()
     for target in targets:
         identifier = target["id"]
@@ -124,6 +126,17 @@ def assemble():
             raise ValueError(f"Invalid literature target: {identifier}")
         target["papers"] = paper_ids(target["papers"])
         validate_related(target["related"], identifier)
+        if statement := target.get("statement"):
+            if target["status"] != "hypothesis" or not re.fullmatch(
+                    r"FQChem\.Unproven(?:\.[A-Za-z_]\w*){2,}", statement):
+                raise ValueError(f"Invalid conjecture name for {identifier}: {statement}")
+            *module, name = statement.split(".")
+            path = Path(*module).with_suffix(".lean")
+            lines = (ROOT / path).read_text().splitlines()
+            hits = [i for i, line in enumerate(lines, 1) if re.match(rf"^def {name}\b", line)]
+            if len(hits) != 1:
+                raise ValueError(f"Missing or ambiguous conjecture definition: {statement}")
+            target["statementUrl"] = f"https://github.com/the-matter-lab/fqchem/blob/{revision}/{path}#L{hits[0]}"
         for ref in target.get("upstream", []):
             if not ref["label"].strip() or not re.fullmatch(
                     r"https://github\.com/[\w.-]+/[\w.-]+/blob/[0-9a-f]{40}/[^\s]+\.lean#L\d+(?:-L\d+)?", ref["url"]):
@@ -167,6 +180,8 @@ def markdown(data):
                 status = "Proof in the literature" if target["status"] == "published" else "Literature hypothesis"
                 lines.append(f"- **{status} · needs Lean proof**. [{target['title']}]({SITE}#paper/{target['id']}). "
                              f"{target['locator']}. {target['scope']}")
+                if target.get("statementUrl"):
+                    lines.append(f"  - [Formal statement in Lean]({target['statementUrl']})")
                 if target.get("remaining"):
                     lines.append(f"  - **Remaining Lean proof**. {target['remaining']}")
                 for ref in target.get("upstream", []):

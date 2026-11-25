@@ -17,14 +17,8 @@ open scoped Matrix.Norms.L2Operator
 
 variable {J I : Type} [Fintype J] [Fintype I] [DecidableEq J] [DecidableEq I]
 
-private theorem coordinate_iso (z : J) : IsIsometry (flagsZero (I:=I) z) := by
-  have lift {X : Type} [Fintype X] [DecidableEq X] {M : Matrix X I ℂ} (h : IsIsometry M) :
-      IsIsometry (coordinatePhaseFrame M) := by
-    have l : (encodingFiber (I:=X) false)ᴴ * encodingFiber (I:=X) false = 1 := encodingFiber_isIsometry (I:=X) false
-    unfold coordinatePhaseFrame IsIsometry
-    rw [Matrix.conjTranspose_mul,Matrix.mul_assoc,← Matrix.mul_assoc (encodingFiber _)ᴴ,l,Matrix.one_mul]
-    exact h
-  exact lift (lift (encodingFiber_isIsometry z))
+private theorem coordinate_iso (z : J) : IsIsometry (flagsZero (I:=I) z) :=
+  coordinatePhaseFrame_isometry (coordinatePhaseFrame_isometry (encodingFiber_isIsometry z))
 
 /-- Hadamards on both flags turn average-frame compression and postselection
 into computational-coordinate initialization and readout. -/
@@ -50,6 +44,40 @@ theorem coordinate_acts (z : J) (M : Matrix (Signals J I) (Signals J I) ℂ) :
   change ‖(Qatlib.Concepts.BlockEncoding.Postselection.stateVector (compress F U F *ᵥ ψ))‖^2 = _
   rw [eq]; rfl
 
+private theorem coordinate_program {a r : ℕ} (zero : Reg a)
+    (program : List (Step (Basis a r) StandardOracle))
+    (legal : ∀ M, .fixed M ∈ program → Elementary a r M) :
+    ∃ wrapped : List (Step (Basis a r) StandardOracle),
+      (∀ k, cost k wrapped = cost k program) ∧ fixedCount wrapped = fixedCount program + 2 ∧
+      (∀ M, .fixed M ∈ wrapped → Elementary a r M) ∧
+      ∀ data : StandardOracle → Operator a r,
+        let F := flagsZero (I := Reg r) zero
+        let R := hamiltonianFrame (encodingFiber (I := Reg r) zero)
+        compress F (run data wrapped) F = compress R (run data program) R ∧
+        ∀ ψ : QState (Reg r), postselectionProbability (run data wrapped) F F ψ =
+          postselectionProbability (run data program) R R ψ := by
+  let T := flagsHadamard (J := Reg a) (I := Reg r)
+  let wrapped := .fixed Tᴴ :: (program ++ [.fixed T])
+  have gate : Elementary a r T := by
+    rw [show T = onFlags (J := Reg a) (I := Reg r) (TensorGate Hadamard Hadamard) from localHadamards]
+    exact Elementary.flags _ (tensorGate_unitary hadamard_unitary hadamard_unitary)
+  refine ⟨wrapped, ?_, ?_, ?_, ?_⟩
+  · intro k
+    simp [wrapped, cost, cost_append]
+  · simp [wrapped, fixedCount, fixed_append, Nat.add_assoc]
+  · intro M mem
+    rcases List.mem_cons.mp mem with eq | tail
+    · cases eq; exact .adj gate
+    rcases List.mem_append.mp tail with hp | last
+    · exact legal _ hp
+    · cases List.mem_singleton.mp last; exact gate
+  · intro data
+    have eval : run data wrapped = Tᴴ * run data program * T := by
+      simp [wrapped, run, matrix, run_append, Matrix.mul_assoc]
+    dsimp only
+    rw [eval]
+    exact coordinate_acts zero (run data program)
+
 /-- The explicit, ordinary coordinate-input version of the standard-form
 simulation, including the gates to prepare and unprepare both signal flags.
 The physical oracle is identity on unused computational coordinates. -/
@@ -72,37 +100,18 @@ theorem finiteCoordinateSimulation (z : J) (two : 1 < Fintype.card I) (t ε : �
         let F := flagsZero (I:=Reg r) (j z)
         ‖compress E (compress F M F) E - hamiltonianEvolution H t‖ ≤ ε^2/2 ∧
         ∀ ψ : QState I, Normalized ψ → 1-ε^2 ≤ postselectionProbability M F F (E *ᵥ ψ) := by
-  let a := Nat.clog 2 (Fintype.card J)
-  let r := Nat.clog 2 (Fintype.card I)
   let j := physicalBasis J
   let s := physicalBasis I
-  let T := flagsHadamard (J:=Reg a) (I:=Reg r)
-  obtain ⟨q,hq,program,prep,block,bound,fixed,work⟩ := finiteSimulation z two t ε positive small
-  let wrapped := .fixed Tᴴ :: (program ++ [.fixed T])
-  have gate : Elementary a r T := by
-    rw [show T=onFlags (J:=Reg a) (I:=Reg r) (TensorGate Hadamard Hadamard) from localHadamards]
-    exact Elementary.flags _ (tensorGate_unitary hadamard_unitary hadamard_unitary)
-  have count (k : StandardOracle) : cost k wrapped = cost k program := by
-    simp [wrapped,cost,cost_append]
-  have eval (data : StandardOracle → Operator a r) : run data wrapped = Tᴴ * run data program * T := by
-    simp [wrapped,run,matrix,run_append,Matrix.mul_assoc]
-  refine ⟨q,hq,wrapped,(count _).trans prep,(count _).trans block,?_,?_,?_⟩
-  · simp only [wrapped,fixedCount,fixed_append] at *
-    omega
-  · intro M mem
-    rcases List.mem_cons.mp mem with e|h
-    · cases e; exact .adj gate
-    rcases List.mem_append.mp h with h|e
-    · exact fixed _ h
-    · cases List.mem_singleton.mp e; exact gate
+  obtain ⟨q, hq, program, prep, block, bound, legal, work⟩ := finiteSimulation z two t ε positive small
+  obtain ⟨wrapped, count, size, fixed, acts⟩ := coordinate_program (j z) program legal
+  refine ⟨q, hq, wrapped, (count _).trans prep, (count _).trans block,
+    size.le.trans (Nat.add_le_add_right bound 2), fixed, ?_⟩
   intro G U H hG hU hH
   dsimp only
   intro signal
-  have ⟨err,prob⟩ := work G U H hG hU hH signal
   let data := standardInput (pad (coord j) G) (pad (coord (j.prodMap s)) U)
-  have ⟨op,mass⟩ := coordinate_acts (j z) (run data program)
-  change ‖compress _ (compress _ (run data wrapped) _) _ - _‖ ≤ _ ∧ _
-  rw [eval,op]
-  exact ⟨err,fun ψ hψ => by rw [mass]; exact prob ψ hψ⟩
+  obtain ⟨op, mass⟩ := acts data
+  obtain ⟨err, prob⟩ := work G U H hG hU hH signal
+  exact ⟨op.symm ▸ err, fun ψ hψ => (mass _).symm ▸ prob ψ hψ⟩
 
 end FQChemQatlib.Dynamics.LowChuang

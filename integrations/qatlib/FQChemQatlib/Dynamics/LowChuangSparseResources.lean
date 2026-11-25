@@ -33,7 +33,6 @@ private theorem time_scale {d : ℕ} (hd : 0<d) {b c t : ℝ} (hb : 0<b) (hc : 0
       mul_le_mul_of_nonneg_left (mul_le_mul (mul_le_mul_of_nonneg_left sup (by norm_num)) tight hb.le (by positivity)) (abs_nonneg t)
     _ = _ := by ring
 
-set_option maxRecDepth 10000 in
 private theorem budget {n k p q Q : ℕ} (kn : k≤n) (pos : 0<Q) (cut : q≤20*Q) :
     250*(n+Binary.size p+4)*(27*(64*q+8)-2) +
       (2*k+415440*(n+(190*p+4)))*(27*(64*q+1)) ≤
@@ -41,12 +40,12 @@ private theorem budget {n k p q Q : ℕ} (kn : k≤n) (pos : 0<Q) (cut : q≤20*
   have len : Binary.size p=5*p+3 := by simp [Binary.size,Binary.Key]; omega
   rw [len]
   have a : 250*(n+(5*p+3)+4)≤1750*(n+p+1) := by omega
-  have b : 2*k+415440*(n+(190*p+4))≤78933600*(n+p+1) := by nlinarith
+  have b : 2*k+415440*(n+(190*p+4))≤78933600*(n+p+1) := by nlinarith only [kn]
   have c : 27*(64*q+8)-2 ≤ 34776*Q := by omega
   have d : 27*(64*q+1) ≤ 34587*Q := by omega
   calc
     _ ≤ _ := Nat.add_le_add (Nat.mul_le_mul a c) (Nat.mul_le_mul b d)
-    _ = 2730137281200*(n+p+1)*Q := by ring
+    _ = (1750 * 34776 + 78933600 * 34587) * (n+p+1) * Q := by ring
     _ ≤ _ := Nat.mul_le_mul_right _ (Nat.mul_le_mul_right _ (by decide))
 
 /-- The unpadded, unnormalized time is |t|·d·c. Choose the publicly known

@@ -171,7 +171,7 @@ theorem divide_spec (w n x y : ℕ) (hx : x < 2^n) (hy : 0 < y) (hwy : 2*y ≤ 2
     let q := (x/2)/y
     let v := 2*r + (low x).toNat
     have hr : r < y := Nat.mod_lt _ hy
-    have hbit : (low x).toNat ≤ 1 := by cases low x <;> decide
+    have hbit : (low x).toNat ≤ 1 := (low x).toNat_le
     have hv : v < 2*y := by dsimp [v]; omega
     have hyw : y < 2^w := by omega
     let d := ripple true w v y true
@@ -180,23 +180,24 @@ theorem divide_spec (w n x y : ℕ) (hx : x < 2^n) (hy : 0 < y) (hwy : 2*y ≤ 2
     change d.gates = 6*w at hdg
     change d.word + 2^w*d.carry.toNat + y + 1 = v + 2^w + 1 at hd
     have sel := select_spec d.carry w d.word v hdw (hv.trans_le hwy)
-    have eqx : v + y*(2*q) = x := by
-      have hh : r + y*q = x/2 := Nat.mod_add_div _ _
-      dsimp [v]; nlinarith [low_split x,hh]
+    have eqx : v + y * (2*q) = x := calc
+      _ = 2 * (r + y*q) + (low x).toNat := by dsimp only [v]; ring
+      _ = x := by rw [show r + y*q = x / 2 from Nat.mod_add_div _ _]; exact low_split x
+    have qr : x / y = 2*q + d.carry.toNat ∧ x % y = (if d.carry then d.word else v) := by
+      apply (Nat.div_mod_unique hy).mpr
+      cases h : d.carry <;> simp [h] at hd ⊢
+      · exact ⟨eqx, by omega⟩
+      · have sub : d.word + y = v := by omega
+        refine ⟨?_, by omega⟩
+        calc
+          _ = (d.word + y) + y * (2*q) := by rw [Nat.mul_add, Nat.mul_one]; ac_rfl
+          _ = x := by rw [sub, eqx]
     simp only [divide, prev]
     change Division.mk (2*q+d.carry.toNat) (selectWord d.carry w d.word v).1
       (n*(10*w)+d.gates+(selectWord d.carry w d.word v).2) = _
-    rw [sel.1, sel.2, hdg, Nat.succ_mul]
-    cases h : d.carry <;> simp [h] at hd ⊢
-    · have hQR := (Nat.div_mod_unique hy).mpr (And.intro eqx (by omega : v < y))
-      rw [hQR.1,hQR.2]
-      ring_nf
-      trivial
-    · have eq : d.word + y*(2*q+1) = x := by nlinarith [eqx, hd]
-      have hQR := (Nat.div_mod_unique hy).mpr (And.intro eq (by omega : d.word < y))
-      rw [hQR.1,hQR.2]
-      ring_nf
-      trivial
+    rw [sel.1, sel.2, hdg, qr.1, qr.2, Nat.succ_mul n (10*w)]
+    congr 1
+    omega
 
 /-- Bitwise equality detector. Each input bit uses XOR, NOT and AND. -/
 def equalWord : ℕ → ℕ → ℕ → Bool × ℕ
@@ -246,7 +247,8 @@ def fraction (w a b : ℕ) : ℕ → Fraction
       let s := ripple false w m.1 c.den false
       ⟨s.word, c.num, d.gates + z.2 + c.gates + m.2 + s.gates⟩
 
-private theorem add_word (w x y : ℕ) (hs : x+y < 2^w) :
+/-- A ripple addition that fits its register gives the exact sum and costs six gates per bit. -/
+theorem add_word (w x y : ℕ) (hs : x+y < 2^w) :
     (ripple false w x y false).word = x+y ∧ (ripple false w x y false).gates = 6*w := by
   have ⟨_,hg,hc⟩ := ripple_spec false w x y false (by omega) (by omega)
   refine ⟨?_,hg⟩

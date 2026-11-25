@@ -75,46 +75,46 @@ theorem lieTrotter (X Y : R) : LieTrotter X Y := by
   let S := fun h : ℝ => exp (h • X) * exp (h • Y)
   let U := fun h : ℝ => exp (h • (X + Y))
   have hder (Z : R) : HasDerivAt (fun h : ℝ => exp (h • Z)) Z 0 := by
-    simpa using hasDerivAt_exp_smul_const Z (0 : ℝ)
+    simpa only [zero_smul, exp_zero, one_mul] using hasDerivAt_exp_smul_const Z (0 : ℝ)
   have hdiff : HasDerivAt (fun h => S h - U h) 0 0 := by
-    simpa [S, U, add_comm] using ((hder X).fun_mul (hder Y)).fun_sub (hder (X + Y))
-  have hinv : Tendsto (fun n : ℕ => (n : ℝ)⁻¹) atTop (𝓝[≠] 0) := by
-    apply tendsto_nhdsWithin_iff.mpr
-    refine ⟨?_, ?_⟩
-    · simpa using (tendsto_one_div_atTop_nhds_zero_nat (𝕜 := ℝ))
-    · filter_upwards [eventually_gt_atTop 0] with n hn
-      simp [Nat.ne_of_gt hn]
+    simpa only [zero_smul, exp_zero, mul_one, one_mul, sub_self] using ((hder X).fun_mul (hder Y)).fun_sub (hder (X + Y))
+  have hinv : Tendsto (fun n : ℕ => (n : ℝ)⁻¹) atTop (𝓝[≠] 0) :=
+    (tendsto_inv_atTop_nhdsGT_zero.comp tendsto_natCast_atTop_atTop).mono_right (nhdsGT_le_nhdsNE 0)
   have hscale : Tendsto (fun n : ℕ => (n : ℝ) * ‖S (n : ℝ)⁻¹ - U (n : ℝ)⁻¹‖)
       atTop (𝓝 0) := by
-    simpa [slope, S, U, norm_smul] using (hdiff.tendsto_slope.comp hinv).norm
+    have atZero : S 0 - U 0 = 0 := by simp only [S, U, zero_smul, exp_zero, one_mul, sub_self]
+    simpa only [Function.comp_apply, slope_def_module, sub_zero, inv_inv, atZero,
+      norm_smul, Real.norm_natCast, norm_zero] using (hdiff.tendsto_slope.comp hinv).norm
   let M := ‖X‖ + ‖Y‖
   have hM : 0 ≤ M := add_nonneg (norm_nonneg _) (norm_nonneg _)
   have hstep (h : ℝ) (hh : 0 ≤ h) :
       ‖S h‖ ≤ Real.exp (h * M) ∧ ‖U h‖ ≤ Real.exp (h * M) := by
+    have bound (Z : R) : ‖exp (h • Z)‖ ≤ Real.exp (h * ‖Z‖) := by
+      simpa only [norm_smul, Real.norm_eq_abs, abs_of_nonneg hh] using exp_norm_bound (h • Z)
     constructor
-    · calc
-        ‖S h‖ ≤ ‖exp (h • X)‖ * ‖exp (h • Y)‖ := norm_mul_le ..
-        _ ≤ Real.exp ‖h • X‖ * Real.exp ‖h • Y‖ := by
-          gcongr <;> apply exp_norm_bound
-        _ = _ := by rw [← Real.exp_add]; simp [M, norm_smul, abs_of_nonneg hh, mul_add]
-    · refine (exp_norm_bound _).trans (Real.exp_le_exp.mpr ?_)
-      simp only [norm_smul, Real.norm_eq_abs, abs_of_nonneg hh]
-      exact mul_le_mul_of_nonneg_left (norm_add_le X Y) hh
+    · rw [show h * M = h * ‖X‖ + h * ‖Y‖ from mul_add .., Real.exp_add]
+      exact (norm_mul_le ..).trans
+        (mul_le_mul (bound X) (bound Y) (norm_nonneg _) (Real.exp_pos _).le)
+    · exact (bound (X + Y)).trans <|
+        Real.exp_le_exp.mpr (mul_le_mul_of_nonneg_left (norm_add_le X Y) hh)
   apply tendsto_iff_norm_sub_tendsto_zero.mpr
   apply squeeze_zero' (Eventually.of_forall fun _ => norm_nonneg _) _ (by
-    simpa using (tendsto_const_nhds (x := Real.exp M)).mul hscale)
+    simpa only [mul_zero] using (tendsto_const_nhds (x := Real.exp M)).mul hscale)
   filter_upwards [eventually_gt_atTop 0] with n hn
   have hn' : (n : ℝ) ≠ 0 := by exact_mod_cast (Nat.ne_of_gt hn)
   let h := (n : ℝ)⁻¹
-  have hh : 0 ≤ h := by positivity
+  have hh : 0 ≤ h := inv_nonneg.mpr n.cast_nonneg
+  have nh : (n : ℝ) * h = 1 := mul_inv_cancel₀ hn'
   have hU : U h ^ n = exp (X + Y) := by
-    rw [show U h = exp (h • (X + Y)) by rfl, ← exp_nsmul, ← Nat.cast_smul_eq_nsmul ℝ,
-      smul_smul, show (n : ℝ) * h = 1 from mul_inv_cancel₀ hn', one_smul]
+    change exp (h • (X + Y)) ^ n = _
+    rw [← exp_nsmul, ← Nat.cast_smul_eq_nsmul ℝ,
+      smul_smul, nh, one_smul]
   have hC : 1 ≤ Real.exp (h * M) := Real.one_le_exp (mul_nonneg hh hM)
   have hpow : Real.exp (h * M) ^ n = Real.exp M := by
-    rw [← Real.exp_nat_mul, ← mul_assoc, show (n : ℝ) * h = 1 from mul_inv_cancel₀ hn', one_mul]
-  have hb := power_defect (S h) (U h) _ hC (hstep h hh).1 (hstep h hh).2 n
+    rw [← Real.exp_nat_mul, ← mul_assoc, nh, one_mul]
+  obtain ⟨hS, hExact⟩ := hstep h hh
+  have hb := power_defect (S h) (U h) _ hC hS hExact n
   rw [hU, hpow] at hb
-  simpa [mul_left_comm, mul_comm, mul_assoc, h, S] using hb
+  simpa only [mul_assoc, mul_left_comm (n : ℝ)] using hb
 
 end FQChem.Dynamics

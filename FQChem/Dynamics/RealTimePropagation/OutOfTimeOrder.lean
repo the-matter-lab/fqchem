@@ -37,9 +37,7 @@ def flips (p : Pauli) : Bool := p == .X || p == .Y
 
 private theorem dualEntry_trace (p : Word n) (x y : Spin n) :
     dualEntry p x y = wordEntry p y x / 2 ^ n := by
-  have h (q : Pauli) (a b : Bool) : conj (q.entry a b) = q.entry b a := by
-    cases q <;> cases a <;> cases b <;> simp [Pauli.entry, Pauli.phase, Pauli.move]
-  simp [dualEntry, wordEntry, h, Finset.prod_div_distrib]
+  simp [dualEntry, wordEntry, pauliEntry_conj, Finset.prod_div_distrib]
 
 /-- The library's coefficient is the normalized trace pairing with a Pauli word. -/
 theorem traceCoefficient (K : Operator n) (p : Word n) :

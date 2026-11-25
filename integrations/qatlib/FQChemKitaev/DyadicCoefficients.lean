@@ -83,7 +83,7 @@ theorem subtract_value (x y : List Bool) (c : Bool) (hlen : y.length ≤ x.lengt
     have hy : value y = digit (y.headD false) + 2*value y.tail := by cases y <;> rfl
     simp only [subtract, value, List.length_cons, pow_succ]
     rw [hy]
-    nlinarith
+    linear_combination hd + 2 * he
 
 theorem subtract_borrow (x y : List Bool) (c : Bool) (hlen : y.length ≤ x.length) :
     (subtract x y c).borrow = false ↔ value y + digit c ≤ value x := by
@@ -142,23 +142,19 @@ private theorem next_value (s : RootRun) (hw : s.root.length ≤ s.remainder.len
   rw [hx,hy] at he hc
   change r ≤ 2*q at hr
   change 0 < r at hp
-  by_cases hb : (subtract x y false).borrow = true
-  · have hlt : 4*r < 4*q+1 := by simp [hb,digit] at hc; omega
-    have hn : value (next s).root = 2*q := by
-      change digit (!(subtract x y false).borrow) + 2*q = _; simp [hb,digit]
-    have hrem : (next s).remainder = x := by change (if (subtract x y false).borrow then x else _) = x; simp [hb]
-    rw [hn, hrem, hx]
-    change _ = 4*(q^2+r) ∧ _ ∧ _
+  have root : value (next s).root = digit (!(subtract x y false).borrow) + 2*q := rfl
+  have rem : (next s).remainder = if (subtract x y false).borrow then x else (subtract x y false).bits := rfl
+  rw [root, rem]
+  change _ = 4*(q^2+r) ∧ _ ∧ _
+  cases hb : (subtract x y false).borrow with
+  | true =>
+    have hlt : 4*r < 4*q+1 := by simpa [hb, digit] using hc
+    simp only [Bool.not_true, digit, Bool.false_eq_true, ite_false, zero_add, ite_true, hx]
     exact ⟨by ring, by omega, by omega⟩
-  · have hb' := Bool.eq_false_iff.mpr hb
-    have hval : value (subtract x y false).bits + (4*q+1) = 4*r := by simpa [hb',digit] using he
-    have hn : value (next s).root = 2*q+1 := by
-      change digit (!(subtract x y false).borrow) + 2*q = _; simp [hb',digit,Nat.add_comm]
-    have hrem : (next s).remainder = (subtract x y false).bits := by
-      change (if (subtract x y false).borrow then x else (subtract x y false).bits) = _; simp [hb']
-    rw [hn,hrem]
-    change _ = 4*(q^2+r) ∧ _ ∧ _
-    exact ⟨by nlinarith, by omega, by omega⟩
+  | false =>
+    have hval : value (subtract x y false).bits + (4*q+1) = 4*r := by simpa [hb, digit] using he
+    simp only [Bool.not_false, digit, ite_true, Bool.false_eq_true, ite_false]
+    exact ⟨by linear_combination hval, by omega, by omega⟩
 
 /-- The computed remainder is strictly positive, so the native square-root
 ceiling always exceeds the computed floor by one for these radicands. -/

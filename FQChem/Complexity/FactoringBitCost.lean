@@ -138,16 +138,12 @@ theorem rootRun_spec (N e b j lo : ℕ) (hN : N<2^b) (he : e≤b) (hlo : lo+2^j�
     rw [pow_succ] at hlo
     have hp := Nat.two_pow_pos j
     have hm : lo+2^j<2^b := by omega
-    have sig := ripple_spec false b lo (2^j) false (by omega) (by omega)
-    have hb := sig.1
-    have hs := sig.2.2
-    have rwM : (ripple false b lo (2^j) false).word = lo+2^j := by
-      cases h : (ripple false b lo (2^j) false).carry <;> simp [h] at hs <;> omega
+    obtain ⟨rwM, gates⟩ := add_word b lo (2^j) hm
     have pow := exactPower_spec b (lo+2^j) e hm he
     have cmp := leWord_spec (wide b) ((lo+2^j)^e) N pow.2 (hN.trans_le (Nat.pow_le_pow_right (by decide) hw))
     let next := if (lo+2^j)^e≤N then lo+2^j else lo
     have sub :=  ih next (by unfold next; split <;> omega)
-    simp only [rootRun,rootBits,rwM,pow.1,cmp,decide_eq_true_eq,sig.2.1]
+    simp only [rootRun,rootBits,rwM,pow.1,cmp,decide_eq_true_eq,gates]
     refine ⟨sub.1,?_⟩
     have ep : e*(b*(10*wide b)) ≤ powerBudget b := Nat.mul_le_mul_right _ he
     change _ + (rootRun N e b j next).2 ≤ _
@@ -346,11 +342,8 @@ theorem readBase_spec (w m x : ℕ) (hm : 1<m) (hw : m<2^w) (hx : x<2^w) :
   dsimp only [readBase]
   simp only [pr,cmp,decide_eq_true_eq,baseFromBits]
   by_cases ok : x<m-1
-  · have sig := ripple_spec false w x 1 false hx (by omega)
-    have val := sig.2.2
-    have vv : (ripple false w x 1 false).word = x+1 := by
-      cases h : (ripple false w x 1 false).carry <;> simp [h] at val <;> omega
-    simp only [ok,ite_eq_right (by omega : ¬m-1≤x),dite_eq_left,vv,sig.2.1,Option.map_some,true_and]
+  · obtain ⟨word, gates⟩ := add_word w x 1 (by omega)
+    simp only [ok,ite_eq_right (by omega : ¬m-1≤x),dite_eq_left,word,gates,Option.map_some,true_and]
     omega
   · simp [ok,show m-1≤x by omega];omega
 

@@ -96,47 +96,6 @@ private theorem carry_xor (s : W' → Bool) (last : W') (p : List (W' × W')) (v
     rw [ih]
     cases b <;> cases s a <;> cases s last <;> cases (p.map Prod.fst).all s <;> simp
 
-/-- Pass down the chain, toggle the output, then reverse the chain. -/
-private theorem readCarry (seed last t : W n) (p : List (W n × W n))
-    (valid : (seed::last::t::(p.map Prod.fst ++ p.map Prod.snd)).Nodup) :
-    Implements (fun s => flip t (carry s last p (s seed)) s) (15*(2*p.length+1)) := by
-  induction p generalizing seed with
-  | nil =>
-    simpa [carry] using toff seed last t (by grind [List.nodup_cons])
-      (by grind [List.nodup_cons]) (by grind [List.nodup_cons])
-  | cons ab p ih =>
-    obtain ⟨a,z⟩ := ab
-    simp only [List.map_cons,List.cons_append,List.mem_cons,List.mem_append,List.nodup_cons,
-      not_or] at valid
-    have smaller : (z::last::t::(p.map Prod.fst ++ p.map Prod.snd)).Nodup := by
-      simp_all [List.nodup_cons,List.nodup_append']; grind [List.disjoint_left]
-    have g := toff seed a z (by grind) (by grind) (by grind [List.nodup_append',List.disjoint_left])
-    have mid := ih z smaller
-    have same (s : Reg n) : carry (flip z (s seed && s a) s) last p
-        ((flip z (s seed && s a) s) z) = carry s last ((a,z)::p) (s seed) := by
-      simp only [flip,Function.update_self,carry]
-      apply carry_congr
-      · apply Function.update_of_ne; grind
-      · intro i j h
-        have hi : i∈p.map Prod.fst := List.mem_map.mpr ⟨(i,j),h,rfl⟩
-        have hj : j∈p.map Prod.snd := List.mem_map.mpr ⟨(i,j),h,rfl⟩
-        constructor <;> apply Function.update_of_ne <;> grind [List.nodup_append',List.disjoint_left]
-    have eq : (fun s : Reg n => flip z (s seed && s a) s) ∘
-        ((fun s : Reg n => flip t (carry s last p (s z)) s) ∘
-          (fun s : Reg n => flip z (s seed && s a) s)) =
-        fun s => flip t (carry s last ((a,z)::p) (s seed)) s := by
-      funext s i
-      simp only [Function.comp_apply,same]
-      have az : a≠z := by grind
-      have at' : a≠t := by grind
-      have sz : seed≠z := by grind
-      have st : seed≠t := by grind
-      have zt : z≠t := by grind
-      by_cases iz : i=z <;> by_cases it : i=t <;>
-        simp_all only [flip,Function.update_apply,ite_false,ite_true,eq_self, Bool.xor_self,
-          Bool.xor_assoc,Bool.xor_false]
-    exact weaken (eq ▸ compose (compose g mid) g) (by simp; omega)
-
 private theorem restore (z t : W n) (hz : z≠t) (a b : Bool) (s : Reg n) :
     flip z a (flip t b (flip z a s)) = flip t b s := by
   funext i
@@ -177,6 +136,46 @@ private theorem carryFlip (last i : W n) (p : List (W n × W n))
     have h1 : j≠i := by rintro rfl; exact hc (List.mem_map.mpr ⟨(j,k),h,rfl⟩)
     have h2 : k≠i := by rintro rfl; exact hd (List.mem_map.mpr ⟨(j,k),h,rfl⟩)
     exact ⟨Function.update_of_ne h1 _ _,Function.update_of_ne h2 _ _⟩
+
+/-- Pass down the chain, toggle the output, then reverse the chain. -/
+private theorem readCarry (seed last t : W n) (p : List (W n × W n))
+    (valid : (seed::last::t::(p.map Prod.fst ++ p.map Prod.snd)).Nodup) :
+    Implements (fun s => flip t (carry s last p (s seed)) s) (15*(2*p.length+1)) := by
+  induction p generalizing seed with
+  | nil =>
+    simp only [List.map_nil, List.append_nil, List.nodup_cons, List.mem_cons, List.not_mem_nil,
+      or_false, not_or, List.nodup_nil, and_true, not_false_eq_true] at valid
+    simpa [carry] using toff seed last t valid.1.1 valid.1.2 valid.2
+  | cons ab p ih =>
+    obtain ⟨a,z⟩ := ab
+    -- Move the new scratch wire next to its control before taking the induction tail.
+    have ordered : (seed :: last :: t :: a :: z :: (p.map Prod.fst ++ p.map Prod.snd)).Nodup :=
+      ((((List.perm_middle.cons a).cons t).cons last).cons seed).nodup valid
+    simp only [List.nodup_cons, List.mem_cons, not_or] at ordered
+    obtain ⟨⟨_, st, sa, sz, _⟩, ⟨lt, _, lz, lastTail⟩, ⟨ta, tz, targetTail⟩,
+      ⟨az, _⟩, scratchTail, tail⟩ := ordered
+    have smaller : (z :: last :: t :: (p.map Prod.fst ++ p.map Prod.snd)).Nodup := by
+      simp only [List.nodup_cons, List.mem_cons, not_or]
+      exact ⟨⟨Ne.symm lz, Ne.symm tz, scratchTail⟩, ⟨lt, lastTail⟩, targetTail, tail⟩
+    obtain ⟨freshControls, freshScratch⟩ := by
+      simpa only [List.mem_append, not_or] using scratchTail
+    have same (s : Reg n) : carry (flip z (s seed && s a) s) last p
+        ((flip z (s seed && s a) s) z) = carry s last ((a,z)::p) (s seed) := by
+      simp only [carry, flip, Function.update_self]
+      exact carryFlip last z p lz freshControls freshScratch s _ _
+    have eq : (fun s : Reg n => flip z (s seed && s a) s) ∘
+        ((fun s : Reg n => flip t (carry s last p (s z)) s) ∘
+          (fun s => flip z (s seed && s a) s)) =
+        fun s => flip t (carry s last ((a,z)::p) (s seed)) s := by
+      funext s
+      simp only [Function.comp_apply, same]
+      have keep (i : W n) (iz : i ≠ z) (it : i ≠ t) (outer inner : Bool) :
+          flip t outer (flip z inner s) i = s i :=
+        (Function.update_of_ne it _ _).trans (Function.update_of_ne iz _ _)
+      rw [keep seed sz st, keep a az (Ne.symm ta)]
+      exact restore z t (Ne.symm tz) _ _ s
+    have gate := toff seed a z sa sz az
+    exact weaken (eq ▸ compose (compose gate (ih z smaller)) gate) (by simp; omega)
 
 /-- A chain with two seed controls and one final control uses one borrowed
 wire for each control beyond the first two. -/

@@ -67,9 +67,8 @@ theorem wave_smooth (A : Space) : ContDiff ℝ 2 (wave A) := by
 
 private theorem density_le (A r : Space) : density A r ≤ weight⁻¹ := by
   rw [density_value, ← one_div]
-  have h0 := (bump_bounds (r-A)).1
-  have h1 : bump (r-A) ≤ 1 := (bump_bounds _).2
-  exact div_le_div_of_nonneg_right (by nlinarith [mul_nonneg (sub_nonneg.mpr h1) (by linarith : 0≤1+bump (r-A))]) weight_pos.le
+  obtain ⟨lo, hi⟩ := bump_bounds (r-A)
+  exact div_le_div_of_nonneg_right ((sq_le_one_iff₀ lo).2 hi) weight_pos.le
 
 def interaction (A B : Space) := ∫ p : Space × Space,
   density A p.1 * density B p.2 / dist p.1 p.2 ∂volume.prod volume
