@@ -52,9 +52,9 @@ The Clawderon launch agent checks the publication branch every minute and on log
 
 ## Axiom audit
 
-Open [Axioms and assumptions](https://fqchem.matterlab.ca/#axioms) for the current findings, the Born-rule example and the scope of both builds. The audit enumerates declarations by the module that defined them, including private declarations and definitions. It rejects a local axiom even when nothing uses it. Lean’s `collectAxioms` checks transitive dependencies against `propext`, `Classical.choice` and `Quot.sound`; this also rejects a dependency on `sorryAx`. Each dependency is checked as far as it is used by an audited declaration. The locally adapted Aaronson–Ambainis port is also checked in full.
+The audit enumerates declarations by the module that defined them, including private declarations and definitions. It rejects a local axiom even when nothing uses it. Lean’s `collectAxioms` checks transitive dependencies against `propext`, `Classical.choice` and `Quot.sound`; this also rejects a dependency on `sorryAx`. Each dependency is checked as far as it is used by an audited declaration. The locally adapted Aaronson–Ambainis port is also checked in full.
 
-After building both projects, run these commands from the repository root. They write the two coverage reports used by the explorer. CI runs the audits before publishing the atlas.
+After building both projects, run these commands from the repository root. They write per-module coverage reports. Both audits must pass before CI publishes the atlas.
 
 ```sh
 python3 scripts/theorem_graph/audit_axioms.py
