@@ -4,11 +4,25 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <meta name="theme-color" content="#f8f7f1">
+  <script>
+    const systemTheme = matchMedia("(prefers-color-scheme: dark)");
+    let themeChoice;
+    try { themeChoice = localStorage.getItem("fqchem-theme"); } catch {}
+    function applyTheme() {
+      const theme = ["dark","light"].includes(themeChoice) ? themeChoice : systemTheme.matches ? "dark" : "light";
+      document.documentElement.dataset.theme = theme;
+      document.querySelector('meta[name="theme-color"]').content = theme === "dark" ? "#171e1c" : "#f8f7f1";
+    }
+    applyTheme();
+  </script>
   <title>Theorem atlas · fqchem</title>
   <link rel="stylesheet" href="atlas.css">
 </head>
 <body>
 <svg class="symbols" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+  <symbol id="i-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v3m0 14v3M2 12h3m14 0h3M5 5l2 2m10 10 2 2M5 19l2-2M17 7l2-2"/></symbol>
+  <symbol id="i-moon" viewBox="0 0 24 24"><path d="M20.8 14A8.7 8.7 0 0 1 10 3.2 8.8 8.8 0 1 0 20.8 14Z"/></symbol>
+  <symbol id="i-expand" viewBox="0 0 24 24"><circle cx="12" cy="12" r="2"/><path d="M5 9V5h4m6 0h4v4M5 15v4h4m6 0h4v-4M5.5 5.5l4 4m5 5 4 4m-13 0 4-4m5-5 4-4"/></symbol>
   <symbol id="i-graph" viewBox="0 0 24 24"><path d="m5 17 5-10 9 6-14 4"/><circle cx="5" cy="17" r="2.3"/><circle cx="10" cy="7" r="2.3"/><circle cx="19" cy="13" r="2.3"/></symbol>
   <symbol id="i-find" viewBox="0 0 24 24"><circle cx="10" cy="10" r="6"/><path d="m15 15 5 5"/></symbol>
   <symbol id="i-fit" viewBox="0 0 24 24"><path d="M9 4H4v5m11-5h5v5M4 15v5h5m11-5v5h-5"/></symbol>
@@ -47,22 +61,24 @@ SOFTWARE.
   -->
     <a class="repo-link" href="https://github.com/the-matter-lab/fqchem">
       <svg aria-hidden="true" width="18" height="18" viewBox="0 0 16 16" fill="currentColor"><path d="M6.766 11.328c-2.063-.25-3.516-1.734-3.516-3.656 0-.781.281-1.625.75-2.188-.203-.515-.172-1.609.063-2.062.625-.078 1.468.25 1.968.703.594-.187 1.219-.281 1.985-.281.765 0 1.39.094 1.953.265.484-.437 1.344-.765 1.969-.687.218.422.25 1.515.046 2.047.5.593.766 1.39.766 2.203 0 1.922-1.453 3.375-3.547 3.64.531.344.89 1.094.89 1.954v1.625c0 .468.391.734.86.547C13.781 14.359 16 11.53 16 8.03 16 3.61 12.406 0 7.984 0 3.563 0 0 3.61 0 8.031a7.88 7.88 0 0 0 5.172 7.422c.422.156.828-.125.828-.547v-1.25c-.219.094-.5.156-.75.156-1.031 0-1.64-.562-2.078-1.609-.172-.422-.36-.672-.719-.719-.187-.015-.25-.093-.25-.187 0-.188.313-.328.625-.328.453 0 .844.281 1.25.86.313.452.64.655 1.031.655s.641-.14 1-.5c.266-.265.47-.5.657-.656"/></svg>
-      GitHub
+      <span class="repo-caption">GitHub</span>
       <span class="repo-stars"><svg aria-hidden="true" width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"><path d="m8 1.5 2 4.1 4.5.7-3.25 3.18.77 4.5L8 11.85l-4.02 2.13.77-4.5L1.5 6.3l4.5-.7z"/></svg><span id="star-count"></span><span class="sr-only"> stars</span></span>
     </a>
+  <button type="button" id="theme-toggle" aria-label="Dark mode" aria-pressed="false"><svg class="icon" aria-hidden="true"><use class="moon" href="#i-moon"/><use class="sun" href="#i-sun"/></svg></button>
 </nav></header>
 <main>
-  <div class="intro"><div><h1>Theorem atlas</h1><p>Trace a Lean proof or explore a result awaiting formalization.</p></div>
-    <div class="totals"><span><b id="total-nodes">—</b>Lean declarations</span><span><b id="total-targets">—</b>Need proof</span><span><b id="total-edges">—</b>Dependencies</span></div>
+  <div class="intro"><div><h1>Theorem atlas</h1><p>Explore the main theorems or unfold the lemmas behind their proofs.</p></div>
+    <div class="totals"><span><b id="total-nodes">—</b><small id="total-caption">Main theorems</small></span><span><b id="total-targets">—</b>Need proof</span><span><b id="total-edges">—</b>Dependencies</span></div>
   </div>
   <div class="workbench">
     <section class="figure" aria-label="Interactive dependency graph">
-      <div class="plotbar"><span class="plot-title"><svg class="icon"><use href="#i-graph"/></svg><span id="view-name">Library overview</span><a id="details-jump" href="#panel" hidden>Details ↓</a></span>
+      <div class="plotbar"><span class="plot-title"><svg class="icon"><use href="#i-graph"/></svg><span id="view-name">Main theorems</span><a id="details-jump" href="#panel" hidden>Details ↓</a></span>
+        <button id="scope-toggle" type="button" aria-controls="network" aria-expanded="false"><svg class="icon" aria-hidden="true"><use href="#i-expand"/></svg><span>View all</span><span id="scope-count"></span></button>
         <div class="zoom"><button id="zoom-out" aria-label="Zoom out" title="Zoom out"><svg class="icon"><use href="#i-minus"/></svg></button><output id="scale">100%</output><button id="zoom-in" aria-label="Zoom in" title="Zoom in"><svg class="icon"><use href="#i-plus"/></svg></button><button id="fit" aria-label="Fit graph to view" title="Fit graph to view"><svg class="icon"><use href="#i-fit"/></svg></button></div>
       </div>
-      <div class="plot" id="plot"><svg id="network" role="group" tabindex="0" aria-label="Theorem dependency graph. Use arrow keys to pan, plus or minus to zoom, or use the searchable theorem index.">
+      <div class="plot" id="plot"><svg id="network" role="group" tabindex="0" aria-label="Theorem dependency graph. Use arrows to pan, Shift and arrows to move a selected point, or plus and minus to zoom. Search the index to select any result.">
         <defs><marker id="ink-arrow" orient="auto" markerUnits="userSpaceOnUse" markerWidth="4" markerHeight="4" refX="3.6" refY="2"><path d="M0 .3 3.7 2 0 3.7z" fill="#59665f"/></marker><marker id="focus-arrow" orient="auto" markerUnits="userSpaceOnUse" markerWidth="6" markerHeight="6" refX="5.5" refY="3"><path d="M0 .3 5.7 3 0 5.7z" fill="#273a42"/></marker></defs>
-        <g id="world"><g id="links"></g><g id="dots"></g><g id="map-labels"></g><g id="zoom-labels"></g><g id="focus-label"></g></g>
+        <g id="world"><g id="summary-links"></g><g id="links"></g><g id="dots"></g><g id="map-labels"></g><g id="zoom-labels"></g><g id="focus-label"></g></g>
       </svg><div id="tip" hidden></div></div>
       <div class="legend" aria-label="Result types"><span class="key classical"><i></i>Classical computing</span><span class="key quantum"><i></i>Quantum computing</span><span class="key general"><i></i>General theory</span><button type="button" id="needs-proof" class="key pending"><i></i>Needs proof</button></div>
     </section>
@@ -71,7 +87,7 @@ SOFTWARE.
       <div id="panel" tabindex="-1"></div>
     </aside>
   </div>
-  <footer><span class="arrow-sample">⟶</span> Prerequisite to dependent <span class="dash-sample"></span> Via a definition <span class="gesture">Drag to pan · Scroll to zoom</span></footer>
+  <footer><span class="arrow-sample">⟶</span> Prerequisite to dependent <span class="dash-sample"></span> <span id="edge-key">Indirect dependency</span> <span class="gesture">Drag a point to move it · Drag the map to pan</span></footer>
   <p id="notice" class="sr-only" aria-live="polite"></p>
   <noscript>Enable JavaScript to explore the interactive graph, or <a href="https://github.com/the-matter-lab/fqchem/tree/main/docs/theorems">browse the module diagrams</a>.</noscript>
 </main>

@@ -1,6 +1,6 @@
 # Theorem dependencies
 
-Open [the theorem atlas](https://fqchem.matterlab.ca/) to see the complete directed graph. Colored points include checked declarations, isolated results and imported prerequisites. Red points are sourced literature results awaiting a Lean proof. Click a point or search by theorem or method to highlight its incoming and outgoing arrows. Zoom in to see names, select a chapter to see its results and their immediate neighbors in other chapters, or share the address of a selected theorem. For example, explore the [VMC variational bound](https://fqchem.matterlab.ca/#FQChem.StatePrep.VariationalOptimization.VariationalMonteCarlo.variationalBound).
+Open [the theorem atlas](https://fqchem.matterlab.ca/) to explore the main theorems. **View all** unfolds the complete directed graph. Colored points include checked declarations, isolated results and imported prerequisites. Red points are sourced literature results awaiting a Lean proof. Click a point or search by theorem or method to highlight its incoming and outgoing arrows. Zoom in to see names, select a chapter to see its results and their immediate neighbors in other chapters, or share the address of a selected theorem. For example, explore the [VMC variational bound](https://fqchem.matterlab.ca/#FQChem.StatePrep.VariationalOptimization.VariationalMonteCarlo.variationalBound).
 
 For offline use, download the [standalone atlas](https://raw.githubusercontent.com/the-matter-lab/fqchem/atlas/docs/theorems/index.html) and open it in a browser.
 
@@ -16,9 +16,13 @@ Select [Needs proof](https://fqchem.matterlab.ca/#needs-proof) for the red nodes
 
 ## Reading the graph
 
+The overview includes public declarations reviewed as paper results. Each cited paper also gets a representative in each chapter where it has a reviewed paper result, specialization or derived result. The two example proofs in the sidebar are included. Search covers the full index in either view. Selecting a hidden lemma opens the full graph.
+
+On expansion, supporting nodes unfold from the nearest main theorem that depends on them, following the recorded Lean edges. Equally close theorems share a prerequisite in the graph, which draws the node once. Results outside those proof paths appear in their chapter. Drag a point to reposition it or drag empty space to pan. With the graph focused, Shift and the arrow keys move the selected point. The icon in the top navigation switches between light and dark themes.
+
 Position groups results by library chapter, with imported prerequisites in their own group. Orange marks classical computing methods, blue marks quantum computing methods, and sage marks general theory. These are editorial method-family labels. For example, VMC is classical, VQE is quantum, and the Rayleigh–Ritz principle they share is general. The inspector gives the family in text. Node size increases with the number of directly displayed dependents.
 
-An arrow A → B means that Lean's elaborated statement or proof of B uses A. A solid edge is a direct constant reference. A dashed edge passes through local definitions or compiler-generated helpers before reaching A. Each path stops at its first source theorem. Private source lemmas and theorems with no edges are included. A module import or a shared scientific topic creates no edge. Core Lean and Mathlib are outside the graph, and imported Aaronson–Ambainis and Qatlib theorems used at the boundary link to their pinned sources.
+An arrow A → B means that Lean's elaborated statement or proof of B uses A. In the overview, a dotted arrow traces a dependency through hidden theorems. Switch to **View all** to inspect the individual steps. A solid edge is a direct constant reference. A dashed edge passes through local definitions or compiler-generated helpers before reaching A. Each path stops at its first source theorem. Private source lemmas and theorems with no edges are included. A module import or a shared scientific topic creates no edge. Core Lean and Mathlib are outside the graph, and imported Aaronson–Ambainis and Qatlib theorems used at the boundary link to their pinned sources.
 
 For example, VMC’s variational bound uses both the Born-average identity and Rayleigh–Ritz. In dynamics, the lower bound for the two-orbital simulator uses the quantum query polynomial and the exact parity readout. The Lean source links below every module diagram give the hypotheses and conclusions.
 

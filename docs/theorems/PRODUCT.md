@@ -8,7 +8,7 @@ web
 
 ## Purpose
 
-Readers of the fqchem Lean library open the explorer to see all theorems and the dependencies between them. The first view shows the entire graph. Selecting a theorem reveals its prerequisites and dependents and links to the Lean declaration.
+Readers of the fqchem Lean library open the explorer to see all theorems and the dependencies between them. The first view shows the main theorems. Readers can expand the complete graph, move individual nodes and switch the color theme. Selecting a theorem reveals its prerequisites and dependents and links to the Lean declaration.
 
 ## Evidence and constraints
 

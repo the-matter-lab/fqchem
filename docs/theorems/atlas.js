@@ -1,16 +1,33 @@
 "use strict";
 
 const $ = id => document.getElementById(id);
+const themeToggle = $("theme-toggle");
+function syncTheme() {
+  applyTheme();
+  const dark = document.documentElement.dataset.theme === "dark";
+  themeToggle.setAttribute("aria-pressed", String(dark));
+  themeToggle.title = dark ? "Switch to light mode" : "Switch to dark mode";
+}
+themeToggle.onclick = () => {
+  themeChoice = document.documentElement.dataset.theme === "dark" ? "light" : "dark";
+  try { localStorage.setItem("fqchem-theme",themeChoice); } catch {}
+  syncTheme();
+};
+systemTheme.addEventListener("change",syncTheme);
+window.addEventListener("storage",e => {
+  if (e.key === null || e.key === "fqchem-theme") { themeChoice=e.newValue; syncTheme(); }
+});
+syncTheme();
 const NS = "http://www.w3.org/2000/svg";
 const chapters = new Map(Object.entries({
   StatePrep: "State preparation", Dynamics: "Dynamics", Properties: "Properties",
   Multiscale: "Multiscale", Complexity: "Complexity", Upstream: "Upstream results",
 }));
 const types = {
-  pending: {name: "Needs proof", color: "#ad3244"},
-  classical: {name: "Classical computing", color: "#b45a29"},
-  quantum: {name: "Quantum computing", color: "#306ba0"},
-  general: {name: "General theory", color: "#647e60"},
+  pending: {name: "Needs proof"},
+  classical: {name: "Classical computing"},
+  quantum: {name: "Quantum computing"},
+  general: {name: "General theory"},
 };
 
 // These are method families. Shared analytic identities stay in general theory.
@@ -81,13 +98,68 @@ for (const entries of [...graphParts,targets]) {
     });
   });
 }
+// Keep reviewed paper results, with a representative for each other reviewed
+// paper in each chapter. A proof's number of callers alone says little about
+// its scientific importance (in particular for a final theorem).
+const mainSet = new Set();
+const representatives = new Map();
+const relationRank = {"paper-result":3, specialization:2, derived:1};
+for (const n of nodes) {
+  const rank = relationRank[n.review.relation];
+  if (!rank || n.private) continue;
+  if (rank === 3) mainSet.add(n);
+  for (const paper of n.review.papers) {
+    const key = n.chapter + "/" + paper;
+    const previous = representatives.get(key);
+    if (!previous || rank > relationRank[previous.review.relation] ||
+        (rank === relationRank[previous.review.relation] && n.before.length > previous.before.length)) {
+      representatives.set(key, n);
+    }
+  }
+}
+for (const n of representatives.values()) mainSet.add(n);
+const proofExamples = [
+  ["VMC variational bound","FQChem.StatePrep.VariationalOptimization.VariationalMonteCarlo.variationalBound"],
+  ["Circuit-to-energy reduction","FQChem.Complexity.Kitaev.BoundedErrorReduction.transducer_correct"],
+];
+for (const [,name] of proofExamples) if (byName.has(name)) mainSet.add(byName.get(name));
+
+// A multi-source walk against the arrow direction assigns each prerequisite
+// to a nearest main theorem using it. Unreachable nodes have no proof owner.
+const queue = [...mainSet];
+const owner = new Map(queue.map(n => [n,n]));
+for (let i=0; i<queue.length; i++) {
+  const n = queue[i];
+  for (const prior of n.before) {
+    if (owner.has(prior)) continue;
+    owner.set(prior,owner.get(n));
+    queue.push(prior);
+  }
+}
+
+// In the overview a dotted arrow can span hidden proof steps. Stop at the
+// first visible prerequisite and prefer the original edge if both paths exist.
+const summaryEdges = [];
+for (const to of mainSet) {
+  const immediate = new Set(to.before);
+  const seen = new Set([to]);
+  const stack = [...to.before];
+  while (stack.length) {
+    const from = stack.pop();
+    if (seen.has(from)) continue;
+    seen.add(from);
+    if (mainSet.has(from)) {
+      if (!immediate.has(from)) summaryEdges.push({from,to,kind:"chain"});
+    } else stack.push(...from.before);
+  }
+}
+
 const groups = new Map([...chapters.keys()].map(key => [key,nodes.filter(n => n.chapter === key)]));
 const chapterNeighbors = new Map([...groups].map(([key,members]) =>
   [key,new Set(members.flatMap(n => [n,...n.before,...n.after]))]));
 const ordered = [...nodes].sort((a,b) => a.short.localeCompare(b.short) || a.name.localeCompare(b.name));
-$("total-nodes").textContent = (nodes.length-targets.length).toLocaleString();
 $("total-targets").textContent = targets.length.toLocaleString();
-$("total-edges").textContent = edges.length.toLocaleString();
+const overviewEdgeCount = summaryEdges.length + edges.filter(e=>mainSet.has(e.from) && mainSet.has(e.to)).length;
 
 function svg(tag, attrs) {
   const el = document.createElementNS(NS,tag);
@@ -150,27 +222,144 @@ for (const members of groups.values()) if (members.length) layoutChapter(members
 
 const layouts = {
   wide: {StatePrep:[236,154,186,94], Complexity:[657,333,234,114], Dynamics:[151,374,102,61],
-    Properties:[500,95,48,28], Multiscale:[366,399,45,27], Upstream:[784,97,91,44]},
+    Properties:[510,93,86,45], Multiscale:[366,399,45,27], Upstream:[784,97,91,44]},
   narrow: {StatePrep:[151,145,113,75], Complexity:[353,343,151,104], Dynamics:[102,350,63,46],
-    Properties:[308,82,34,24], Multiscale:[108,474,40,22], Upstream:[451,141,62,45]},
+    Properties:[310,84,51,33], Multiscale:[108,474,40,22], Upstream:[451,141,62,45]},
 };
 let W=960,H=500,narrow=false,boxes=layouts.wide;
 let active=null, chapter=null, query="", browsing=false, limit=45;
 let zoom=1, tx=0, ty=0;
 let selectedEdges=new Set(), neighbors=new Set();
-const labels=new Map();
-for (const e of edges) {
-  e.el=svg("path",{"marker-end":"url(#ink-arrow)"});
-  $("links").append(e.el);
-}
+let expanded = new URL(location.href).searchParams.get("view") === "all";
+let openness = expanded ? 1 : 0, motionFrame = 0;
+const reducedMotion = matchMedia("(prefers-reduced-motion: reduce)");
+const labels = new Map();
+const folds = new Map();
+const crossLinks = svg("g",{});
+const fixedLinks = svg("g",{});
+const fixedDots = svg("g",{});
+$("links").append(crossLinks);
 for (const n of nodes) {
-  n.r=2.35+Math.min(3.5,Math.sqrt(n.after.length)*.75);
-  n.el=svg("circle",{class:"dot",fill:types[n.kind].color,r:n.r,"data-id":n.id});
-  $("dots").append(n.el);
+  n.incident = [];
+  n.dx = 0; n.dy = 0;
+  n.main = mainSet.has(n);
+  n.r = (n.main ? 4.0 : 2.1) + Math.min(3.1, Math.sqrt(n.after.length)*.66);
+  if (!n.main) {
+    const anchor = owner.get(n);
+    const key = anchor || n.chapter;
+    if (!folds.has(key)) {
+      const fold = {anchor, chapter:n.chapter, dots:svg("g",{}), links:svg("g",{})};
+      folds.set(key,fold);
+      $("links").append(fold.links);
+      $("dots").append(fold.dots);
+    }
+    n.fold = folds.get(key);
+  }
+  n.el = svg("circle",{class:"dot",r:n.r,"data-id":n.id});
+  (n.fold?.dots || fixedDots).append(n.el);
+}
+$("dots").append(fixedDots);
+$("links").append(fixedLinks);
+for (const [i,e] of [...edges,...summaryEdges].entries()) {
+  e.bend = e.from.chapter===e.to.chapter ? 0 : ((i%5)-2)*.028;
+  e.el = svg("path",{"marker-end":"url(#ink-arrow)"});
+  e.from.incident.push(e); e.to.incident.push(e);
+  if (e.kind === "chain") $("summary-links").append(e.el);
+  else if (e.from.main && e.to.main) fixedLinks.append(e.el);
+  else {
+    const fold = e.from.fold || e.to.fold;
+    const sameFold = [e.from,e.to].every(n => n.fold === fold || n === fold.anchor);
+    (sameFold ? fold.links : crossLinks).append(e.el);
+  }
 }
 for (const [key,title] of chapters) {
   const label=svg("text",{class:"map-label","text-anchor":"middle","data-chapter":key});
   label.textContent=title; labels.set(key,label); $("map-labels").append(label);
+}
+function edgeGeometry(e) {
+  const a=e.from,b=e.to,dx=b.x-a.x,dy=b.y-a.y,length=Math.hypot(dx,dy)||1;
+  const bx=b.x-dx*(b.r+1.1)/length, by=b.y-dy*(b.r+1.1)/length;
+  e.el.setAttribute("d",`M${a.x} ${a.y} Q${(a.x+bx)/2-dy*e.bend} ${(a.y+by)/2+dx*e.bend} ${bx} ${by}`);
+}
+function position(n) {
+  const [cx,cy,rx,ry]=boxes[n.chapter];
+  n.x=cx+n.u*rx+n.dx+(n.spreadX||0); n.y=cy+n.v*ry+n.dy+(n.spreadY||0);
+  n.el.setAttribute("cx",n.x); n.el.setAttribute("cy",n.y);
+}
+function paintFolds() {
+  // One transform per proof group keeps its lemmas and their local arrows
+  // attached throughout the reveal, even for the largest imports.
+  for (const fold of folds.values()) {
+    const [cx,cy] = boxes[fold.chapter];
+    const x = fold.anchor?.x ?? cx, y = fold.anchor?.y ?? cy;
+    const k = fold.anchor ? openness : .94 + .06*openness;
+    const transform = `matrix(${k} 0 0 ${k} ${x*(1-k)} ${y*(1-k)})`;
+    for (const layer of [fold.dots,fold.links]) {
+      layer.style.display = openness ? "" : "none";
+      if (openness === 1) layer.removeAttribute("transform");
+      else layer.setAttribute("transform",transform);
+      layer.style.opacity = fold.anchor ? "" : openness;
+    }
+  }
+  crossLinks.style.display = openness ? "" : "none";
+  crossLinks.style.opacity = Math.max(0,(openness-.8)*5);
+  const summary = $("summary-links");
+  summary.style.display = openness===1 ? "none" : "";
+  summary.style.opacity = Math.max(0,1-openness*3);
+}
+function settleMotion() {
+  cancelAnimationFrame(motionFrame); motionFrame=0;
+  openness=expanded?1:0; paintFolds();
+}
+function setExpanded(value,animate=true) {
+  if (expanded === value) return;
+  expanded=value;
+  const url=new URL(location.href);
+  if(value) url.searchParams.set("view","all"); else url.searchParams.delete("view");
+  history.replaceState(null,"",url.href);
+  cancelAnimationFrame(motionFrame); motionFrame=0;
+  const start=openness, end=value?1:0, since=performance.now();
+  const duration=(value?530:340)*Math.abs(end-start);
+  if(!animate || reducedMotion.matches || !duration) settleMotion();
+  else {
+    function frame(now) {
+      const t=Math.min(1,(now-since)/duration);
+      openness=start+(end-start)*(1-Math.pow(1-t,3)); paintFolds();
+      motionFrame=t<1?requestAnimationFrame(frame):0;
+    }
+    motionFrame=requestAnimationFrame(frame);
+  }
+  syncScope();
+}
+reducedMotion.addEventListener("change",() => { if(reducedMotion.matches && motionFrame) settleMotion(); });
+function syncScope() {
+  const btn=$("scope-toggle");
+  btn.setAttribute("aria-expanded",String(expanded));
+  btn.querySelector("span").textContent=expanded?"Main theorems":"View all";
+  $("scope-count").textContent=(expanded?mainSet.size:nodes.length).toLocaleString();
+  $("total-nodes").textContent=(expanded?nodes.length-targets.length:mainSet.size).toLocaleString();
+  $("total-edges").textContent=(expanded?edges.length:overviewEdgeCount).toLocaleString();
+  $("total-caption").textContent=expanded?"Lean declarations":"Main theorems";
+  $("edge-key").textContent=expanded?"Via a definition":"Indirect dependency";
+}
+// Leave enough space to pick neighboring main theorems at the default zoom.
+function spaceMain(members,rx,ry) {
+  const visible=members.filter(n=>n.main);
+  for (const n of visible) { n.spreadX=0; n.spreadY=0; }
+  for (let pass=0;pass<20;pass++) {
+    for (let i=0;i<visible.length;i++) {
+      const a=visible[i];
+      for (let j=i+1;j<visible.length;j++) {
+        const b=visible[j];
+        const dx=(a.u-b.u)*rx+a.spreadX-b.spreadX || .01;
+        const dy=(a.v-b.v)*ry+a.spreadY-b.spreadY;
+        const length=Math.hypot(dx,dy), gap=a.r+b.r+3-length;
+        if(gap<=0) continue;
+        const step=.5*gap/length;
+        a.spreadX+=dx*step; a.spreadY+=dy*step; b.spreadX-=dx*step; b.spreadY-=dy*step;
+      }
+    }
+  }
 }
 function geometry() {
   narrow=$("plot").clientWidth<570; W=narrow?560:960; H=narrow?540:500;
@@ -178,18 +367,12 @@ function geometry() {
   $("network").setAttribute("viewBox",`0 0 ${W} ${H}`);
   for(const [key,members] of groups) {
     const [cx,cy,rx,ry]=boxes[key];
+    spaceMain(members,rx,ry);
     const label=labels.get(key); label.setAttribute("x",cx); label.setAttribute("y",cy-ry-12);
-    for(const n of members) {
-      n.x=cx+n.u*rx; n.y=cy+n.v*ry; n.el.setAttribute("cx",n.x); n.el.setAttribute("cy",n.y);
-    }
+    for(const n of members) position(n);
   }
-  for (const [i,e] of edges.entries()) {
-    const a=e.from,b=e.to,dx=b.x-a.x,dy=b.y-a.y,length=Math.hypot(dx,dy)||1;
-    const bx=b.x-dx*(b.r+1.1)/length, by=b.y-dy*(b.r+1.1)/length;
-    const bend=a.chapter===b.chapter?0:((i%5)-2)*.028;
-    e.el.setAttribute("d",`M${a.x} ${a.y} Q${(a.x+bx)/2-dy*bend} ${(a.y+by)/2+dx*bend} ${bx} ${by}`);
-  }
-  updateFocusLabel();
+  edges.forEach(edgeGeometry); summaryEdges.forEach(edgeGeometry);
+  paintFolds(); updateFocusLabel();
 }
 function drawCamera() {
   $("world").setAttribute("transform",`translate(${tx} ${ty}) scale(${zoom})`);
@@ -222,23 +405,53 @@ function updateFocusLabel() {
   const right=active.x<W*.70;
   const label=svg("text",{x:active.x+(right?8:-8),y:active.y-7,class:"focus-text","text-anchor":right?"start":"end"});
   label.textContent=active.short;
-  const ring=svg("circle",{cx:active.x,cy:active.y,r:active.r+2.7,fill:"none",stroke:"#26362d","stroke-width":.9});
+  const ring=svg("circle",{cx:active.x,cy:active.y,r:active.r+2.7,fill:"none",stroke:"var(--focus-ink)","stroke-width":.9});
   group.append(ring,label);
 }
 // Reveal names as space becomes available. Bounding boxes in viewBox units
 // keep adjacent labels apart, including after a pan or a pinch gesture.
 const ranked = [...nodes].sort((a,b)=>(b.before.length+b.after.length)-(a.before.length+a.after.length));
+const landmarks = [
+  ["VMC variational bound",proofExamples[0][1]],
+  ["Coleman’s theorem","FQChem.Properties.NRepresentability.coleman"],
+  ["Grover optimality","FQChem.Complexity.SearchOptimality.grover_is_optimal"],
+  ["Feshbach reduction","FQChem.Multiscale.Embedding.feshbachReduction"],
+  ["Singular value transformation","FQChemQatlib.Dynamics.SingularValueTransformation.singularValueTransformationOfPhases"],
+];
+function drawLandmarks(layer) {
+  if(expanded || active || query || chapter || zoom<.85) return;
+  const places=[...mainSet].map(n=>({x:n.x-n.r,y:n.y-n.r,w:n.r*2,h:n.r*2}));
+  for(const label of labels.values()) places.push(label.getBBox());
+  for(const [title,name] of landmarks) {
+    const n=byName.get(name);
+    if(!n?.main) continue;
+    const w=title.length*5.5, h=11;
+    let placed=false;
+    for(const dy of [0,14,-14,28,-28,42,-42]) {
+      for(const side of [1,-1]) {
+        const x=n.x+side*11-(side<0?w:0), y=n.y+dy-h/2;
+        if(x<4 || x+w>W-4 || y<4 || y+h>H-4 || places.some(r=>
+          x<r.x+(r.w??r.width)+2 && x+w+2>r.x && y<r.y+(r.h??r.height)+2 && y+h+2>r.y)) continue;
+        const text=svg("text",{x:side>0?x:x+w,y:y+h-1,"text-anchor":side>0?"start":"end",class:"landmark"});
+        text.textContent=title;
+        layer.append(svg("path",{d:`M${n.x+side*n.r} ${n.y} L${side>0?x-2:x+w+2} ${y+h/2}`,class:"leader"}),text);
+        places.push({x,y,w,h}); placed=true; break;
+      }
+      if(placed) break;
+    }
+  }
+}
 let labelsFrame=0;
 function scheduleLabels() {
   if (labelsFrame) return;
   labelsFrame=requestAnimationFrame(()=>{
     labelsFrame=0;
     const layer=$("zoom-labels"); layer.replaceChildren();
-    if(zoom<1.5) return;
+    if(zoom<1.5) { drawLandmarks(layer); return; }
     const occupied=[];
     const unit=1/Math.max(.2,network.getScreenCTM().a);
     for(const n of ranked) {
-      if(n===active || !visibleNode(n)) continue;
+      if((!expanded && !n.main) || n===active || !visibleNode(n)) continue;
       const x=tx+n.x*zoom+(n.r*zoom+3*unit),y=ty+n.y*zoom;
       const width=n.short.length*5.9*unit,height=13*unit;
       if(x<5||y<height||x+width>W-5||y>H-5) continue;
@@ -253,26 +466,28 @@ function scheduleLabels() {
 }
 function matches(n) { return (!chapter || n.chapter===chapter) && (!query || n.match.includes(query)); }
 function visibleNode(n) {
+  if(!expanded && !n.main) return false;
   if(active) return neighbors.has(n);
   return chapter && !query ? chapterNeighbors.get(chapter).has(n) : matches(n);
 }
 function highlight() {
   neighbors=new Set(active?[active,...active.before,...active.after]:[]);
-  selectedEdges=new Set(active?edges.filter(e=>e.from===active||e.to===active):[]);
+  selectedEdges=new Set(active?active.incident:[]);
+  if(active && !expanded) for(const e of selectedEdges) {neighbors.add(e.from); neighbors.add(e.to);}
   for(const n of nodes) {
     const dim=!visibleNode(n);
-    n.el.setAttribute("class","dot"+(n.pending?" pending":"")+(dim?" dim":"")+(active===n?" selected":active&&neighbors.has(n)?" neighbor":""));
+    n.el.setAttribute("class","dot "+n.kind+(n.main?" principal":"")+(dim?" dim":"")+(active===n?" selected":active&&neighbors.has(n)?" neighbor":""));
   }
-  for(const e of edges) {
+  for(const e of [...edges,...summaryEdges]) {
     const focus=selectedEdges.has(e);
     const dim=active ? !focus : query ? !matches(e.from)||!matches(e.to) :
       chapter && e.from.chapter!==chapter && e.to.chapter!==chapter;
     e.el.setAttribute("class","edge "+e.kind+(e.from.chapter!==e.to.chapter?" cross":"")+(dim?" dim":"")+(focus?" active":""));
     e.el.setAttribute("marker-end",focus?"url(#focus-arrow)":"url(#ink-arrow)");
-    if(focus) $("links").append(e.el);
+    if(focus) e.el.parentNode.append(e.el);
   }
   for(const [key,label] of labels) label.setAttribute("class","map-label"+(chapter&&key!==chapter?" dim":""));
-  $("view-name").textContent=active?active.short:chapter?chapters.get(chapter):query==="needsproof"?"Needs proof":query?"Search matches":"Library overview";
+  $("view-name").textContent=active?active.short:chapter?chapters.get(chapter):query==="needsproof"?"Needs proof":query?"Search matches":expanded?"All results":"Main theorems";
   $("details-jump").hidden=!active;
   updateFocusLabel(); scheduleLabels();
 }
@@ -336,7 +551,7 @@ function showPanel(resetScroll=true) {
       }
     }
   } else if(chapter || query || browsing) {
-    const list=ordered.filter(matches);
+    const list=ordered.filter(n=>matches(n) && (expanded || query || n.main));
     panel.append(back(),html("h3","section-title",(chapter?chapters.get(chapter):query==="needsproof"?"Needs proof":query?"Search results":"All results")+" · "+list.length));
     panel.append(...list.slice(0,limit).map(n=>theoremRow(n,true)));
     if(!list.length) panel.append(html("p","empty","No matching theorems. Try a method such as VMC or a Lean name."));
@@ -344,17 +559,14 @@ function showPanel(resetScroll=true) {
   } else {
     panel.append(html("h3","section-title","Chapters"));
     for(const [key,title] of chapters) {
-      panel.append(row(title,()=>selectChapter(key),{count:groups.get(key).length}));
+      panel.append(row(title,()=>selectChapter(key),{count:groups.get(key).filter(n=>expanded || n.main).length}));
     }
-    const examples=[
-      ["VMC variational bound","FQChem.StatePrep.VariationalOptimization.VariationalMonteCarlo.variationalBound"],
-      ["Circuit-to-energy reduction","FQChem.Complexity.Kitaev.BoundedErrorReduction.transducer_correct"],
-    ].flatMap(([title,name])=>{
+    const examples=proofExamples.flatMap(([title,name])=>{
       const n=byName.get(name);
       return n?[row(title,()=>select(n),{kind:n.kind})]:[];
     });
     panel.append(sub("Trace a proof",examples));
-    panel.append(row("Browse all results",()=>{browsing=true;showPanel();},{count:nodes.length}));
+    panel.append(row("Browse all results",()=>{setExpanded(true);browsing=true;highlight();showPanel();},{count:nodes.length}));
   }
   if(resetScroll) panel.scrollTop=0;
 }
@@ -371,6 +583,7 @@ function selectChapter(key) {
   active=null; chapter=key; browsing=false; clearQuery(); setHash(""); fit(); highlight(); showPanel();
 }
 function select(n,record=true) {
+  if(!n.main) setExpanded(true,false);
   active=n; chapter=null; browsing=false; clearQuery();
   if(record) setHash(byName.get(n.name)===n?n.name:n.module+"/"+n.name);
   // Keep the full proof map in context when possible. Bring an off-screen
@@ -381,12 +594,23 @@ function select(n,record=true) {
   $("notice").textContent=n.short+". "+n.before.length+" prerequisites. "+n.after.length+" dependent results.";
 }
 function showPending(record=true) {
+  setExpanded(true,false);
   active=null; chapter=null; browsing=true; limit=45; query="needsproof"; $("search").value="Needs proof";
   if(record) setHash("needs-proof");
   fit(); highlight(); showPanel();
 }
+$("scope-toggle").onclick=()=>{
+  setExpanded(!expanded);
+  if (!expanded && active && !active.main) {
+    const anchor=owner.get(active);
+    if (anchor) select(anchor); else overview();
+  } else if (!expanded && query==="needsproof") overview();
+  else { highlight(); showPanel(); }
+  $("notice").textContent=(expanded?nodes.length+" results":mainSet.size+" main theorems")+" shown.";
+};
 $("needs-proof").onclick=()=>showPending();
 function fromHash() {
+  setExpanded(new URL(location.href).searchParams.get("view")==="all",false);
   let id=""; try { id=decodeURIComponent(location.hash.slice(1)); } catch {}
   if(id==="needs-proof") { showPending(false); return; }
   const n=byName.get(id)||byDeclaration.get(id)||byDeclaration.get(atlasLiterature.aliases[id]);
@@ -413,7 +637,10 @@ network.addEventListener("keydown",e=>{
   if(e.key==="+"||e.key==="=") zoomCenter(1.4);
   else if(e.key==="-") zoomCenter(1/1.4);
   else if(e.key==="Home") fit();
-  else if(e.key.startsWith("Arrow")) {
+  else if(e.key.startsWith("Arrow") && e.shiftKey && active) {
+    settleMotion();
+    moveNode(active,({ArrowLeft:-8,ArrowRight:8}[e.key]||0)/zoom,({ArrowUp:-8,ArrowDown:8}[e.key]||0)/zoom);
+  } else if(e.key.startsWith("Arrow")) {
     tx+=({ArrowLeft:35,ArrowRight:-35}[e.key]||0); ty+=({ArrowUp:35,ArrowDown:-35}[e.key]||0); drawCamera();
   } else return;
   e.preventDefault();
@@ -422,12 +649,17 @@ network.addEventListener("wheel",e=>{
   e.preventDefault(); $("tip").hidden=true;
   transformAt(zoom*Math.exp(-Math.sign(e.deltaY)*Math.min(.32,Math.abs(e.deltaY)*.002)),svgPoint(e.clientX,e.clientY));
 },{passive:false});
+function moveNode(n,dx,dy) {
+  n.dx+=dx; n.dy+=dy; position(n);
+  n.incident.forEach(edgeGeometry);
+  updateFocusLabel(); scheduleLabels();
+}
 const pointers=new Map(); let pressed=null, dragged=false;
 function near(x,y) {
   const p=svgPoint(x,y), lx=(p.x-tx)/zoom, ly=(p.y-ty)/zoom;
   let closest=null, best=Infinity;
   const tolerance=5/(network.getScreenCTM().a*zoom);
-  for(const n of nodes) {
+  for(const n of expanded ? nodes : mainSet) {
     const dist=Math.hypot(n.x-lx,n.y-ly);
     if(dist<=n.r+tolerance && dist<best){closest=n;best=dist;}
   }
@@ -435,8 +667,13 @@ function near(x,y) {
 }
 network.addEventListener("pointerdown",e=>{
   if(e.button!==0) return;
-  if(!pointers.size){ pressed={x:e.clientX,y:e.clientY,chapter:e.target.dataset.chapter}; dragged=false; }
-  else dragged=true;
+  if (motionFrame) settleMotion();
+  if(!pointers.size) {
+    const chapter=e.target.dataset.chapter;
+    const node=chapter?null:near(e.clientX,e.clientY);
+    pressed={x:e.clientX,y:e.clientY,chapter,node};
+    dragged=false;
+  } else { dragged=true; pressed=null; }
   pointers.set(e.pointerId,svgPoint(e.clientX,e.clientY)); network.setPointerCapture(e.pointerId); $("tip").hidden=true;
 });
 network.addEventListener("pointermove",e=>{
@@ -447,10 +684,13 @@ network.addEventListener("pointermove",e=>{
     if(other) {
       const before=Math.hypot(old.x-other.x,old.y-other.y), after=Math.hypot(now.x-other.x,now.y-other.y);
       if(before>1) transformAt(zoom*after/before,other);
-    } else if(dragged) { tx+=now.x-old.x; ty+=now.y-old.y; drawCamera(); }
+    } else if(dragged) {
+      if(pressed?.node) moveNode(pressed.node,(now.x-old.x)/zoom,(now.y-old.y)/zoom);
+      else { tx+=now.x-old.x; ty+=now.y-old.y; drawCamera(); }
+    }
     pointers.set(e.pointerId,now);
   } else if(e.pointerType!=="touch") {
-    const n=e.target.dataset.chapter?null:near(e.clientX,e.clientY),tip=$("tip");
+    const n=motionFrame || e.target.dataset.chapter ? null : near(e.clientX,e.clientY),tip=$("tip");
     tip.hidden=!n;
     if(n) {
       const rect=$("plot").getBoundingClientRect(); tip.textContent=n.short+" · "+types[n.kind].name;
@@ -463,14 +703,14 @@ network.addEventListener("pointerup",e=>{
   if(!pointers.delete(e.pointerId)) return;
   if(!dragged&&pressed) {
     if(pressed.chapter) selectChapter(pressed.chapter);
-    else {const n=near(e.clientX,e.clientY); if(n)select(n); else if(active)overview();}
+    else if(pressed.node) select(pressed.node); else if(active) overview();
   }
   if(!pointers.size) pressed=null;
 });
-network.addEventListener("pointercancel",e=>{pointers.delete(e.pointerId);dragged=true;});
+network.addEventListener("pointercancel",e=>{pointers.delete(e.pointerId);pressed=null;dragged=true;});
 network.addEventListener("pointerleave",()=>{$("tip").hidden=true;});
 new ResizeObserver(()=>{if(($("plot").clientWidth<570)!==narrow){geometry();fit();}}).observe($("plot"));
-geometry(); fromHash();
+syncScope(); geometry(); fromHash();
 if(location.protocol==="https:") {
   fetch("https://api.github.com/repos/the-matter-lab/fqchem",{credentials:"omit"})
     .then(r=>r.ok?r.json():null).then(repo=>{
