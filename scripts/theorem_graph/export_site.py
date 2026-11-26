@@ -47,7 +47,8 @@ def export():
     css = read("atlas.css").replace("fonts/stix-two-text-latin.woff2", font_uri)
     html = html.replace('<link rel="stylesheet" href="atlas.css">',
                         f"<style>/* {read('fonts/OFL.txt')} */\n{css}</style>")
-    html = html.replace('<script src="atlas.js"></script>', f"<script>{read('atlas.js')}</script>")
+    for name in ("proof-flight.js", "atlas.js"):
+        html = html.replace(f'<script src="{name}"></script>', f"<script>{read(name)}</script>")
     literature = (ROOT / directory / "literature.js").read_text()
     tag = '<script src="literature.js"></script>'
     if html.count(tag) != 1:

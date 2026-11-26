@@ -97,7 +97,8 @@ h1 { font: 500 clamp(38px,4.2vw,61px)/1 var(--serif); letter-spacing: -.039em }
 #fit { margin-left: 6px; border-left: 1px solid var(--rule); border-radius: 0; width: 37px }
 #scale { font: 11px var(--mono); min-width: 4.2ch; text-align: center; font-variant-numeric: tabular-nums }
 .plot { position: relative; overflow: hidden; height: clamp(387px,56vh,720px); background: var(--plate) }
-#network { width: 100%; height: 100%; display: block; touch-action: none; cursor: grab; user-select: none }
+#flight { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none }
+#network { position: relative; width: 100%; height: 100%; display: block; touch-action: none; cursor: grab; user-select: none }
 #network:active { cursor: grabbing }
 .edge { fill: none; stroke: var(--edge); stroke-width: .85; opacity: .62 }
 .edge.chain { stroke-dasharray: 1.4 3; stroke-linecap: round }
@@ -106,6 +107,17 @@ h1 { font: 500 clamp(38px,4.2vw,61px)/1 var(--serif); letter-spacing: -.039em }
 .edge.dim { opacity: .065 }
 .edge.active { stroke: var(--focus-ink); stroke-width: 1.45; opacity: .95 }
 .dot { fill: var(--color); cursor: grab; stroke: var(--plate); stroke-width: .65 }
+.node-light { pointer-events: none; opacity: .76 }
+.node-light.dim { opacity: .10 }
+[data-theme="dark"] .node-light { opacity: 1 }
+[data-theme="dark"] .node-light.dim { opacity: .13 }
+.node-shine { stop-color: color-mix(in srgb, var(--color) 50%, white) }
+.node-pigment { stop-color: var(--color) }
+.node-rim { stop-color: color-mix(in srgb, var(--color) 74%, #172521) }
+.node-mist { stop-color: var(--color) }
+#motion-toggle .play, #motion-toggle[data-paused="true"] .pause { display: none }
+#motion-toggle[data-paused="true"] .play { display: inline }
+#motion-toggle[hidden] { display: none }
 .dot.dim { opacity: .18 }
 .dot.neighbor { stroke: var(--focus-ink); stroke-width: 1 }
 .dot.selected { stroke: var(--ink); stroke-width: 2 }

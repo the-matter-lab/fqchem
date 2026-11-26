@@ -234,44 +234,41 @@ let expanded = new URL(location.href).searchParams.get("view") === "all";
 let openness = expanded ? 1 : 0, motionFrame = 0;
 const reducedMotion = matchMedia("(prefers-reduced-motion: reduce)");
 const labels = new Map();
-const folds = new Map();
-const crossLinks = svg("g",{});
-const fixedLinks = svg("g",{});
-const fixedDots = svg("g",{});
-$("links").append(crossLinks);
+const supportDots = svg("g",{}), supportLinks = svg("g",{});
+const fixedDots = svg("g",{}), fixedLinks = svg("g",{});
+$("dots").append(supportDots,fixedDots);
+$("links").append(supportLinks,fixedLinks);
+const defs = $("network").querySelector("defs");
+for (const kind of Object.keys(types)) {
+  const pigment = svg("radialGradient",{id:"pigment-"+kind,class:kind,cx:".29",cy:".24",r:".86"});
+  for(const [offset,cls] of [[0,"node-shine"],[.18,"node-shine"],[.52,"node-pigment"],[1,"node-rim"]])
+    pigment.append(svg("stop",{offset,class:cls}));
+  const glow = svg("radialGradient",{id:"light-"+kind,class:kind});
+  for(const [offset,opacity] of [[0,.55],[.45,.41],[.66,.18],[1,0]])
+    glow.append(svg("stop",{offset,class:"node-mist","stop-opacity":opacity}));
+  defs.append(pigment,glow);
+}
 for (const n of nodes) {
   n.incident = [];
-  n.dx = 0; n.dy = 0;
+  n.dx=0; n.dy=0; n.driftX=0; n.driftY=0;
   n.main = mainSet.has(n);
-  n.r = (n.main ? 4.0 : 2.1) + Math.min(3.1, Math.sqrt(n.after.length)*.66);
-  if (!n.main) {
-    const anchor = owner.get(n);
-    const key = anchor || n.chapter;
-    if (!folds.has(key)) {
-      const fold = {anchor, chapter:n.chapter, dots:svg("g",{}), links:svg("g",{})};
-      folds.set(key,fold);
-      $("links").append(fold.links);
-      $("dots").append(fold.dots);
-    }
-    n.fold = folds.get(key);
-  }
+  n.r = (n.main ? 4.0 : 2.1) + Math.min(3.1,Math.sqrt(n.after.length)*.66);
   n.el = svg("circle",{class:"dot",r:n.r,"data-id":n.id});
-  (n.fold?.dots || fixedDots).append(n.el);
+  n.el.style.fill="url(#pigment-"+n.kind+")";
+  if (n.main) {
+    n.light=svg("circle",{r:n.r*2.35,class:"node-light",fill:"url(#light-"+n.kind+")"});
+    $("aureoles").append(n.light);
+  }
+  (n.main?fixedDots:supportDots).append(n.el);
 }
-$("dots").append(fixedDots);
-$("links").append(fixedLinks);
 for (const [i,e] of [...edges,...summaryEdges].entries()) {
   e.bend = e.from.chapter===e.to.chapter ? 0 : ((i%5)-2)*.028;
   e.el = svg("path",{"marker-end":"url(#ink-arrow)"});
   e.from.incident.push(e); e.to.incident.push(e);
-  if (e.kind === "chain") $("summary-links").append(e.el);
-  else if (e.from.main && e.to.main) fixedLinks.append(e.el);
-  else {
-    const fold = e.from.fold || e.to.fold;
-    const sameFold = [e.from,e.to].every(n => n.fold === fold || n === fold.anchor);
-    (sameFold ? fold.links : crossLinks).append(e.el);
-  }
+  if (e.kind==="chain") $("summary-links").append(e.el);
+  else (e.from.main && e.to.main ? fixedLinks : supportLinks).append(e.el);
 }
+const flight = createProofFlight($("flight"),$("network"),nodes,mainSet,owner,edges);
 for (const [key,title] of chapters) {
   const label=svg("text",{class:"map-label","text-anchor":"middle","data-chapter":key});
   label.textContent=title; labels.set(key,label); $("map-labels").append(label);
@@ -283,55 +280,54 @@ function edgeGeometry(e) {
 }
 function position(n) {
   const [cx,cy,rx,ry]=boxes[n.chapter];
-  n.x=cx+n.u*rx+n.dx+(n.spreadX||0); n.y=cy+n.v*ry+n.dy+(n.spreadY||0);
+  n.x=cx+n.u*rx+n.dx+(n.spreadX||0)+n.driftX; n.y=cy+n.v*ry+n.dy+(n.spreadY||0)+n.driftY;
   n.el.setAttribute("cx",n.x); n.el.setAttribute("cy",n.y);
+  if(n.light) { n.light.setAttribute("cx",n.x); n.light.setAttribute("cy",n.y); }
 }
-function paintFolds() {
-  // One transform per proof group keeps its lemmas and their local arrows
-  // attached throughout the reveal, even for the largest imports.
-  for (const fold of folds.values()) {
-    const [cx,cy] = boxes[fold.chapter];
-    const x = fold.anchor?.x ?? cx, y = fold.anchor?.y ?? cy;
-    const k = fold.anchor ? openness : .94 + .06*openness;
-    const transform = `matrix(${k} 0 0 ${k} ${x*(1-k)} ${y*(1-k)})`;
-    for (const layer of [fold.dots,fold.links]) {
-      layer.style.display = openness ? "" : "none";
-      if (openness === 1) layer.removeAttribute("transform");
-      else layer.setAttribute("transform",transform);
-      layer.style.opacity = fold.anchor ? "" : openness;
-    }
+function paintScope() {
+  const moving=openness>0 && openness<1;
+  $("flight").hidden=!moving;
+  // Hand the last fraction of travel back to the detailed SVG strokes
+  // and arrowheads once the springs are within a pixel of their targets.
+  const detail=Math.max(0,Math.min(1,(openness-.84)/.16));
+  for(const layer of [supportDots,supportLinks]) {
+    layer.style.display=detail?"":"none";
+    layer.style.opacity=detail;
   }
-  crossLinks.style.display = openness ? "" : "none";
-  crossLinks.style.opacity = Math.max(0,(openness-.8)*5);
-  const summary = $("summary-links");
-  summary.style.display = openness===1 ? "none" : "";
-  summary.style.opacity = Math.max(0,1-openness*3);
+  const summary=$("summary-links");
+  summary.style.display=openness>=.35?"none":"";
+  summary.style.opacity=Math.max(0,1-openness/.35);
+  if(moving) flight.draw(openness,{W,H,zoom,tx,ty});
 }
 function settleMotion() {
   cancelAnimationFrame(motionFrame); motionFrame=0;
-  openness=expanded?1:0; paintFolds();
+  openness=expanded?1:0; paintScope();
 }
 function setExpanded(value,animate=true) {
-  if (expanded === value) return;
+  if (expanded===value) return;
   expanded=value;
   const url=new URL(location.href);
   if(value) url.searchParams.set("view","all"); else url.searchParams.delete("view");
   history.replaceState(null,"",url.href);
   cancelAnimationFrame(motionFrame); motionFrame=0;
-  const start=openness, end=value?1:0, since=performance.now();
-  const duration=(value?530:340)*Math.abs(end-start);
-  if(!animate || reducedMotion.matches || !duration) settleMotion();
+  const start=openness, end=value?1:0;
+  const duration=(value?1380:710)*Math.abs(end-start);
+  if(!animate || !canMove() || !flight.available || !duration) settleMotion();
   else {
+    // Start on the first painted frame, after rebuilding the inspector. Rapid
+    // toggles reverse the same trajectories from their current positions.
+    let since;
     function frame(now) {
+      since ??= now;
       const t=Math.min(1,(now-since)/duration);
-      openness=start+(end-start)*(1-Math.pow(1-t,3)); paintFolds();
+      openness=t===1?end:start+(end-start)*t;
+      paintScope();
       motionFrame=t<1?requestAnimationFrame(frame):0;
     }
     motionFrame=requestAnimationFrame(frame);
   }
   syncScope();
 }
-reducedMotion.addEventListener("change",() => { if(reducedMotion.matches && motionFrame) settleMotion(); });
 function syncScope() {
   const btn=$("scope-toggle");
   btn.setAttribute("aria-expanded",String(expanded));
@@ -372,9 +368,10 @@ function geometry() {
     for(const n of members) position(n);
   }
   edges.forEach(edgeGeometry); summaryEdges.forEach(edgeGeometry);
-  paintFolds(); updateFocusLabel();
+  flight.prepare(W); paintScope(); updateFocusLabel();
 }
 function drawCamera() {
+  if(motionFrame && openness>0 && openness<1) flight.draw(openness,{W,H,zoom,tx,ty});
   $("world").setAttribute("transform",`translate(${tx} ${ty}) scale(${zoom})`);
   $("scale").textContent=Math.round(zoom*100)+"%";
   $("zoom-in").disabled=zoom>=10; $("zoom-out").disabled=zoom<=.65;
@@ -466,7 +463,6 @@ function scheduleLabels() {
 }
 function matches(n) { return (!chapter || n.chapter===chapter) && (!query || n.match.includes(query)); }
 function visibleNode(n) {
-  if(!expanded && !n.main) return false;
   if(active) return neighbors.has(n);
   return chapter && !query ? chapterNeighbors.get(chapter).has(n) : matches(n);
 }
@@ -475,13 +471,15 @@ function highlight() {
   selectedEdges=new Set(active?active.incident:[]);
   if(active && !expanded) for(const e of selectedEdges) {neighbors.add(e.from); neighbors.add(e.to);}
   for(const n of nodes) {
-    const dim=!visibleNode(n);
+    const dim=!visibleNode(n); n.dim=dim;
+    if(n.light) n.light.classList.toggle("dim",dim);
     n.el.setAttribute("class","dot "+n.kind+(n.main?" principal":"")+(dim?" dim":"")+(active===n?" selected":active&&neighbors.has(n)?" neighbor":""));
   }
   for(const e of [...edges,...summaryEdges]) {
     const focus=selectedEdges.has(e);
     const dim=active ? !focus : query ? !matches(e.from)||!matches(e.to) :
       chapter && e.from.chapter!==chapter && e.to.chapter!==chapter;
+    e.dim=!!dim;
     e.el.setAttribute("class","edge "+e.kind+(e.from.chapter!==e.to.chapter?" cross":"")+(dim?" dim":"")+(focus?" active":""));
     e.el.setAttribute("marker-end",focus?"url(#focus-arrow)":"url(#ink-arrow)");
     if(focus) e.el.parentNode.append(e.el);
@@ -650,11 +648,12 @@ network.addEventListener("wheel",e=>{
   transformAt(zoom*Math.exp(-Math.sign(e.deltaY)*Math.min(.32,Math.abs(e.deltaY)*.002)),svgPoint(e.clientX,e.clientY));
 },{passive:false});
 function moveNode(n,dx,dy) {
-  n.dx+=dx; n.dy+=dy; position(n);
+  n.placed=true; n.dx+=dx+n.driftX; n.dy+=dy+n.driftY;
+  n.driftX=0; n.driftY=0; position(n);
   n.incident.forEach(edgeGeometry);
   updateFocusLabel(); scheduleLabels();
 }
-const pointers=new Map(); let pressed=null, dragged=false;
+const pointers=new Map(); let pressed=null, dragged=false, hovered=null;
 function near(x,y) {
   const p=svgPoint(x,y), lx=(p.x-tx)/zoom, ly=(p.y-ty)/zoom;
   let closest=null, best=Infinity;
@@ -691,7 +690,7 @@ network.addEventListener("pointermove",e=>{
     pointers.set(e.pointerId,now);
   } else if(e.pointerType!=="touch") {
     const n=motionFrame || e.target.dataset.chapter ? null : near(e.clientX,e.clientY),tip=$("tip");
-    tip.hidden=!n;
+    hovered=n; tip.hidden=!n;
     if(n) {
       const rect=$("plot").getBoundingClientRect(); tip.textContent=n.short+" · "+types[n.kind].name;
       tip.style.left=Math.max(4,Math.min(rect.width-tip.offsetWidth-4,e.clientX-rect.left+12))+"px";
@@ -708,9 +707,66 @@ network.addEventListener("pointerup",e=>{
   if(!pointers.size) pressed=null;
 });
 network.addEventListener("pointercancel",e=>{pointers.delete(e.pointerId);pressed=null;dragged=true;});
-network.addEventListener("pointerleave",()=>{$("tip").hidden=true;});
+network.addEventListener("pointerleave",()=>{hovered=null; $("tip").hidden=true;});
+// Low-amplitude motion is independent of layout. Hovered, selected and
+// manually placed points stay put so their pointer and keyboard targets hold.
+const driftNodes=nodes.filter(n=>n.main || n.id%13===0);
+let paused=false, plotVisible=false, driftTimer=0, driftTime=0, previousTick=0;
+try { paused=localStorage.getItem("fqchem-pause-motion")==="true"; } catch {}
+function canMove() { return !paused && !reducedMotion.matches; }
+function drift(reset=false) {
+  const dirty=new Set();
+  const amplitude=2.25/Math.max(1,zoom);
+  for(const n of driftNodes) {
+    if(!reset && ((!expanded && !n.main) || n===hovered || n===active || n.placed)) continue;
+    const phase=n.id*2.399963;
+    n.driftX=reset?0:amplitude*Math.sin(driftTime*.71+phase);
+    n.driftY=reset?0:amplitude*.79*Math.sin(driftTime*.93+phase*1.41);
+    position(n);
+    for(const e of n.incident) dirty.add(e);
+  }
+  dirty.forEach(edgeGeometry);
+  if(reset) { updateFocusLabel(); scheduleLabels(); }
+}
+function scheduleDrift() {
+  clearTimeout(driftTimer);
+  if(!canMove() || !plotVisible || document.hidden) { previousTick=0; return; }
+  driftTimer=setTimeout(()=>{
+    const now=performance.now();
+    if(!motionFrame && !pointers.size) {
+      driftTime+=Math.min(90,previousTick?now-previousTick:0)/1000;
+      drift();
+    }
+    previousTick=now;
+    scheduleDrift();
+  },50);
+}
+function motionPreference() {
+  const button=$("motion-toggle");
+  button.hidden=reducedMotion.matches;
+  button.dataset.paused=String(paused);
+  button.title=paused?"Resume graph motion":"Pause graph motion";
+  button.setAttribute("aria-label",button.title);
+  if(!canMove()) { settleMotion(); drift(true); }
+  scheduleDrift();
+}
+$("motion-toggle").onclick=()=>{
+  paused=!paused;
+  try { localStorage.setItem("fqchem-pause-motion",String(paused)); } catch {}
+  motionPreference();
+};
+reducedMotion.addEventListener("change",motionPreference);
+document.addEventListener("visibilitychange",()=>{
+  if(document.hidden && motionFrame) settleMotion();
+  scheduleDrift();
+});
+new IntersectionObserver(([entry])=>{
+  plotVisible=entry.isIntersecting;
+  if(!plotVisible && motionFrame) settleMotion();
+  scheduleDrift();
+}).observe($("plot"));
 new ResizeObserver(()=>{if(($("plot").clientWidth<570)!==narrow){geometry();fit();}}).observe($("plot"));
-syncScope(); geometry(); fromHash();
+syncScope(); geometry(); fromHash(); motionPreference();
 if(location.protocol==="https:") {
   fetch("https://api.github.com/repos/the-matter-lab/fqchem",{credentials:"omit"})
     .then(r=>r.ok?r.json():null).then(repo=>{
