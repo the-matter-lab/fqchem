@@ -2,7 +2,7 @@
 
 Machine-checked quantum chemistry in Lean 4.
 
-[Theorem dependency graph](https://fqchem.matterlab.ca/) · [Full paper index](https://github.com/the-matter-lab/fqchem/blob/atlas/docs/theorems/papers.md) · [Open conjectures](FQChem/Unproven/)
+[Theorem dependency graph](https://fqchem.matterlab.ca/) · [Full paper index](https://github.com/the-matter-lab/fqchem/blob/atlas/docs/theorems/papers.md) · [Open conjectures](FQChem/Unproven/) · [Axioms and assumptions](https://fqchem.matterlab.ca/#axioms)
 
 | Selected paper | Lean proof |
 | --- | --- |

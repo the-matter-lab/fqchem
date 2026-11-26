@@ -4,6 +4,7 @@ import base64
 from http.client import HTTPException
 import json
 import os
+import re
 from pathlib import Path
 import subprocess
 from urllib.parse import urljoin
@@ -66,6 +67,23 @@ def export():
         if html.count(tag) != 1:
             raise ValueError(f"Missing or duplicate script tag for {name}")
         html = html.replace(tag, f"<script>addTheoremGraph({data});</script>")
+
+    for name in ("library-axioms.js", "kitaev-axioms.js"):
+        script = (ROOT / directory / name).read_text().strip()
+        prefix = "addAxiomReport("
+        if not script.startswith(prefix) or not script.endswith(");"):
+            raise ValueError(f"Invalid compiled axiom report in {name}")
+        report = json.loads(script[len(prefix):-2])
+        if report["revision"] != revision:
+            raise ValueError(f"Rebuild {name} for source revision {revision}")
+        if not report["modules"] or not report["toolchain"]:
+            raise ValueError(f"Empty compiled axiom report in {name}")
+        tag = f'<script src="{name}"></script>'
+        if html.count(tag) != 1:
+            raise ValueError(f"Missing or duplicate script tag for {name}")
+        data = json.dumps(report, ensure_ascii=False, separators=(",", ":")).replace("<", r"\u003c")
+        html = html.replace(tag, f"<script>addAxiomReport({data});</script>")
+    html = re.sub(r'href="(\.\./\.\./[^"]+)"', lambda m: f'href="{urljoin(base, m[1])}"', html)
 
     marker = '<span id="star-count"></span>'
     if html.count(marker) != 1:

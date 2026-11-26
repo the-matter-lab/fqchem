@@ -5,7 +5,7 @@ out=docs/theorems
 python3 scripts/theorem_graph/literature.py
 python3 scripts/theorem_graph/export_site.py > "$RUNNER_TEMP/fqchem.html"
 mv "$RUNNER_TEMP/fqchem.html" "$out/index.html"
-git add -f "$out/index.html" "$out"/{library,kitaev}.{js,md} "$out/literature.js" "$out/papers.md"
+git add -f "$out/index.html" "$out"/{library,kitaev}.{js,md} "$out"/{library,kitaev}-axioms.js "$out/literature.js" "$out/papers.md"
 
 # Keep the source snapshot as first parent and fast-forward the publication
 # branch. The source branch and its history belong to library contributors.

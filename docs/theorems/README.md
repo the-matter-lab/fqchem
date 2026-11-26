@@ -49,3 +49,14 @@ Open `docs/theorems/index.html` after extraction to browse locally. To export a 
 Every push to `main` triggers both Lean builds, axiom audits and dependency extractions. After both pass, the [Lean workflow](../../.github/workflows/lean.yml) publishes the generated module diagrams, graph data and standalone HTML to the [atlas branch](https://github.com/the-matter-lab/fqchem/tree/atlas/docs/theorems). Its first parent is the exact source revision. Paper attribution is validated against the compiled graph. For a new theorem, an original DOI or arXiv citation of the form `[paper title](https://doi.org/...)` in its Lean docstring supplies a source on that same push. Until the scope is reviewed the inspector labels it “Source cited in Lean · comparison pending.” Reviewed mappings live in [the statement audits](catalog/reviews/) and publication references and open claims live in [the bibliography](catalog/). Authors can add a theorem and push its Lean source without generating or committing graph files.
 
 The Clawderon launch agent checks the publication branch every minute and on login. It sends each new verified site to the Clawtilde Mac Mini over SSH, checks its checksum at the origin and over public HTTPS, and records the deployed revision. If the laptop is offline, it catches up to the latest published graph when it reconnects. A failed proof build leaves the last published graph online. See the [deployment worker](../../scripts/theorem_graph/deploy.sh).
+
+## Axiom audit
+
+Open [Axioms and assumptions](https://fqchem.matterlab.ca/#axioms) for the current findings, the Born-rule example and the scope of both builds. The audit enumerates declarations by the module that defined them, including private declarations and definitions. It rejects a local axiom even when nothing uses it. Lean’s `collectAxioms` checks transitive dependencies against `propext`, `Classical.choice` and `Quot.sound`; this also rejects a dependency on `sorryAx`. Each dependency is checked as far as it is used by an audited declaration. The locally adapted Aaronson–Ambainis port is also checked in full.
+
+After building both projects, run these commands from the repository root. They write the two coverage reports used by the explorer. CI runs the audits before publishing the atlas.
+
+```sh
+python3 scripts/theorem_graph/audit_axioms.py
+python3 scripts/theorem_graph/audit_axioms.py --project kitaev
+```

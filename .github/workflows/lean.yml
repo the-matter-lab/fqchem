@@ -16,6 +16,7 @@ jobs:
         run: lake exe cache get Mathlib
       - run: lake build
       - run: lake env lean test/Audit.lean
+      - run: python3 scripts/theorem_graph/audit_axioms.py --project library
       - run: python3 scripts/theorem_graph/generate.py
       - name: Upload compiled library graph
         if: github.event_name == 'pull_request' || github.ref == 'refs/heads/main'
@@ -25,6 +26,7 @@ jobs:
           path: |
             docs/theorems/library.js
             docs/theorems/library.md
+            docs/theorems/library-axioms.js
           if-no-files-found: error
           retention-days: 2
 

@@ -388,6 +388,20 @@ function showPending(record=true) {
 $("needs-proof").onclick=()=>showPending();
 function fromHash() {
   let id=""; try { id=decodeURIComponent(location.hash.slice(1)); } catch {}
+  const audit = id === "axioms";
+  const changed = $("graph-view").hidden !== audit;
+  $("graph-view").hidden = audit;
+  $("audit-view").hidden = !audit;
+  $("nav-atlas").toggleAttribute("aria-current", !audit);
+  $("nav-axioms").toggleAttribute("aria-current", audit);
+  $(audit ? "nav-axioms" : "nav-atlas").setAttribute("aria-current", "page");
+  document.title = (audit ? "Axioms and assumptions" : "Theorem atlas") + " · fqchem";
+  if (changed) {
+    $(audit ? "audit-title" : "graph-title").focus({preventScroll:true});
+    window.scrollTo(0, 0);
+    if (!audit) geometry();
+  }
+  if (audit) return;
   if(id==="needs-proof") { showPending(false); return; }
   const n=byName.get(id)||byDeclaration.get(id)||byDeclaration.get(atlasLiterature.aliases[id]);
   if(n) select(n,false); else overview(false);
@@ -401,6 +415,7 @@ $("search").addEventListener("keydown",e=>{
   if(e.key==="Enter" && query) { const first=ordered.find(matches); if(first) select(first); }
 });
 document.addEventListener("keydown",e=>{
+  if ($("graph-view").hidden) return;
   if(e.key==="/" && document.activeElement!==$("search") && !e.metaKey && !e.ctrlKey) {e.preventDefault();$("search").focus();}
   if(e.key==="Escape") { overview(); $("tip").hidden=true; }
 });
@@ -469,7 +484,42 @@ network.addEventListener("pointerup",e=>{
 });
 network.addEventListener("pointercancel",e=>{pointers.delete(e.pointerId);dragged=true;});
 network.addEventListener("pointerleave",()=>{$("tip").hidden=true;});
-new ResizeObserver(()=>{if(($("plot").clientWidth<570)!==narrow){geometry();fit();}}).observe($("plot"));
+function renderAudit(reports) {
+  if (reports.length !== 2 || !reports[0].revision || reports[0].revision !== reports[1].revision) return;
+  const modules = reports.flatMap(report => report.modules);
+  const unique = new Set(modules.map(row => row.module));
+  const grouped = new Map();
+  for (const row of modules) {
+    const group = grouped.get(row.group) || {modules:0, declarations:0};
+    group.modules++;
+    group.declarations += row.declarations;
+    grouped.set(row.group, group);
+  }
+  const fmt = n => n.toLocaleString("en-US");
+  $("audit-finding").textContent = "fqchem declares no axioms of its own. Every audited declaration uses at most Lean’s three standard axioms.";
+  $("audit-scope").textContent = fmt(unique.size) + " distinct source modules. " +
+    fmt(modules.reduce((sum, row) => sum + row.declarations, 0)) + " declaration checks across " +
+    reports.map(r => "Lean " + r.toolchain.split(":v").pop()).join(" and ") + ".";
+  for (const [label, values] of grouped) {
+    const tr = document.createElement("tr"), th = document.createElement("th");
+    th.scope = "row";
+    th.textContent = label;
+    tr.append(th);
+    for (const n of [values.modules, values.declarations]) {
+      const td = document.createElement("td");
+      td.textContent = fmt(n);
+      tr.append(td);
+    }
+    $("audit-rows").append(tr);
+  }
+  $("audit-table").hidden = false;
+  const revision = reports[0].revision;
+  $("audited-revision").href = "https://github.com/the-matter-lab/fqchem/tree/" + revision;
+  $("audited-revision").textContent = "Source " + revision.slice(0, 8);
+  $("audited-revision").hidden = false;
+}
+renderAudit(axiomReports);
+new ResizeObserver(()=>{if($("graph-view").hidden)return; if(($("plot").clientWidth<570)!==narrow){geometry();fit();}}).observe($("plot"));
 geometry(); fromHash();
 if(location.protocol==="https:") {
   fetch("https://api.github.com/repos/the-matter-lab/fqchem",{credentials:"omit"})

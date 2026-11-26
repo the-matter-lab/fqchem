@@ -21,6 +21,7 @@
 <header><nav class="mast" aria-label="Site navigation">
   <a class="brand" href="index.html" aria-label="fqchem theorem atlas"><svg class="mark" viewBox="0 0 38 34" aria-hidden="true"><path d="m5 23 10-17 18 11-17 11-11-5 28-6M15 6l1 22"/><circle cx="5" cy="23" r="3"/><circle cx="15" cy="6" r="3.4"/><circle cx="33" cy="17" r="3.2"/><circle cx="16" cy="28" r="3"/></svg>fqchem</a>
   <span class="brand-context">Formal quantum chemistry</span>
+  <span class="views"><a id="nav-atlas" href="#atlas" aria-current="page">Atlas</a><a id="nav-axioms" href="#axioms">Axioms</a></span>
   <a class="paper-link" href="https://github.com/the-matter-lab/fqchem/blob/atlas/docs/theorems/papers.md">Paper index <svg class="icon"><use href="#i-ext"/></svg></a>
   <!-- GitHub mark from Primer Octicons.
 MIT License
@@ -51,8 +52,8 @@ SOFTWARE.
       <span class="repo-stars"><svg aria-hidden="true" width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"><path d="m8 1.5 2 4.1 4.5.7-3.25 3.18.77 4.5L8 11.85l-4.02 2.13.77-4.5L1.5 6.3l4.5-.7z"/></svg><span id="star-count"></span><span class="sr-only"> stars</span></span>
     </a>
 </nav></header>
-<main>
-  <div class="intro"><div><h1>Theorem atlas</h1><p>Trace a Lean proof or explore a result awaiting formalization.</p></div>
+<main id="graph-view">
+  <div class="intro"><div><h1 id="graph-title" tabindex="-1">Theorem atlas</h1><p>Trace a Lean proof or explore a result awaiting formalization.</p></div>
     <div class="totals"><span><b id="total-nodes">—</b>Lean declarations</span><span><b id="total-targets">—</b>Need proof</span><span><b id="total-edges">—</b>Dependencies</span></div>
   </div>
   <div class="workbench">
@@ -75,6 +76,45 @@ SOFTWARE.
   <p id="notice" class="sr-only" aria-live="polite"></p>
   <noscript>Enable JavaScript to explore the interactive graph, or <a href="https://github.com/the-matter-lab/fqchem/tree/main/docs/theorems">browse the module diagrams</a>.</noscript>
 </main>
+<main id="audit-view" hidden>
+  <div class="audit-intro"><h1 id="audit-title" tabindex="-1">Axioms and assumptions</h1>
+    <p id="audit-finding">The compiled audit checks which unproved statements fqchem trusts.</p>
+  </div>
+  <div class="audit-columns">
+    <article class="audit-reading">
+      <section><h2>What Lean trusts</h2>
+        <p>An axiom introduces a statement without a proof. The publication check permits three foundations supplied by Lean. A declaration can use one indirectly through Mathlib or another imported proof.</p>
+        <dl class="foundations">
+          <dt><code>propext</code></dt><dd>Equivalent propositions are equal. A proof can use a logical equivalence to rewrite a proposition inside another expression.</dd>
+          <dt><code>Classical.choice</code></dt><dd>A proof that a type is inhabited lets Lean select an element. This supports noncomputable constructions when mathematics specifies existence without an algorithm.</dd>
+          <dt><code>Quot.sound</code></dt><dd>Related representatives determine the same element of a quotient. This lets mathematics identify objects up to a specified equivalence.</dd>
+        </dl>
+        <p class="audit-links"><a href="https://lean-lang.org/doc/reference/latest/Axioms/#standard-axioms">Lean language reference</a></p>
+      </section>
+      <section><h2>Where the Born rule enters</h2>
+        <p>For a pure state ψ and a measurement operator K, fqchem defines the outcome weight as <span class="formula">‖Kψ‖²</span>. Interpreting that weight as the probability of an experimental outcome is the physical input. Lean proves that the weights are nonnegative and sum to one when the state is normalized and the measurement operators are complete.</p>
+        <p class="audit-links"><a href="../../FQChem/Properties/MeasurementTheory.lean#L26">Probability definition</a> · <a href="#FQChem.Properties.MeasurementTheory.bornCompleteness">Normalization proof</a> · <a href="https://doi.org/10.1007/BF01397477">Born (1926)</a></p>
+      </section>
+      <section><h2>When a theorem has a hypothesis</h2>
+        <p>The atomic binding theorem shows that electron-number convexity implies consecutive binding. Convexity is an explicit argument. To conclude consecutive binding for this model, a caller must supply a proof of convexity. The library gives the conjecture a precise statement in <code>FQChem.Unproven</code>.</p>
+        <p class="audit-links"><a href="../../FQChem/Unproven/AtomicEnergy.lean#L50">Convexity statement</a> · <a href="#FQChem.Properties.AtomicBinding.convexity_implies_consecutiveBinding">Conditional proof</a> · <a href="https://arxiv.org/abs/2206.15393">Nam (2022)</a></p>
+      </section>
+    </article>
+    <aside class="audit-record" aria-labelledby="audit-record-title">
+      <h2 id="audit-record-title">Audit coverage</h2>
+      <p id="audit-scope">Counts are available after both toolchains have been audited.</p>
+      <table id="audit-table" hidden><caption class="sr-only">Source modules and compiled declarations checked by component</caption>
+        <thead><tr><th scope="col">Component</th><th scope="col">Modules</th><th scope="col">Declarations</th></tr></thead><tbody id="audit-rows"></tbody>
+      </table>
+      <p>Counts include private helpers, definitions and declarations generated by Lean. Shared core modules are checked again on the Qatlib toolchain.</p>
+      <p>For every declaration, the check follows axiom dependencies through imported proofs. A new package axiom, a proof using <code>sorry</code>, or an unapproved upstream axiom fails publication.</p>
+      <p class="audit-links"><a href="../../scripts/theorem_graph/AuditAxioms.lean">Inspect the check</a> · <a href="../../docs/theorems/README.md#axiom-audit">Reproduce the audit</a><br><a id="audited-revision" hidden></a></p>
+    </aside>
+  </div>
+</main>
+<script>const axiomReports = []; function addAxiomReport(report) { axiomReports.push(report); }</script>
+<script src="library-axioms.js"></script>
+<script src="kitaev-axioms.js"></script>
 <script>const graphParts = []; function addTheoremGraph(nodes) { graphParts.push(nodes); }</script>
 <script src="library.js"></script>
 <script src="kitaev.js"></script>

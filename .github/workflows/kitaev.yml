@@ -23,6 +23,7 @@ jobs:
             sort -u | xargs -r lake exe cache get
       - run: lake build
       - run: lake env lean test/Audit.lean
+      - run: python3 ../../scripts/theorem_graph/audit_axioms.py --project kitaev
       - run: python3 ../../scripts/theorem_graph/generate.py --project kitaev
       - name: Upload compiled kitaev graph
         if: github.event_name == 'pull_request' || github.ref == 'refs/heads/main'
@@ -32,5 +33,6 @@ jobs:
           path: |
             docs/theorems/kitaev.js
             docs/theorems/kitaev.md
+            docs/theorems/kitaev-axioms.js
           if-no-files-found: error
           retention-days: 2
